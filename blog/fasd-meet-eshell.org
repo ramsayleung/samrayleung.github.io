@@ -1,0 +1,123 @@
+#+TITLE:       Shell神器fasd与Eshell的不期而遇
+#+AUTHOR:      Samray
+#+EMAIL:       samray@localhost.localdomain
+#+DATE:        2017-03-02 Thu
+#+URI:         /blog/%y/%m/%d/shell神器fasd与eshell的不期而遇
+#+KEYWORDS:    eshell,fasd
+#+TAGS:        emacs,shell
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An introduction about tweaking eshell with fasd
+#+BEGIN_QUOTE
+fasd - quick access to files and directory
+#+END_QUOTE
+之前一位 Windows 用户看到笔者在 Shell 下面的操作，他很奇怪，觉得明明已经有图形化
+界面，为什么还要用这种命令行呢，直接用鼠标点击不就很好了么。笔者是很难直接跟他解
+释，因为他没有用过Linux/Unix,完全不熟悉命令行，不知道其强大之处，其高效率是图形
+化界面完全无法比拟的(当然，命令行的学习成本和学习曲线肯定比图型化界面高),So i
+live in terminal. 而今天笔者要介绍的神器 fasd 就是可以让命令行操作变得更加高效
+* Fasd
+  在 Shell 下面有非常多的命令操作是与文件和目录相关的，如果你要进入到另外一个目
+  录你可以使用相对或者绝对路径来访问该目录，但是如果这是一个与当前目录不相关的目
+  录你就只能通过绝对路径来访问。以笔者自己的目录为例，当前目录是
+  */home/samray/.emacs.d/elisp/* ,笔者希望访问 *Document* 目录下一个的子目录
+  *Python*, 笔者可以通过下面的命令来访问：
+  #+BEGIN_SRC shell
+    cd ~/Document/Programming/Python
+    cd /home/samray/Document/Programming/Python
+  #+END_SRC
+  这就是笔者需要的命令，虽然可以通过 *tab* 进行目录名的补全，但是笔者还是觉得要
+  输入的东西太多了(正如 Larry Wall 所说，懒惰是程序员的美德). 然后，笔者发现了
+  [[https://github.com/clvv/fasd][Fasd ]]这个神器。它可以让笔者只输入 *Python* 就进入到笔者想访问的 *Python* 目录，
+  神奇吧！:)
+  -----
+  Fasd 以访问的频繁程度和最近是否有访问对文件和目录分配优先级，然后通过判断已访问
+  的文件以及其优先级来切换目录或者打开文件，所以如果你之前已经访问过某个目录，那么
+  你很容易就可以切换到那个目录
+** 常用选项
+   + *-a(any)*: 匹配文件和目录
+   + *-i(interactive)*: 以交互的方式选择文件或者目录
+   + *-s(show/search)*: 按照优先级展示文件或者目录
+   + *-e <cmd>*:对匹配的文件调用命令<cmd>
+   + *-d*:只匹配目录
+   + *-f*:只匹配文件
+     Fasd 文档还建议你为 fasd的命令选项设置别名
+     #+BEGIN_SRC shell
+       alias a='fasd -a'        # any
+       alias s='fasd -si'       # show / search / select
+       alias d='fasd -d'        # directory
+       alias f='fasd -f'        # file
+       alias sd='fasd -sid'     # interactive directory selection
+       alias sf='fasd -sif'     # interactive file selection
+       alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+       alias zz='fasd_cd -d -i' # cd with interactive selection
+     #+END_SRC
+     这样你就可以通过 *z some-dir* 直接进入到某个目录或者 *zz some-dir* 选择进入有
+     多个匹配的特定目录。Fasd 还会判断应该显示所有的匹配选项或者是直接选择最佳匹配
+     例如你也可以将fasd配合 /subshell/ 使用，例如打开 *foo*
+     #+BEGIN_SRC shell
+       vim `f foo`
+     #+END_SRC
+     又或者打开  */etc/rc.conf*
+     #+BEGIN_SRC shell
+       vim `f rc conf`
+     #+END_SRC
+** 例子
+   你可以将fasd 配合正则表达式使用，例如列举以 /py/ 结尾的最近访问的文件：
+   #+BEGIN_SRC shell
+     f py$
+   #+END_SRC
+   又或者使用Emacs 打开最近频繁访问的文件 /bar/
+   #+BEGIN_SRC shell
+     f -e emacs bar
+   #+END_SRC
+* Fasd +Eshell
+  fasd 真的可以大幅度提高效率，但是笔者有点不太满意的是，笔者是个 Emacser, 笔者
+  的操作基本是在 Emacs 里完成的，而笔者在 Emacs 里面使用的 shell 是 Eshell,
+  Eshell 似乎不能与 fasd 无缝结合，似乎可以折腾一下。
+  -----
+  *z* 和 *zz* 命令是无法在Eshell 里面运行，因为 *z* 是 *fasd_cd* 的别名，而
+  *fasd_cd* 是一个shell script 函数，Eshell无法运行该函数，代码如下：
+  #+BEGIN_SRC shell
+    fasd_cd () {
+        if [ $# -le 1 ]
+        then
+            fasd "$@"
+        else
+            local _fasd_ret="$(fasd -e 'printf %s' "$@")" 
+            [ -z "$_fasd_ret" ] && return
+            [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+        fi
+    }
+  #+END_SRC
+  Eshell无法运行该函数，因为Eshell文档的匮乏，笔者也不知道如何编写跟上面代码等价
+  的 "Eshell script",所以就用 elisp 写一段同样功能的函数好了。
+  #+BEGIN_SRC emacs-lisp
+    (defun samray/eshell-fasd-z (&rest args)
+      "Use fasd to change directory more effectively by passing ARGS."
+      (setq args (eshell-flatten-list args))
+      (let* ((fasd (concat "fasd " (car args)))
+             (fasd-result (shell-command-to-string fasd))
+             (path (replace-regexp-in-string "\n$" "" fasd-result))
+             )
+        (eshell/cd path)
+        (eshell/echo path)
+        ))
+  #+END_SRC
+  函数功能很快就写好了，实现了 *z* 的功能，但是原来的代码一直不能正常运行，折腾
+  了一个多小时都没解决，输出什么都正常，最后 debug 发现是因为显示的路径后面多了
+  一个换行符即 */home/samray* 变成了 */home/samray\n*,而输出换行符又不会显示，真
+  的坑。最后为命令赋予别名就可以像在 *zsh* 下那样工作了：
+  #+BEGIN_SRC shell
+    alias z 'samray/shell-fasd-z $1'
+  #+END_SRC
+  -----  
+  更多的用法就要查阅官方文档了
+  #+BEGIN_SRC shell
+    man fasd
+  #+END_SRC
+
+  Enjoy Emacs and Shell :)
+
+  参考：
+  [[https://github.com/clvv/fasd]]

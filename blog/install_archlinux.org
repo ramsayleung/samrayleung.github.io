@@ -1,0 +1,191 @@
+#+TITLE:       枯树逢春之ArchLinux领风骚
+#+AUTHOR:      Samray
+#+EMAIL:       samray@localhost.localdomain
+#+DATE:        2017-02-27 Mon
+#+URI:         /blog/%y/%m/%d/枯树逢春之archlinux领风骚
+#+KEYWORDS:    archlinux,linux
+#+TAGS:        linux
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An description about how to install arch linux in an old machine
+* 枯树
+  周末回了一趟家，没带自己的笔记本，在家闲来无事，无意中看到墙角的电脑，已经尘封
+  已久反正无事，何不玩玩这台老古董呢？于是把电脑拿去修理店把坏了的硬件修好。离开
+  店的时候，老板说：“你的系统有问题，笔者看到你自己也有Ghost,就不帮搞这系统了，
+  你自己都能解决的，推荐你还是用XP吧，这电脑配置低，还是XP好用”。笔者忍不住回头
+  对老板一笑 :)
+* 春至
+  像笔者这种Linuxer,这么可能再装回XP呢，最初装Win7,也是考虑到老爹的技术 hold 不
+  住 Linux,现在手机那么发达，他就不需要电脑了，所以，此时不装Linux,更待何时呢？
+* Arch Linux
+  笔者没有选择 Xubuntu 这种适合老机器的 Ubuntu 衍生发行版本，因为笔者不喜欢
+   Ubuntu, 所以笔者最后选择的是 Arch linux,官网说最低配置只需500MB内存，800MB的
+   硬盘存储空间，正适合家里的老家伙
+** 安装过程
+*** 下载镜像
+    [[https://www.archlinux.org/download/][Download Link]] ,在网易的镜像下载ISO, 然后用dd刻录到U盘，Windows 可以选择
+    [[http://sourceforge.net/projects/usbwriter][USBwriter]]
+*** 分区
+    使用fdisk, 笔者的硬盘是/dev/sda,如果还有一块硬盘，那应该就是/dev/sdb
+    #+BEGIN_SRC shell
+      fdisk /dev/sda
+    #+END_SRC
+    + n:新建一个分区，p 指主分区，e 是指扩展分区(逻辑分区是建立在扩展分区上的)
+      一块硬盘主分区加上扩展分区最多只能是4个
+    + d: 删除
+    + m: 查询其他命令，不知道怎么操作就输入m 吧
+    分区结束以后，输入 *w* 完成分区 (笔者分了三个分区 /dev/sda1 -> swap
+    /dev/sda2 -> / /dev/sda3 -> /home)
+*** 格式化分区
+    格式化 sda2 sda3为ext4格式：
+    #+BEGIN_SRC shell
+      mkfs.ext4 /dev/sda2
+      mkfs.ext4 /dev/sda3
+    #+END_SRC
+    格式化sda1 为swap(虚拟内存),一般是内存的两倍，当然如果你的内存很大的话就不用
+    划这个分区了
+    #+BEGIN_SRC shell
+      mkswap /dev/sda1
+    #+END_SRC
+    激活swap
+    #+BEGIN_SRC shell
+      swapon /dev/sda1
+    #+END_SRC
+*** 挂载
+    将sda2挂载到/mnt,其实就是让sda2分区做系统的根分区，/mnt/home同理
+    #+BEGIN_SRC shell
+      mount /dev/sda2 /mnt
+      mount /dev/sda3 /mnt/home
+    #+END_SRC
+*** 更新pacman源
+    网易的源不错，编辑 */etc/pacman.d/mirrorlist* 添加 *Server = http://mirrors.163.com/archlinux/$repo/os/$arch*
+    #+BEGIN_SRC shell
+      vim /etc/pacman.d/mirrorlist
+    #+END_SRC
+    然后添加；
+    添加完之后，更新一下
+    #+BEGIN_SRC shell
+      pacman -Syy
+    #+END_SRC
+*** 安装基本系统
+    安装基本系统到 /mnt,即sda2分区
+    #+BEGIN_SRC shell
+      pacstrap /mnt base base-devel
+    #+END_SRC
+    需要安装的都安装吧，然后走开煮一杯咖啡，慢慢品尝
+*** 生成fstab
+    fstab 的作用：
+    #+BEGIN_QUOTE
+    The fstab(5) file can be used to define how disk partitions, various other
+    block devices, or remote filesystems should be mounted into the filesystem
+    #+END_QUOTE
+    生成fstab,并且查看是否正确生成fstab
+    #+BEGIN_SRC shell
+      genfstab -U -p /mnt >> /mnt/etc/fstab
+      cat /mnt/etc/fstab
+    #+END_SRC
+*** 配置系统
+    切换到新的系统，然后你会发现命令行提示符发生了改变
+    #+BEGIN_SRC 
+    arch-chroot /mnt
+    #+END_SRC
+**** 设置地区
+     #+BEGIN_SRC shell
+       ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+     #+END_SRC
+**** 设置语言
+     编辑 */etc/locale.gen*,因为该文件所有的信息都是被注释滴，所以在最上面添加
+     *en_US.UTF-8 UTF-8* 即可
+     #+BEGIN_SRC shell
+       vim /etc/locale.gen 
+     #+END_SRC
+     然后添加；
+     添加完成后，执行 *locale-gen*
+     #+BEGIN_SRC shell
+       locale-gen
+     #+END_SRC
+     接着配置 *locale.conf*
+     #+BEGIN_SRC shell
+       echo LANG=en_US.UTF-8 > /etc/locale.conf
+       export LANG=en_US.UTF-8
+     #+END_SRC
+**** 设置主机名
+     #+BEGIN_SRC shell
+       echo samray-arch > /etc/hostname
+     #+END_SRC
+**** 设置密码
+     #+BEGIN_SRC shell
+       passwd
+     #+END_SRC
+**** 配置网络
+     #+BEGIN_SRC shell
+       pacman -S net-tools
+       systemctl enable dhcpcd.service
+     #+END_SRC
+**** 安装GRUB
+     #+BEGIN_SRC shell
+       pacman -S grub-bios
+     #+END_SRC
+     把grub 安装到硬盘sda,如果双系统的话，还要视情况做更改
+     #+BEGIN_SRC shell
+       grub-install --recheck /dev/sda
+       grub-mkconfig -o /boot/grub/grub.cfg
+     #+END_SRC
+*** 收尾工作
+    #+BEGIN_SRC shell
+      exit
+      umount /mnt/home
+      umount /mnt
+      reboot
+    #+END_SRC
+    这样Arch linux 就装好了，不过你重启会发现，你的系统是没有图形化界面的
+** 安装桌面环境
+*** 安装x服务
+    #+BEGIN_SRC shell
+      pacman -S xorg-server xorg-server-utils xorg-xinit
+    #+END_SRC
+*** 安装显卡驱动
+    查找自己的显卡类型
+    #+BEGIN_SRC shell
+      ispci |grep VGA
+    #+END_SRC
+    然后搜索匹配自己显卡的驱动
+    #+BEGIN_SRC shell
+      pacman -Ss xf86-video |less
+    #+END_SRC
+    Intel 集成显卡：
+    #+BEGIN_SRC shell
+      pacman -S xf86-video-intel
+    #+END_SRC
+    虚拟机显卡：
+    #+BEGIN_SRC shell
+      pacman -S xf86-video-vesa
+    #+END_SRC
+    笔记本触摸板驱动 (老家伙是台式，不需要了):
+    #+BEGIN_SRC shell
+      pacman -S xf86-input-synaptics
+    #+END_SRC
+    安装输入法
+    #+BEGIN_SRC shell
+      pacman -S scim-pinyin
+    #+END_SRC
+    先安装 slim(图像登录管理器)
+    #+BEGIN_SRC shell
+      pacman -S slim
+    #+END_SRC
+    安装xfce4
+    #+BEGIN_SRC shell
+      pacman -S xfce4
+    #+END_SRC
+    启动xfce4
+    #+BEGIN_SRC shell
+      startxfce4
+    #+END_SRC
+    
+    基本就大功告成了，因为笔者的台式电脑是bios, 所以不用折腾uefi, 还有无线网络。
+    *Action is louder than words*,还是多动手才行，笔者都装了三次才成功，内核空指
+    针和段错误都遇到了 :）
+** 参考
+   [[https://wiki.archlinux.org/index.php/installation_guide]]
+     
+   

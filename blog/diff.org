@@ -1,0 +1,128 @@
+#+TITLE:       Linux/Unix Shell 二三事之过滤器diff
+#+AUTHOR:      Samray
+#+EMAIL:       samray@localhost.localdomain
+#+DATE:        2017-02-28 Tue
+#+URI:         /blog/%y/%m/%d/linux-unix-shell-二三事之过滤器diff
+#+KEYWORDS:    shell,diff
+#+TAGS:        shell
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An introduction about diff
+#+BEGIN_QUOTE
+diff - compare files line by line
+#+END_QUOTE
+如果你有使用过git,那么你一定不会对diff 陌生，因为对你源文件和修改后的文件进行比较
+的就是 *diff* 这个大名鼎鼎的家伙了。多年以来， *diff* 都一直是非常重要的工具，上古大神
+都是使用 *diff* 和 *patch* 对程序进行差分和打补丁滴(现在有git了，但是diff 同样
+发挥着重要作用)
+* 语法 
+  diff 的语法如下
+  #+BEGIN_SRC shell
+    diff [OPTION].... file1 file2
+  #+END_SRC
+  /OPTION/ 指不同的选项参数，file1,file2 是文本文件的名字，如果比较的两个文件相同
+  diff 将不输出任何东西。如果两个文件有差异，diff 会显示一系列的指示，让你可以把
+  第一个文件修改为与第二个文件一致
+* 例子
+** 用法一
+   现在有两个文件，分别保存着不同的地址。
+   address1 包含：
+   #+BEGIN_SRC 
+ guangdong 
+ shanghai 
+ beijing
+ chengdu
+   #+END_SRC
+   address2 包含：
+   #+BEGIN_SRC 
+ guangdong 
+ shanghai 
+ beijin
+ chengdu
+   #+END_SRC
+   你可以注意到两个文件的区别就是第三行的 /beijing/.然后运行 *diff*
+   #+BEGIN_SRC shell
+     diff address1 address2
+   #+END_SRC
+   输出结果：
+   #+BEGIN_SRC 
+ 3c3
+ < beijing
+ ---
+ > beijin
+   #+END_SRC
+   似乎有点难以理解，输出结果描述了什么呢？其实diff 是在指导如何修改不同的文件使之一致
+   *<* 后接的是文件1中与文件2不同的部分， *>* 后接的是文件2中与文件1不同的部分
+   diff 的输出使用3个不同的单字符指导：a(append,追加),c(change,修改),d(delete,删除)
+   在上面的例子，只是看到一个 /c/,意味着，如果想把 /address1/ 修改成 /address2/
+   只需将 /address1/ 的第三行修改成 /address2/ 的第三行
+** 用法2
+   现在把 /address2/ 的最后一行删除，看看运行 /diff/ 结果如何：
+   address1 包含：
+   #+BEGIN_SRC 
+ guangdong 
+ shanghai 
+ beijing
+ chengdu
+   #+END_SRC
+   address2 包含：
+   #+BEGIN_SRC 
+ guangdong 
+ shanghai 
+ beijing
+   #+END_SRC
+   #+BEGIN_SRC shell
+     diff address1 address2
+   #+END_SRC
+   输出结果：
+   #+BEGIN_SRC 
+ 4d3
+ < chengdu
+   #+END_SRC
+   在该例子中，为了将 /address1/ 变成 /address2/ 只需删除 /address1/ 的第四行
+** 用法3 
+   现在把 /address1/ 的最后一行删除，看看运行 /diff/ 结果如何：
+   address1 包含：
+   #+BEGIN_SRC 
+ guangdong 
+ shanghai 
+ beijing
+   #+END_SRC
+   address2 包含：
+   #+BEGIN_SRC
+ guangdong
+ shanghai
+ beijing
+ chengdu
+   #+END_SRC
+   #+BEGIN_SRC shell
+     diff address1 address2
+   #+END_SRC
+   输出结果：
+   #+BEGIN_SRC 
+3a4
+> chengdu
+   #+END_SRC
+   想将第一个文件转换成第二个文件，只需在第一个文件追加第二个文件的第四行(即在
+   第一个文件的第 *3* 行之后追加第二个文件的第 *4* 行)
+* diff 选项
+  因为diff 是一个相当强大也是一个相当复杂的命令，所以我没办法将所有的用法一一道
+  尽所以笔者将比较常用的选项列举出来
+  + *-b*:忽略制表符(不忽略所有的空白符，指忽略空白符数量的差异),例如下面的两行是相同的
+  #+BEGIN_SRC 
+a    a
+a a
+  #+END_SRC
+  + *-B(blank lines)*:忽略所有的空白行
+  + *-c(context)*:以上下文的形式显示差异内容，对比默认输出更加容易理解(但是也更加繁杂)
+  + *-q(quiet)*: diff 静默设置，即如果文件file1和file2有差异，diff 也只会显示 /File file1 and file2 differ/
+  + *-w(whitespace)*:忽略所有的空白符
+  + *-u(unified output)*: 上下文形式显示的改进，不会输出重复行
+  + *-y*:将文件分成两列或多列并排进行输出(非常直观，但是输出很繁杂)
+    
+  还是老话，更多的用法就需要：
+  #+BEGIN_SRC shell
+    man diff
+  #+END_SRC
+  
+    

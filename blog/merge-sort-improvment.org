@@ -1,0 +1,131 @@
+#+TITLE:       归并排序算法改进
+#+AUTHOR:      Samray
+#+EMAIL:       samray@localhost.localdomain
+#+DATE:        2017-03-01 Wed
+#+URI:         /blog/%y/%m/%d/归并排序算法改进
+#+KEYWORDS:    sort,algorithms
+#+TAGS:        java,algorithms
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An introduction about how to improve merge-sort algorithms
+
+最近笔者在阅读 [[http://algs4.cs.princeton.edu/home/][算法]] ,重温经典数据结构和算法，毕竟一直以来的说法是程序就是数据结
+构＋算法归并算法所需的时间和NlgN成正比，所以可以用归并算法处理数百万甚至更大规模
+的数据，但是归并算法也是存在不足之处的，需要额外的空间来完成排序，而且空间和N的
+大小也是成正比的
+* 优化
+  *算法* 中有提到可以通过一些细致的修改实现大幅度缩短归并排序的运行时间
+** 对小规模子数组使用插入排序
+   因为递归会使小规模问题中的方法被频繁调用，所以改进对它们的处理方法就能改进
+   整个算法。对于小数组可以使用插入排序或者选择排序来避免递归调用。[[https://github.com/samrayleung/AlgorithmsCode][完整代码]]
+*** 未改进归并排序
+    #+BEGIN_SRC java
+      public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
+          if(hi<=lo){
+              return;
+          }
+          int mid=lo+(hi-lo)/2;
+          sort(a,aux,lo,mid);/*将左半边排序*/
+          sort(a,aux,mid+1,hi);/*将右半边排序*/
+          merge(a,aux,lo,mid,hi);
+      }
+    #+END_SRC
+*** 改进后归并排序
+    #+BEGIN_SRC java
+      public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
+          if(hi<=lo){
+              return;
+          }else if(hi-lo<15){
+              insertionSort(a,lo,hi);
+              return;
+          }
+          else {
+              int mid = lo + (hi - lo) / 2;
+              sort(a,aux, lo, mid);
+              sort(a,aux, mid + 1, hi);
+              merge(a,aux, lo, mid, hi);
+          }
+      }
+    #+END_SRC
+    轨迹图如下：(图来源于 *算法*)
+    [[http://algs4.cs.princeton.edu/22mergesort/images/mergesortTD-bars.png]]
+    *算法* 中提到插入排序处理小规模的子数组(比如长度小于15) 一般可以将归并排序的
+    运行时间缩短10%-15%.实践出真知，还是要自己来测试一下更佳。
+*** 测试1
+    对100*1000 个字符进行排序，结果如下：
+    [[./images/100*1000-1.png]]
+*** 测试2
+    对1000*1000 个字符进行排序，结果如下：
+    [[./images/1000*1000-1.png]]
+*** 测试3
+    对10000*1000 个字符进行排序，结果如下
+    [[./images/10000*1000-1.png]]
+*** 测试4 
+    对100000*1000 个字符进行排序，结果如下
+    [[./images/100000*1000-1.png]]
+*** 测试5
+    对500000*1000 个字符进行排序，结果如下
+    [[./images/500000*1000-1.png]]
+*** 小结
+    由于篇幅问题，笔者无法将所有的测试结果都展示出来，但是从上面的结果，可以看出
+    对于小数组，使用插入排序的确对性能有一定幅度提高(最开始的测试可能因为数据量
+    太小所以结果误差较大，但是这并不妨碍得出一个比较接近的结果).但是随着数据量的
+    增大改进归并算法性能似乎开始下降 (未经过精确数据验证)
+** 测试数组是否已经有序
+   可以添加一个判断条件，如果 a[mid]小于等于 a[mid+1],便可认为数组已经有序并跳过
+   /merge/ 方法。这个改动不影响排序的递归调用，但是任意有序的子数组算法的运行时
+   间都变成线性的了
+*** 未改进归并排序
+    #+BEGIN_SRC java
+      public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
+          if(hi<=lo){
+              return;
+          }
+          int mid=lo+(hi-lo)/2;
+          sort(a,aux,lo,mid);/*将左半边排序*/
+          sort(a,aux,mid+1,hi);/*将右半边排序*/
+          merge(a,aux,lo,mid,hi);
+      }
+    #+END_SRC
+*** 改进后归并排序
+    #+BEGIN_SRC java
+      public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
+          if(hi<=lo){
+              return;
+          }else if(hi-lo<15){
+              insertionSort(a,lo,hi);
+              return;
+          }
+          else {
+              int mid = lo + (hi - lo) / 2;
+              sort(a,aux, lo, mid);
+              sort(a,aux, mid + 1, hi);
+              if(less(a[mid+1],a[mid])){
+                  merge(a,aux,lo,mid, hi);
+              }
+          }
+      }
+    #+END_SRC
+*** 测试1
+    对100*1000 个字符进行排序，结果如下：
+    [[./images/100*1000-2.png]]
+*** 测试2
+    对1000*1000 个字符进行排序，结果如下：
+    [[./images/1000*1000-2.png]]
+*** 测试3
+    对10000*1000 个字符进行排序，结果如下：
+    [[./images/10000*1000-2.png]]
+*** 测试4
+    对100000*1000 个字符进行排序，结果如下：
+    [[./images/100000*1000-2.png]]
+*** 测试5
+    对500000*1000 个字符进行排序，结果如下：
+    [[./images/500000*1000-2.png]]
+*** 小结
+    从上面的结果可以看出，只是添加了一个判断数组是否已经有序的条件，算法性能就优化了
+    大概20%左右(未经过精确数据验证),不得不说真的令人惊讶。
+
+    *注意*:运行结果跟操作系统，电脑配置，以及运行次数都相关，所以笔者使用的也只
+    是很粗略的数据
+** 参考
+   [[http://algs4.cs.princeton.edu/home/h]]
