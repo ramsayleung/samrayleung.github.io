@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>Linux/Unix Shell 二三事之过滤器cat - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="An introduction about cat" />
-  <meta name="keywords" content="cat,shell,linux" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>Linux/Unix Shell 二三事之过滤器cat - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="An introduction about cat" />
+        <meta name="keywords" content="cat,shell,linux" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>Linux/Unix Shell 二三事之过滤器cat</h1>
-            <blockquote>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>Linux/Unix Shell 二三事之过滤器cat</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <blockquote>
 <p>
 cat - concatenate files and print on the standard output
 </p>
 </blockquote>
-<div id="outline-container-org63c826b" class="outline-2">
-<h2 id="org63c826b">过滤器</h2>
-<div class="outline-text-2" id="text-org63c826b">
+<div id="outline-container-org55f8349" class="outline-2">
+<h2 id="org55f8349">过滤器</h2>
+<div class="outline-text-2" id="text-org55f8349">
 <p>
 何谓过滤器呢，例如cat,grep,wl 之类的命令就是过滤器了。这样的命令
 读取数据，对数据执行一些操作，然后写入结果。更准确地说，过滤器就是任何能够从标准
@@ -58,9 +44,9 @@ cat - concatenate files and print on the standard output
 </p>
 </div>
 </div>
-<div id="outline-container-orge7ff5b7" class="outline-2">
-<h2 id="orge7ff5b7">cat</h2>
-<div class="outline-text-2" id="text-orge7ff5b7">
+<div id="outline-container-org0d1abd3" class="outline-2">
+<h2 id="org0d1abd3">cat</h2>
+<div class="outline-text-2" id="text-org0d1abd3">
 <p>
 在shell 里面运行cat,你会被要求输入文本数据，当你输入一行数据以后，然后按下回
 车你输入的数据就会显示在屏幕，当你按下 ^D(&lt;ctrl&gt;+d),发送eof 信号给shell,退出
@@ -69,9 +55,9 @@ cat。cat 做的事就是把你输入的字符，复制到标准输出 (一般�
 且容笔者细细禀来
 </p>
 </div>
-<div id="outline-container-org6d97962" class="outline-3">
-<h3 id="org6d97962">场景1</h3>
-<div class="outline-text-3" id="text-org6d97962">
+<div id="outline-container-org334d13f" class="outline-3">
+<h3 id="org334d13f">场景1</h3>
+<div class="outline-text-3" id="text-org334d13f">
 <p>
 假如你要新建一个文本文件，里面只是很少的文本，你会怎么做呢？一般情况下，都是用 
 vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退出。这是一般的做法，
@@ -94,9 +80,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </div>
 
 
-<div id="outline-container-org1c4a843" class="outline-3">
-<h3 id="org1c4a843">场景2</h3>
-<div class="outline-text-3" id="text-org1c4a843">
+<div id="outline-container-org31a56df" class="outline-3">
+<h3 id="org31a56df">场景2</h3>
+<div class="outline-text-3" id="text-org31a56df">
 <p>
 如果你有一个短文件，你想查看一下，同样，你可以使用cat
 </p>
@@ -118,9 +104,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-org4b9a61c" class="outline-3">
-<h3 id="org4b9a61c">场景3</h3>
-<div class="outline-text-3" id="text-org4b9a61c">
+<div id="outline-container-orgb9ec2c4" class="outline-3">
+<h3 id="orgb9ec2c4">场景3</h3>
+<div class="outline-text-3" id="text-orgb9ec2c4">
 <p>
 如果你想复制文本文件，你首先会想起什么命令？ <b>cp</b>,很自然嘛，我也不例外，但是cat 
 也可以实现同样的功能，很意外吧：
@@ -134,9 +120,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-org4974246" class="outline-3">
-<h3 id="org4974246">场景4</h3>
-<div class="outline-text-3" id="text-org4974246">
+<div id="outline-container-org882810e" class="outline-3">
+<h3 id="org882810e">场景4</h3>
+<div class="outline-text-3" id="text-org882810e">
 <p>
 如果你想把多个文本文件的组合到一个文件，你会怎么做？用编辑器打开所有的文件
 然后 select,cut,paste,save.我也会很自然地想到这个方法，但是是否存在着更
@@ -149,9 +135,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </div>
 </div>
 </div>
-<div id="outline-container-org8f4d473" class="outline-2">
-<h2 id="org8f4d473">总结</h2>
-<div class="outline-text-2" id="text-org8f4d473">
+<div id="outline-container-org48005b2" class="outline-2">
+<h2 id="org48005b2">总结</h2>
+<div class="outline-text-2" id="text-org48005b2">
 <p>
 上面已经介绍了挺多cat 的使用场景了，你觉得cat 表现滴怎么样呢？相信你的感觉是
 还行，但是并没有，我吹嘘的那么令人惊艳。因为这只是cat 最基本的功能，它最大的
@@ -205,13 +191,53 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-22</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/02/22/linux-unix-shell-二三事之cat";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>Java读写文件小结 - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="An post about write and read file with java" />
-  <meta name="keywords" content="javaio" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>Java读写文件小结 - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="An post about write and read file with java" />
+        <meta name="keywords" content="javaio" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>Java读写文件小结</h1>
-            <p>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>Java读写文件小结</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <p>
 今天在完成 <b>算法</b> 上的练习的时候，要对文件进行读写，而书上的例子是直接通过 Linux/Unix 
 的重定向来实现的，我要把它修改成直接读取文件。此外，个人一直觉得Java IO 很容易混淆
 因为有太多的选择(但是这也是Java 的强大之处)，现在Java8 又新增了文件的API,所以我
 就对文件IO作了个小结
 </p>
-<div id="outline-container-org7b7893e" class="outline-2">
-<h2 id="org7b7893e">Read</h2>
-<div class="outline-text-2" id="text-org7b7893e">
+<div id="outline-container-orgae24fe5" class="outline-2">
+<h2 id="orgae24fe5">Read</h2>
+<div class="outline-text-2" id="text-orgae24fe5">
 <p>
 我今天的需求是要逐行读写文本文件，我就以此为例子了；测试文件是 <b>/tmp/test.txt</b>
 </p>
@@ -59,9 +45,9 @@ this is a test
 this is another test
 </pre>
 </div>
-<div id="outline-container-org8768353" class="outline-3">
-<h3 id="org8768353">BufferedReader</h3>
-<div class="outline-text-3" id="text-org8768353">
+<div id="outline-container-org4cfba43" class="outline-3">
+<h3 id="org4cfba43">BufferedReader</h3>
+<div class="outline-text-3" id="text-org4cfba43">
 <p>
 虽然已经有了Java8的 <b>Stream</b>,但是经典的东西总是历久弥新的；例如 <b>BufferedReader</b>
 就是JDK1.1就发布了的文件读API (对可能出现的IOException,使用更优雅try-with-resource
@@ -83,9 +69,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org7d12e3c" class="outline-3">
-<h3 id="org7d12e3c">Scanner</h3>
-<div class="outline-text-3" id="text-org7d12e3c">
+<div id="outline-container-orgaab80c7" class="outline-3">
+<h3 id="orgaab80c7">Scanner</h3>
+<div class="outline-text-3" id="text-orgaab80c7">
 <p>
 对发布于JDK1.5的Scanner,大部份Java 程序员都是相当熟悉的，因为总是用它来读取标准输入的数据
 现在只要把从标准输入变为从文件读取数据就可以了
@@ -106,9 +92,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org7b4611e" class="outline-3">
-<h3 id="org7b4611e">BufferedReader+Stream</h3>
-<div class="outline-text-3" id="text-org7b4611e">
+<div id="outline-container-org94cbdd8" class="outline-3">
+<h3 id="org94cbdd8">BufferedReader+Stream</h3>
+<div class="outline-text-3" id="text-org94cbdd8">
 <p>
 <b>Files</b> 类作为Java NIO 的一部分在Java 7被引入，该类提供了一系列操作文件的方法
 而在Java8 又引入了另外有用的特性让Java 开发者可以更方便地操作文件。例如 <b>lines()</b>
@@ -148,9 +134,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb1f9ae" class="outline-3">
-<h3 id="orgdb1f9ae">lines+Stream</h3>
-<div class="outline-text-3" id="text-orgdb1f9ae">
+<div id="outline-container-org32fc882" class="outline-3">
+<h3 id="org32fc882">lines+Stream</h3>
+<div class="outline-text-3" id="text-org32fc882">
 <p>
 也可以直接使用 <b>lines</b> 方法来逐行读取文本文件，只是对比 <b>newBufferedReader</b> +
 <b>Stream</b>,前者颗粒度更细；
@@ -199,17 +185,17 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org01f6930" class="outline-2">
-<h2 id="org01f6930">Write</h2>
-<div class="outline-text-2" id="text-org01f6930">
+<div id="outline-container-orgc20804b" class="outline-2">
+<h2 id="orgc20804b">Write</h2>
+<div class="outline-text-2" id="text-orgc20804b">
 <p>
 我就把测试文件重新写到一个新的文件，实现复制的功能，因为我的文件很小，所以我直接
 把测试独的文件加载到内存
 </p>
 </div>
-<div id="outline-container-org99d0056" class="outline-3">
-<h3 id="org99d0056">BufferedWriter</h3>
-<div class="outline-text-3" id="text-org99d0056">
+<div id="outline-container-orga99ebf3" class="outline-3">
+<h3 id="orga99ebf3">BufferedWriter</h3>
+<div class="outline-text-3" id="text-orga99ebf3">
 <p>
 与 <b>BufferedReader</b> 对应，对文件进行写
 </p>
@@ -260,9 +246,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orga36bf58" class="outline-3">
-<h3 id="orga36bf58">Files.write</h3>
-<div class="outline-text-3" id="text-orga36bf58">
+<div id="outline-container-org441fc4d" class="outline-3">
+<h3 id="org441fc4d">Files.write</h3>
+<div class="outline-text-3" id="text-org441fc4d">
 <p>
 使用 <b>Files.write()</b> 也可以写出相当优雅的代码
 </p>
@@ -290,9 +276,9 @@ Enjoy Java :)
 </div>
 </div>
 </div>
-<div id="outline-container-orgd9d1ca8" class="outline-2">
-<h2 id="orgd9d1ca8">参考</h2>
-<div class="outline-text-2" id="text-orgd9d1ca8">
+<div id="outline-container-orgcc2d9f1" class="outline-2">
+<h2 id="orgcc2d9f1">参考</h2>
+<div class="outline-text-2" id="text-orgcc2d9f1">
 <ul class="org-ul">
 <li><a href="http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/">http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/</a></li>
 <li><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-">http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-</a></li>
@@ -301,13 +287,53 @@ Enjoy Java :)
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-03-06</span>
+        <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/03/06/java读写文件小结";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/03/06/java读写文件小结";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

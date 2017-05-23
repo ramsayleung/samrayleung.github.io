@@ -1,47 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>提高Emacs启动速度 - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="Tips to reduce emacs startup time" />
-  <meta name="keywords" content="emacs" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>提高Emacs启动速度 - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="Tips to reduce emacs startup time" />
+        <meta name="keywords" content="emacs" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>提高Emacs启动速度</h1>
-            <p>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>提高Emacs启动速度</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <p>
 之前看到个笑话：
 </p>
 <blockquote>
@@ -54,9 +40,9 @@ B:打开Vim,修改代码，保存，退出
 有时候，经常看到社区里面有人吐嘈Emacs 什么都好，就是启动时间太长了，其实
 是存在一些技巧来缩短加载时间的
 </p>
-<div id="outline-container-orgca84cd9" class="outline-2">
-<h2 id="orgca84cd9">技巧1</h2>
-<div class="outline-text-2" id="text-orgca84cd9">
+<div id="outline-container-orgfaaa3c0" class="outline-2">
+<h2 id="orgfaaa3c0">技巧1</h2>
+<div class="outline-text-2" id="text-orgfaaa3c0">
 <p>
 在你的 <b>.emacs</b> 或者相应的初始化文件里面添加如下代码
 </p>
@@ -77,9 +63,9 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-orgf12c8a8" class="outline-2">
-<h2 id="orgf12c8a8">技巧2</h2>
-<div class="outline-text-2" id="text-orgf12c8a8">
+<div id="outline-container-orge8b9657" class="outline-2">
+<h2 id="orge8b9657">技巧2</h2>
+<div class="outline-text-2" id="text-orge8b9657">
 <p>
 <b>(let((file-name-hander-alist nil))init.file)</b> 包裹(wrap)你的初始化文件，即：
 </p>
@@ -103,18 +89,18 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-org616c471" class="outline-2">
-<h2 id="org616c471">技巧3</h2>
-<div class="outline-text-2" id="text-org616c471">
+<div id="outline-container-org68f6cc6" class="outline-2">
+<h2 id="org68f6cc6">技巧3</h2>
+<div class="outline-text-2" id="text-org68f6cc6">
 <p>
 Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延迟，让笔者的Emacs
 启动加载时间减少一半，因为笔者用 <b>use-package</b> 这个macro,而 <b>use-package</b> 又集
 成了延迟加载的功能，所以笔者就直接拿自己的代码举例了
 </p>
 </div>
-<div id="outline-container-orge67458c" class="outline-3">
-<h3 id="orge67458c">:after</h3>
-<div class="outline-text-3" id="text-orge67458c">
+<div id="outline-container-orgc1cb7e9" class="outline-3">
+<h3 id="orgc1cb7e9">:after</h3>
+<div class="outline-text-3" id="text-orgc1cb7e9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;;; Export to twitter bootstrap
 (use-package ox-twbs
@@ -129,9 +115,9 @@ Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延�
 </p>
 </div>
 </div>
-<div id="outline-container-org51b8e6e" class="outline-3">
-<h3 id="org51b8e6e">:commands</h3>
-<div class="outline-text-3" id="text-org51b8e6e">
+<div id="outline-container-org7f04c96" class="outline-3">
+<h3 id="org7f04c96">:commands</h3>
+<div class="outline-text-3" id="text-org7f04c96">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package avy
   :commands (avy-goto-char avy-goto-line)
@@ -152,9 +138,9 @@ and defers loading of the module until they are used
 </p>
 </div>
 </div>
-<div id="outline-container-orgd813c40" class="outline-3">
-<h3 id="orgd813c40">:bind :mode</h3>
-<div class="outline-text-3" id="text-orgd813c40">
+<div id="outline-container-org250974f" class="outline-3">
+<h3 id="org250974f">:bind :mode</h3>
+<div class="outline-text-3" id="text-org250974f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package hi-lock
   :bind (("M-o l" . highlight-lines-matching-regexp)
@@ -215,13 +201,53 @@ Enjoy Emacs :)
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-22</span>
+        <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/02/22/提高emacs启动速度";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/02/22/提高emacs启动速度";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

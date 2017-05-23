@@ -1,47 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>Linux/Unix Shell 二三事之过滤器head+tail - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="An introduction about head and tail" />
-  <meta name="keywords" content="head,tail,shell,linux" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>Linux/Unix Shell 二三事之过滤器head+tail - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="An introduction about head and tail" />
+        <meta name="keywords" content="head,tail,shell,linux" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>Linux/Unix Shell 二三事之过滤器head+tail</h1>
-            <blockquote>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>Linux/Unix Shell 二三事之过滤器head+tail</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <blockquote>
 <p>
 head - output the first part of files
 tail - output the last part of files
@@ -54,9 +40,9 @@ tail - output the last part of files
 可以满足你的要求，分别是 <b>head</b> 和 <b>tail</b>.顾名思义，head 选取数据的开头部分
 tail 是选取数据的结尾部分
 </p>
-<div id="outline-container-orgcbf75f9" class="outline-2">
-<h2 id="orgcbf75f9">用法</h2>
-<div class="outline-text-2" id="text-orgcbf75f9">
+<div id="outline-container-orgfb4f0fd" class="outline-2">
+<h2 id="orgfb4f0fd">用法</h2>
+<div class="outline-text-2" id="text-orgfb4f0fd">
 <p>
 当把 <b>head</b> <b>tail</b> 当作过滤器来使用的时候，用法很简单
 </p>
@@ -79,17 +65,17 @@ $ tail [-n line] data
 </p>
 </div>
 </div>
-<div id="outline-container-org984c35f" class="outline-2">
-<h2 id="org984c35f">惊艳点</h2>
-<div class="outline-text-2" id="text-org984c35f">
+<div id="outline-container-orgfa129a8" class="outline-2">
+<h2 id="orgfa129a8">惊艳点</h2>
+<div class="outline-text-2" id="text-orgfa129a8">
 <p>
 你可能觉得 <b>head</b> <b>tail</b> 两个命令很简单，似乎用处不大。是的，就笔者一直所介绍的
 那样，单个unix命令只是完成一个特定的工作，但是当它们组合起来的时候，就很威力无穷了
 </p>
 </div>
-<div id="outline-container-org07bcf08" class="outline-3">
-<h3 id="org07bcf08">场景1</h3>
-<div class="outline-text-3" id="text-org07bcf08">
+<div id="outline-container-orgc251575" class="outline-3">
+<h3 id="orgc251575">场景1</h3>
+<div class="outline-text-3" id="text-orgc251575">
 <p>
 假如你要生成一串密钥来加密你的某个文件，这是很常见的需求，你会怎么办，用
 python 或者 java 写一个随机数函数来实现么？无需，你用简单的过滤器加Linux/Unix
@@ -106,9 +92,9 @@ python 或者 java 写一个随机数函数来实现么？无需，你用简单�
 </p>
 </div>
 </div>
-<div id="outline-container-org2fda058" class="outline-3">
-<h3 id="org2fda058">场景2</h3>
-<div class="outline-text-3" id="text-org2fda058">
+<div id="outline-container-org603be0d" class="outline-3">
+<h3 id="org603be0d">场景2</h3>
+<div class="outline-text-3" id="text-org603be0d">
 <p>
 在日常的开发或者运行环境中，日志是必不可少滴，但是日志是不断产生新的数据的,
 所以有时候就会出现用编辑器打开日志的时候，就会出现，编辑器不断提醒你文件已经
@@ -142,9 +128,9 @@ python 或者 java 写一个随机数函数来实现么？无需，你用简单�
 </div>
 </div>
 </div>
-<div id="outline-container-orgc411276" class="outline-2">
-<h2 id="orgc411276">总结</h2>
-<div class="outline-text-2" id="text-orgc411276">
+<div id="outline-container-org981b66e" class="outline-2">
+<h2 id="org981b66e">总结</h2>
+<div class="outline-text-2" id="text-org981b66e">
 <p>
 要掌握更多的用法还是要查看文档滴：
 </p>
@@ -158,13 +144,53 @@ Enjoy Shell :)
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-22</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

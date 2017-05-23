@@ -1,52 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>脚本分享 - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="share of my shell script snippet" />
-  <meta name="keywords" content="shell script, linux" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>脚本分享 - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="share of my shell script snippet" />
+        <meta name="keywords" content="shell script, linux" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>脚本分享</h1>
-            <p>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>脚本分享</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <p>
 分享一下平时工作生活中编写的一些脚本片段(一直更新). 适用于 OS X 和 Linux
 </p>
-<div id="outline-container-orgbf6f96e" class="outline-2">
-<h2 id="orgbf6f96e">准备工作</h2>
-<div class="outline-text-2" id="text-orgbf6f96e">
+<div id="outline-container-org3d0d1a3" class="outline-2">
+<h2 id="org3d0d1a3">准备工作</h2>
+<div class="outline-text-2" id="text-org3d0d1a3">
 <p>
 因为笔者比较多的脚本都是基于 <b>percol</b> 这个神器，所以需要先安装 <b>percol</b>, 如果
 不了解 <b>percol</b> 的话，可以翻看一下笔者之前的文章 <a href="http://samrayleung.github.io/blog/2017/02/22/linux-unix-shell-%E4%BA%8C%E4%B8%89%E4%BA%8B%E4%B9%8B%E7%A5%9E%E5%99%A8percol/">Linux/Unix Shell 二三事之神器
@@ -62,12 +48,12 @@ percol</a> . 笔者一般将写好的函数 source 命令添加到 Shell. 例如
 </p>
 </div>
 </div>
-<div id="outline-container-orgba2a312" class="outline-2">
-<h2 id="orgba2a312">有趣的脚本</h2>
-<div class="outline-text-2" id="text-orgba2a312">
-</div><div id="outline-container-orge9b23d3" class="outline-3">
-<h3 id="orge9b23d3">SSH 免密码登录</h3>
-<div class="outline-text-3" id="text-orge9b23d3">
+<div id="outline-container-orgace03ca" class="outline-2">
+<h2 id="orgace03ca">有趣的脚本</h2>
+<div class="outline-text-2" id="text-orgace03ca">
+</div><div id="outline-container-org2b291b0" class="outline-3">
+<h3 id="org2b291b0">SSH 免密码登录</h3>
+<div class="outline-text-3" id="text-org2b291b0">
 <p>
 SSH 基本就是登录远程服务器的标配了，只是每次登录服务器都要输入密码，未免太麻
 烦了(好吧，笔者拥有懒惰这个美德)，所以我决定配置 SSH 的免密码登录。代码如下：
@@ -134,9 +120,9 @@ SSH 基本就是登录远程服务器的标配了，只是每次登录服务器�
 </p>
 </div>
 </div>
-<div id="outline-container-orga2d051a" class="outline-3">
-<h3 id="orga2d051a">生成若干位密钥</h3>
-<div class="outline-text-3" id="text-orga2d051a">
+<div id="outline-container-orgfcae6c5" class="outline-3">
+<h3 id="orgfcae6c5">生成若干位密钥</h3>
+<div class="outline-text-3" id="text-orgfcae6c5">
 <p>
 生成若干位的密钥是常见的需求，得益于 Linux/Unix 命令行强大的过滤器，所以只需
 把命令整理成脚本即可：
@@ -171,9 +157,9 @@ function gkey(){
 </p>
 </div>
 </div>
-<div id="outline-container-orgb4ea08a" class="outline-3">
-<h3 id="orgb4ea08a">复制命令行输出</h3>
-<div class="outline-text-3" id="text-orgb4ea08a">
+<div id="outline-container-org09082b5" class="outline-3">
+<h3 id="org09082b5">复制命令行输出</h3>
+<div class="outline-text-3" id="text-org09082b5">
 <p>
 有时可能需要复制某个命令的输出，一般的做法都是运行某个命令，用鼠标选中，然后
 复制。例如在生成密钥之后，需要复制到项目的配置文件。但是每次都要用鼠标，效率
@@ -216,9 +202,9 @@ function pclip() {
 </p>
 </div>
 </div>
-<div id="outline-container-org5bd169c" class="outline-3">
-<h3 id="org5bd169c">复制当前目录</h3>
-<div class="outline-text-3" id="text-org5bd169c">
+<div id="outline-container-org878245e" class="outline-3">
+<h3 id="org878245e">复制当前目录</h3>
+<div class="outline-text-3" id="text-org878245e">
 <p>
 有时候，笔者需要复制当前目录下某个文件的路径，但是无论是文件管理器，还是在
 Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高且很不方便。所以笔者通
@@ -244,9 +230,9 @@ Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高�
 </p>
 </div>
 </div>
-<div id="outline-container-org0bbc9d6" class="outline-3">
-<h3 id="org0bbc9d6">判断 Unix 系统的版本</h3>
-<div class="outline-text-3" id="text-org0bbc9d6">
+<div id="outline-container-org522e9de" class="outline-3">
+<h3 id="org522e9de">判断 Unix 系统的版本</h3>
+<div class="outline-text-3" id="text-org522e9de">
 <p>
 因为笔者经常需要在不同的 Unix 机器之间切换，例如工作用的 Mac OS X, 另外一台笔
 记本上的 Fedora, 还有一台工作站上的 Arch Linux, 以及各种发行版本的 VPS 等，在
@@ -312,9 +298,9 @@ function GetOSVersion {
 </div>
 </div>
 </div>
-<div id="outline-container-org6a7bf28" class="outline-3">
-<h3 id="org6a7bf28">根据不同的发行版本安装软件</h3>
-<div class="outline-text-3" id="text-org6a7bf28">
+<div id="outline-container-org24de4e4" class="outline-3">
+<h3 id="org24de4e4">根据不同的发行版本安装软件</h3>
+<div class="outline-text-3" id="text-org24de4e4">
 <p>
 刚刚上面的脚本是为了准确判断出所有的 *nix 系统的，但是方便起见，也可以直接使用
 <i>uname</i> 命令
@@ -480,13 +466,53 @@ fi
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-04-22</span>
+        <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/04/22/脚本分享";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/04/22/脚本分享";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

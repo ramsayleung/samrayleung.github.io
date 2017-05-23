@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>flask牛刀小试之微信公众号开发 - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="An flask project" />
-  <meta name="keywords" content="python,flask" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>flask牛刀小试之微信公众号开发 - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="An flask project" />
+        <meta name="keywords" content="python,flask" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>flask牛刀小试之微信公众号开发</h1>
-            <p>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>flask牛刀小试之微信公众号开发</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <p>
 <a href="http://flask.pocoo.org/">flask</a> 是一个轻量级的python 框架(官网称为微型框架),很容易上手，之前因为笔者跟朋友
 开发小程序的时候使用过 flask,过后就遗忘了。为了重拾flask, 笔者决定写点小东西，之
 前开发小程序，不如现在再玩玩公众号开发
 </p>
-<div id="outline-container-orga866360" class="outline-2">
-<h2 id="orga866360">验证服务器</h2>
-<div class="outline-text-2" id="text-orga866360">
+<div id="outline-container-orgfc6d6b4" class="outline-2">
+<h2 id="orgfc6d6b4">验证服务器</h2>
+<div class="outline-text-2" id="text-orgfc6d6b4">
 <p>
 开发公众号之前，要先验证服务器的有效性，官网有详细的说明：<a href="https://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">公众开发平台文档</a>
 </p>
@@ -137,9 +123,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3fdec1" class="outline-2">
-<h2 id="orgf3fdec1">歌词查询</h2>
-<div class="outline-text-2" id="text-orgf3fdec1">
+<div id="outline-container-orge24f6b2" class="outline-2">
+<h2 id="orge24f6b2">歌词查询</h2>
+<div class="outline-text-2" id="text-orge24f6b2">
 <p>
 笔者自己平时是打开音乐播放器，戴上耳机，就开始播放音乐；所以经常出现笔者听到某
 首歌曲觉得旋律非常熟悉，但是就无法想起歌名的情况，这种感觉实在不好，所以笔者觉
@@ -150,9 +136,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org700515f" class="outline-2">
-<h2 id="org700515f">单词查询</h2>
-<div class="outline-text-2" id="text-org700515f">
+<div id="outline-container-orgf4182bb" class="outline-2">
+<h2 id="orgf4182bb">单词查询</h2>
+<div class="outline-text-2" id="text-orgf4182bb">
 <p>
 有时候，笔者在微信需要查询单词，但是又不想退出微信，所以就打算用公众号来查单词
 其实很简单，就是服务获取用户发给微信公众号的数据，再去请求有道之类词典的api,再
@@ -160,9 +146,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7c4afc3" class="outline-2">
-<h2 id="org7c4afc3">电影查询</h2>
-<div class="outline-text-2" id="text-org7c4afc3">
+<div id="outline-container-orga7f96a0" class="outline-2">
+<h2 id="orga7f96a0">电影查询</h2>
+<div class="outline-text-2" id="text-orga7f96a0">
 <p>
 有时无聊想去看电影，但是不知道看什么电影，因为选择太多，质量参差不齐的片太多了
 所以笔者会先去豆瓣看一下新上影的电影，看一下评分，然后再决定看什么电影。所以，
@@ -170,9 +156,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orged2f58a" class="outline-2">
-<h2 id="orged2f58a">总结</h2>
-<div class="outline-text-2" id="text-orged2f58a">
+<div id="outline-container-org5bdef51" class="outline-2">
+<h2 id="org5bdef51">总结</h2>
+<div class="outline-text-2" id="text-org5bdef51">
 <p>
 感觉这次开发公众号，笔者就是用 flask 编写 restful api, 然后做的其他事情就是编写
 爬虫。
@@ -181,13 +167,53 @@
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-23</span>
+        <span title="tags" class="post-info"><a href="/tags/python/">python</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/02/23/flask牛刀小试之微信工作号开发";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/02/23/flask牛刀小试之微信工作号开发";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>

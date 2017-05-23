@@ -1,47 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>Linux/Unix Shell 二三事之过滤器diff - 陌上人如玉,公子世无双</title>
-  <meta charset="utf-8" />
-  <meta name="author" content="Samray" />
-  <meta name="description" content="An introduction about diff" />
-  <meta name="keywords" content="shell,diff" />
-
-  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+    <title>Linux/Unix Shell 二三事之过滤器diff - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+        <meta name="description" content="An introduction about diff" />
+        <meta name="keywords" content="shell,diff" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <style type="text/css"></style>
 </head>
 
   <body class="container">
-<header id="header">
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-        <div class="container-fluid">
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
-        </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Blog</a></li>
-          <li><a href="https://github.com/samrayleung">GitHub</a></li>
-        </ul>
-</div>
-</div>
+    <nav class="main-nav">
+        <a href="/blog">Archive</a>
+        <a href="/tags">Tag</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
     </nav>
-</body>
-</header>
 
-<section id="content" role="main">
-    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
-        <div class="col-md-2"></div>
-            <h1>Linux/Unix Shell 二三事之过滤器diff</h1>
-            <blockquote>
+<div>
+    <section id="wrapper">
+        <article class="post">
+            <header>
+                    <h1>Linux/Unix Shell 二三事之过滤器diff</h1>
+            </header>
+            <br />
+            <section id="post-body">
+                <blockquote>
 <p>
 diff - compare files line by line
 </p>
@@ -52,9 +38,9 @@ diff - compare files line by line
 都是使用 <b>diff</b> 和 <b>patch</b> 对程序进行差分和打补丁滴(现在有git了，但是diff 同样
 发挥着重要作用)
 </p>
-<div id="outline-container-org5dad58d" class="outline-2">
-<h2 id="org5dad58d">语法</h2>
-<div class="outline-text-2" id="text-org5dad58d">
+<div id="outline-container-org825a636" class="outline-2">
+<h2 id="org825a636">语法</h2>
+<div class="outline-text-2" id="text-org825a636">
 <p>
 diff 的语法如下
 </p>
@@ -69,12 +55,12 @@ diff 将不输出任何东西。如果两个文件有差异，diff 会显示一�
 </p>
 </div>
 </div>
-<div id="outline-container-org733d3ce" class="outline-2">
-<h2 id="org733d3ce">例子</h2>
-<div class="outline-text-2" id="text-org733d3ce">
-</div><div id="outline-container-orgd96cc42" class="outline-3">
-<h3 id="orgd96cc42">用法一</h3>
-<div class="outline-text-3" id="text-orgd96cc42">
+<div id="outline-container-orgeb4f553" class="outline-2">
+<h2 id="orgeb4f553">例子</h2>
+<div class="outline-text-2" id="text-orgeb4f553">
+</div><div id="outline-container-orgf1fd75f" class="outline-3">
+<h3 id="orgf1fd75f">用法一</h3>
+<div class="outline-text-3" id="text-orgf1fd75f">
 <p>
 现在有两个文件，分别保存着不同的地址。
 address1 包含：
@@ -119,9 +105,9 @@ diff 的输出使用3个不同的单字符指导：a(append,追加),c(change,修
 </p>
 </div>
 </div>
-<div id="outline-container-org2618933" class="outline-3">
-<h3 id="org2618933">用法2</h3>
-<div class="outline-text-3" id="text-org2618933">
+<div id="outline-container-org24ad76b" class="outline-3">
+<h3 id="org24ad76b">用法2</h3>
+<div class="outline-text-3" id="text-org24ad76b">
 <p>
 现在把 <i>address2</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -156,9 +142,9 @@ beijing
 </p>
 </div>
 </div>
-<div id="outline-container-org5b45e35" class="outline-3">
-<h3 id="org5b45e35">用法3</h3>
-<div class="outline-text-3" id="text-org5b45e35">
+<div id="outline-container-orgfb1df2f" class="outline-3">
+<h3 id="orgfb1df2f">用法3</h3>
+<div class="outline-text-3" id="text-orgfb1df2f">
 <p>
 现在把 <i>address1</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -195,9 +181,9 @@ chengdu
 </div>
 </div>
 </div>
-<div id="outline-container-org573cc20" class="outline-2">
-<h2 id="org573cc20">diff 选项</h2>
-<div class="outline-text-2" id="text-org573cc20">
+<div id="outline-container-orgdab175d" class="outline-2">
+<h2 id="orgdab175d">diff 选项</h2>
+<div class="outline-text-2" id="text-orgdab175d">
 <p>
 因为diff 是一个相当强大也是一个相当复杂的命令，所以我没办法将所有的用法一一道
 尽所以笔者将比较常用的选项列举出来
@@ -228,13 +214,53 @@ a a
 </div>
 </div>
 
+            </section>
+    </section>
+</div>
+
+    <div>
+    <section id="wrapper">
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-28</span>
+        <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
+      </div>
+      <br />
+      <br />
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div align="center">
+      <footer id="footer">
+        <p class="small">
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+        <br />
+      </footer>
+      </div>
+      </section>
     </div>
-</section>
-
-
-<footer id="footer">
-    <br />
-</footer>
 
   </body>
 </html>
