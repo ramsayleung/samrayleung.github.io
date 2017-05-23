@@ -45,9 +45,9 @@
 因为需要编写 RESTful api 测试的缘故，重拾了 Spock 这个适用于 Groovy/Java 的测试
 框架，顺便把以前写的一篇旧文整理了一下，权当重温。
 </p>
-<div id="outline-container-org13d0589" class="outline-2">
-<h2 id="org13d0589">关于 Spock</h2>
-<div class="outline-text-2" id="text-org13d0589">
+<div id="outline-container-org6264ced" class="outline-2">
+<h2 id="org6264ced">关于 Spock</h2>
+<div class="outline-text-2" id="text-org6264ced">
 <p>
 Spock 是一个适用于 Java(Groovy) 的一个优雅并且全面的测试框架, 说 Spock 全面，是
 因为 Spock 集成了现有的 Java 测试库；至于为什么赞美 Spock 优雅，阅读完全文你就会
@@ -68,9 +68,9 @@ Spock 是一个适用于 Java(Groovy) 的一个优雅并且全面的测试框架
 </div>
 </div>
 
-<div id="outline-container-org4691af7" class="outline-2">
-<h2 id="org4691af7">Spock 特性</h2>
-<div class="outline-text-2" id="text-org4691af7">
+<div id="outline-container-orge49398d" class="outline-2">
+<h2 id="orge49398d">Spock 特性</h2>
+<div class="outline-text-2" id="text-orge49398d">
 <ol class="org-ol">
 <li>内置支持 mocking stubbing，可以很容易地模拟复杂的类的行为</li>
 <li>Spock 实现了 BDD 范式(behavior-driven development)</li>
@@ -83,9 +83,9 @@ Spock 是一个适用于 Java(Groovy) 的一个优雅并且全面的测试框架
 </div>
 </div>
 
-<div id="outline-container-orgc306310" class="outline-2">
-<h2 id="orgc306310">为什么是 Spock</h2>
-<div class="outline-text-2" id="text-orgc306310">
+<div id="outline-container-org6a5e450" class="outline-2">
+<h2 id="org6a5e450">为什么是 Spock</h2>
+<div class="outline-text-2" id="text-org6a5e450">
 <p>
 Spock 似乎有很多不错的特性，但是为什么有 Junit 这个那么强大的测试框架, 还要去
 使用 Spock 呢? 甚至可以用 Spock 来代替 Junit 呢? 下面就用一些简单的例子来诠释
@@ -158,12 +158,12 @@ Junit 的测试用例, 你会发现 Spock 的测试用例, 只需函数名, 就�
 </p>
 </div>
 </div>
-<div id="outline-container-org4997ebb" class="outline-2">
-<h2 id="org4997ebb">Spock 语法</h2>
-<div class="outline-text-2" id="text-org4997ebb">
-</div><div id="outline-container-orge248b0f" class="outline-3">
-<h3 id="orge248b0f">Specification</h3>
-<div class="outline-text-3" id="text-orge248b0f">
+<div id="outline-container-orgd9dfe41" class="outline-2">
+<h2 id="orgd9dfe41">Spock 语法</h2>
+<div class="outline-text-2" id="text-orgd9dfe41">
+</div><div id="outline-container-orgf820e56" class="outline-3">
+<h3 id="orgf820e56">Specification</h3>
+<div class="outline-text-3" id="text-orgf820e56">
 <div class="org-src-container">
 <pre class="src src-java">class MyFirstSpecification extend Specification{
     //fields
@@ -180,9 +180,9 @@ Specification 的名字一般是跟系统或者业务逻辑有关的组合词，
 </div>
 </div>
 
-<div id="outline-container-org2326c99" class="outline-3">
-<h3 id="org2326c99">Fields</h3>
-<div class="outline-text-3" id="text-org2326c99">
+<div id="outline-container-orgf44978d" class="outline-3">
+<h3 id="orgf44978d">Fields</h3>
+<div class="outline-text-3" id="text-orgf44978d">
 <p>
 实例化一个类
 </p>
@@ -194,9 +194,9 @@ def coll = new Collaborator()
 </div>
 </div>
 
-<div id="outline-container-org0c03947" class="outline-3">
-<h3 id="org0c03947">Feature Methods</h3>
-<div class="outline-text-3" id="text-org0c03947">
+<div id="outline-container-orgfec6b76" class="outline-3">
+<h3 id="orgfec6b76">Feature Methods</h3>
+<div class="outline-text-3" id="text-orgfec6b76">
 <p>
 Feature Methods 指具体的测试用例方法
 </p>
@@ -209,9 +209,9 @@ Feature Methods 指具体的测试用例方法
 </div>
 </div>
 
-<div id="outline-container-org0e94ba9" class="outline-3">
-<h3 id="org0e94ba9">Fixture Methods</h3>
-<div class="outline-text-3" id="text-org0e94ba9">
+<div id="outline-container-org0d24dcd" class="outline-3">
+<h3 id="org0d24dcd">Fixture Methods</h3>
+<div class="outline-text-3" id="text-org0d24dcd">
 <div class="org-src-container">
 <pre class="src src-groovy">def setup() {}          // run before every feature method
 def cleanup() {}        // run after every feature method
@@ -249,9 +249,9 @@ All fixture methods are optional.
 </p>
 </div>
 </div>
-<div id="outline-container-org7108073" class="outline-3">
-<h3 id="org7108073">Blocks</h3>
-<div class="outline-text-3" id="text-org7108073">
+<div id="outline-container-org72b2ec7" class="outline-3">
+<h3 id="org72b2ec7">Blocks</h3>
+<div class="outline-text-3" id="text-org72b2ec7">
 <p>
 关于 Blocks 的用法， 这里引用官网的一段话
 </p>
@@ -280,9 +280,9 @@ cleanup, and where blocks
 </p>
 </div>
 
-<div id="outline-container-org786e808" class="outline-4">
-<h4 id="org786e808">The <b>given</b>: block</h4>
-<div class="outline-text-4" id="text-org786e808">
+<div id="outline-container-orgc7ccf64" class="outline-4">
+<h4 id="orgc7ccf64">The <b>given</b>: block</h4>
+<div class="outline-text-4" id="text-orgc7ccf64">
 <p>
 <b>given</b>: 应该包含所有的初始化条件或者初始化类，例如你可以把要测试的类的实例化放在
 <b>given</b>. 总而言之， <b>given</b> 就是放置所有单元测试开始前的准备工作的地方
@@ -290,9 +290,9 @@ cleanup, and where blocks
 </div>
 </div>
 
-<div id="outline-container-org7ec945c" class="outline-4">
-<h4 id="org7ec945c">The <b>setup</b>: block</h4>
-<div class="outline-text-4" id="text-org7ec945c">
+<div id="outline-container-org55ace73" class="outline-4">
+<h4 id="org55ace73">The <b>setup</b>: block</h4>
+<div class="outline-text-4" id="text-org55ace73">
 <p>
 <b>setup</b>: 笔者个人理解功能跟 <b>given</b> 很相似，所以初始化的时候可以二选一(笔者
 个人推荐用 given，因为这样更符合 BDD 范式)
@@ -300,9 +300,9 @@ cleanup, and where blocks
 </div>
 </div>
 
-<div id="outline-container-org3dd5119" class="outline-4">
-<h4 id="org3dd5119">The <b>when</b>: blcok</h4>
-<div class="outline-text-4" id="text-org3dd5119">
+<div id="outline-container-org81113ed" class="outline-4">
+<h4 id="org81113ed">The <b>when</b>: blcok</h4>
+<div class="outline-text-4" id="text-org81113ed">
 <p>
 <b>when</b>: 是 Spock 测试中最重要的一部分，这里放置的就是你要测试的代码，和你如
 何测试的用例，这里的测试代码应该尽可能地短。有经验的 Spock 用户可以直接看
@@ -311,9 +311,9 @@ cleanup, and where blocks
 </div>
 </div>
 
-<div id="outline-container-org6e604a0" class="outline-4">
-<h4 id="org6e604a0">The <b>then</b>: block</h4>
-<div class="outline-text-4" id="text-org6e604a0">
+<div id="outline-container-org9b08c72" class="outline-4">
+<h4 id="org9b08c72">The <b>then</b>: block</h4>
+<div class="outline-text-4" id="text-org9b08c72">
 <p>
 <b>then</b>: block 包含隐式的断言, 补充一下，Spock 是没有 assert 这个断言函数的，
 Spock 使用的是 assertion, 笔者个人理解成这是一种隐式的断言。概括来说, <b>then</b>
@@ -382,9 +382,9 @@ basket.currentWeight==tv.weight
 </div>
 </div>
 
-<div id="outline-container-org2348387" class="outline-4">
-<h4 id="org2348387">The <b>and</b>: block</h4>
-<div class="outline-text-4" id="text-org2348387">
+<div id="outline-container-org2199c43" class="outline-4">
+<h4 id="org2199c43">The <b>and</b>: block</h4>
+<div class="outline-text-4" id="text-org2199c43">
 <p>
 <b>and</b>: 它的用法有点像语法糖，它自己本身是没有什么功能，它只是拿来扩展其他的
 功能的. 用上面的例子来解释一下用法:
@@ -428,9 +428,9 @@ Product 类型进行了细分。如下图
 </div>
 </div>
 
-<div id="outline-container-org246a24a" class="outline-4">
-<h4 id="org246a24a">The <b>expect</b>: block</h4>
-<div class="outline-text-4" id="text-org246a24a">
+<div id="outline-container-orga8c43ad" class="outline-4">
+<h4 id="orga8c43ad">The <b>expect</b>: block</h4>
+<div class="outline-text-4" id="text-orga8c43ad">
 <p>
 <b>expect</b> 是一个很强大的特性，它用很多种用法，最常用的用法就是把
 given-when-then 都结合起来
@@ -497,9 +497,9 @@ the final result*/
 </div>
 
 
-<div id="outline-container-org5fdbdcd" class="outline-4">
-<h4 id="org5fdbdcd">The <b>clean</b>: block</h4>
-<div class="outline-text-4" id="text-org5fdbdcd">
+<div id="outline-container-org08f5140" class="outline-4">
+<h4 id="org08f5140">The <b>clean</b>: block</h4>
+<div class="outline-text-4" id="text-org08f5140">
 <p>
 clean 就相当于在所有的测试结束以后执行的操作，例如，如果在测试中新建了 IO 流，
 就可以在 clean 里面关闭 IO 流，那样就可以保证代码的正确性了
@@ -508,9 +508,9 @@ clean 就相当于在所有的测试结束以后执行的操作，例如，如�
 </div>
 </div>
 
-<div id="outline-container-org21cef8e" class="outline-3">
-<h3 id="org21cef8e">Spock killer future</h3>
-<div class="outline-text-3" id="text-org21cef8e">
+<div id="outline-container-org81b31e0" class="outline-3">
+<h3 id="org81b31e0">Spock killer future</h3>
+<div class="outline-text-3" id="text-org81b31e0">
 <p>
 确定需求:（例子来自 Java_test_with_spock 一书），假设有一个核反应堆，这个反应
 堆的系统组成：
@@ -679,9 +679,9 @@ pressure | fireSensors | radiation             || alarm | shutDown | evacuation
 </div>
 </div>
 
-<div id="outline-container-org5b8c9ac" class="outline-2">
-<h2 id="org5b8c9ac">结语</h2>
-<div class="outline-text-2" id="text-org5b8c9ac">
+<div id="outline-container-org044c4c8" class="outline-2">
+<h2 id="org044c4c8">结语</h2>
+<div class="outline-text-2" id="text-org044c4c8">
 <p>
 笔者在项目中正是使用 Spock 编写测试， 或许对比 Junit, Spock 在流行度方面还难而
 望其项背, 但是综合多方考虑，Spock 真的值得一试，兼之 Groovy 语言的语法加成，就
@@ -693,9 +693,9 @@ boot, 和 Restful service 测试等。更多的用法，就要查阅官方文档
 </div>
 </div>
 
-<div id="outline-container-orga760c3f" class="outline-2">
-<h2 id="orga760c3f">参考</h2>
-<div class="outline-text-2" id="text-orga760c3f">
+<div id="outline-container-org3b854a7" class="outline-2">
+<h2 id="org3b854a7">参考</h2>
+<div class="outline-text-2" id="text-org3b854a7">
 <ul class="org-ul">
 <li><a href="https://www.amazon.com/Java-Testing-Spock-Konstantinos-Kapelonis/dp/1617292532">Java Testing with Spock</a></li>
 <li><a href="http://spockframework.org/spock/docs/1.1-rc-3/index.html">Spock Framework Reference Documentation</a></li>

@@ -48,9 +48,9 @@
 所以打算聊聊Java 中Collection 这个话题。(BTW,窃以为博主对Java8 新引进的Lambda
 应该了解不足)
 </p>
-<div id="outline-container-orge3f528e" class="outline-2">
-<h2 id="orge3f528e">Java函数式编程</h2>
-<div class="outline-text-2" id="text-orge3f528e">
+<div id="outline-container-orgc4bbdc8" class="outline-2">
+<h2 id="orgc4bbdc8">Java函数式编程</h2>
+<div class="outline-text-2" id="text-orgc4bbdc8">
 <p>
 Java8 引进了函数式编程的新特性，让Java的开发人员也可以享受函数式编程的美妙，已经有
 很多的文章介绍函数式了，珠玉在前，我就不赘言了。来说说Java 的Lambda吧：Java8 对
@@ -59,12 +59,12 @@ Java8 引进了函数式编程的新特性，让Java的开发人员也可以享�
 </p>
 </div>
 </div>
-<div id="outline-container-orgb57e05f" class="outline-2">
-<h2 id="orgb57e05f">流的常用操作</h2>
-<div class="outline-text-2" id="text-orgb57e05f">
-</div><div id="outline-container-orge1c23f9" class="outline-3">
-<h3 id="orge1c23f9">collect(toList())</h3>
-<div class="outline-text-3" id="text-orge1c23f9">
+<div id="outline-container-org5c3a247" class="outline-2">
+<h2 id="org5c3a247">流的常用操作</h2>
+<div class="outline-text-2" id="text-org5c3a247">
+</div><div id="outline-container-orgeae958f" class="outline-3">
+<h3 id="orgeae958f">collect(toList())</h3>
+<div class="outline-text-3" id="text-orgeae958f">
 <p>
 collect(toList()) 方法可以由Stream 值生成一个List,而Stream 的of方法可以使用
 初始值生成新的Stream.
@@ -75,18 +75,18 @@ collect(toList()) 方法可以由Stream 值生成一个List,而Stream 的of方�
 </div>
 </div>
 </div>
-<div id="outline-container-org7ec9d6b" class="outline-3">
-<h3 id="org7ec9d6b">map</h3>
-<div class="outline-text-3" id="text-org7ec9d6b">
+<div id="outline-container-org4aebcd9" class="outline-3">
+<h3 id="org4aebcd9">map</h3>
+<div class="outline-text-3" id="text-org4aebcd9">
 <p>
 如果有一个函数可以将一种类型的值转换成另外一种类型，map 操作就可以使用该函数，将一个流
 中的值转换成一个新的流
 <img src="/assets/blog/2017/03/04/lambda与java-collection有感/java_map.png" alt="java_map.png" />
 </p>
 </div>
-<div id="outline-container-orgd295743" class="outline-4">
-<h4 id="orgd295743">例子</h4>
-<div class="outline-text-4" id="text-orgd295743">
+<div id="outline-container-orgc1f342c" class="outline-4">
+<h4 id="orgc1f342c">例子</h4>
+<div class="outline-text-4" id="text-orgc1f342c">
 <p>
 将字符变成大写格式
 如果用没有Lambda 时的模式编程
@@ -113,17 +113,17 @@ for(String string : Arrays.asList("a","b","c")){
 </div>
 </div>
 </div>
-<div id="outline-container-org48826c9" class="outline-3">
-<h3 id="org48826c9">filter</h3>
-<div class="outline-text-3" id="text-org48826c9">
+<div id="outline-container-org26eb5b1" class="outline-3">
+<h3 id="org26eb5b1">filter</h3>
+<div class="outline-text-3" id="text-org26eb5b1">
 <p>
 遍历数据并检查其中的元素
 <img src="/assets/blog/2017/03/04/lambda与java-collection有感/java_filter.png" alt="java_filter.png" />
 </p>
 </div>
-<div id="outline-container-org9bb25a2" class="outline-4">
-<h4 id="org9bb25a2">例子</h4>
-<div class="outline-text-4" id="text-org9bb25a2">
+<div id="outline-container-org83ac645" class="outline-4">
+<h4 id="org83ac645">例子</h4>
+<div class="outline-text-4" id="text-org83ac645">
 <p>
 你有一个User类，然后你想找出年龄大于30岁的用户
 </p>
@@ -164,17 +164,17 @@ for (User u : users) {
 </div>
 </div>
 </div>
-<div id="outline-container-orgd7bd2b3" class="outline-3">
-<h3 id="orgd7bd2b3">flatMap</h3>
-<div class="outline-text-3" id="text-orgd7bd2b3">
+<div id="outline-container-orgc42c025" class="outline-3">
+<h3 id="orgc42c025">flatMap</h3>
+<div class="outline-text-3" id="text-orgc42c025">
 <p>
 flatMap 方法可用Stream 替换值，然后将多个Stream 连接成一个Stream
 <img src="/assets/blog/2017/03/04/lambda与java-collection有感/java_flatmap.png" alt="java_flatmap.png" />
 </p>
 </div>
-<div id="outline-container-orgfa403dc" class="outline-4">
-<h4 id="orgfa403dc">例子</h4>
-<div class="outline-text-4" id="text-orgfa403dc">
+<div id="outline-container-org263c59c" class="outline-4">
+<h4 id="org263c59c">例子</h4>
+<div class="outline-text-4" id="text-org263c59c">
 <p>
 假设有一个包含多个列表的流，希望得到所有数字的序列
 </p>
@@ -196,9 +196,9 @@ flatMap 方法可用Stream 替换值，然后将多个Stream 连接成一个Stre
 </div>
 </div>
 </div>
-<div id="outline-container-org0cf3895" class="outline-3">
-<h3 id="org0cf3895">小结</h3>
-<div class="outline-text-3" id="text-org0cf3895">
+<div id="outline-container-orgd12ef78" class="outline-3">
+<h3 id="orgd12ef78">小结</h3>
+<div class="outline-text-3" id="text-orgd12ef78">
 <p>
 Java Lambda的特性如果不经常使用，很容易又忘了，本文就当是对Java Lambda 的一次review吧
 不过，函数式的引用的确让Java 焕发出新的活力，记得之前一位前辈吐嘈Java语法太啰嗦
