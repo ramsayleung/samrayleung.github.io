@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>枯树逢春之ArchLinux领风骚 - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An description about how to install arch linux in an old machine" />
-        <meta name="keywords" content="archlinux,linux" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An description about how to install arch linux in an old machine" />
+    <meta name="keywords" content="archlinux,linux" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>枯树逢春之ArchLinux领风骚</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <div id="outline-container-org210c2aa" class="outline-2">
-<h2 id="org210c2aa">枯树</h2>
-<div class="outline-text-2" id="text-org210c2aa">
+<div class="post">
+<h1>枯树逢春之ArchLinux领风骚</h1>
+<div id="outline-container-org08996bd" class="outline-2">
+<h2 id="org08996bd">枯树</h2>
+<div class="outline-text-2" id="text-org08996bd">
 <p>
 周末回了一趟家，没带自己的笔记本，在家闲来无事，无意中看到墙角的电脑，已经尘封
 已久反正无事，何不玩玩这台老古董呢？于是把电脑拿去修理店把坏了的硬件修好。离开
@@ -39,39 +43,39 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orge5aaf69" class="outline-2">
-<h2 id="orge5aaf69">春至</h2>
-<div class="outline-text-2" id="text-orge5aaf69">
+<div id="outline-container-org71ddf40" class="outline-2">
+<h2 id="org71ddf40">春至</h2>
+<div class="outline-text-2" id="text-org71ddf40">
 <p>
 像笔者这种Linuxer,这么可能再装回XP呢，最初装Win7,也是考虑到老爹的技术 hold 不
 住 Linux,现在手机那么发达，他就不需要电脑了，所以，此时不装Linux,更待何时呢？
 </p>
 </div>
 </div>
-<div id="outline-container-org55a018c" class="outline-2">
-<h2 id="org55a018c">Arch Linux</h2>
-<div class="outline-text-2" id="text-org55a018c">
+<div id="outline-container-org87d9f6c" class="outline-2">
+<h2 id="org87d9f6c">Arch Linux</h2>
+<div class="outline-text-2" id="text-org87d9f6c">
 <p>
 笔者没有选择 Xubuntu 这种适合老机器的 Ubuntu 衍生发行版本，因为笔者不喜欢
  Ubuntu, 所以笔者最后选择的是 Arch linux,官网说最低配置只需500MB内存，800MB的
  硬盘存储空间，正适合家里的老家伙
 </p>
 </div>
-<div id="outline-container-orgcbcfb29" class="outline-3">
-<h3 id="orgcbcfb29">安装过程</h3>
-<div class="outline-text-3" id="text-orgcbcfb29">
-</div><div id="outline-container-org50f9b06" class="outline-4">
-<h4 id="org50f9b06">下载镜像</h4>
-<div class="outline-text-4" id="text-org50f9b06">
+<div id="outline-container-org6ebae98" class="outline-3">
+<h3 id="org6ebae98">安装过程</h3>
+<div class="outline-text-3" id="text-org6ebae98">
+</div><div id="outline-container-orge439f16" class="outline-4">
+<h4 id="orge439f16">下载镜像</h4>
+<div class="outline-text-4" id="text-orge439f16">
 <p>
 <a href="https://www.archlinux.org/download/">Download Link</a> ,在网易的镜像下载ISO, 然后用dd刻录到U盘，Windows 可以选择
 <a href="http://sourceforge.net/projects/usbwriter">USBwriter</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgeecb7e0" class="outline-4">
-<h4 id="orgeecb7e0">分区</h4>
-<div class="outline-text-4" id="text-orgeecb7e0">
+<div id="outline-container-org2ac0643" class="outline-4">
+<h4 id="org2ac0643">分区</h4>
+<div class="outline-text-4" id="text-org2ac0643">
 <p>
 使用fdisk, 笔者的硬盘是/dev/sda,如果还有一块硬盘，那应该就是/dev/sdb
 </p>
@@ -91,9 +95,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org596b6c7" class="outline-4">
-<h4 id="org596b6c7">格式化分区</h4>
-<div class="outline-text-4" id="text-org596b6c7">
+<div id="outline-container-org08dfe19" class="outline-4">
+<h4 id="org08dfe19">格式化分区</h4>
+<div class="outline-text-4" id="text-org08dfe19">
 <p>
 格式化 sda2 sda3为ext4格式：
 </p>
@@ -119,9 +123,9 @@ mkfs.ext4 /dev/sda3
 </div>
 </div>
 </div>
-<div id="outline-container-orgf3bd658" class="outline-4">
-<h4 id="orgf3bd658">挂载</h4>
-<div class="outline-text-4" id="text-orgf3bd658">
+<div id="outline-container-orgd86f7bb" class="outline-4">
+<h4 id="orgd86f7bb">挂载</h4>
+<div class="outline-text-4" id="text-orgd86f7bb">
 <p>
 将sda2挂载到/mnt,其实就是让sda2分区做系统的根分区，/mnt/home同理
 </p>
@@ -132,9 +136,9 @@ mount /dev/sda3 /mnt/home
 </div>
 </div>
 </div>
-<div id="outline-container-orged509d2" class="outline-4">
-<h4 id="orged509d2">更新pacman源</h4>
-<div class="outline-text-4" id="text-orged509d2">
+<div id="outline-container-org0d2a6b8" class="outline-4">
+<h4 id="org0d2a6b8">更新pacman源</h4>
+<div class="outline-text-4" id="text-org0d2a6b8">
 <p>
 网易的源不错，编辑 <b>/etc/pacman.d/mirrorlist</b> 添加 <b>Server = <a href="http://mirrors.163.com/archlinux/$repo/os/$arch">http://mirrors.163.com/archlinux/$repo/os/$arch</a></b>
 </p>
@@ -152,9 +156,9 @@ mount /dev/sda3 /mnt/home
 </div>
 </div>
 </div>
-<div id="outline-container-org014fc2a" class="outline-4">
-<h4 id="org014fc2a">安装基本系统</h4>
-<div class="outline-text-4" id="text-org014fc2a">
+<div id="outline-container-org75db7ea" class="outline-4">
+<h4 id="org75db7ea">安装基本系统</h4>
+<div class="outline-text-4" id="text-org75db7ea">
 <p>
 安装基本系统到 /mnt,即sda2分区
 </p>
@@ -167,9 +171,9 @@ mount /dev/sda3 /mnt/home
 </p>
 </div>
 </div>
-<div id="outline-container-org02817df" class="outline-4">
-<h4 id="org02817df">生成fstab</h4>
-<div class="outline-text-4" id="text-org02817df">
+<div id="outline-container-orgccf6bca" class="outline-4">
+<h4 id="orgccf6bca">生成fstab</h4>
+<div class="outline-text-4" id="text-orgccf6bca">
 <p>
 fstab 的作用：
 </p>
@@ -189,9 +193,9 @@ cat /mnt/etc/fstab
 </div>
 </div>
 </div>
-<div id="outline-container-orge3ed9f7" class="outline-4">
-<h4 id="orge3ed9f7">配置系统</h4>
-<div class="outline-text-4" id="text-orge3ed9f7">
+<div id="outline-container-orga769edd" class="outline-4">
+<h4 id="orga769edd">配置系统</h4>
+<div class="outline-text-4" id="text-orga769edd">
 <p>
 切换到新的系统，然后你会发现命令行提示符发生了改变
 </p>
@@ -199,13 +203,13 @@ cat /mnt/etc/fstab
 arch-chroot /mnt
 </pre>
 </div>
-<ul class="org-ul"><li><a id="org57bf2cd"></a>设置地区<br /><div class="outline-text-5" id="text-org57bf2cd">
+<ul class="org-ul"><li><a id="orgb1a36b6"></a>设置地区<br /><div class="outline-text-5" id="text-orgb1a36b6">
 <div class="org-src-container">
 <pre class="src src-shell">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 </pre>
 </div>
 </div></li>
-<li><a id="orgdd516a2"></a>设置语言<br /><div class="outline-text-5" id="text-orgdd516a2">
+<li><a id="org0ddf08a"></a>设置语言<br /><div class="outline-text-5" id="text-org0ddf08a">
 <p>
 编辑 <b>/etc/locale.gen</b>,因为该文件所有的信息都是被注释滴，所以在最上面添加
 <b>en_US.UTF-8 UTF-8</b> 即可
@@ -231,26 +235,26 @@ export LANG=en_US.UTF-8
 </pre>
 </div>
 </div></li>
-<li><a id="orgff035e5"></a>设置主机名<br /><div class="outline-text-5" id="text-orgff035e5">
+<li><a id="org555f392"></a>设置主机名<br /><div class="outline-text-5" id="text-org555f392">
 <div class="org-src-container">
 <pre class="src src-shell">echo samray-arch &gt; /etc/hostname
 </pre>
 </div>
 </div></li>
-<li><a id="org2adbd5c"></a>设置密码<br /><div class="outline-text-5" id="text-org2adbd5c">
+<li><a id="org931a2e6"></a>设置密码<br /><div class="outline-text-5" id="text-org931a2e6">
 <div class="org-src-container">
 <pre class="src src-shell">passwd
 </pre>
 </div>
 </div></li>
-<li><a id="org026a126"></a>配置网络<br /><div class="outline-text-5" id="text-org026a126">
+<li><a id="orgcf7e488"></a>配置网络<br /><div class="outline-text-5" id="text-orgcf7e488">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S net-tools
 systemctl enable dhcpcd.service
 </pre>
 </div>
 </div></li>
-<li><a id="org98bee59"></a>安装GRUB<br /><div class="outline-text-5" id="text-org98bee59">
+<li><a id="org7380eb1"></a>安装GRUB<br /><div class="outline-text-5" id="text-org7380eb1">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S grub-bios
 </pre>
@@ -265,9 +269,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </div>
 </div></li></ul>
 </div>
-<div id="outline-container-orgade9117" class="outline-4">
-<h4 id="orgade9117">收尾工作</h4>
-<div class="outline-text-4" id="text-orgade9117">
+<div id="outline-container-org57bcc92" class="outline-4">
+<h4 id="org57bcc92">收尾工作</h4>
+<div class="outline-text-4" id="text-org57bcc92">
 <div class="org-src-container">
 <pre class="src src-shell">exit
 umount /mnt/home
@@ -281,21 +285,21 @@ reboot
 </div>
 </div>
 </div>
-<div id="outline-container-org000d435" class="outline-3">
-<h3 id="org000d435">安装桌面环境</h3>
-<div class="outline-text-3" id="text-org000d435">
-</div><div id="outline-container-org9b782ea" class="outline-4">
-<h4 id="org9b782ea">安装x服务</h4>
-<div class="outline-text-4" id="text-org9b782ea">
+<div id="outline-container-orgbe6b991" class="outline-3">
+<h3 id="orgbe6b991">安装桌面环境</h3>
+<div class="outline-text-3" id="text-orgbe6b991">
+</div><div id="outline-container-orgec5a870" class="outline-4">
+<h4 id="orgec5a870">安装x服务</h4>
+<div class="outline-text-4" id="text-orgec5a870">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S xorg-server xorg-server-utils xorg-xinit
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org40030c8" class="outline-4">
-<h4 id="org40030c8">安装显卡驱动</h4>
-<div class="outline-text-4" id="text-org40030c8">
+<div id="outline-container-org13d04fe" class="outline-4">
+<h4 id="org13d04fe">安装显卡驱动</h4>
+<div class="outline-text-4" id="text-org13d04fe">
 <p>
 查找自己的显卡类型
 </p>
@@ -368,9 +372,9 @@ Intel 集成显卡：
 </div>
 </div>
 </div>
-<div id="outline-container-org3f47fed" class="outline-3">
-<h3 id="org3f47fed">参考</h3>
-<div class="outline-text-3" id="text-org3f47fed">
+<div id="outline-container-orgb58bf81" class="outline-3">
+<h3 id="orgb58bf81">参考</h3>
+<div class="outline-text-3" id="text-orgb58bf81">
 <p>
 <a href="https://wiki.archlinux.org/index.php/installation_guide">https://wiki.archlinux.org/index.php/installation_guide</a>
 </p>
@@ -378,18 +382,15 @@ Intel 集成显卡：
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-27</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -401,29 +402,26 @@ Intel 集成显卡：
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

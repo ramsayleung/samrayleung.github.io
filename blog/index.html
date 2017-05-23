@@ -4,95 +4,72 @@
     <title>Blog Index - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
-    <nav class="main-nav">
-      <a href="/blog">Archive</a>
-      <a href="/tags">Tag</a>
-      <a href="/about/">About</a>
-      <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
     <div>
-      <section id="wrapper">
-	<div class="post">
-	  <h1>Archive</h1>
-	  <br />
-	  <ul class="org-ul">
-            <li>2017-05-18&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/05/18/java-uuid-源码剖析">Java UUID 源码剖析</a></li>
-            <br />
-            <li>2017-04-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/22/脚本分享">脚本分享</a></li>
-            <br />
-            <li>2017-04-11&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/11/spock-一个优雅的groovy-java测试框架">Spock 一个优雅的Groovy/Java测试框架 </a></li>
-            <br />
-            <li>2017-04-09&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/09/爬虫高效去重之布隆过滤器">爬虫高效去重之布隆过滤器</a></li>
-            <br />
-            <li>2017-04-09&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/09/你所不可或缺的----logging">你所不可或缺的 -- logging</a></li>
-            <br />
-            <li>2017-03-30&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/30/大话linux文件系统">大话Linux文件系统</a></li>
-            <br />
-            <li>2017-03-24&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/24/关于工具,关于折腾">关于工具,关于折腾</a></li>
-            <br />
-            <li>2017-03-19&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/19/python多线程端口扫描器">Python多线程端口扫描器</a></li>
-            <br />
-            <li>2017-03-13&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/13/linux-unix-shell-二三事之过滤器grep">Linux/Unix Shell 二三事之过滤器grep</a></li>
-            <br />
-            <li>2017-03-06&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/06/java读写文件小结">Java读写文件小结</a></li>
-            <br />
-            <li>2017-03-05&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/05/(翻译)从helm到ivy">(翻译)从Helm到Ivy</a></li>
-            <br />
-            <li>2017-03-04&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/04/lambda与java-collection有感">Lambda与Java Collection有感</a></li>
-            <br />
-            <li>2017-03-03&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/03/(翻译)an-introduction-to-magit">(翻译)An Introduction to Magit</a></li>
-            <br />
-            <li>2017-03-02&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/02/shell神器fasd与eshell的不期而遇">Shell神器fasd与Eshell的不期而遇</a></li>
-            <br />
-            <li>2017-03-01&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/01/归并排序算法改进">归并排序算法改进</a></li>
-            <br />
-            <li>2017-02-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff">Linux/Unix Shell 二三事之过滤器diff</a></li>
-            <br />
-            <li>2017-02-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/28/(翻译)mastering-eshell">(翻译)Mastering Eshell</a></li>
-            <br />
-            <li>2017-02-27&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/27/枯树逢春之archlinux领风骚">枯树逢春之ArchLinux领风骚</a></li>
-            <br />
-            <li>2017-02-23&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/23/flask牛刀小试之微信工作号开发">flask牛刀小试之微信公众号开发</a></li>
-            <br />
-            <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之cat">Linux/Unix Shell 二三事之过滤器cat</a></li>
-            <br />
-            <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/在emacs中使用ipython">在Emacs中使用Ipython</a></li>
-            <br />
-            <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/提高emacs启动速度">提高Emacs启动速度</a></li>
-            <br />
-            <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail">Linux/Unix Shell 二三事之过滤器head+tail</a></li>
-            <br />
-            <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之神器percol">Linux/Unix Shell 二三事之神器percol</a></li>
-            <br />
-	  </ul>
-	</div>
-      </section>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
     </div>
     <div>
-      <section id="wrapper">
-	<br />
-	<br />
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	<script src="/media/js/main.js"></script>
-	<div align="center">
-	  <footer id="footer">
-            <p class="small">
-              Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
-              &nbsp;&nbsp;-&nbsp;&nbsp;
-              Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-              <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-            </p>
-            <br />
-	  </footer>
-	</div>
-      </section>
+      <div class="post">
+	<h1>Blog Index</h1>
+	<ul class="org-ul">
+          <li>2017-05-18&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/05/18/java-uuid-源码剖析">Java UUID 源码剖析</a></li>
+          <li>2017-04-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/22/脚本分享">脚本分享</a></li>
+          <li>2017-04-11&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/11/spock-一个优雅的groovy-java测试框架">Spock 一个优雅的Groovy/Java测试框架 </a></li>
+          <li>2017-04-09&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/09/爬虫高效去重之布隆过滤器">爬虫高效去重之布隆过滤器</a></li>
+          <li>2017-04-09&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/04/09/你所不可或缺的----logging">你所不可或缺的 -- logging</a></li>
+          <li>2017-03-30&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/30/大话linux文件系统">大话Linux文件系统</a></li>
+          <li>2017-03-24&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/24/关于工具,关于折腾">关于工具,关于折腾</a></li>
+          <li>2017-03-19&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/19/python多线程端口扫描器">Python多线程端口扫描器</a></li>
+          <li>2017-03-13&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/13/linux-unix-shell-二三事之过滤器grep">Linux/Unix Shell 二三事之过滤器grep</a></li>
+          <li>2017-03-06&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/06/java读写文件小结">Java读写文件小结</a></li>
+          <li>2017-03-05&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/05/(翻译)从helm到ivy">(翻译)从Helm到Ivy</a></li>
+          <li>2017-03-04&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/04/lambda与java-collection有感">Lambda与Java Collection有感</a></li>
+          <li>2017-03-03&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/03/(翻译)an-introduction-to-magit">(翻译)An Introduction to Magit</a></li>
+          <li>2017-03-02&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/02/shell神器fasd与eshell的不期而遇">Shell神器fasd与Eshell的不期而遇</a></li>
+          <li>2017-03-01&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/03/01/归并排序算法改进">归并排序算法改进</a></li>
+          <li>2017-02-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff">Linux/Unix Shell 二三事之过滤器diff</a></li>
+          <li>2017-02-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/28/(翻译)mastering-eshell">(翻译)Mastering Eshell</a></li>
+          <li>2017-02-27&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/27/枯树逢春之archlinux领风骚">枯树逢春之ArchLinux领风骚</a></li>
+          <li>2017-02-23&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/23/flask牛刀小试之微信工作号开发">flask牛刀小试之微信公众号开发</a></li>
+          <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之cat">Linux/Unix Shell 二三事之过滤器cat</a></li>
+          <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/在emacs中使用ipython">在Emacs中使用Ipython</a></li>
+          <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/提高emacs启动速度">提高Emacs启动速度</a></li>
+          <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail">Linux/Unix Shell 二三事之过滤器head+tail</a></li>
+          <li>2017-02-22&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2017/02/22/linux-unix-shell-二三事之神器percol">Linux/Unix Shell 二三事之神器percol</a></li>
+	</ul>
+      </div>
+    </div>
+    <div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
     </div>
   </body>
 </html>

@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Linux/Unix Shell 二三事之过滤器diff - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An introduction about diff" />
-        <meta name="keywords" content="shell,diff" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An introduction about diff" />
+    <meta name="keywords" content="shell,diff" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Linux/Unix Shell 二三事之过滤器diff</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <blockquote>
+<div class="post">
+<h1>Linux/Unix Shell 二三事之过滤器diff</h1>
+<blockquote>
 <p>
 diff - compare files line by line
 </p>
@@ -38,9 +42,9 @@ diff - compare files line by line
 都是使用 <b>diff</b> 和 <b>patch</b> 对程序进行差分和打补丁滴(现在有git了，但是diff 同样
 发挥着重要作用)
 </p>
-<div id="outline-container-org825a636" class="outline-2">
-<h2 id="org825a636">语法</h2>
-<div class="outline-text-2" id="text-org825a636">
+<div id="outline-container-org146c359" class="outline-2">
+<h2 id="org146c359">语法</h2>
+<div class="outline-text-2" id="text-org146c359">
 <p>
 diff 的语法如下
 </p>
@@ -55,12 +59,12 @@ diff 将不输出任何东西。如果两个文件有差异，diff 会显示一�
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb4f553" class="outline-2">
-<h2 id="orgeb4f553">例子</h2>
-<div class="outline-text-2" id="text-orgeb4f553">
-</div><div id="outline-container-orgf1fd75f" class="outline-3">
-<h3 id="orgf1fd75f">用法一</h3>
-<div class="outline-text-3" id="text-orgf1fd75f">
+<div id="outline-container-org4ca8af6" class="outline-2">
+<h2 id="org4ca8af6">例子</h2>
+<div class="outline-text-2" id="text-org4ca8af6">
+</div><div id="outline-container-orgcba2bd8" class="outline-3">
+<h3 id="orgcba2bd8">用法一</h3>
+<div class="outline-text-3" id="text-orgcba2bd8">
 <p>
 现在有两个文件，分别保存着不同的地址。
 address1 包含：
@@ -105,9 +109,9 @@ diff 的输出使用3个不同的单字符指导：a(append,追加),c(change,修
 </p>
 </div>
 </div>
-<div id="outline-container-org24ad76b" class="outline-3">
-<h3 id="org24ad76b">用法2</h3>
-<div class="outline-text-3" id="text-org24ad76b">
+<div id="outline-container-org9f183b8" class="outline-3">
+<h3 id="org9f183b8">用法2</h3>
+<div class="outline-text-3" id="text-org9f183b8">
 <p>
 现在把 <i>address2</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -142,9 +146,9 @@ beijing
 </p>
 </div>
 </div>
-<div id="outline-container-orgfb1df2f" class="outline-3">
-<h3 id="orgfb1df2f">用法3</h3>
-<div class="outline-text-3" id="text-orgfb1df2f">
+<div id="outline-container-org9c8d830" class="outline-3">
+<h3 id="org9c8d830">用法3</h3>
+<div class="outline-text-3" id="text-org9c8d830">
 <p>
 现在把 <i>address1</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -181,9 +185,9 @@ chengdu
 </div>
 </div>
 </div>
-<div id="outline-container-orgdab175d" class="outline-2">
-<h2 id="orgdab175d">diff 选项</h2>
-<div class="outline-text-2" id="text-orgdab175d">
+<div id="outline-container-org2e24d35" class="outline-2">
+<h2 id="org2e24d35">diff 选项</h2>
+<div class="outline-text-2" id="text-org2e24d35">
 <p>
 因为diff 是一个相当强大也是一个相当复杂的命令，所以我没办法将所有的用法一一道
 尽所以笔者将比较常用的选项列举出来
@@ -214,18 +218,15 @@ a a
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-28</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -237,29 +238,26 @@ a a
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

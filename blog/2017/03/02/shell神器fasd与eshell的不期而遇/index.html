@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Shell神器fasd与Eshell的不期而遇 - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An introduction about tweaking eshell with fasd" />
-        <meta name="keywords" content="eshell,fasd" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An introduction about tweaking eshell with fasd" />
+    <meta name="keywords" content="eshell,fasd" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Shell神器fasd与Eshell的不期而遇</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <blockquote>
+<div class="post">
+<h1>Shell神器fasd与Eshell的不期而遇</h1>
+<blockquote>
 <p>
 fasd - quick access to files and directory
 </p>
@@ -39,9 +43,9 @@ fasd - quick access to files and directory
 化界面完全无法比拟的(当然，命令行的学习成本和学习曲线肯定比图型化界面高),So i
 live in terminal. 而今天笔者要介绍的神器 fasd 就是可以让命令行操作变得更加高效
 </p>
-<div id="outline-container-orga0a5a28" class="outline-2">
-<h2 id="orga0a5a28">Fasd</h2>
-<div class="outline-text-2" id="text-orga0a5a28">
+<div id="outline-container-orgffb66dc" class="outline-2">
+<h2 id="orgffb66dc">Fasd</h2>
+<div class="outline-text-2" id="text-orgffb66dc">
 <p>
 在 Shell 下面有非常多的命令操作是与文件和目录相关的，如果你要进入到另外一个目
 录你可以使用相对或者绝对路径来访问该目录，但是如果这是一个与当前目录不相关的目
@@ -67,9 +71,9 @@ Fasd 以访问的频繁程度和最近是否有访问对文件和目录分配优
 你很容易就可以切换到那个目录
 </p>
 </div>
-<div id="outline-container-org41f50c4" class="outline-3">
-<h3 id="org41f50c4">常用选项</h3>
-<div class="outline-text-3" id="text-org41f50c4">
+<div id="outline-container-orgb0ffd03" class="outline-3">
+<h3 id="orgb0ffd03">常用选项</h3>
+<div class="outline-text-3" id="text-orgb0ffd03">
 <ul class="org-ul">
 <li><b>-a(any)</b>: 匹配文件和目录</li>
 <li><b>-i(interactive)</b>: 以交互的方式选择文件或者目录</li>
@@ -110,9 +114,9 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7ca150" class="outline-3">
-<h3 id="orgb7ca150">例子</h3>
-<div class="outline-text-3" id="text-orgb7ca150">
+<div id="outline-container-org7274c12" class="outline-3">
+<h3 id="org7274c12">例子</h3>
+<div class="outline-text-3" id="text-org7274c12">
 <p>
 你可以将fasd 配合正则表达式使用，例如列举以 <i>py</i> 结尾的最近访问的文件：
 </p>
@@ -130,9 +134,9 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 </div>
 </div>
 </div>
-<div id="outline-container-orgc269adc" class="outline-2">
-<h2 id="orgc269adc">Fasd +Eshell</h2>
-<div class="outline-text-2" id="text-orgc269adc">
+<div id="outline-container-org32863e0" class="outline-2">
+<h2 id="org32863e0">Fasd +Eshell</h2>
+<div class="outline-text-2" id="text-org32863e0">
 <p>
 fasd 真的可以大幅度提高效率，但是笔者有点不太满意的是，笔者是个 Emacser, 笔者
 的操作基本是在 Emacs 里完成的，而笔者在 Emacs 里面使用的 shell 是 Eshell,
@@ -203,18 +207,15 @@ Enjoy Emacs and Shell :)
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-03-02</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a>, <a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -226,29 +227,26 @@ Enjoy Emacs and Shell :)
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

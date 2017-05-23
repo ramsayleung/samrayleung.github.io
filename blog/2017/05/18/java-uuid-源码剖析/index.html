@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Java UUID 源码剖析 - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="a introduction about uuid" />
-        <meta name="keywords" content="uuid,java" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="a introduction about uuid" />
+    <meta name="keywords" content="uuid,java" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Java UUID 源码剖析</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <p>
+<div class="post">
+<h1>Java UUID 源码剖析</h1>
+<p>
 笔者近来闲来无事，又因为有需要构造全局唯一 ID 的需求，所以就去看了 UUID 这个提供
 稳定的系统唯一标识符的类的源码
 </p>
-<div id="outline-container-org491521c" class="outline-2">
-<h2 id="org491521c">UUID variant</h2>
-<div class="outline-text-2" id="text-org491521c">
+<div id="outline-container-org1b66e56" class="outline-2">
+<h2 id="org1b66e56">UUID variant</h2>
+<div class="outline-text-2" id="text-org1b66e56">
 <p>
 事实上是存在很多中 UID 的不同实现的的，但是 UUID 里面默认是使用 "加盐"
 (Leach-Salz)实现，但是也可以使用其他的实现。
 </p>
 </div>
 </div>
-<div id="outline-container-orgb7d0c75" class="outline-2">
-<h2 id="orgb7d0c75">Layout of variant2(Leach-Salz) UUID</h2>
-<div class="outline-text-2" id="text-orgb7d0c75">
+<div id="outline-container-org8e4ce1c" class="outline-2">
+<h2 id="org8e4ce1c">Layout of variant2(Leach-Salz) UUID</h2>
+<div class="outline-text-2" id="text-org8e4ce1c">
 <p>
 加盐的 UUID 的结构布局如下：
 最高位 (most significant) 的64 位长整型值由下面的的无符号位组成：
@@ -67,16 +71,16 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc24d91e" class="outline-2">
-<h2 id="orgc24d91e">UUID constructor</h2>
-<div class="outline-text-2" id="text-orgc24d91e">
+<div id="outline-container-org8839261" class="outline-2">
+<h2 id="org8839261">UUID constructor</h2>
+<div class="outline-text-2" id="text-org8839261">
 <p>
 UUID 类有两个构造函数，分别是 public 和 private 修饰的构造函数
 </p>
 </div>
-<div id="outline-container-orgc47aec3" class="outline-3">
-<h3 id="orgc47aec3">private UUID</h3>
-<div class="outline-text-3" id="text-orgc47aec3">
+<div id="outline-container-org92448e3" class="outline-3">
+<h3 id="org92448e3">private UUID</h3>
+<div class="outline-text-3" id="text-org92448e3">
 <p>
 private 类型的构造函数以一个 byte 数组为构造参数：
 </p>
@@ -104,9 +108,9 @@ leastSigBit 赋值。 private 的构造函数只能在类本身被调用, 该构
 </p>
 </div>
 </div>
-<div id="outline-container-org99c7df7" class="outline-3">
-<h3 id="org99c7df7">public UUID</h3>
-<div class="outline-text-3" id="text-org99c7df7">
+<div id="outline-container-org5ad530d" class="outline-3">
+<h3 id="org5ad530d">public UUID</h3>
+<div class="outline-text-3" id="text-org5ad530d">
 <p>
 public 类型的构造器接受两个 <i>long</i> 类型的参数，即上面提到的最高位和最低位：
 </p>
@@ -136,12 +140,12 @@ public UUID(long mostSigBits, long leastSigBits) {
 </div>
 </div>
 </div>
-<div id="outline-container-org7f0056b" class="outline-2">
-<h2 id="org7f0056b">UUID type</h2>
-<div class="outline-text-2" id="text-org7f0056b">
-</div><div id="outline-container-orgb0aff92" class="outline-3">
-<h3 id="orgb0aff92">type 4 -- randomly generated UUID</h3>
-<div class="outline-text-3" id="text-orgb0aff92">
+<div id="outline-container-org45b63ac" class="outline-2">
+<h2 id="org45b63ac">UUID type</h2>
+<div class="outline-text-2" id="text-org45b63ac">
+</div><div id="outline-container-org1dcdf92" class="outline-3">
+<h3 id="org1dcdf92">type 4 -- randomly generated UUID</h3>
+<div class="outline-text-3" id="text-org1dcdf92">
 <p>
 现在就看看使用频率最高的 UUID 类型 -- 随机的 UUID 以及随机生成 UUID 的函数：
 <i>randomUUID()</i>
@@ -191,9 +195,9 @@ private static class Holder {
 </p>
 </div>
 </div>
-<div id="outline-container-orgea790c8" class="outline-3">
-<h3 id="orgea790c8">type 3 -- name-based UUID</h3>
-<div class="outline-text-3" id="text-orgea790c8">
+<div id="outline-container-orga68da2e" class="outline-3">
+<h3 id="orga68da2e">type 3 -- name-based UUID</h3>
+<div class="outline-text-3" id="text-orga68da2e">
 <p>
 在上面关于 UUID 结构布局的时候提到，UUID 有四种类型的实现，而类型3 就是基于
 命名的实现：
@@ -233,25 +237,25 @@ Sha-1,Sha-256 或者是 MD5 等等。 <i>nameUUIDFromBytes</i> 使用 MD5 算法
 </p>
 </div>
 </div>
-<div id="outline-container-org88a2b29" class="outline-3">
-<h3 id="org88a2b29">type 2 -- DEC security</h3>
-<div class="outline-text-3" id="text-org88a2b29">
+<div id="outline-container-org3ed46f3" class="outline-3">
+<h3 id="org3ed46f3">type 2 -- DEC security</h3>
+<div class="outline-text-3" id="text-org3ed46f3">
 <p>
 在 JDK 的 UUID 类中并未提供 基于 DEC 类型的 UUID 的实现。 
 </p>
 </div>
 </div>
-<div id="outline-container-org28ffc95" class="outline-3">
-<h3 id="org28ffc95">type 1 -- time-based UUID</h3>
-<div class="outline-text-3" id="text-org28ffc95">
+<div id="outline-container-org5eac53b" class="outline-3">
+<h3 id="org5eac53b">type 1 -- time-based UUID</h3>
+<div class="outline-text-3" id="text-org5eac53b">
 <p>
 与基于命名和随机生成的 UUID 都有一个静态工厂方法不一样， 基于时间的 UUID 并
 不存在静态工厂方法，time-based UUID 是基于一系列相关的方法的：
 </p>
 </div>
-<div id="outline-container-orgcbc2314" class="outline-4">
-<h4 id="orgcbc2314">timestamp</h4>
-<div class="outline-text-4" id="text-orgcbc2314">
+<div id="outline-container-orgc728014" class="outline-4">
+<h4 id="orgc728014">timestamp</h4>
+<div class="outline-text-4" id="text-orgc728014">
 <div class="org-src-container">
 <pre class="src src-java">public long timestamp() {
     if (version() != 1) {
@@ -273,9 +277,9 @@ Sha-1,Sha-256 或者是 MD5 等等。 <i>nameUUIDFromBytes</i> 使用 MD5 算法
 </p>
 </div>
 </div>
-<div id="outline-container-org0607708" class="outline-4">
-<h4 id="org0607708">clockSequence()</h4>
-<div class="outline-text-4" id="text-org0607708">
+<div id="outline-container-org487f0f3" class="outline-4">
+<h4 id="org487f0f3">clockSequence()</h4>
+<div class="outline-text-4" id="text-org487f0f3">
 <div class="org-src-container">
 <pre class="src src-java">public int clockSequence() {
     if (version() != 1) {
@@ -294,9 +298,9 @@ filed). 而时钟序列域通常是用来保证基于时间的 UUID 的唯一性
 </p>
 </div>
 </div>
-<div id="outline-container-orgea10002" class="outline-4">
-<h4 id="orgea10002">node()</h4>
-<div class="outline-text-4" id="text-orgea10002">
+<div id="outline-container-org4d8a728" class="outline-4">
+<h4 id="org4d8a728">node()</h4>
+<div class="outline-text-4" id="text-org4d8a728">
 <p>
 48 个 bit 长的节点值是从该 UUID 的节点域 (node filed) 构造出来的。节点域通
 过保存运行 JVM 机器的局域网地址 (IEEE 802) 来保证该机器生成 UUID 的空间唯
@@ -324,12 +328,12 @@ filed). 而时钟序列域通常是用来保证基于时间的 UUID 的唯一性
 </div>
 </div>
 </div>
-<div id="outline-container-org9c9b90a" class="outline-2">
-<h2 id="org9c9b90a">FromString()/ToString()</h2>
-<div class="outline-text-2" id="text-org9c9b90a">
-</div><div id="outline-container-org416d390" class="outline-3">
-<h3 id="org416d390">toString()</h3>
-<div class="outline-text-3" id="text-org416d390">
+<div id="outline-container-org7d6d3fb" class="outline-2">
+<h2 id="org7d6d3fb">FromString()/ToString()</h2>
+<div class="outline-text-2" id="text-org7d6d3fb">
+</div><div id="outline-container-orgd0b13f1" class="outline-3">
+<h3 id="orgd0b13f1">toString()</h3>
+<div class="outline-text-3" id="text-orgd0b13f1">
 <p>
 以字符串的形式表示 UUID, 格式说明：
 </p>
@@ -368,9 +372,9 @@ public String toString() {
 </div>
 </div>
 </div>
-<div id="outline-container-orgc676673" class="outline-3">
-<h3 id="orgc676673">fromString()</h3>
-<div class="outline-text-3" id="text-orgc676673">
+<div id="outline-container-org14efc84" class="outline-3">
+<h3 id="org14efc84">fromString()</h3>
+<div class="outline-text-3" id="text-org14efc84">
 <p>
 与 <i>toString()</i> 函数功能相反， <i>fromString()</i> 函数的作用就是将字符串形式的对象解码成 UUID 对象：
 </p>
@@ -399,9 +403,9 @@ public String toString() {
 </div>
 </div>
 </div>
-<div id="outline-container-orge7234a1" class="outline-2">
-<h2 id="orge7234a1">使用场景</h2>
-<div class="outline-text-2" id="text-orge7234a1">
+<div id="outline-container-orgbe9225f" class="outline-2">
+<h2 id="orgbe9225f">使用场景</h2>
+<div class="outline-text-2" id="text-orgbe9225f">
 <p>
 UUID 一般用来生成全局唯一标识符，那么 UUID 是否能保证唯一呢？以
 <i>UUID.randomUUID()</i> 生成的 UUID 为例，从上面的源码，除了 version 和 variant
@@ -415,18 +419,15 @@ ID, 你理论上需要生成 2的56次方个 ID 后才会产生一个重复的 I
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-05-18</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -438,29 +439,26 @@ ID, 你理论上需要生成 2的56次方个 ID 后才会产生一个重复的 I
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

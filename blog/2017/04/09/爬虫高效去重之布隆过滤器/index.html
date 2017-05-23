@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>爬虫高效去重之布隆过滤器 - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="an dscription about bloom filter" />
-        <meta name="keywords" content="python,bloom-filter,crawler" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="an dscription about bloom filter" />
+    <meta name="keywords" content="python,bloom-filter,crawler" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>爬虫高效去重之布隆过滤器</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <p>
+<div class="post">
+<h1>爬虫高效去重之布隆过滤器</h1>
+<p>
 笔者最近思考如何编写高效的爬虫; 而在编写高效爬虫的时候，有一个必需解决的问题就是：
 url 的去重，即如何判别 url 是否已经被爬取，如果被爬取，那就不要重复爬取。一般如
 果需要爬取的网站不是非常庞大的话，使用Python 内置的 set 就可以实现去重了，但是使
 用 set 内存利用率不高，此外对于那些不像Python 那样用 hash 实现的 set 而言，时间
 复杂度是 log(N),实在难说高效。
 </p>
-<div id="outline-container-org452e894" class="outline-2">
-<h2 id="org452e894">Bloom Filter</h2>
-<div class="outline-text-2" id="text-org452e894">
+<div id="outline-container-org260c4dc" class="outline-2">
+<h2 id="org260c4dc">Bloom Filter</h2>
+<div class="outline-text-2" id="text-org260c4dc">
 <p>
 那么如何实现高效的去重呢？ 笔者查阅资料之后得知：使用布隆过滤器 (Bloom
 Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集合中。布隆过滤器实际上
@@ -47,9 +51,9 @@ Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集�
 时间不随元素增长而增加).那么布隆过滤器又是怎样实现的呢
 </p>
 </div>
-<div id="outline-container-org630c2d3" class="outline-3">
-<h3 id="org630c2d3">布隆过滤器实现原理</h3>
-<div class="outline-text-3" id="text-org630c2d3">
+<div id="outline-container-org6f93c8f" class="outline-3">
+<h3 id="org6f93c8f">布隆过滤器实现原理</h3>
+<div class="outline-text-3" id="text-org6f93c8f">
 <p>
 一个Bloom Filter是基于一个m位的位向量（Bit Vector），这些位向量的初始值为0,并
 且有一系列的 hash 函数，hash 函数值域为1-m.在下面例子中，是15位的位向量，初始
@@ -101,9 +105,9 @@ hash 函数对 <b>whatever</b> 进行散列值计算，然后与位向量做 "�
 </div>
 </div>
 </div>
-<div id="outline-container-orge5408e2" class="outline-2">
-<h2 id="orge5408e2">Python BloomFilter</h2>
-<div class="outline-text-2" id="text-orge5408e2">
+<div id="outline-container-orga2594b2" class="outline-2">
+<h2 id="orga2594b2">Python BloomFilter</h2>
+<div class="outline-text-2" id="text-orga2594b2">
 <p>
 算法都是为了实际问题服务的，又回到爬虫这个话题上。在了解布隆过滤器原理之后，可
 以很容易地实现自己的布隆过滤器，但是想要实现一个高效健壮的布隆过滤器就需要比较
@@ -128,18 +132,18 @@ print 'apple' in bf
 </p>
 </div>
 </div>
-<div id="outline-container-org379591a" class="outline-2">
-<h2 id="org379591a">结果</h2>
-<div class="outline-text-2" id="text-org379591a">
+<div id="outline-container-orgd347f07" class="outline-2">
+<h2 id="orgd347f07">结果</h2>
+<div class="outline-text-2" id="text-orgd347f07">
 <p>
 原理就说得差不多了，要想对布隆过滤器有更深的认识，还需要更多的实战。多写，多思
 考。 Enjoy Python,Enjoy Crawler :)
 </p>
 </div>
 </div>
-<div id="outline-container-orgcd61154" class="outline-2">
-<h2 id="orgcd61154">参考</h2>
-<div class="outline-text-2" id="text-orgcd61154">
+<div id="outline-container-org8fa6c1e" class="outline-2">
+<h2 id="org8fa6c1e">参考</h2>
+<div class="outline-text-2" id="text-org8fa6c1e">
 <ul class="org-ul">
 <li><a href="https://llimllib.github.io/bloomfilter-tutorial/">https://llimllib.github.io/bloomfilter-tutorial/</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Bloom_filter">https://en.wikipedia.org/wiki/Bloom_filter</a></li>
@@ -147,18 +151,15 @@ print 'apple' in bf
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-04-09</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/python/">python</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -170,29 +171,26 @@ print 'apple' in bf
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

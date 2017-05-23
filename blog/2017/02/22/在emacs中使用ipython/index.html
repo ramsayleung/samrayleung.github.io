@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>在Emacs中使用Ipython - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="Use Ipython in Emasc" />
-        <meta name="keywords" content="emacs,ipython" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="Use Ipython in Emasc" />
+    <meta name="keywords" content="emacs,ipython" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>在Emacs中使用Ipython</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                
-<div id="outline-container-org3dbbdbb" class="outline-2">
-<h2 id="org3dbbdbb">Emacs Ipython 输出错误</h2>
-<div class="outline-text-2" id="text-org3dbbdbb">
+<div class="post">
+<h1>在Emacs中使用Ipython</h1>
+
+<div id="outline-container-org15cfd69" class="outline-2">
+<h2 id="org15cfd69">Emacs Ipython 输出错误</h2>
+<div class="outline-text-2" id="text-org15cfd69">
 <p>
 在Emacs 运行 <b>run-python</b> 的时候，报错了，如下
 </p>
@@ -53,9 +57,9 @@
 <hr />
 </div>
 
-<div id="outline-container-org777a87a" class="outline-3">
-<h3 id="org777a87a">Update 2017-3-15</h3>
-<div class="outline-text-3" id="text-org777a87a">
+<div id="outline-container-org557151a" class="outline-3">
+<h3 id="org557151a">Update 2017-3-15</h3>
+<div class="outline-text-3" id="text-org557151a">
 <p>
 在添加了 <b>--simple-promp -i</b> 参数以后，虽说乱码的问题解决了，但是新的问题又出现了
 在Ipython 里面是没法无法输入多行内容的，即使是一个简单的循环，详情查看这条issue
@@ -69,12 +73,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgfed7edd" class="outline-2">
-<h2 id="orgfed7edd">Emacs Ipython 的使用优化</h2>
-<div class="outline-text-2" id="text-orgfed7edd">
-</div><div id="outline-container-orge33f260" class="outline-3">
-<h3 id="orge33f260">python-pop</h3>
-<div class="outline-text-3" id="text-orge33f260">
+<div id="outline-container-org3f411b7" class="outline-2">
+<h2 id="org3f411b7">Emacs Ipython 的使用优化</h2>
+<div class="outline-text-2" id="text-org3f411b7">
+</div><div id="outline-container-org9c999f8" class="outline-3">
+<h3 id="org9c999f8">python-pop</h3>
+<div class="outline-text-3" id="text-org9c999f8">
 <p>
 因为我之前使用Emacs的时候，是使用Spacemacs的配置的，但是后来觉得还是自己的
 配置用的更舒服，所以又切换回自己的配置，但是我还是很想念Spacemacs的一些绑定
@@ -109,9 +113,9 @@ similar to shell-pop"
 </p>
 </div>
 </div>
-<div id="outline-container-orgc4c7265" class="outline-3">
-<h3 id="orgc4c7265">Ipython History</h3>
-<div class="outline-text-3" id="text-orgc4c7265">
+<div id="outline-container-org6799151" class="outline-3">
+<h3 id="org6799151">Ipython History</h3>
+<div class="outline-text-3" id="text-org6799151">
 <p>
 我在普通的Shell使用Ipython的时候，很自然地使用上下方向键翻到上一条/下一条
 执行的命令，因为shell的使用习惯就是这样滴，但是在Emacs里面使用Ipython,上下
@@ -132,18 +136,15 @@ Enjoy Emacs :)
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a>, <a href="/tags/python/">python</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -155,29 +156,26 @@ Enjoy Emacs :)
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

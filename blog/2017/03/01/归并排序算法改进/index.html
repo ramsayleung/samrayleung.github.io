@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>归并排序算法改进 - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An introduction about how to improve merge-sort algorithms" />
-        <meta name="keywords" content="sort,algorithms" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An introduction about how to improve merge-sort algorithms" />
+    <meta name="keywords" content="sort,algorithms" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>归并排序算法改进</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <p>
+<div class="post">
+<h1>归并排序算法改进</h1>
+<p>
 最近笔者在阅读 <a href="http://algs4.cs.princeton.edu/home/">算法</a> ,重温经典数据结构和算法，毕竟一直以来的说法是程序就是数据结
 构＋算法归并算法所需的时间和NlgN成正比，所以可以用归并算法处理数百万甚至更大规模
 的数据，但是归并算法也是存在不足之处的，需要额外的空间来完成排序，而且空间和N的
 大小也是成正比的
 </p>
-<div id="outline-container-orgb4dc1e4" class="outline-2">
-<h2 id="orgb4dc1e4">优化</h2>
-<div class="outline-text-2" id="text-orgb4dc1e4">
+<div id="outline-container-orgebf51df" class="outline-2">
+<h2 id="orgebf51df">优化</h2>
+<div class="outline-text-2" id="text-orgebf51df">
 <p>
 <b>算法</b> 中有提到可以通过一些细致的修改实现大幅度缩短归并排序的运行时间
 </p>
 </div>
-<div id="outline-container-org4304db7" class="outline-3">
-<h3 id="org4304db7">对小规模子数组使用插入排序</h3>
-<div class="outline-text-3" id="text-org4304db7">
+<div id="outline-container-orgb44a2d6" class="outline-3">
+<h3 id="orgb44a2d6">对小规模子数组使用插入排序</h3>
+<div class="outline-text-3" id="text-orgb44a2d6">
 <p>
 因为递归会使小规模问题中的方法被频繁调用，所以改进对它们的处理方法就能改进
 整个算法。对于小数组可以使用插入排序或者选择排序来避免递归调用。<a href="https://github.com/samrayleung/AlgorithmsCode">完整代码</a>
 </p>
 </div>
-<div id="outline-container-org6ab9c5d" class="outline-4">
-<h4 id="org6ab9c5d">未改进归并排序</h4>
-<div class="outline-text-4" id="text-org6ab9c5d">
+<div id="outline-container-org2a85f4e" class="outline-4">
+<h4 id="org2a85f4e">未改进归并排序</h4>
+<div class="outline-text-4" id="text-org2a85f4e">
 <div class="org-src-container">
 <pre class="src src-java">public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -65,9 +69,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org9d59d69" class="outline-4">
-<h4 id="org9d59d69">改进后归并排序</h4>
-<div class="outline-text-4" id="text-org9d59d69">
+<div id="outline-container-orgabb92ed" class="outline-4">
+<h4 id="orgabb92ed">改进后归并排序</h4>
+<div class="outline-text-4" id="text-orgabb92ed">
 <div class="org-src-container">
 <pre class="src src-java">public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -93,54 +97,54 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org0e9bf1e" class="outline-4">
-<h4 id="org0e9bf1e">测试1</h4>
-<div class="outline-text-4" id="text-org0e9bf1e">
+<div id="outline-container-org9e4e0e4" class="outline-4">
+<h4 id="org9e4e0e4">测试1</h4>
+<div class="outline-text-4" id="text-org9e4e0e4">
 <p>
 对100*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100*1000-1.png" alt="100*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org9bf26d0" class="outline-4">
-<h4 id="org9bf26d0">测试2</h4>
-<div class="outline-text-4" id="text-org9bf26d0">
+<div id="outline-container-org8ce0f4c" class="outline-4">
+<h4 id="org8ce0f4c">测试2</h4>
+<div class="outline-text-4" id="text-org8ce0f4c">
 <p>
 对1000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/1000*1000-1.png" alt="1000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org054f889" class="outline-4">
-<h4 id="org054f889">测试3</h4>
-<div class="outline-text-4" id="text-org054f889">
+<div id="outline-container-org4fc09f9" class="outline-4">
+<h4 id="org4fc09f9">测试3</h4>
+<div class="outline-text-4" id="text-org4fc09f9">
 <p>
 对10000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/10000*1000-1.png" alt="10000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-orgac065ea" class="outline-4">
-<h4 id="orgac065ea">测试4</h4>
-<div class="outline-text-4" id="text-orgac065ea">
+<div id="outline-container-org7f5abcc" class="outline-4">
+<h4 id="org7f5abcc">测试4</h4>
+<div class="outline-text-4" id="text-org7f5abcc">
 <p>
 对100000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100000*1000-1.png" alt="100000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org2194403" class="outline-4">
-<h4 id="org2194403">测试5</h4>
-<div class="outline-text-4" id="text-org2194403">
+<div id="outline-container-org6c397f9" class="outline-4">
+<h4 id="org6c397f9">测试5</h4>
+<div class="outline-text-4" id="text-org6c397f9">
 <p>
 对500000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/500000*1000-1.png" alt="500000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org4fc1ee5" class="outline-4">
-<h4 id="org4fc1ee5">小结</h4>
-<div class="outline-text-4" id="text-org4fc1ee5">
+<div id="outline-container-org7719b7b" class="outline-4">
+<h4 id="org7719b7b">小结</h4>
+<div class="outline-text-4" id="text-org7719b7b">
 <p>
 由于篇幅问题，笔者无法将所有的测试结果都展示出来，但是从上面的结果，可以看出
 对于小数组，使用插入排序的确对性能有一定幅度提高(最开始的测试可能因为数据量
@@ -150,18 +154,18 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org8e4f9d8" class="outline-3">
-<h3 id="org8e4f9d8">测试数组是否已经有序</h3>
-<div class="outline-text-3" id="text-org8e4f9d8">
+<div id="outline-container-org3322bf1" class="outline-3">
+<h3 id="org3322bf1">测试数组是否已经有序</h3>
+<div class="outline-text-3" id="text-org3322bf1">
 <p>
 可以添加一个判断条件，如果 a[mid]小于等于 a[mid+1],便可认为数组已经有序并跳过
 <i>merge</i> 方法。这个改动不影响排序的递归调用，但是任意有序的子数组算法的运行时
 间都变成线性的了
 </p>
 </div>
-<div id="outline-container-org2a313da" class="outline-4">
-<h4 id="org2a313da">未改进归并排序</h4>
-<div class="outline-text-4" id="text-org2a313da">
+<div id="outline-container-orgef3a5a5" class="outline-4">
+<h4 id="orgef3a5a5">未改进归并排序</h4>
+<div class="outline-text-4" id="text-orgef3a5a5">
 <div class="org-src-container">
 <pre class="src src-java">public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -176,9 +180,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org04ca616" class="outline-4">
-<h4 id="org04ca616">改进后归并排序</h4>
-<div class="outline-text-4" id="text-org04ca616">
+<div id="outline-container-org2be6818" class="outline-4">
+<h4 id="org2be6818">改进后归并排序</h4>
+<div class="outline-text-4" id="text-org2be6818">
 <div class="org-src-container">
 <pre class="src src-java">public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -200,54 +204,54 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb53320" class="outline-4">
-<h4 id="orgbb53320">测试1</h4>
-<div class="outline-text-4" id="text-orgbb53320">
+<div id="outline-container-org44f0ac0" class="outline-4">
+<h4 id="org44f0ac0">测试1</h4>
+<div class="outline-text-4" id="text-org44f0ac0">
 <p>
 对100*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100*1000-2.png" alt="100*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf7c4bb6" class="outline-4">
-<h4 id="orgf7c4bb6">测试2</h4>
-<div class="outline-text-4" id="text-orgf7c4bb6">
+<div id="outline-container-org2ecebff" class="outline-4">
+<h4 id="org2ecebff">测试2</h4>
+<div class="outline-text-4" id="text-org2ecebff">
 <p>
 对1000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/1000*1000-2.png" alt="1000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org077a196" class="outline-4">
-<h4 id="org077a196">测试3</h4>
-<div class="outline-text-4" id="text-org077a196">
+<div id="outline-container-orgfeb3fd9" class="outline-4">
+<h4 id="orgfeb3fd9">测试3</h4>
+<div class="outline-text-4" id="text-orgfeb3fd9">
 <p>
 对10000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/10000*1000-2.png" alt="10000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org97a18b7" class="outline-4">
-<h4 id="org97a18b7">测试4</h4>
-<div class="outline-text-4" id="text-org97a18b7">
+<div id="outline-container-org3563f46" class="outline-4">
+<h4 id="org3563f46">测试4</h4>
+<div class="outline-text-4" id="text-org3563f46">
 <p>
 对100000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100000*1000-2.png" alt="100000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org671477b" class="outline-4">
-<h4 id="org671477b">测试5</h4>
-<div class="outline-text-4" id="text-org671477b">
+<div id="outline-container-orga4d78df" class="outline-4">
+<h4 id="orga4d78df">测试5</h4>
+<div class="outline-text-4" id="text-orga4d78df">
 <p>
 对500000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/500000*1000-2.png" alt="500000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org2eb385f" class="outline-4">
-<h4 id="org2eb385f">小结</h4>
-<div class="outline-text-4" id="text-org2eb385f">
+<div id="outline-container-org86ab7cc" class="outline-4">
+<h4 id="org86ab7cc">小结</h4>
+<div class="outline-text-4" id="text-org86ab7cc">
 <p>
 从上面的结果可以看出，只是添加了一个判断数组是否已经有序的条件，算法性能就优化了
 大概20%左右(未经过精确数据验证),不得不说真的令人惊讶。
@@ -260,9 +264,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org572252a" class="outline-3">
-<h3 id="org572252a">参考</h3>
-<div class="outline-text-3" id="text-org572252a">
+<div id="outline-container-org35a46da" class="outline-3">
+<h3 id="org35a46da">参考</h3>
+<div class="outline-text-3" id="text-org35a46da">
 <p>
 <a href="http://algs4.cs.princeton.edu/home/h">http://algs4.cs.princeton.edu/home/h</a>
 </p>
@@ -270,18 +274,15 @@
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-03-01</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a>, <a href="/tags/algorithms/">algorithms</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -293,29 +294,26 @@
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

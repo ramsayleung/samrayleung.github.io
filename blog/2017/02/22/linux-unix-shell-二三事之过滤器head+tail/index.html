@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Linux/Unix Shell 二三事之过滤器head+tail - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An introduction about head and tail" />
-        <meta name="keywords" content="head,tail,shell,linux" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An introduction about head and tail" />
+    <meta name="keywords" content="head,tail,shell,linux" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Linux/Unix Shell 二三事之过滤器head+tail</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <blockquote>
+<div class="post">
+<h1>Linux/Unix Shell 二三事之过滤器head+tail</h1>
+<blockquote>
 <p>
 head - output the first part of files
 tail - output the last part of files
@@ -40,9 +44,9 @@ tail - output the last part of files
 可以满足你的要求，分别是 <b>head</b> 和 <b>tail</b>.顾名思义，head 选取数据的开头部分
 tail 是选取数据的结尾部分
 </p>
-<div id="outline-container-orgfb4f0fd" class="outline-2">
-<h2 id="orgfb4f0fd">用法</h2>
-<div class="outline-text-2" id="text-orgfb4f0fd">
+<div id="outline-container-orga5fef9f" class="outline-2">
+<h2 id="orga5fef9f">用法</h2>
+<div class="outline-text-2" id="text-orga5fef9f">
 <p>
 当把 <b>head</b> <b>tail</b> 当作过滤器来使用的时候，用法很简单
 </p>
@@ -65,17 +69,17 @@ $ tail [-n line] data
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa129a8" class="outline-2">
-<h2 id="orgfa129a8">惊艳点</h2>
-<div class="outline-text-2" id="text-orgfa129a8">
+<div id="outline-container-orgfa079db" class="outline-2">
+<h2 id="orgfa079db">惊艳点</h2>
+<div class="outline-text-2" id="text-orgfa079db">
 <p>
 你可能觉得 <b>head</b> <b>tail</b> 两个命令很简单，似乎用处不大。是的，就笔者一直所介绍的
 那样，单个unix命令只是完成一个特定的工作，但是当它们组合起来的时候，就很威力无穷了
 </p>
 </div>
-<div id="outline-container-orgc251575" class="outline-3">
-<h3 id="orgc251575">场景1</h3>
-<div class="outline-text-3" id="text-orgc251575">
+<div id="outline-container-org4ad6250" class="outline-3">
+<h3 id="org4ad6250">场景1</h3>
+<div class="outline-text-3" id="text-org4ad6250">
 <p>
 假如你要生成一串密钥来加密你的某个文件，这是很常见的需求，你会怎么办，用
 python 或者 java 写一个随机数函数来实现么？无需，你用简单的过滤器加Linux/Unix
@@ -92,9 +96,9 @@ python 或者 java 写一个随机数函数来实现么？无需，你用简单�
 </p>
 </div>
 </div>
-<div id="outline-container-org603be0d" class="outline-3">
-<h3 id="org603be0d">场景2</h3>
-<div class="outline-text-3" id="text-org603be0d">
+<div id="outline-container-orge190cd5" class="outline-3">
+<h3 id="orge190cd5">场景2</h3>
+<div class="outline-text-3" id="text-orge190cd5">
 <p>
 在日常的开发或者运行环境中，日志是必不可少滴，但是日志是不断产生新的数据的,
 所以有时候就会出现用编辑器打开日志的时候，就会出现，编辑器不断提醒你文件已经
@@ -128,9 +132,9 @@ python 或者 java 写一个随机数函数来实现么？无需，你用简单�
 </div>
 </div>
 </div>
-<div id="outline-container-org981b66e" class="outline-2">
-<h2 id="org981b66e">总结</h2>
-<div class="outline-text-2" id="text-org981b66e">
+<div id="outline-container-orgfedcea5" class="outline-2">
+<h2 id="orgfedcea5">总结</h2>
+<div class="outline-text-2" id="text-orgfedcea5">
 <p>
 要掌握更多的用法还是要查看文档滴：
 </p>
@@ -144,18 +148,15 @@ Enjoy Shell :)
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -167,29 +168,26 @@ Enjoy Shell :)
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

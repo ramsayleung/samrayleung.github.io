@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Linux/Unix Shell 二三事之神器percol - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="An introduction about percol" />
-        <meta name="keywords" content="shell,percol,linux" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="An introduction about percol" />
+    <meta name="keywords" content="shell,percol,linux" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Linux/Unix Shell 二三事之神器percol</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <p>
+<div class="post">
+<h1>Linux/Unix Shell 二三事之神器percol</h1>
+<p>
 <a href="https://github.com/mooz/percol">Percol</a> 是Emacs 的一个非常优秀package:js2-mode作者mooz 的又一力作得益于Unix Shell
 的管道和重定向设计理念，percol 所有的输入输出变得可交互 percol 给笔者一种很熟悉
 的感觉，就是 Eamcs 中helm 增量补全 (incremental completion)的感觉，真的可以10倍
 提高工作效率。
 </p>
-<div id="outline-container-orgac8189b" class="outline-2">
-<h2 id="orgac8189b">例子</h2>
-<div class="outline-text-2" id="text-orgac8189b">
+<div id="outline-container-org3305a92" class="outline-2">
+<h2 id="org3305a92">例子</h2>
+<div class="outline-text-2" id="text-org3305a92">
 <p>
 假如你要用git 切换分支，但是分支很多，你不能记住你要切换的分支的名字。那么有percol
 你可以：
@@ -95,9 +99,9 @@ fi
 </pre>
 </div>
 </div>
-<div id="outline-container-org5ba7d62" class="outline-3">
-<h3 id="org5ba7d62">运行截图</h3>
-<div class="outline-text-3" id="text-org5ba7d62">
+<div id="outline-container-org48451f7" class="outline-3">
+<h3 id="org48451f7">运行截图</h3>
+<div class="outline-text-3" id="text-org48451f7">
 
 <div class="figure">
 <p><img src="/assets/blog/2017/02/22/linux-unix-shell-二三事之神器percol/percol1.png" alt="percol1.png" /> 
@@ -145,18 +149,15 @@ Enjoy Shell :)
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -168,29 +169,26 @@ Enjoy Shell :)
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>

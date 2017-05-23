@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <title>Linux/Unix Shell 二三事之过滤器grep - 陌上人如玉,公子世无双</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
-        <meta name="description" content="an introduction about grep" />
-        <meta name="keywords" content="shell,linux,grep" />
-    <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <style type="text/css"></style>
-</head>
-
+    <meta name="description" content="an introduction about grep" />
+    <meta name="keywords" content="shell,linux,grep" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
   <body class="container">
-    <nav class="main-nav">
-        <a href="/blog">Archive</a>
-        <a href="/tags">Tag</a>
-        <a href="/about/">About</a>
-        <a class="cta" href="https://github.com/samrayleung">GitHub</a>
-    </nav>
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
 
 <div>
-    <section id="wrapper">
-        <article class="post">
-            <header>
-                    <h1>Linux/Unix Shell 二三事之过滤器grep</h1>
-            </header>
-            <br />
-            <section id="post-body">
-                <blockquote>
+<div class="post">
+<h1>Linux/Unix Shell 二三事之过滤器grep</h1>
+<blockquote>
 <p>
 grep - print  lines matching a pattern
 </p>
@@ -38,12 +42,12 @@ grep - print  lines matching a pattern
 搜索特定内容或者模式的工具(配合正则表达式“食用”，味道更佳 :))现在就来一起看看
 <b>grep</b> 的用法
 </p>
-<div id="outline-container-org972f372" class="outline-2">
-<h2 id="org972f372">基本用法</h2>
-<div class="outline-text-2" id="text-org972f372">
-</div><div id="outline-container-org75c98ae" class="outline-3">
-<h3 id="org75c98ae">基础用法</h3>
-<div class="outline-text-3" id="text-org75c98ae">
+<div id="outline-container-orga95db10" class="outline-2">
+<h2 id="orga95db10">基本用法</h2>
+<div class="outline-text-2" id="text-orga95db10">
+</div><div id="outline-container-orgfcbbf92" class="outline-3">
+<h3 id="orgfcbbf92">基础用法</h3>
+<div class="outline-text-3" id="text-orgfcbbf92">
 <p>
 现在假设有一个简单的文本文件(双城记开头)tinytale.txt,内容如下
 </p>
@@ -73,9 +77,9 @@ it was the season of light it was the season of darkness
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc46c4e9" class="outline-3">
-<h3 id="orgc46c4e9">结合正则表达式</h3>
-<div class="outline-text-3" id="text-orgc46c4e9">
+<div id="outline-container-org3594889" class="outline-3">
+<h3 id="org3594889">结合正则表达式</h3>
+<div class="outline-text-3" id="text-org3594889">
 <p>
 默认情况下， <b>grep</b> 是开启正则表达式的模式的，所以你可以直接在文件搜索中使用
 正则表达式。现在在文件中搜索以字母 <b>e</b> 开头后接三个字符，然后以 <b>h</b> 结尾的单词：
@@ -100,9 +104,9 @@ it was the epoch of belief it was the epoch of incredulity
 </p>
 </div>
 </div>
-<div id="outline-container-orga2c6049" class="outline-3">
-<h3 id="orga2c6049">统计出现的次数</h3>
-<div class="outline-text-3" id="text-orga2c6049">
+<div id="outline-container-orga2c6bd3" class="outline-3">
+<h3 id="orga2c6bd3">统计出现的次数</h3>
+<div class="outline-text-3" id="text-orga2c6bd3">
 <p>
 有时，如果你需要统计某种模式或者某个单词出现的个数，你会发现 <b>grep</b> 非常有用；
 要实现该功能，只需给 <b>grep</b> 添加 <b>-c</b> 参数；例如统计单词 <b>the</b> 出现的个数：
@@ -122,9 +126,9 @@ it was the epoch of belief it was the epoch of incredulity
 </p>
 </div>
 </div>
-<div id="outline-container-org0626dcc" class="outline-3">
-<h3 id="org0626dcc">忽略大小写</h3>
-<div class="outline-text-3" id="text-org0626dcc">
+<div id="outline-container-orga53fef1" class="outline-3">
+<h3 id="orga53fef1">忽略大小写</h3>
+<div class="outline-text-3" id="text-orga53fef1">
 <p>
 前面提到， <b>grep</b> 默认是使用正则表达式来搜索文件的，所以 <b>grep</b> 是区分大小写的；
 如果你想修改 <b>grep</b> 的默认行为来忽略大小写，你可以添加 <b>-i</b> 参数
@@ -150,9 +154,9 @@ IT WAS THE SPRING OF HOPE IT WAS THE WINTER OF DESPAIRE
 </div>
 </div>
 </div>
-<div id="outline-container-org5fe3bd1" class="outline-2">
-<h2 id="org5fe3bd1">搜索多个文件</h2>
-<div class="outline-text-2" id="text-org5fe3bd1">
+<div id="outline-container-orgde8e700" class="outline-2">
+<h2 id="orgde8e700">搜索多个文件</h2>
+<div class="outline-text-2" id="text-orgde8e700">
 <p>
 上面搜索的都只是单个文件，而 grep 可以让你同时搜索多个文件；现在就来看看怎么搜
 索多个文件吧。下面两种写法结果都是一样的，但是笔者个人推崇第一种，因为可以输入
@@ -192,9 +196,9 @@ tale.txt:herself into the show of a belief that they would soon be reunited
 <b>grep</b> 搜索*/tmp* 下所有的 <b>.txt</b> 文件。
 </p>
 </div>
-<div id="outline-container-org3a374f5" class="outline-3">
-<h3 id="org3a374f5">递归搜索</h3>
-<div class="outline-text-3" id="text-org3a374f5">
+<div id="outline-container-org38ddf1f" class="outline-3">
+<h3 id="org38ddf1f">递归搜索</h3>
+<div class="outline-text-3" id="text-org38ddf1f">
 <p>
 你也可以使用 <b>grep</b> 递归搜索目录；你只需在指定目录后，添加 <b>-R</b> , <b>grep</b> 就会
 递归搜索指定目录的所有子目录。笔者已经把当前目录切换到 <b>/tmp</b>:
@@ -227,9 +231,9 @@ tale.txt:herself into the show of a belief that they would soon be reunited
 </div>
 </div>
 </div>
-<div id="outline-container-org4dff794" class="outline-2">
-<h2 id="org4dff794">在标准输入搜索</h2>
-<div class="outline-text-2" id="text-org4dff794">
+<div id="outline-container-org4643299" class="outline-2">
+<h2 id="org4643299">在标准输入搜索</h2>
+<div class="outline-text-2" id="text-org4643299">
 <p>
 <b>grep</b> 也是过滤器，所以 <b>grep</b> 自然而然具有处理标准输入输出的能力了；处理其他
 命令的输出结果也是 <b>grep</b> 非常常用的场景之一。假设你现在的 <b>vim</b> 突然卡顿，挂了(:))
@@ -256,9 +260,9 @@ samray   21939     1  0 19:42 ?        00:00:00 gvim
 </p>
 </div>
 </div>
-<div id="outline-container-org8df249d" class="outline-2">
-<h2 id="org8df249d">逆搜索</h2>
-<div class="outline-text-2" id="text-org8df249d">
+<div id="outline-container-orgb0f0160" class="outline-2">
+<h2 id="orgb0f0160">逆搜索</h2>
+<div class="outline-text-2" id="text-orgb0f0160">
 <p>
 现在执行的搜索都是匹配搜索，即将匹配的内容显示出来，而 <b>grep</b> 还有逆搜索的功能 (invert Searches)
 就是将不包含有指定模式的内容显示出来。该功能在用来修改有很多注释的配置文件时特别有用；
@@ -495,9 +499,9 @@ http {
 </p>
 </div>
 </div>
-<div id="outline-container-orgb1cee27" class="outline-2">
-<h2 id="orgb1cee27">小结</h2>
-<div class="outline-text-2" id="text-orgb1cee27">
+<div id="outline-container-org8682bfe" class="outline-2">
+<h2 id="org8682bfe">小结</h2>
+<div class="outline-text-2" id="text-org8682bfe">
 <p>
 在以前 <b>grep</b> 是 <b>hacker</b> 工具箱里面审查源代码必不可少的工具之一，但是随着技术的
 发展，似乎对比其他同类型的工具， <b>grep</b> 的性能已经难尽人意，特别是对比 <b>ag</b> 这个
@@ -515,18 +519,15 @@ Enjoy Shell :)
 </div>
 </div>
 
-            </section>
-    </section>
 </div>
-
+</div>
     <div>
-    <section id="wrapper">
       <div class="post-meta">
         <span title="post date" class="post-info">2017-03-13</span>
+        <span title="last modification date" class="post-info">2017-05-23</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a>, <a href="/tags/linux/">linux</a></span>
+        <span title="author" class="post-info">Samray</span>
       </div>
-      <br />
-      <br />
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
@@ -538,29 +539,26 @@ Enjoy Shell :)
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
-      <div align="center">
-      <footer id="footer">
-        <p class="small">
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
         </p>
-        <br />
-      </footer>
       </div>
-      </section>
     </div>
 
   </body>
