@@ -44,9 +44,9 @@ B:打开Vim,修改代码，保存，退出
 有时候，经常看到社区里面有人吐嘈Emacs 什么都好，就是启动时间太长了，其实
 是存在一些技巧来缩短加载时间的
 </p>
-<div id="outline-container-org59b2eba" class="outline-2">
-<h2 id="org59b2eba">技巧1</h2>
-<div class="outline-text-2" id="text-org59b2eba">
+<div id="outline-container-org7d14488" class="outline-2">
+<h2 id="org7d14488">技巧1</h2>
+<div class="outline-text-2" id="text-org7d14488">
 <p>
 在你的 <b>.emacs</b> 或者相应的初始化文件里面添加如下代码
 </p>
@@ -67,9 +67,9 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-orgf640e37" class="outline-2">
-<h2 id="orgf640e37">技巧2</h2>
-<div class="outline-text-2" id="text-orgf640e37">
+<div id="outline-container-orgb6fab21" class="outline-2">
+<h2 id="orgb6fab21">技巧2</h2>
+<div class="outline-text-2" id="text-orgb6fab21">
 <p>
 <b>(let((file-name-hander-alist nil))init.file)</b> 包裹(wrap)你的初始化文件，即：
 </p>
@@ -93,18 +93,18 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-org69f8536" class="outline-2">
-<h2 id="org69f8536">技巧3</h2>
-<div class="outline-text-2" id="text-org69f8536">
+<div id="outline-container-orgf8c74ef" class="outline-2">
+<h2 id="orgf8c74ef">技巧3</h2>
+<div class="outline-text-2" id="text-orgf8c74ef">
 <p>
 Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延迟，让笔者的Emacs
 启动加载时间减少一半，因为笔者用 <b>use-package</b> 这个macro,而 <b>use-package</b> 又集
 成了延迟加载的功能，所以笔者就直接拿自己的代码举例了
 </p>
 </div>
-<div id="outline-container-orgcd9dfa2" class="outline-3">
-<h3 id="orgcd9dfa2">:after</h3>
-<div class="outline-text-3" id="text-orgcd9dfa2">
+<div id="outline-container-org160c93b" class="outline-3">
+<h3 id="org160c93b">:after</h3>
+<div class="outline-text-3" id="text-org160c93b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;;; Export to twitter bootstrap
 (use-package ox-twbs
@@ -119,9 +119,9 @@ Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延�
 </p>
 </div>
 </div>
-<div id="outline-container-org4acb85b" class="outline-3">
-<h3 id="org4acb85b">:commands</h3>
-<div class="outline-text-3" id="text-org4acb85b">
+<div id="outline-container-org4d81026" class="outline-3">
+<h3 id="org4d81026">:commands</h3>
+<div class="outline-text-3" id="text-org4d81026">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package avy
   :commands (avy-goto-char avy-goto-line)
@@ -142,9 +142,9 @@ and defers loading of the module until they are used
 </p>
 </div>
 </div>
-<div id="outline-container-orga61f97b" class="outline-3">
-<h3 id="orga61f97b">:bind :mode</h3>
-<div class="outline-text-3" id="text-orga61f97b">
+<div id="outline-container-org20998fc" class="outline-3">
+<h3 id="org20998fc">:bind :mode</h3>
+<div class="outline-text-3" id="text-org20998fc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package hi-lock
   :bind (("M-o l" . highlight-lines-matching-regexp)

@@ -34,9 +34,9 @@
 <p>
 分享一下平时工作生活中编写的一些脚本片段(一直更新). 适用于 OS X 和 Linux
 </p>
-<div id="outline-container-org8a152a8" class="outline-2">
-<h2 id="org8a152a8">准备工作</h2>
-<div class="outline-text-2" id="text-org8a152a8">
+<div id="outline-container-org4dc17a2" class="outline-2">
+<h2 id="org4dc17a2">准备工作</h2>
+<div class="outline-text-2" id="text-org4dc17a2">
 <p>
 因为笔者比较多的脚本都是基于 <b>percol</b> 这个神器，所以需要先安装 <b>percol</b>, 如果
 不了解 <b>percol</b> 的话，可以翻看一下笔者之前的文章 <a href="http://samrayleung.github.io/blog/2017/02/22/linux-unix-shell-%E4%BA%8C%E4%B8%89%E4%BA%8B%E4%B9%8B%E7%A5%9E%E5%99%A8percol/">Linux/Unix Shell 二三事之神器
@@ -52,12 +52,12 @@ percol</a> . 笔者一般将写好的函数 source 命令添加到 Shell. 例如
 </p>
 </div>
 </div>
-<div id="outline-container-org93a9c7c" class="outline-2">
-<h2 id="org93a9c7c">有趣的脚本</h2>
-<div class="outline-text-2" id="text-org93a9c7c">
-</div><div id="outline-container-orgf7b38c9" class="outline-3">
-<h3 id="orgf7b38c9">SSH 免密码登录</h3>
-<div class="outline-text-3" id="text-orgf7b38c9">
+<div id="outline-container-org89b7c0d" class="outline-2">
+<h2 id="org89b7c0d">有趣的脚本</h2>
+<div class="outline-text-2" id="text-org89b7c0d">
+</div><div id="outline-container-org47cc734" class="outline-3">
+<h3 id="org47cc734">SSH 免密码登录</h3>
+<div class="outline-text-3" id="text-org47cc734">
 <p>
 SSH 基本就是登录远程服务器的标配了，只是每次登录服务器都要输入密码，未免太麻
 烦了(好吧，笔者拥有懒惰这个美德)，所以我决定配置 SSH 的免密码登录。代码如下：
@@ -124,9 +124,9 @@ SSH 基本就是登录远程服务器的标配了，只是每次登录服务器�
 </p>
 </div>
 </div>
-<div id="outline-container-org84f51e4" class="outline-3">
-<h3 id="org84f51e4">生成若干位密钥</h3>
-<div class="outline-text-3" id="text-org84f51e4">
+<div id="outline-container-org65f8b3b" class="outline-3">
+<h3 id="org65f8b3b">生成若干位密钥</h3>
+<div class="outline-text-3" id="text-org65f8b3b">
 <p>
 生成若干位的密钥是常见的需求，得益于 Linux/Unix 命令行强大的过滤器，所以只需
 把命令整理成脚本即可：
@@ -161,9 +161,9 @@ function gkey(){
 </p>
 </div>
 </div>
-<div id="outline-container-orgde2f11d" class="outline-3">
-<h3 id="orgde2f11d">复制命令行输出</h3>
-<div class="outline-text-3" id="text-orgde2f11d">
+<div id="outline-container-org67fc7f7" class="outline-3">
+<h3 id="org67fc7f7">复制命令行输出</h3>
+<div class="outline-text-3" id="text-org67fc7f7">
 <p>
 有时可能需要复制某个命令的输出，一般的做法都是运行某个命令，用鼠标选中，然后
 复制。例如在生成密钥之后，需要复制到项目的配置文件。但是每次都要用鼠标，效率
@@ -206,9 +206,9 @@ function pclip() {
 </p>
 </div>
 </div>
-<div id="outline-container-org15fcdfd" class="outline-3">
-<h3 id="org15fcdfd">复制当前目录</h3>
-<div class="outline-text-3" id="text-org15fcdfd">
+<div id="outline-container-orgf469d6b" class="outline-3">
+<h3 id="orgf469d6b">复制当前目录</h3>
+<div class="outline-text-3" id="text-orgf469d6b">
 <p>
 有时候，笔者需要复制当前目录下某个文件的路径，但是无论是文件管理器，还是在
 Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高且很不方便。所以笔者通
@@ -234,9 +234,9 @@ Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高�
 </p>
 </div>
 </div>
-<div id="outline-container-orgb071693" class="outline-3">
-<h3 id="orgb071693">判断 Unix 系统的版本</h3>
-<div class="outline-text-3" id="text-orgb071693">
+<div id="outline-container-org33d3451" class="outline-3">
+<h3 id="org33d3451">判断 Unix 系统的版本</h3>
+<div class="outline-text-3" id="text-org33d3451">
 <p>
 因为笔者经常需要在不同的 Unix 机器之间切换，例如工作用的 Mac OS X, 另外一台笔
 记本上的 Fedora, 还有一台工作站上的 Arch Linux, 以及各种发行版本的 VPS 等，在
@@ -302,9 +302,9 @@ function GetOSVersion {
 </div>
 </div>
 </div>
-<div id="outline-container-orga958f38" class="outline-3">
-<h3 id="orga958f38">根据不同的发行版本安装软件</h3>
-<div class="outline-text-3" id="text-orga958f38">
+<div id="outline-container-org5bc09c0" class="outline-3">
+<h3 id="org5bc09c0">根据不同的发行版本安装软件</h3>
+<div class="outline-text-3" id="text-org5bc09c0">
 <p>
 刚刚上面的脚本是为了准确判断出所有的 *nix 系统的，但是方便起见，也可以直接使用
 <i>uname</i> 命令
