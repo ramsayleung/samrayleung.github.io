@@ -37,9 +37,9 @@
 因为有太多的选择(但是这也是Java 的强大之处)，现在Java8 又新增了文件的API,所以我
 就对文件IO作了个小结
 </p>
-<div id="outline-container-orgc2299cd" class="outline-2">
-<h2 id="orgc2299cd">Read</h2>
-<div class="outline-text-2" id="text-orgc2299cd">
+<div id="outline-container-org5120133" class="outline-2">
+<h2 id="org5120133">Read</h2>
+<div class="outline-text-2" id="text-org5120133">
 <p>
 我今天的需求是要逐行读写文本文件，我就以此为例子了；测试文件是 <b>/tmp/test.txt</b>
 </p>
@@ -49,9 +49,9 @@ this is a test
 this is another test
 </pre>
 </div>
-<div id="outline-container-org1a46aa8" class="outline-3">
-<h3 id="org1a46aa8">BufferedReader</h3>
-<div class="outline-text-3" id="text-org1a46aa8">
+<div id="outline-container-org8980483" class="outline-3">
+<h3 id="org8980483">BufferedReader</h3>
+<div class="outline-text-3" id="text-org8980483">
 <p>
 虽然已经有了Java8的 <b>Stream</b>,但是经典的东西总是历久弥新的；例如 <b>BufferedReader</b>
 就是JDK1.1就发布了的文件读API (对可能出现的IOException,使用更优雅try-with-resource
@@ -73,9 +73,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orge7266f5" class="outline-3">
-<h3 id="orge7266f5">Scanner</h3>
-<div class="outline-text-3" id="text-orge7266f5">
+<div id="outline-container-orgc2935b2" class="outline-3">
+<h3 id="orgc2935b2">Scanner</h3>
+<div class="outline-text-3" id="text-orgc2935b2">
 <p>
 对发布于JDK1.5的Scanner,大部份Java 程序员都是相当熟悉的，因为总是用它来读取标准输入的数据
 现在只要把从标准输入变为从文件读取数据就可以了
@@ -96,9 +96,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orgb9bc93b" class="outline-3">
-<h3 id="orgb9bc93b">BufferedReader+Stream</h3>
-<div class="outline-text-3" id="text-orgb9bc93b">
+<div id="outline-container-orgf6a48a9" class="outline-3">
+<h3 id="orgf6a48a9">BufferedReader+Stream</h3>
+<div class="outline-text-3" id="text-orgf6a48a9">
 <p>
 <b>Files</b> 类作为Java NIO 的一部分在Java 7被引入，该类提供了一系列操作文件的方法
 而在Java8 又引入了另外有用的特性让Java 开发者可以更方便地操作文件。例如 <b>lines()</b>
@@ -138,9 +138,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org24db3d5" class="outline-3">
-<h3 id="org24db3d5">lines+Stream</h3>
-<div class="outline-text-3" id="text-org24db3d5">
+<div id="outline-container-org7a8060a" class="outline-3">
+<h3 id="org7a8060a">lines+Stream</h3>
+<div class="outline-text-3" id="text-org7a8060a">
 <p>
 也可以直接使用 <b>lines</b> 方法来逐行读取文本文件，只是对比 <b>newBufferedReader</b> +
 <b>Stream</b>,前者颗粒度更细；
@@ -189,17 +189,17 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0b6c4e" class="outline-2">
-<h2 id="orgb0b6c4e">Write</h2>
-<div class="outline-text-2" id="text-orgb0b6c4e">
+<div id="outline-container-orgc73790a" class="outline-2">
+<h2 id="orgc73790a">Write</h2>
+<div class="outline-text-2" id="text-orgc73790a">
 <p>
 我就把测试文件重新写到一个新的文件，实现复制的功能，因为我的文件很小，所以我直接
 把测试独的文件加载到内存
 </p>
 </div>
-<div id="outline-container-org60322d2" class="outline-3">
-<h3 id="org60322d2">BufferedWriter</h3>
-<div class="outline-text-3" id="text-org60322d2">
+<div id="outline-container-org1f25a5b" class="outline-3">
+<h3 id="org1f25a5b">BufferedWriter</h3>
+<div class="outline-text-3" id="text-org1f25a5b">
 <p>
 与 <b>BufferedReader</b> 对应，对文件进行写
 </p>
@@ -250,9 +250,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf774aa" class="outline-3">
-<h3 id="orgcf774aa">Files.write</h3>
-<div class="outline-text-3" id="text-orgcf774aa">
+<div id="outline-container-orgc1362f1" class="outline-3">
+<h3 id="orgc1362f1">Files.write</h3>
+<div class="outline-text-3" id="text-orgc1362f1">
 <p>
 使用 <b>Files.write()</b> 也可以写出相当优雅的代码
 </p>
@@ -280,9 +280,9 @@ Enjoy Java :)
 </div>
 </div>
 </div>
-<div id="outline-container-org6b2ac9a" class="outline-2">
-<h2 id="org6b2ac9a">参考</h2>
-<div class="outline-text-2" id="text-org6b2ac9a">
+<div id="outline-container-orgadf5024" class="outline-2">
+<h2 id="orgadf5024">参考</h2>
+<div class="outline-text-2" id="text-orgadf5024">
 <ul class="org-ul">
 <li><a href="http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/">http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/</a></li>
 <li><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-">http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-</a></li>
