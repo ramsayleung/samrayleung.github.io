@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Linux/Unix Shell 二三事之过滤器grep - 陌上人如玉,公子世无双</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Samray" />
+  <meta name="description" content="an introduction about grep" />
+  <meta name="keywords" content="shell,linux,grep" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+</head>
+
+  <body class="container">
+<header id="header">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+        <div class="container-fluid">
+<div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Blog</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+        </ul>
+</div>
+</div>
+    </nav>
+</body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Linux/Unix Shell 二三事之过滤器grep</h1>
+            <blockquote>
+<p>
+grep - print  lines matching a pattern
+</p>
+</blockquote>
+<p>
+今天笔者想聊聊 <b>grep</b> 这个命令；据说，有Unix/Linux 的地方就会有 <b>grep</b>, 这个可能
+是安装得最广泛的命令之一；那么 <b>grep</b> 是用来干什么的呢？grep 其实是用来在文件中
+搜索特定内容或者模式的工具(配合正则表达式“食用”，味道更佳 :))现在就来一起看看
+<b>grep</b> 的用法
+</p>
+<div id="outline-container-org1d0c31a" class="outline-2">
+<h2 id="org1d0c31a">基本用法</h2>
+<div class="outline-text-2" id="text-org1d0c31a">
+</div><div id="outline-container-orgc4a8263" class="outline-3">
+<h3 id="orgc4a8263">基础用法</h3>
+<div class="outline-text-3" id="text-orgc4a8263">
+<p>
+现在假设有一个简单的文本文件(双城记开头)tinytale.txt,内容如下
+</p>
+<blockquote>
+<p>
+it was the best of times it was the worst of times
+it was the age of wisdom it was age of foolishness
+it was the epoch of belief it was the epoch of incredulity
+it was the season of light it was the season of darkness
+IT WAS THE SPRING OF HOPE IT WAS THE WINTER OF DESPAIRE
+</p>
+</blockquote>
+<p>
+现在开始介绍 <b>grep</b> 的基本用法： <b>grep</b> 的基本用法很简单的，假设笔者想要搜索
+单词 <b>darkness</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep darkness /tmp/tinytale.txt
+</pre>
+</div>
+
+<p>
+输出如下：
+</p>
+<pre class="example">
+it was the season of light it was the season of darkness
+</pre>
+</div>
+</div>
+<div id="outline-container-org2e1c7b2" class="outline-3">
+<h3 id="org2e1c7b2">结合正则表达式</h3>
+<div class="outline-text-3" id="text-org2e1c7b2">
+<p>
+默认情况下， <b>grep</b> 是开启正则表达式的模式的，所以你可以直接在文件搜索中使用
+正则表达式。现在在文件中搜索以字母 <b>e</b> 开头后接三个字符，然后以 <b>h</b> 结尾的单词：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep "e...h" /tmp/tinytale.txt
+</pre>
+</div>
+
+<p>
+输出如下：
+</p>
+<blockquote>
+<pre class="example">
+it was the epoch of belief it was the epoch of incredulity
+</pre>
+</blockquote>
+<p>
+可以看到，正则表达式匹配了 <b>epoch</b> 这个单词。正则表达式的威力无与伦比的，把 <b>grep</b>
+和正则表达式结合起来可以更好地发挥 <b>grep</b> 这个工具的潜力；而本文主要是介绍 <b>grep</b>
+,更多有关正则表达式的用法不细讲了
+</p>
+</div>
+</div>
+<div id="outline-container-org204591c" class="outline-3">
+<h3 id="org204591c">统计出现的次数</h3>
+<div class="outline-text-3" id="text-org204591c">
+<p>
+有时，如果你需要统计某种模式或者某个单词出现的个数，你会发现 <b>grep</b> 非常有用；
+要实现该功能，只需给 <b>grep</b> 添加 <b>-c</b> 参数；例如统计单词 <b>the</b> 出现的个数：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep -c the /tmp/tinytale.txt
+</pre>
+</div>
+<p>
+结果输出如下：
+</p>
+<pre class="example">
+4
+</pre>
+<p>
+文本中包含4个 <b>the</b>
+</p>
+</div>
+</div>
+<div id="outline-container-org0319238" class="outline-3">
+<h3 id="org0319238">忽略大小写</h3>
+<div class="outline-text-3" id="text-org0319238">
+<p>
+前面提到， <b>grep</b> 默认是使用正则表达式来搜索文件的，所以 <b>grep</b> 是区分大小写的；
+如果你想修改 <b>grep</b> 的默认行为来忽略大小写，你可以添加 <b>-i</b> 参数
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep -i the /tmp/tinytale.txt
+</pre>
+</div>
+<p>
+输出结果如下：
+</p>
+<pre class="example">
+it was the best of times it was the worst of times
+it was the age of wisdom it was age of foolishness
+it was the epoch of belief it was the epoch of incredulity
+it was the season of light it was the season of darkness
+IT WAS THE SPRING OF HOPE IT WAS THE WINTER OF DESPAIRE
+</pre>
+<p>
+可以发现 <b>THE</b> 也是可以被 grep 搜索到的；但是如果没有添加 <b>-i</b> ,你只会看到4行输出。
+当然你可以在正则表达式里面添加忽略大小写的模式，只是直接添加 <b>-i</b> 会简单很多。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgafe6f67" class="outline-2">
+<h2 id="orgafe6f67">搜索多个文件</h2>
+<div class="outline-text-2" id="text-orgafe6f67">
+<p>
+上面搜索的都只是单个文件，而 grep 可以让你同时搜索多个文件；现在就来看看怎么搜
+索多个文件吧。下面两种写法结果都是一样的，但是笔者个人推崇第一种，因为可以输入
+更少一些内容 :)
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep belief /tmp/{tinytale.txt,tale.txt}
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-shell">grep belief /tmp/tinytale.txt /tmp/tale.txt
+</pre>
+</div>
+<p>
+输出结果如下：
+</p>
+<pre class="example">
+tinytale.txt:it was the epoch of belief it was the epoch of incredulity
+tale.txt:it was the epoch of belief it was the epoch of incredulity
+tale.txt:pains of by rearing her in the belief that her father was dead
+tale.txt:this was no passive belief but an active weapon which they flashed
+tale.txt:belief in solomon deducting a mere trifle for this slight mistake
+tale.txt:you will bear testimony to what i have said and to your belief in it
+tale.txt:herself into the show of a belief that they would soon be reunited
+</pre>
+<p>
+可以看到， <b>grep</b> 把匹配到单词的那一行内容和对应的文件都显示出来了，你就可以很
+方便地看到搜索结果，并知道匹配单词的来源。如果你也像笔者这样，不想输入那么多的
+内容，你可以使用正则表达式匹配所有的文本文件，如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep belief /tmp/*.txt
+</pre>
+</div>
+<p>
+输出结果也会跟上面一致 (假设你 <b><i>tmp</i></b> 目录下只有两个文本文件); 笔者告诉
+<b>grep</b> 搜索*/tmp* 下所有的 <b>.txt</b> 文件。
+</p>
+</div>
+<div id="outline-container-org3fdff4b" class="outline-3">
+<h3 id="org3fdff4b">递归搜索</h3>
+<div class="outline-text-3" id="text-org3fdff4b">
+<p>
+你也可以使用 <b>grep</b> 递归搜索目录；你只需在指定目录后，添加 <b>-R</b> , <b>grep</b> 就会
+递归搜索指定目录的所有子目录。笔者已经把当前目录切换到 <b>/tmp</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep -R "belief" .
+</pre>
+</div>
+<p>
+输出结果如下：
+</p>
+<pre class="example">
+./tale.txt:it was the epoch of belief it was the epoch of incredulity
+./tale.txt:pains of by rearing her in the belief that her father was dead
+./tale.txt:this was no passive belief but an active weapon which they flashed
+./tale.txt:belief in solomon deducting a mere trifle for this slight mistake
+./tale.txt:you will bear testimony to what i have said and to your belief in it
+./tale.txt:herself into the show of a belief that they would soon be reunited
+./tinytale.txt:it was the epoch of belief it was the epoch of incredulity
+</pre>
+<p>
+结果展示了一系列在当前目录和子目录匹配 <b>belief</b> 的文件。此外你也可以排除掉某些你
+不需要搜索的文件，例如有一个 <b>foo.xml</b> 的文件，里面也可能会有 <b>belief</b> 这个单词，
+但是你就是不想搜索这个文件，或者全部的 <b>.xml</b> 文件，你可以这么玩：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep -R --exclude="*.xml" "belief" .
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8f96cbf" class="outline-2">
+<h2 id="org8f96cbf">在标准输入搜索</h2>
+<div class="outline-text-2" id="text-org8f96cbf">
+<p>
+<b>grep</b> 也是过滤器，所以 <b>grep</b> 自然而然具有处理标准输入输出的能力了；处理其他
+命令的输出结果也是 <b>grep</b> 非常常用的场景之一。假设你现在的 <b>vim</b> 突然卡顿，挂了(:))
+,你想要 <b>kill</b> 掉 <b>vim</b> 的进程，你可以：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ps -e|grep vim
+</pre>
+</div>
+<p>
+结果输出如下：  
+</p>
+<pre class="example">
+samray   21939     1  0 19:42 ?        00:00:00 gvim
+</pre>
+<p>
+其中第一条记录就是你想要搜索的进程了，你运行 <b>kill 21939</b> 就可以杀掉 vim 的进程了；
+因为笔者系统的是图型化界面的 vim, 所以是 gvim.
+</p>
+<hr />
+<p>
+正如笔者之前的文章提到的那样，单纯的过滤器的用处似乎不大，但是如果结合起来就会
+威力无穷至于，如何结合，就需要慢慢探索了。
+</p>
+</div>
+</div>
+<div id="outline-container-org375c7a9" class="outline-2">
+<h2 id="org375c7a9">逆搜索</h2>
+<div class="outline-text-2" id="text-org375c7a9">
+<p>
+现在执行的搜索都是匹配搜索，即将匹配的内容显示出来，而 <b>grep</b> 还有逆搜索的功能 (invert Searches)
+就是将不包含有指定模式的内容显示出来。该功能在用来修改有很多注释的配置文件时特别有用；
+例如常用的服务器软件 <b>nginx</b>  的配置文件是默认是含有很多注释的，如下
+</p>
+<div class="org-src-container">
+<pre class="src src-conf">#user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+    worker_connections 1024;
+    # multi_accept on;
+}
+
+http {
+
+    ##
+    # Basic Settings
+    ##
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    # server_tokens off;
+
+    # server_names_hash_bucket_size 64;
+    # server_name_in_redirect off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ##
+    # SSL Settings
+    ##
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+
+    ##
+    # Logging Settings
+    ##
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" $status $bytes_sent "$http_referer" "$http_user_agent" "$gzip_ratio"';
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    ##
+    # Gzip Settings
+    ##
+
+    gzip on;
+    gzip_disable "msie6";
+
+    # gzip_vary on;
+    # gzip_proxied any;
+    # gzip_comp_level 6;
+    # gzip_buffers 16 8k;
+    # gzip_http_version 1.1;
+    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+    ##
+    # Virtual Host Configs
+    ##
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+
+    ignore_invalid_headers on;
+    client_header_timeout 240;
+    client_body_timeout 240;
+    send_timeout 240;
+    client_max_body_size 100m;
+    proxy_buffer_size 128k;
+    proxy_buffers 8 128k;
+
+    upstream tomcat_server{
+	server 127.0.0.1:8080 fail_timeout=0;
+    }
+
+    upstream gunicorn_server{
+	server 127.0.0.1:5000 fail_timeout=0;
+    }
+    server{
+	server_name 127.0.0.1;
+	listen 443;
+	# ssl on;
+	# ssl_certificate /etc/letsencrypt/live/samray.ren/fullchain.pem;
+	# ssl_certificate_key /etc/letsencrypt/live/samray.ren/privkey.pem;
+	location / {
+
+	    # Forward SSL so that Tomcat knows what to do
+	    proxy_set_header X-Forwarded-Host $host;
+	    proxy_set_header X-Forwarded-Server $host;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_pass http://tomcat_server;
+	    proxy_set_header X-Forwarded-Proto https;
+
+	    proxy_redirect off;
+	    proxy_connect_timeout      240;
+	    proxy_send_timeout         240;
+	    proxy_read_timeout         240;
+
+	}
+
+	location /test{
+	    return 402;
+	}
+
+	location /weixin {
+	    # try_files $uri @proxy_to_app;
+	    return 402;
+	}
+	location @proxy_to_app {
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header Host $http_host;
+	    proxy_redirect off;
+	    proxy_pass http://gunicorn_server;
+
+	}
+    }
+
+}
+
+
+#mail {
+#	# See sample authentication script at:
+#	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+# 
+#	# auth_http localhost/auth.php;
+#	# pop3_capabilities "TOP" "USER";
+#	# imap_capabilities "IMAP4rev1" "UIDPLUS";
+# 
+#	server {
+#		listen     localhost:110;
+#		protocol   pop3;
+#		proxy      on;
+#	}
+# 
+#	server {
+#		listen     localhost:143;
+#		protocol   imap;
+#		proxy      on;
+#	}
+#}
+</pre>
+</div>
+<p>
+里面实在有太多的注释了，虽说是很好的参考，但是看多了会感觉很碍眼，所以你希望可以
+有一份没有注释的配置文件，你就可以使用 <b>grep</b> 和参数 <b>-v</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">egrep -v "#|^$" /etc/nginx/nginx.conf &gt;/tmp/nging.conf
+</pre>
+</div>
+<p>
+结果如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-conf">worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+events {
+    worker_connections 1024;
+}
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    ssl_prefer_server_ciphers on;
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" $status $bytes_sent "$http_referer" "$http_user_agent" "$gzip_ratio"';
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+    gzip on;
+    gzip_disable "msie6";
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+    ignore_invalid_headers on;
+    client_header_timeout 240;
+    client_body_timeout 240;
+    send_timeout 240;
+    client_max_body_size 100m;
+    proxy_buffer_size 128k;
+    proxy_buffers 8 128k;
+
+    upstream tomcat_server{
+	server 127.0.0.1:8080 fail_timeout=0;
+    }
+
+    upstream gunicorn_server{
+	server 127.0.0.1:5000 fail_timeout=0;
+    }
+    server{
+	server_name 127.0.0.1;
+	listen 443;
+	location / {
+
+	    proxy_set_header X-Forwarded-Host $host;
+	    proxy_set_header X-Forwarded-Server $host;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_pass http://tomcat_server;
+	    proxy_set_header X-Forwarded-Proto https;
+	    proxy_redirect off;
+	    proxy_connect_timeout      240;
+	    proxy_send_timeout         240;
+	    proxy_read_timeout         240;
+	}
+	location /test{
+	    return 402;
+	}
+	location /weixin {
+	    return 402;
+	}
+	location @proxy_to_app {
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header Host $http_host;
+	    proxy_redirect off;
+	    proxy_pass http://gunicorn_server;
+
+	}
+    }
+}
+</pre>
+</div>
+<p>
+<b>egrep</b> 是 <b>grep</b> 的扩展，你也可以通过 <b>-E</b> 使用扩展功能。就这样，你就可以得到一份
+很“干净”的配置文件了。
+</p>
+</div>
+</div>
+<div id="outline-container-org952f0b1" class="outline-2">
+<h2 id="org952f0b1">小结</h2>
+<div class="outline-text-2" id="text-org952f0b1">
+<p>
+在以前 <b>grep</b> 是 <b>hacker</b> 工具箱里面审查源代码必不可少的工具之一，但是随着技术的
+发展，似乎对比其他同类型的工具， <b>grep</b> 的性能已经难尽人意，特别是对比 <b>ag</b> 这个
+搜索神器；虽说很多人都已经转移到了 <b>ag</b> 阵营，但是因为 <b>grep</b> 被广泛预装到各类的
+Linux/Unix 机器，所以 <b>grep</b> 还是使用得很广泛滴。
+更多 <b>grep</b> 的用法就需要查询手册了：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">man grep
+</pre>
+</div>
+<p>
+Enjoy Shell :)
+</p>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+<footer id="footer">
+    <br />
+</footer>
+
+  </body>
+</html>

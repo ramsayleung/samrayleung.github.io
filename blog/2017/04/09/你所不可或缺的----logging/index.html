@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>你所不可或缺的 -- logging - 陌上人如玉,公子世无双</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Samray" />
+  <meta name="description" content="an introduction about logging" />
+  <meta name="keywords" content="python,logging" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+</head>
+
+  <body class="container">
+<header id="header">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+        <div class="container-fluid">
+<div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Blog</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+        </ul>
+</div>
+</div>
+    </nav>
+</body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>你所不可或缺的 -- logging</h1>
+            
+<div id="outline-container-org13a954f" class="outline-2">
+<h2 id="org13a954f">重要性</h2>
+<div class="outline-text-2" id="text-org13a954f">
+<p>
+笔者最近都在负责项目中关于日志的部分，因为跟日志打交道比较多，所以有一些关于日
+志感受和技巧想要分享一下。笔者认为对于各种程序和应用，日志都是非常重要的，因为
+程序在部属到服务器之后，开发者是没办法像在本地开发那样可以充分了解程序发生的状
+况，而使用日志可以让开发者了解运行中的程序的状态，即使出现了错误，或者是系统挂
+了，也可以从日志中分析原因。所以换句话说，日志的重要程度甚至可以称得上是不可或
+缺。接下来，笔者将会以 Python 中的 <i>logging</i> 模块为例阐述日志。
+</p>
+</div>
+</div>
+<div id="outline-container-org0e44ce2" class="outline-2">
+<h2 id="org0e44ce2">关于日志</h2>
+<div class="outline-text-2" id="text-org0e44ce2">
+</div><div id="outline-container-org20d20af" class="outline-3">
+<h3 id="org20d20af">使用 print 函数输出？</h3>
+<div class="outline-text-3" id="text-org20d20af">
+<p>
+日志是为了输出程序的运行状态，那么可否使用 <b>print</b> 函数进行 logging 的工作呢？
+笔者并不建议把 <b>print()</b> 函数当作日志使用 (当然，如果你一定要这么用，我也拦不
+住)；笔者不建议使用 <b>print</b> 进行logging 原因有：
+</p>
+<ol class="org-ol">
+<li>无法在不修改源代码的情况下，控制日志的输出</li>
+<li>日志信息可能跟程序输出的有用数据混杂，导致输出的数据不可读或者非常难读</li>
+<li>print 无法将日志信息输出到除标准输出以外的目标 (例如文件，socket,SMTP 服务
+器等)</li>
+<li><p>
+无法根据错误信息的等级进行动态输出，因为 <b>print</b> 函数的作用只是输出信息
+</p>
+
+<p>
+可能对于非常简单的小程序，开发者可以使用 print 进行日志输出，但是对于比较
+大型的程序，系统内置的 logging 类库或许是更好的选择
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org73f2f77" class="outline-3">
+<h3 id="org73f2f77">日志需要记录的是什么</h3>
+<div class="outline-text-3" id="text-org73f2f77">
+<p>
+Python 的日志类库 <b>logging</b> 可以让开发者根据不同场景使用不同的日志等级以输出
+不同的日志信息。而日志需要记录的最基本的信息又是什么呢？要想回答这个问题，先
+和笔者一起回顾一下日志的功能：记录程序的状态，为程序的开发和调试提供便利！所
+谓方便调试，需要记录的必然包括可以帮助更快定位到错误的有用信息：
+</p>
+<ol class="org-ol">
+<li>Logger 的名字 (比较常用的做法都是 <b>__name__</b>,即当前文件的信息)</li>
+<li>具体日期 (这个可以帮助确定出错的具体场景)</li>
+<li>方法名</li>
+<li>源代码行数</li>
+<li>异常的 traceback 信息</li>
+</ol>
+
+<p>
+这只是最基本的信息，具体还要根据场景添加其它有用信息；比如对于分布式的程序，
+肯定还要记录其它节点的名字，IP 等有用信息。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e10139" class="outline-2">
+<h2 id="org1e10139">Logging 的正确姿势</h2>
+<div class="outline-text-2" id="text-org1e10139">
+</div><div id="outline-container-orgc53f744" class="outline-3">
+<h3 id="orgc53f744">使用 Python 的 logging 模块</h3>
+<div class="outline-text-3" id="text-orgc53f744">
+<p>
+笔者认为，使用 Python 的标准日志库是比较好的实践，因为标准库已经提供了开箱即
+用的特性，无需重复造轮子。Python 的 logging 模块也很容易上手，举个小例子：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">import logging
+logging.basicConfig(level=logging.DEBUG)
+# define a logger
+logger = logging.getLogger(__name__)
+
+#Info level msg
+logger.info('Info level message')
+#Debug level msg
+logger.debug('Debug level message')
+#Warning level msg
+logger.info('Warning level message')
+</pre>
+</div>
+<p>
+日志输出如下：
+</p>
+
+<pre class="example">
+INFO:__main__: Info level message
+DEBUG:__main__: Debug level message
+WARN:__main__: Warning level message
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcf13821" class="outline-3">
+<h3 id="orgcf13821">记录异常信息</h3>
+<div class="outline-text-3" id="text-orgcf13821">
+<p>
+日志一个非常重要的作用就是调试，所以记录出现异常的地方是有必要，并且需要记录
+栈的调用信息。例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">try:
+    open('file_not_exist.txt', 'wt')
+except Exception, e:
+    logger.error('Failed to write a file',exc_info=True)
+</pre>
+</div>
+<p>
+通过将 <b>exc_info</b> 设置成 True, 栈的调用信息就会记录到日志里面。而也可以使用
+<b>logger.exception(message,*args)</b> 方法，它等同于
+<b>logger.error(msg,exc_info=True,*args)</b> 方法。
+</p>
+</div>
+</div>
+<div id="outline-container-orgdbb679b" class="outline-3">
+<h3 id="orgdbb679b">使用日志文件轮转控制器 (rotating file handler)</h3>
+<div class="outline-text-3" id="text-orgdbb679b">
+<p>
+如果使用日志文件控制器 (FileHandler), 不断地运行程序，就会产生越来越多的日志
+信息或者是日志文件。为了控制日志文件的数量，可以使用 <b>RotatingFileHandler</b> 自
+动新建新的日志文件，并且保留旧的日志文件，当产生一定数量的日志文件之后，就会
+自动删除掉最旧的日志文件。例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">handler = logging.handlers.RotatingFileHandler(
+    LOG_FILENAME,
+    maxBytes=20,
+    backupCount=5,
+)
+my_logger.addHandler(handler)
+</pre>
+</div>
+<p>
+就是日志文件大小超过20个字节 (当然，真实情况不会那么小的阀值)，就创建一个新的
+日志文件，把原来的日志文件，例如叫 <i>example.log</i> 重命名为 <i>example.log.1</i>,然
+后新建的日志文件就会被命名为/example.log/,一直到产生了6个日志文件，即
+<i>example.log.5</i>, 继续记录日志，最开始的第一个日志就会被删除。
+</p>
+</div>
+</div>
+<div id="outline-container-orgaffa74c" class="outline-3">
+<h3 id="orgaffa74c">使用日志服务器</h3>
+<div class="outline-text-3" id="text-orgaffa74c">
+<p>
+对于那些分布式的应用，或者部署多台服务器上有不同日志的程序而言，逐个服务器或
+者节点查看日志实在太可怕了. 这个时候，就可以设置一个日志服务器，把重要的日志
+信息发送到日志服务器，你就在日志服务器上监控各个节点的日志状态了。
+<a href="https://docs.python.org/3/howto/logging-cookbook.html">logging-cookbook</a> 的例子：
+</p>
+
+<p>
+客户端或者节点：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">import logging
+import logging.handlers
+
+rootLogger = logging.getLogger('')
+rootLogger.setLevel(logging.DEBUG)
+socketHandler = logging.handlers.SocketHandler('localhost',
+					    logging.handlers.DEFAULT_TCP_LOGGING_PORT)
+# don't bother with a formatter, since a socket handler sends the event as
+# an unformatted pickle
+rootLogger.addHandler(socketHandler)
+
+# Now, we can log to the root logger, or any other logger. First the root...
+logging.info('Jackdaws love my big sphinx of quartz.')
+
+# Now, define a couple of other loggers which might represent areas in your
+# application:
+
+logger1 = logging.getLogger('myapp.area1')
+logger2 = logging.getLogger('myapp.area2')
+
+logger1.debug('Quick zephyrs blow, vexing daft Jim.')
+logger1.info('How quickly daft jumping zebras vex.')
+logger2.warning('Jail zesty vixen who grabbed pay from quack.')
+logger2.error('The five boxing wizards jump quickly.')
+</pre>
+</div>
+
+<p>
+日志服务器：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">import logging
+import logging.handlers
+import pickle
+import socketserver
+import struct
+
+
+class LogRecordStreamHandler(socketserver.StreamRequestHandler):
+    """Handler for a streaming logging request.
+
+    This basically logs the record using whatever logging policy is
+    configured locally.
+    """
+
+    def handle(self):
+	"""
+	Handle multiple requests - each expected to be a 4-byte length,
+	followed by the LogRecord in pickle format. Logs the record
+	according to whatever policy is configured locally.
+	"""
+	while True:
+	    chunk = self.connection.recv(4)
+	    if len(chunk) &lt; 4:
+		break
+	    slen = struct.unpack('&gt;L', chunk)[0]
+	    chunk = self.connection.recv(slen)
+	    while len(chunk) &lt; slen:
+		chunk = chunk + self.connection.recv(slen - len(chunk))
+		obj = self.unPickle(chunk)
+		record = logging.makeLogRecord(obj)
+		self.handleLogRecord(record)
+
+    def unPickle(self, data):
+	return pickle.loads(data)
+
+    def handleLogRecord(self, record):
+	# if a name is specified, we use the named logger rather than the one
+	# implied by the record.
+	if self.server.logname is not None:
+	    name = self.server.logname
+	else:
+	    name = record.name
+	    logger = logging.getLogger(name)
+	    # N.B. EVERY record gets logged. This is because Logger.handle
+	    # is normally called AFTER logger-level filtering. If you want
+	    # to do filtering, do it at the client end to save wasting
+	    # cycles and network bandwidth!
+	logger.handle(record)
+
+
+class LogRecordSocketReceiver(socketserver.ThreadingTCPServer):
+    """
+    Simple TCP socket-based logging receiver suitable for testing.
+    """
+
+    allow_reuse_address = True
+
+    def __init__(self, host='localhost',
+		 port=logging.handlers.DEFAULT_TCP_LOGGING_PORT,
+		 handler=LogRecordStreamHandler):
+	socketserver.ThreadingTCPServer.__init__(self, (host, port), handler)
+	self.abort = 0
+	self.timeout = 1
+	self.logname = None
+
+    def serve_until_stopped(self):
+	import select
+	abort = 0
+	while not abort:
+	    rd, wr, ex = select.select([self.socket.fileno()],
+				    [], [],
+				    self.timeout)
+	    if rd:
+		self.handle_request()
+		abort = self.abort
+
+
+def main():
+    logging.basicConfig(
+	format='%(relativeCreated)5d %(name)-15s %(levelname)-8s %(message)s')
+    tcpserver = LogRecordSocketReceiver()
+    print('About to start TCP server...')
+    tcpserver.serve_until_stopped()
+
+
+if __name__ == '__main__':
+    main()
+</pre>
+</div>
+<p>
+通过给 logger 添加一个SocketHandler 就可以把日志事件发送到服务器端
+</p>
+</div>
+</div>
+<div id="outline-container-org3b84041" class="outline-3">
+<h3 id="org3b84041">使用配置文件</h3>
+<div class="outline-text-3" id="text-org3b84041">
+<p>
+虽然开发者可以使用 Python 代码来配置日志系统，但是这样是很不灵活的，每次修改
+日志等级还需要去改动代码。而使用配置文件无疑是一个更好的选择，例如 json 或者
+是 yaml 文件，这样就可以在 json/yaml 文件中加载日志配置了。以 <a href="https://docs.djangoproject.com/en/1.9/topics/logging/#configuring-logging">Django</a> 项目的配
+置文件为例，笔者改成了 json 格式：
+</p>
+<div class="org-src-container">
+<pre class="src src-json">{
+    "version": 1,
+    "disable_existing_loggers": True,
+    "formatters": {
+	"verbose": {
+	    "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+	},
+	"simple": {
+	    "format": "%(levelname)s %(message)s"
+	},
+    },
+    "filters": {
+	"special": {
+	    "()": "project.logging.SpecialFilter",
+	    "foo": "bar",
+	}
+    },
+    "handlers": {
+	"null": {
+	    "level": "DEBUG",
+	    "class": "django.utils.log.NullHandler",
+	},
+	"console": {
+	    "level": "DEBUG",
+	    "class": "logging.StreamHandler",
+	    "formatter": "simple"
+	},
+	"mail_admins": {
+	    "level": "ERROR",
+	    "class": "django.utils.log.AdminEmailHandler",
+	    "filters": "special"
+	}
+    },
+    "loggers": {
+	"django": {
+	    "handlers": "null",
+	    "propagate": true,
+	    "level": "INFO",
+	},
+	"django.request": {
+	    "handlers": ["mail_admins"],
+	    "level": "ERROR",
+	    "propagate": false,
+	},
+	"myproject.custom": {
+	    "handlers": ["console", "mail_admins"],
+	    "level": "INFO",
+	    "filters": ["special"]
+	}
+    }
+}
+</pre>
+</div>
+<p>
+以及加载 json 文件到日志配置中：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">import json
+import logging.config
+
+
+def setup_logging():
+    """
+    Setup logging configuration
+    """
+    with open('logging_configuration.json', 'rt') as f:
+	config = json.load(f)
+	logging.config.dictConfig(config)
+</pre>
+</div>
+<p>
+使用 json 还有一个好处是标准库已经内置了 json 模块，无需像 yaml 那样需要安装
+额外的模块，不过笔者更推崇 yaml, 因为清晰之余，还可以少打很多字 :)
+</p>
+</div>
+</div>
+<div id="outline-container-orgea45ada" class="outline-3">
+<h3 id="orgea45ada">对于不同的代码，使用不同的日志等级</h3>
+<div class="outline-text-3" id="text-orgea45ada">
+<p>
+因为一个项目不同代码要求不一样，也无需把每一个实现细节都记录在日志，只需要根
+据不同的实现，使用不同的日志等级，例如使用 <b>Debug</b> 记录系统启动，处理业务逻辑
+请求的信息，使用 <b>Error</b>, 记录系统的出错信息，可以结合堆栈分析原因，等等。此
+外，Logger 实例可以被配置成基于名字的树状结构。 每一个部件都定义了一个基础的
+名字，对应的模块被设置成子节点。而 root logger 没有名字。如图：
+<img src="/assets/blog/2017/04/09/你所不可或缺的----logging/example_logger_tree.png" alt="example_logger_tree.png" />
+</p>
+
+<p>
+就配置 <b>logging</b> 而言，笔者认为树状结构是非常有用的，因为无需为每一个 logger
+都设置handler. 如果一个 logger 没有 handler 的话，它就会让父节点来处理。所以
+对于对于大部份的应用而言，只需配置 root logger, 而所有的信息都会发送到同一个
+地方
+</p>
+
+<p>
+[[./images/one_logger_handler.png
+</p>
+
+<p>
+]]而树状结构可以对应用的不同部分使用不同的日志等级，不同的 handler, 不同的
+formatter, 以更好地控制日志信息
+</p>
+</div>
+</div>
+<div id="outline-container-org4cb2255" class="outline-3">
+<h3 id="org4cb2255">使用结构化日志</h3>
+<div class="outline-text-3" id="text-org4cb2255">
+<p>
+虽然大部份的日志信息对于人类都是可读的，但是对于程序而言，就很难进行解析了。
+这个时候，为了方便程序进行解析，笔者建议使用结构化格式的日志，这样就不再需要
+各种复杂的正则表达式来解析日志了。得益于内置的 json 模块，使用 json 就可以很
+简单地生成的利于程序解析结构化日志，以 <a href="https://docs.python.org/3/howto/logging-cookbook.html">logging cookbook</a> 中的例子说明：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">import json
+import logging
+
+
+class StructuredMessage(object):
+    def __init__(self, message, **kwargs):
+	self.message = message
+	self.kwargs = kwargs
+
+    def __str__(self):
+	return '%s &gt;&gt;&gt; %s' % (self.message, json.dumps(self.kwargs))
+
+
+_ = StructuredMessage   # optional, to improve readability
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logging.info(_('message 1', foo='bar', bar='baz', num=123, fnum=123.456))
+</pre>
+</div>
+<p>
+日志输出结果如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-json">message 1 &gt;&gt;&gt; {"fnum": 123.456, "num": 123, "bar": "baz", "foo": "bar"}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaaacca4" class="outline-3">
+<h3 id="orgaaacca4">参考</h3>
+<div class="outline-text-3" id="text-orgaaacca4">
+<ul class="org-ul">
+<li><a href="https://logmatic.io/blog/python-logging-with-json-steroids/">https://logmatic.io/blog/python-logging-with-json-steroids/</a></li>
+<li><a href="https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/">https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/</a></li>
+<li><a href="https://docs.python.org/3/howto/logging-cookbook.html">https://docs.python.org/3/howto/logging-cookbook.html</a></li>
+<li><a href="https://pymotw.com/3/logging/index.html">https://pymotw.com/3/logging/index.html</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org65ec1f5" class="outline-3">
+<h3 id="org65ec1f5">小结</h3>
+<div class="outline-text-3" id="text-org65ec1f5">
+<p>
+虽然这次的日志阐述是以 Python 的日志模块举例，但是绝大部分的语言都内置或者是
+有第三方的日志支持，所以笔者分享的技巧还是可以应用到其他的语言的。这些都是笔
+者日常项目中的一点体会，与诸君共赏罢。Enjoy :)
+</p>
+</div>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+<footer id="footer">
+    <br />
+</footer>
+
+  </body>
+</html>

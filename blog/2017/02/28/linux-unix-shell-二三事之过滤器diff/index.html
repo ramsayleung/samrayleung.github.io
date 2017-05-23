@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Linux/Unix Shell 二三事之过滤器diff - 陌上人如玉,公子世无双</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Samray" />
+  <meta name="description" content="An introduction about diff" />
+  <meta name="keywords" content="shell,diff" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+</head>
+
+  <body class="container">
+<header id="header">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+        <div class="container-fluid">
+<div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Blog</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+        </ul>
+</div>
+</div>
+    </nav>
+</body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Linux/Unix Shell 二三事之过滤器diff</h1>
+            <blockquote>
+<p>
+diff - compare files line by line
+</p>
+</blockquote>
+<p>
+如果你有使用过git,那么你一定不会对diff 陌生，因为对你源文件和修改后的文件进行比较
+的就是 <b>diff</b> 这个大名鼎鼎的家伙了。多年以来， <b>diff</b> 都一直是非常重要的工具，上古大神
+都是使用 <b>diff</b> 和 <b>patch</b> 对程序进行差分和打补丁滴(现在有git了，但是diff 同样
+发挥着重要作用)
+</p>
+<div id="outline-container-org3ca3196" class="outline-2">
+<h2 id="org3ca3196">语法</h2>
+<div class="outline-text-2" id="text-org3ca3196">
+<p>
+diff 的语法如下
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">diff [OPTION].... file1 file2
+</pre>
+</div>
+<p>
+<i>OPTION</i> 指不同的选项参数，file1,file2 是文本文件的名字，如果比较的两个文件相同
+diff 将不输出任何东西。如果两个文件有差异，diff 会显示一系列的指示，让你可以把
+第一个文件修改为与第二个文件一致
+</p>
+</div>
+</div>
+<div id="outline-container-org8c458f5" class="outline-2">
+<h2 id="org8c458f5">例子</h2>
+<div class="outline-text-2" id="text-org8c458f5">
+</div><div id="outline-container-org42d9dca" class="outline-3">
+<h3 id="org42d9dca">用法一</h3>
+<div class="outline-text-3" id="text-org42d9dca">
+<p>
+现在有两个文件，分别保存着不同的地址。
+address1 包含：
+</p>
+<pre class="example">
+guangdong 
+shanghai 
+beijing
+chengdu
+</pre>
+<p>
+address2 包含：
+</p>
+<pre class="example">
+guangdong 
+shanghai 
+beijin
+chengdu
+</pre>
+<p>
+你可以注意到两个文件的区别就是第三行的 <i>beijing</i>.然后运行 <b>diff</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">diff address1 address2
+</pre>
+</div>
+<p>
+输出结果：
+</p>
+<pre class="example">
+3c3
+&lt; beijing
+---
+&gt; beijin
+</pre>
+<p>
+似乎有点难以理解，输出结果描述了什么呢？其实diff 是在指导如何修改不同的文件使之一致
+<b>&lt;</b> 后接的是文件1中与文件2不同的部分， <b>&gt;</b> 后接的是文件2中与文件1不同的部分
+diff 的输出使用3个不同的单字符指导：a(append,追加),c(change,修改),d(delete,删除)
+在上面的例子，只是看到一个 <i>c</i>,意味着，如果想把 <i>address1</i> 修改成 <i>address2</i>
+只需将 <i>address1</i> 的第三行修改成 <i>address2</i> 的第三行
+</p>
+</div>
+</div>
+<div id="outline-container-org9f5dd16" class="outline-3">
+<h3 id="org9f5dd16">用法2</h3>
+<div class="outline-text-3" id="text-org9f5dd16">
+<p>
+现在把 <i>address2</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
+address1 包含：
+</p>
+<pre class="example">
+guangdong 
+shanghai 
+beijing
+chengdu
+</pre>
+<p>
+address2 包含：
+</p>
+<pre class="example">
+guangdong 
+shanghai 
+beijing
+</pre>
+<div class="org-src-container">
+<pre class="src src-shell">diff address1 address2
+</pre>
+</div>
+<p>
+输出结果：
+</p>
+<pre class="example">
+4d3
+&lt; chengdu
+</pre>
+<p>
+在该例子中，为了将 <i>address1</i> 变成 <i>address2</i> 只需删除 <i>address1</i> 的第四行
+</p>
+</div>
+</div>
+<div id="outline-container-org90aa475" class="outline-3">
+<h3 id="org90aa475">用法3</h3>
+<div class="outline-text-3" id="text-org90aa475">
+<p>
+现在把 <i>address1</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
+address1 包含：
+</p>
+<pre class="example">
+guangdong 
+shanghai 
+beijing
+</pre>
+<p>
+address2 包含：
+</p>
+<pre class="example">
+guangdong
+shanghai
+beijing
+chengdu
+</pre>
+<div class="org-src-container">
+<pre class="src src-shell">diff address1 address2
+</pre>
+</div>
+<p>
+输出结果：
+</p>
+<pre class="example">
+3a4
+&gt; chengdu
+</pre>
+<p>
+想将第一个文件转换成第二个文件，只需在第一个文件追加第二个文件的第四行(即在
+第一个文件的第 <b>3</b> 行之后追加第二个文件的第 <b>4</b> 行)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b0fc4f" class="outline-2">
+<h2 id="org2b0fc4f">diff 选项</h2>
+<div class="outline-text-2" id="text-org2b0fc4f">
+<p>
+因为diff 是一个相当强大也是一个相当复杂的命令，所以我没办法将所有的用法一一道
+尽所以笔者将比较常用的选项列举出来
+</p>
+<ul class="org-ul">
+<li><b>-b</b>:忽略制表符(不忽略所有的空白符，指忽略空白符数量的差异),例如下面的两行是相同的</li>
+</ul>
+<pre class="example">
+a    a
+a a
+</pre>
+<ul class="org-ul">
+<li><b>-B(blank lines)</b>:忽略所有的空白行</li>
+<li><b>-c(context)</b>:以上下文的形式显示差异内容，对比默认输出更加容易理解(但是也更加繁杂)</li>
+<li><b>-q(quiet)</b>: diff 静默设置，即如果文件file1和file2有差异，diff 也只会显示 <i>File file1 and file2 differ</i></li>
+<li><b>-w(whitespace)</b>:忽略所有的空白符</li>
+<li><b>-u(unified output)</b>: 上下文形式显示的改进，不会输出重复行</li>
+<li><b>-y</b>:将文件分成两列或多列并排进行输出(非常直观，但是输出很繁杂)</li>
+</ul>
+
+<p>
+还是老话，更多的用法就需要：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">man diff
+</pre>
+</div>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+<footer id="footer">
+    <br />
+</footer>
+
+  </body>
+</html>

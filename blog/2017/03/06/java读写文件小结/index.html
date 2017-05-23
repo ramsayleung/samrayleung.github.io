@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Java读写文件小结 - 陌上人如玉,公子世无双</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Samray" />
+  <meta name="description" content="An post about write and read file with java" />
+  <meta name="keywords" content="javaio" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+</head>
+
+  <body class="container">
+<header id="header">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+        <div class="container-fluid">
+<div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Blog</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+        </ul>
+</div>
+</div>
+    </nav>
+</body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Java读写文件小结</h1>
+            <p>
+今天在完成 <b>算法</b> 上的练习的时候，要对文件进行读写，而书上的例子是直接通过 Linux/Unix 
+的重定向来实现的，我要把它修改成直接读取文件。此外，个人一直觉得Java IO 很容易混淆
+因为有太多的选择(但是这也是Java 的强大之处)，现在Java8 又新增了文件的API,所以我
+就对文件IO作了个小结
+</p>
+<div id="outline-container-org52c2077" class="outline-2">
+<h2 id="org52c2077">Read</h2>
+<div class="outline-text-2" id="text-org52c2077">
+<p>
+我今天的需求是要逐行读写文本文件，我就以此为例子了；测试文件是 <b>/tmp/test.txt</b>
+</p>
+<pre class="example">
+test
+this is a test
+this is another test
+</pre>
+</div>
+<div id="outline-container-orgdf47f92" class="outline-3">
+<h3 id="orgdf47f92">BufferedReader</h3>
+<div class="outline-text-3" id="text-orgdf47f92">
+<p>
+虽然已经有了Java8的 <b>Stream</b>,但是经典的东西总是历久弥新的；例如 <b>BufferedReader</b>
+就是JDK1.1就发布了的文件读API (对可能出现的IOException,使用更优雅try-with-resource
+并免去编写大量手动关闭资源的模板代码的麻烦)
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public  void testBufferedReader(){
+    String filePath="/tmp/test.txt";
+    try(BufferedReader bufferedReader=new BufferedReader(new FileReader(filePath))){
+	String line;
+	while((line=bufferedReader.readLine())!=null){
+	    System.out.println(line);
+	}
+    }catch (IOException ex){
+	ex.printStackTrace();
+	//do something
+    }
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b0ae85" class="outline-3">
+<h3 id="org0b0ae85">Scanner</h3>
+<div class="outline-text-3" id="text-org0b0ae85">
+<p>
+对发布于JDK1.5的Scanner,大部份Java 程序员都是相当熟悉的，因为总是用它来读取标准输入的数据
+现在只要把从标准输入变为从文件读取数据就可以了
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public  void testScanner(){
+    String filePath="/tmp/test.txt";
+    try(Scanner scanner=new Scanner(new File(filePath))){
+	while(scanner.hasNextLine()){
+	    System.out.println(scanner.nextLine());
+	}
+    }catch (IOException ex){
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb73040d" class="outline-3">
+<h3 id="orgb73040d">BufferedReader+Stream</h3>
+<div class="outline-text-3" id="text-orgb73040d">
+<p>
+<b>Files</b> 类作为Java NIO 的一部分在Java 7被引入，该类提供了一系列操作文件的方法
+而在Java8 又引入了另外有用的特性让Java 开发者可以更方便地操作文件。例如 <b>lines()</b>
+方法，可以让 <b>BufferedReader</b> 可以把文件内容以 <b>Stream</b> 的形式返回；读取文件，
+并把文件内容存储到 <b>ArrayList</b>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public void testBufferedReaderAndStream(){
+    String filePath="/tmp/test.txt";
+    List&lt;String&gt; list=new ArrayList&lt;&gt;();
+    try(BufferedReader bufferedReader= Files.newBufferedReader(Paths.get(filePath))){
+	list=bufferedReader.lines().collect(Collectors.toList());
+    }catch (IOException ex){
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+<p>
+得益于强大的 <b>Stream</b> 你可以在读取文件是进行更多的操作；例如只存储含有 <i>this</i> 
+字符的行并且删除结尾的空白符
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public  void testBufferedReaderAndStream(){
+    String filePath="/tmp/test.txt";
+    List&lt;String&gt; list=new ArrayList&lt;&gt;();
+    try(BufferedReader bufferedReader= Files.newBufferedReader(Paths.get(filePath))){
+	bufferedReader.lines().filter(line-&gt;line.contains("this")).map(String::trim)
+	    .forEach(System.out::println);
+    }catch (IOException ex){
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8047015" class="outline-3">
+<h3 id="org8047015">lines+Stream</h3>
+<div class="outline-text-3" id="text-org8047015">
+<p>
+也可以直接使用 <b>lines</b> 方法来逐行读取文本文件，只是对比 <b>newBufferedReader</b> +
+<b>Stream</b>,前者颗粒度更细；
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public void testlinesAndStream(){
+    String filePath="/tmp/test.txt";
+    List&lt;String&gt; list=new ArrayList&lt;&gt;();
+    try(Stream&lt;String&gt; stringStream=Files.lines(Paths.get(filePath))){
+	stringStream.filter(line-&gt;line.contains("test")).forEach(System.out::println);
+    }catch (IOException ex ){
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+<p>
+如果你是读取不是很大的文件的时候，你可以一次就把文件都进内存； <b>Files</b> 已经为你
+提供这样的方法
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public static  void testReadAllLines(){
+    String filePath="/tmp/test.txt";
+    List&lt;String&gt; lists= null;
+    try {
+	lists = Files.readAllLines(Paths.get(filePath));
+    } catch (IOException e) {
+	e.printStackTrace();
+    }
+    for (String list : lists) {
+	System.out.println(list);
+    }
+}
+</pre>
+</div>
+<p>
+需要注意的是 <i>try-with-resource</i> 是不支持 <b>readAllLines</b> .此外大文件请慎重使用
+<b>readAllLines</b>,因为你可能出现 <b>OutOfMemoryException</b>
+</p>
+
+<p>
+不得不说，新加入的API的确更加优雅
+</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="outline-container-org28a856a" class="outline-2">
+<h2 id="org28a856a">Write</h2>
+<div class="outline-text-2" id="text-org28a856a">
+<p>
+我就把测试文件重新写到一个新的文件，实现复制的功能，因为我的文件很小，所以我直接
+把测试独的文件加载到内存
+</p>
+</div>
+<div id="outline-container-orga402431" class="outline-3">
+<h3 id="orga402431">BufferedWriter</h3>
+<div class="outline-text-3" id="text-orga402431">
+<p>
+与 <b>BufferedReader</b> 对应，对文件进行写
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public void testBufferedWriter() {
+    String readFilePath = "/tmp/test.txt";
+    String writeFilePath = "/tmp/test1.txt";
+    try {
+	List&lt;String&gt; lines = Files.readAllLines(Paths.get(readFilePath));
+	try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(writeFilePath))) {
+	    for (String line : lines) {
+		bufferedWriter.write(line+"\n");
+	    }
+	} catch (IOException ex) {
+	    ex.printStackTrace();
+	    //do something
+	}
+    } catch (IOException ex) {
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+<p>
+你也可以将 <b>BufferedReader</b> 和 <b>Files</b> 结合
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public static void testBufferedWriterAndFiles() {
+    String readFilePath = "/tmp/test.txt";
+    String writeFilePath = "/tmp/test1.txt";
+    try {
+	List&lt;String&gt; lines = Files.readAllLines(Paths.get(readFilePath));
+	try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(writeFilePath))) {
+	    for (String line : lines) {
+		bufferedWriter.write(line + "\n");
+	    }
+	} catch (IOException ex) {
+	    ex.printStackTrace();
+	    //do something
+	}
+    } catch (IOException ex) {
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4073b18" class="outline-3">
+<h3 id="org4073b18">Files.write</h3>
+<div class="outline-text-3" id="text-org4073b18">
+<p>
+使用 <b>Files.write()</b> 也可以写出相当优雅的代码
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public  void testFilesWrite() {
+    String readFilePath = "/tmp/test.txt";
+    String writeFilePath = "/tmp/test1.txt";
+    try {
+	List&lt;String&gt; lines = Files.readAllLines(Paths.get(readFilePath));
+	Files.write(Paths.get(writeFilePath), lines);
+    } catch (IOException ex) {
+	ex.printStackTrace();
+	//do something
+    }
+}
+</pre>
+</div>
+<hr />
+<p>
+这就是各种对文本文件进行读写的方法；不知道为什么，我觉得似乎写文件的方法似乎比
+读文件的方法少，例如读文件有 <b>Scanner</b> ,而写文件似乎没有 <b>Printer</b> :(
+不应该是匹配的么，或许我是不知道？ 
+Enjoy Java :)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdbd24d5" class="outline-2">
+<h2 id="orgdbd24d5">参考</h2>
+<div class="outline-text-2" id="text-orgdbd24d5">
+<ul class="org-ul">
+<li><a href="http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/">http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-">http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html">https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html</a></li>
+</ul>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+<footer id="footer">
+    <br />
+</footer>
+
+  </body>
+</html>

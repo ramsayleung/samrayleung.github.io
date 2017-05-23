@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Shell神器fasd与Eshell的不期而遇 - 陌上人如玉,公子世无双</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Samray" />
+  <meta name="description" content="An introduction about tweaking eshell with fasd" />
+  <meta name="keywords" content="eshell,fasd" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+</head>
+
+  <body class="container">
+<header id="header">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+        <div class="container-fluid">
+<div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">陌上人如玉,公子世无双</a>
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Blog</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+        </ul>
+</div>
+</div>
+    </nav>
+</body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Shell神器fasd与Eshell的不期而遇</h1>
+            <blockquote>
+<p>
+fasd - quick access to files and directory
+</p>
+</blockquote>
+<p>
+之前一位 Windows 用户看到笔者在 Shell 下面的操作，他很奇怪，觉得明明已经有图形化
+界面，为什么还要用这种命令行呢，直接用鼠标点击不就很好了么。笔者是很难直接跟他解
+释，因为他没有用过Linux/Unix,完全不熟悉命令行，不知道其强大之处，其高效率是图形
+化界面完全无法比拟的(当然，命令行的学习成本和学习曲线肯定比图型化界面高),So i
+live in terminal. 而今天笔者要介绍的神器 fasd 就是可以让命令行操作变得更加高效
+</p>
+<div id="outline-container-org373e6d0" class="outline-2">
+<h2 id="org373e6d0">Fasd</h2>
+<div class="outline-text-2" id="text-org373e6d0">
+<p>
+在 Shell 下面有非常多的命令操作是与文件和目录相关的，如果你要进入到另外一个目
+录你可以使用相对或者绝对路径来访问该目录，但是如果这是一个与当前目录不相关的目
+录你就只能通过绝对路径来访问。以笔者自己的目录为例，当前目录是
+<b><i>home/samray</i>.emacs.d/elisp/</b> ,笔者希望访问 <b>Document</b> 目录下一个的子目录
+<b>Python</b>, 笔者可以通过下面的命令来访问：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd ~/Document/Programming/Python
+cd /home/samray/Document/Programming/Python
+</pre>
+</div>
+<p>
+这就是笔者需要的命令，虽然可以通过 <b>tab</b> 进行目录名的补全，但是笔者还是觉得要
+输入的东西太多了(正如 Larry Wall 所说，懒惰是程序员的美德). 然后，笔者发现了
+<a href="https://github.com/clvv/fasd">Fasd </a>这个神器。它可以让笔者只输入 <b>Python</b> 就进入到笔者想访问的 <b>Python</b> 目录，
+神奇吧！:)
+</p>
+<hr />
+<p>
+Fasd 以访问的频繁程度和最近是否有访问对文件和目录分配优先级，然后通过判断已访问
+的文件以及其优先级来切换目录或者打开文件，所以如果你之前已经访问过某个目录，那么
+你很容易就可以切换到那个目录
+</p>
+</div>
+<div id="outline-container-org0235e49" class="outline-3">
+<h3 id="org0235e49">常用选项</h3>
+<div class="outline-text-3" id="text-org0235e49">
+<ul class="org-ul">
+<li><b>-a(any)</b>: 匹配文件和目录</li>
+<li><b>-i(interactive)</b>: 以交互的方式选择文件或者目录</li>
+<li><b>-s(show/search)</b>: 按照优先级展示文件或者目录</li>
+<li><b>-e &lt;cmd&gt;</b>:对匹配的文件调用命令&lt;cmd&gt;</li>
+<li><b>-d</b>:只匹配目录</li>
+<li><p>
+<b>-f</b>:只匹配文件
+Fasd 文档还建议你为 fasd的命令选项设置别名
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+</pre>
+</div>
+<p>
+这样你就可以通过 <b>z some-dir</b> 直接进入到某个目录或者 <b>zz some-dir</b> 选择进入有
+多个匹配的特定目录。Fasd 还会判断应该显示所有的匹配选项或者是直接选择最佳匹配
+例如你也可以将fasd配合 <i>subshell</i> 使用，例如打开 <b>foo</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">vim `f foo`
+</pre>
+</div>
+<p>
+又或者打开  <b>/etc/rc.conf</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">vim `f rc conf`
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org461ceb0" class="outline-3">
+<h3 id="org461ceb0">例子</h3>
+<div class="outline-text-3" id="text-org461ceb0">
+<p>
+你可以将fasd 配合正则表达式使用，例如列举以 <i>py</i> 结尾的最近访问的文件：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">f py$
+</pre>
+</div>
+<p>
+又或者使用Emacs 打开最近频繁访问的文件 <i>bar</i>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">f -e emacs bar
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org59254ad" class="outline-2">
+<h2 id="org59254ad">Fasd +Eshell</h2>
+<div class="outline-text-2" id="text-org59254ad">
+<p>
+fasd 真的可以大幅度提高效率，但是笔者有点不太满意的是，笔者是个 Emacser, 笔者
+的操作基本是在 Emacs 里完成的，而笔者在 Emacs 里面使用的 shell 是 Eshell,
+Eshell 似乎不能与 fasd 无缝结合，似乎可以折腾一下。
+</p>
+<hr />
+<p>
+<b>z</b> 和 <b>zz</b> 命令是无法在Eshell 里面运行，因为 <b>z</b> 是 <b>fasd_cd</b> 的别名，而
+<b>fasd_cd</b> 是一个shell script 函数，Eshell无法运行该函数，代码如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">fasd_cd () {
+    if [ $# -le 1 ]
+    then
+	fasd "$@"
+    else
+	local _fasd_ret="$(fasd -e 'printf %s' "$@")" 
+	[ -z "$_fasd_ret" ] &amp;&amp; return
+	[ -d "$_fasd_ret" ] &amp;&amp; cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+    fi
+}
+</pre>
+</div>
+<p>
+Eshell无法运行该函数，因为Eshell文档的匮乏，笔者也不知道如何编写跟上面代码等价
+的 "Eshell script",所以就用 elisp 写一段同样功能的函数好了。
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun samray/eshell-fasd-z (&amp;rest args)
+  "Use fasd to change directory more effectively by passing ARGS."
+  (setq args (eshell-flatten-list args))
+  (let* ((fasd (concat "fasd " (car args)))
+	 (fasd-result (shell-command-to-string fasd))
+	 (path (replace-regexp-in-string "\n$" "" fasd-result))
+	 )
+    (eshell/cd path)
+    (eshell/echo path)
+    ))
+</pre>
+</div>
+<p>
+函数功能很快就写好了，实现了 <b>z</b> 的功能，但是原来的代码一直不能正常运行，折腾
+了一个多小时都没解决，输出什么都正常，最后 debug 发现是因为显示的路径后面多了
+一个换行符即 <b>/home/samray</b> 变成了 <b>/home/samray\n</b>,而输出换行符又不会显示，真
+的坑。最后为命令赋予别名就可以像在 <b>zsh</b> 下那样工作了：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">alias z 'samray/shell-fasd-z $1'
+</pre>
+</div>
+<hr />
+<p>
+更多的用法就要查阅官方文档了
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">man fasd
+</pre>
+</div>
+
+<p>
+Enjoy Emacs and Shell :)
+</p>
+
+<p>
+参考：
+<a href="https://github.com/clvv/fasd">https://github.com/clvv/fasd</a>
+</p>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+<footer id="footer">
+    <br />
+</footer>
+
+  </body>
+</html>
