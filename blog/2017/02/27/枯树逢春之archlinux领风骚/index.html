@@ -31,9 +31,9 @@
 <div>
 <div class="post">
 <h1>枯树逢春之ArchLinux领风骚</h1>
-<div id="outline-container-org116655b" class="outline-2">
-<h2 id="org116655b">枯树</h2>
-<div class="outline-text-2" id="text-org116655b">
+<div id="outline-container-org65310a7" class="outline-2">
+<h2 id="org65310a7">枯树</h2>
+<div class="outline-text-2" id="text-org65310a7">
 <p>
 周末回了一趟家，没带自己的笔记本，在家闲来无事，无意中看到墙角的电脑，已经尘封
 已久反正无事，何不玩玩这台老古董呢？于是把电脑拿去修理店把坏了的硬件修好。离开
@@ -43,39 +43,39 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc3ec5b" class="outline-2">
-<h2 id="orgbc3ec5b">春至</h2>
-<div class="outline-text-2" id="text-orgbc3ec5b">
+<div id="outline-container-org9041ca2" class="outline-2">
+<h2 id="org9041ca2">春至</h2>
+<div class="outline-text-2" id="text-org9041ca2">
 <p>
 像笔者这种Linuxer,这么可能再装回XP呢，最初装Win7,也是考虑到老爹的技术 hold 不
 住 Linux,现在手机那么发达，他就不需要电脑了，所以，此时不装Linux,更待何时呢？
 </p>
 </div>
 </div>
-<div id="outline-container-org847d61a" class="outline-2">
-<h2 id="org847d61a">Arch Linux</h2>
-<div class="outline-text-2" id="text-org847d61a">
+<div id="outline-container-orge1790f0" class="outline-2">
+<h2 id="orge1790f0">Arch Linux</h2>
+<div class="outline-text-2" id="text-orge1790f0">
 <p>
 笔者没有选择 Xubuntu 这种适合老机器的 Ubuntu 衍生发行版本，因为笔者不喜欢
  Ubuntu, 所以笔者最后选择的是 Arch linux,官网说最低配置只需500MB内存，800MB的
  硬盘存储空间，正适合家里的老家伙
 </p>
 </div>
-<div id="outline-container-org7c857c4" class="outline-3">
-<h3 id="org7c857c4">安装过程</h3>
-<div class="outline-text-3" id="text-org7c857c4">
-</div><div id="outline-container-orgc374666" class="outline-4">
-<h4 id="orgc374666">下载镜像</h4>
-<div class="outline-text-4" id="text-orgc374666">
+<div id="outline-container-org25cb5f9" class="outline-3">
+<h3 id="org25cb5f9">安装过程</h3>
+<div class="outline-text-3" id="text-org25cb5f9">
+</div><div id="outline-container-orgacbca89" class="outline-4">
+<h4 id="orgacbca89">下载镜像</h4>
+<div class="outline-text-4" id="text-orgacbca89">
 <p>
 <a href="https://www.archlinux.org/download/">Download Link</a> ,在网易的镜像下载ISO, 然后用dd刻录到U盘，Windows 可以选择
 <a href="http://sourceforge.net/projects/usbwriter">USBwriter</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf25aaf0" class="outline-4">
-<h4 id="orgf25aaf0">分区</h4>
-<div class="outline-text-4" id="text-orgf25aaf0">
+<div id="outline-container-orge01a467" class="outline-4">
+<h4 id="orge01a467">分区</h4>
+<div class="outline-text-4" id="text-orge01a467">
 <p>
 使用fdisk, 笔者的硬盘是/dev/sda,如果还有一块硬盘，那应该就是/dev/sdb
 </p>
@@ -95,9 +95,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org4d5b2e1" class="outline-4">
-<h4 id="org4d5b2e1">格式化分区</h4>
-<div class="outline-text-4" id="text-org4d5b2e1">
+<div id="outline-container-orgbd57c41" class="outline-4">
+<h4 id="orgbd57c41">格式化分区</h4>
+<div class="outline-text-4" id="text-orgbd57c41">
 <p>
 格式化 sda2 sda3为ext4格式：
 </p>
@@ -123,9 +123,9 @@ mkfs.ext4 /dev/sda3
 </div>
 </div>
 </div>
-<div id="outline-container-orgea1bc17" class="outline-4">
-<h4 id="orgea1bc17">挂载</h4>
-<div class="outline-text-4" id="text-orgea1bc17">
+<div id="outline-container-org3fd57dd" class="outline-4">
+<h4 id="org3fd57dd">挂载</h4>
+<div class="outline-text-4" id="text-org3fd57dd">
 <p>
 将sda2挂载到/mnt,其实就是让sda2分区做系统的根分区，/mnt/home同理
 </p>
@@ -136,9 +136,9 @@ mount /dev/sda3 /mnt/home
 </div>
 </div>
 </div>
-<div id="outline-container-org7c64805" class="outline-4">
-<h4 id="org7c64805">更新pacman源</h4>
-<div class="outline-text-4" id="text-org7c64805">
+<div id="outline-container-org0e19f0c" class="outline-4">
+<h4 id="org0e19f0c">更新pacman源</h4>
+<div class="outline-text-4" id="text-org0e19f0c">
 <p>
 网易的源不错，编辑 <b>/etc/pacman.d/mirrorlist</b> 添加 <b>Server = <a href="http://mirrors.163.com/archlinux/$repo/os/$arch">http://mirrors.163.com/archlinux/$repo/os/$arch</a></b>
 </p>
@@ -156,9 +156,9 @@ mount /dev/sda3 /mnt/home
 </div>
 </div>
 </div>
-<div id="outline-container-orgb4cbb7d" class="outline-4">
-<h4 id="orgb4cbb7d">安装基本系统</h4>
-<div class="outline-text-4" id="text-orgb4cbb7d">
+<div id="outline-container-org5eb65a2" class="outline-4">
+<h4 id="org5eb65a2">安装基本系统</h4>
+<div class="outline-text-4" id="text-org5eb65a2">
 <p>
 安装基本系统到 /mnt,即sda2分区
 </p>
@@ -171,9 +171,9 @@ mount /dev/sda3 /mnt/home
 </p>
 </div>
 </div>
-<div id="outline-container-org2c859f7" class="outline-4">
-<h4 id="org2c859f7">生成fstab</h4>
-<div class="outline-text-4" id="text-org2c859f7">
+<div id="outline-container-org592e0a2" class="outline-4">
+<h4 id="org592e0a2">生成fstab</h4>
+<div class="outline-text-4" id="text-org592e0a2">
 <p>
 fstab 的作用：
 </p>
@@ -193,9 +193,9 @@ cat /mnt/etc/fstab
 </div>
 </div>
 </div>
-<div id="outline-container-orged309b1" class="outline-4">
-<h4 id="orged309b1">配置系统</h4>
-<div class="outline-text-4" id="text-orged309b1">
+<div id="outline-container-org2b21a5d" class="outline-4">
+<h4 id="org2b21a5d">配置系统</h4>
+<div class="outline-text-4" id="text-org2b21a5d">
 <p>
 切换到新的系统，然后你会发现命令行提示符发生了改变
 </p>
@@ -203,13 +203,13 @@ cat /mnt/etc/fstab
 arch-chroot /mnt
 </pre>
 </div>
-<ul class="org-ul"><li><a id="org10dfc50"></a>设置地区<br /><div class="outline-text-5" id="text-org10dfc50">
+<ul class="org-ul"><li><a id="org05b67bb"></a>设置地区<br /><div class="outline-text-5" id="text-org05b67bb">
 <div class="org-src-container">
 <pre class="src src-shell">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 </pre>
 </div>
 </div></li>
-<li><a id="org237712c"></a>设置语言<br /><div class="outline-text-5" id="text-org237712c">
+<li><a id="orge98aeaa"></a>设置语言<br /><div class="outline-text-5" id="text-orge98aeaa">
 <p>
 编辑 <b>/etc/locale.gen</b>,因为该文件所有的信息都是被注释滴，所以在最上面添加
 <b>en_US.UTF-8 UTF-8</b> 即可
@@ -235,26 +235,26 @@ export LANG=en_US.UTF-8
 </pre>
 </div>
 </div></li>
-<li><a id="org39123ea"></a>设置主机名<br /><div class="outline-text-5" id="text-org39123ea">
+<li><a id="org8696398"></a>设置主机名<br /><div class="outline-text-5" id="text-org8696398">
 <div class="org-src-container">
 <pre class="src src-shell">echo samray-arch &gt; /etc/hostname
 </pre>
 </div>
 </div></li>
-<li><a id="orgbf6c6e0"></a>设置密码<br /><div class="outline-text-5" id="text-orgbf6c6e0">
+<li><a id="orgf6d1384"></a>设置密码<br /><div class="outline-text-5" id="text-orgf6d1384">
 <div class="org-src-container">
 <pre class="src src-shell">passwd
 </pre>
 </div>
 </div></li>
-<li><a id="org71ea317"></a>配置网络<br /><div class="outline-text-5" id="text-org71ea317">
+<li><a id="orgd27d7ff"></a>配置网络<br /><div class="outline-text-5" id="text-orgd27d7ff">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S net-tools
 systemctl enable dhcpcd.service
 </pre>
 </div>
 </div></li>
-<li><a id="orgb03ce5e"></a>安装GRUB<br /><div class="outline-text-5" id="text-orgb03ce5e">
+<li><a id="org51799d9"></a>安装GRUB<br /><div class="outline-text-5" id="text-org51799d9">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S grub-bios
 </pre>
@@ -269,9 +269,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </div>
 </div></li></ul>
 </div>
-<div id="outline-container-org10352d7" class="outline-4">
-<h4 id="org10352d7">收尾工作</h4>
-<div class="outline-text-4" id="text-org10352d7">
+<div id="outline-container-org1611770" class="outline-4">
+<h4 id="org1611770">收尾工作</h4>
+<div class="outline-text-4" id="text-org1611770">
 <div class="org-src-container">
 <pre class="src src-shell">exit
 umount /mnt/home
@@ -285,21 +285,21 @@ reboot
 </div>
 </div>
 </div>
-<div id="outline-container-org7b79dad" class="outline-3">
-<h3 id="org7b79dad">安装桌面环境</h3>
-<div class="outline-text-3" id="text-org7b79dad">
-</div><div id="outline-container-org0fba3b7" class="outline-4">
-<h4 id="org0fba3b7">安装x服务</h4>
-<div class="outline-text-4" id="text-org0fba3b7">
+<div id="outline-container-org6329c9a" class="outline-3">
+<h3 id="org6329c9a">安装桌面环境</h3>
+<div class="outline-text-3" id="text-org6329c9a">
+</div><div id="outline-container-orgad22b03" class="outline-4">
+<h4 id="orgad22b03">安装x服务</h4>
+<div class="outline-text-4" id="text-orgad22b03">
 <div class="org-src-container">
 <pre class="src src-shell">pacman -S xorg-server xorg-server-utils xorg-xinit
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgba97865" class="outline-4">
-<h4 id="orgba97865">安装显卡驱动</h4>
-<div class="outline-text-4" id="text-orgba97865">
+<div id="outline-container-org9bb3a43" class="outline-4">
+<h4 id="org9bb3a43">安装显卡驱动</h4>
+<div class="outline-text-4" id="text-org9bb3a43">
 <p>
 查找自己的显卡类型
 </p>
@@ -372,9 +372,9 @@ Intel 集成显卡：
 </div>
 </div>
 </div>
-<div id="outline-container-org3070fbc" class="outline-3">
-<h3 id="org3070fbc">参考</h3>
-<div class="outline-text-3" id="text-org3070fbc">
+<div id="outline-container-orga4c95bd" class="outline-3">
+<h3 id="orga4c95bd">参考</h3>
+<div class="outline-text-3" id="text-orga4c95bd">
 <p>
 <a href="https://wiki.archlinux.org/index.php/installation_guide">https://wiki.archlinux.org/index.php/installation_guide</a>
 </p>
