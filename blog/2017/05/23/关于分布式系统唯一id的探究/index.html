@@ -35,26 +35,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org146384e">若干实现策略</a></li>
-<li><a href="#org2c23dd0">Snowflake 算法实现</a>
+<li><a href="#orge05a222">若干实现策略</a></li>
+<li><a href="#org3397ad8">Snowflake 算法实现</a>
 <ul>
-<li><a href="#orgb8f2d28">Snowflake 算法</a></li>
-<li><a href="#orgf1078da">Snowflake 实现</a>
+<li><a href="#org7b76dbd">Snowflake 算法</a></li>
+<li><a href="#org96a1a97">Snowflake 实现</a>
 <ul>
-<li><a href="#org992513f">生成时间戳</a></li>
-<li><a href="#org12775eb">生成递增序列</a></li>
-<li><a href="#org177fdaf">获取 Mac 地址</a></li>
+<li><a href="#org70ca0c4">生成时间戳</a></li>
+<li><a href="#orgab1f332">生成递增序列</a></li>
+<li><a href="#org8197805">获取 Mac 地址</a></li>
 </ul>
 </li>
-<li><a href="#org6271495">Snowflake 完整代码</a>
+<li><a href="#org2765f0c">Snowflake 完整代码</a>
 <ul>
-<li><a href="#orge38fcb5">线程同步</a></li>
-<li><a href="#org697b116">同一毫秒生成多个 ID</a></li>
+<li><a href="#org864df99">线程同步</a></li>
+<li><a href="#org7aa36be">同一毫秒生成多个 ID</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgde918ab">小结</a></li>
+<li><a href="#orgb1d1a3b">小结</a></li>
 </ul>
 </div>
 </div>
@@ -62,9 +62,9 @@
 最近笔者需要为运行的分布式系统某部分模块构造系统唯一的ID, 而 ID 需要是数字的形
 式，并应该尽量的短。不得不说，这是一个有趣的问题
 </p>
-<div id="outline-container-org146384e" class="outline-2">
-<h2 id="org146384e">若干实现策略</h2>
-<div class="outline-text-2" id="text-org146384e">
+<div id="outline-container-orge05a222" class="outline-2">
+<h2 id="orge05a222">若干实现策略</h2>
+<div class="outline-text-2" id="text-orge05a222">
 <p>
 查阅完相关的资料，发现为分布式系统生成唯一 ID 方法挺多的，例如：
 </p>
@@ -82,18 +82,18 @@ flake 算法生成的是 128 位的 ID, 略长；所以最后笔者选择了 Sno
 </p>
 </div>
 </div>
-<div id="outline-container-org2c23dd0" class="outline-2">
-<h2 id="org2c23dd0">Snowflake 算法实现</h2>
-<div class="outline-text-2" id="text-org2c23dd0">
+<div id="outline-container-org3397ad8" class="outline-2">
+<h2 id="org3397ad8">Snowflake 算法实现</h2>
+<div class="outline-text-2" id="text-org3397ad8">
 <p>
 本来 Twitter 的算法是有相应实现的，不过后来删除了；笔者就只好自己卷起袖子自己
 实现了:(. 虽说 Twitter 没有了相应的实现，但是 Snowflake 算法原理很简单，实现
 起来并不难.
 </p>
 </div>
-<div id="outline-container-orgb8f2d28" class="outline-3">
-<h3 id="orgb8f2d28">Snowflake 算法</h3>
-<div class="outline-text-3" id="text-orgb8f2d28">
+<div id="outline-container-org7b76dbd" class="outline-3">
+<h3 id="org7b76dbd">Snowflake 算法</h3>
+<div class="outline-text-3" id="text-org7b76dbd">
 <p>
 Snowflake 算法生成 64 位的 ID, ID 的格式是 41 位的时间戳 + 10 位的截断的 mac
 地址 + 12 位递增序列：
@@ -107,12 +107,12 @@ timestamp | machineId|sequence
 </div>
 </div>
 </div>
-<div id="outline-container-orgf1078da" class="outline-3">
-<h3 id="orgf1078da">Snowflake 实现</h3>
-<div class="outline-text-3" id="text-orgf1078da">
-</div><div id="outline-container-org992513f" class="outline-4">
-<h4 id="org992513f">生成时间戳</h4>
-<div class="outline-text-4" id="text-org992513f">
+<div id="outline-container-org96a1a97" class="outline-3">
+<h3 id="org96a1a97">Snowflake 实现</h3>
+<div class="outline-text-3" id="text-org96a1a97">
+</div><div id="outline-container-org70ca0c4" class="outline-4">
+<h4 id="org70ca0c4">生成时间戳</h4>
+<div class="outline-text-4" id="text-org70ca0c4">
 <p>
 Java 内置了生成精确到毫秒的时间戳的方法，非常便利：
 </p>
@@ -122,9 +122,9 @@ Java 内置了生成精确到毫秒的时间戳的方法，非常便利：
 </div>
 </div>
 </div>
-<div id="outline-container-org12775eb" class="outline-4">
-<h4 id="org12775eb">生成递增序列</h4>
-<div class="outline-text-4" id="text-org12775eb">
+<div id="outline-container-orgab1f332" class="outline-4">
+<h4 id="orgab1f332">生成递增序列</h4>
+<div class="outline-text-4" id="text-orgab1f332">
 <p>
 12 bits 的最大值是 2**12=4096, 所以生成递增序列也非常简单：
 </p>
@@ -140,9 +140,9 @@ public void generateId(){
 </div>
 </div>
 </div>
-<div id="outline-container-org177fdaf" class="outline-4">
-<h4 id="org177fdaf">获取 Mac 地址</h4>
-<div class="outline-text-4" id="text-org177fdaf">
+<div id="outline-container-org8197805" class="outline-4">
+<h4 id="org8197805">获取 Mac 地址</h4>
+<div class="outline-text-4" id="text-org8197805">
 <p>
 我们通过获取当前机器的 IP 地址以获取对应的物理地址：
 </p>
@@ -177,9 +177,9 @@ public void generateId(){
 </div>
 </div>
 </div>
-<div id="outline-container-org6271495" class="outline-3">
-<h3 id="org6271495">Snowflake 完整代码</h3>
-<div class="outline-text-3" id="text-org6271495">
+<div id="outline-container-org2765f0c" class="outline-3">
+<h3 id="org2765f0c">Snowflake 完整代码</h3>
+<div class="outline-text-3" id="text-org2765f0c">
 <p>
 下面是 Snowflake 的 Java 实现：
 </p>
@@ -285,9 +285,9 @@ public void generateId(){
 移位得到 ID. 但是在具体的实现中还是有一些需要注意的细节的。
 </p>
 </div>
-<div id="outline-container-orge38fcb5" class="outline-4">
-<h4 id="orge38fcb5">线程同步</h4>
-<div class="outline-text-4" id="text-orge38fcb5">
+<div id="outline-container-org864df99" class="outline-4">
+<h4 id="org864df99">线程同步</h4>
+<div class="outline-text-4" id="text-org864df99">
 <p>
 因为算法中使用到递增的序列号来生成 ID,而在实际的开发或者生产环境中很可能不止一
 个线程在使用 IdGenerator 这个类，如果这样就很容易出现不同线程的竞争问题，所以
@@ -296,9 +296,9 @@ public void generateId(){
 </p>
 </div>
 </div>
-<div id="outline-container-org697b116" class="outline-4">
-<h4 id="org697b116">同一毫秒生成多个 ID</h4>
-<div class="outline-text-4" id="text-org697b116">
+<div id="outline-container-org7aa36be" class="outline-4">
+<h4 id="org7aa36be">同一毫秒生成多个 ID</h4>
+<div class="outline-text-4" id="text-org7aa36be">
 <p>
 因为序列号长度是 12个 bit, 那么序列号最大值就是 2**12=4096了，此外时间戳是精确
 到毫秒的，这就是意味着，当一毫秒内，产生超过 4096 个 ID 的时候就会出现重复的
@@ -322,9 +322,9 @@ ID. 这样的情况并不是不可能发生，所以要对此进行处理；所�
 </div>
 </div>
 </div>
-<div id="outline-container-orgde918ab" class="outline-2">
-<h2 id="orgde918ab">小结</h2>
-<div class="outline-text-2" id="text-orgde918ab">
+<div id="outline-container-orgb1d1a3b" class="outline-2">
+<h2 id="orgb1d1a3b">小结</h2>
+<div class="outline-text-2" id="text-orgb1d1a3b">
 <p>
 算法虽然简单，但是在找到 Snowflake 算法之前，笔者尝试了挺多的算法，但是都是因
 为不符合要求而被一一否决， 而 Snowflake 算法虽然简单，但是胜在实用。最后附上
