@@ -35,21 +35,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdca7b4b">Read</a>
+<li><a href="#org3f6d3fe">Read</a>
 <ul>
-<li><a href="#org8ce8f47">BufferedReader</a></li>
-<li><a href="#org0eb0fb9">Scanner</a></li>
-<li><a href="#org1a65127">BufferedReader+Stream</a></li>
-<li><a href="#org4eb1d52">lines+Stream</a></li>
+<li><a href="#org42e70c3">BufferedReader</a></li>
+<li><a href="#org12f21f7">Scanner</a></li>
+<li><a href="#org44cd3f5">BufferedReader+Stream</a></li>
+<li><a href="#org6010ffb">lines+Stream</a></li>
 </ul>
 </li>
-<li><a href="#org1bb5417">Write</a>
+<li><a href="#org04c90bd">Write</a>
 <ul>
-<li><a href="#orgf529151">BufferedWriter</a></li>
-<li><a href="#orgcfadb7a">Files.write</a></li>
+<li><a href="#org659ca0a">BufferedWriter</a></li>
+<li><a href="#org200d3bd">Files.write</a></li>
 </ul>
 </li>
-<li><a href="#orgf8d6656">参考</a></li>
+<li><a href="#org2dac29e">参考</a></li>
 </ul>
 </div>
 </div>
@@ -59,9 +59,9 @@
 因为有太多的选择(但是这也是Java 的强大之处)，现在Java8 又新增了文件的API,所以我
 就对文件IO作了个小结
 </p>
-<div id="outline-container-orgdca7b4b" class="outline-2">
-<h2 id="orgdca7b4b">Read</h2>
-<div class="outline-text-2" id="text-orgdca7b4b">
+<div id="outline-container-org3f6d3fe" class="outline-2">
+<h2 id="org3f6d3fe">Read</h2>
+<div class="outline-text-2" id="text-org3f6d3fe">
 <p>
 我今天的需求是要逐行读写文本文件，我就以此为例子了；测试文件是 <b>/tmp/test.txt</b>
 </p>
@@ -71,9 +71,9 @@ this is a test
 this is another test
 </pre>
 </div>
-<div id="outline-container-org8ce8f47" class="outline-3">
-<h3 id="org8ce8f47">BufferedReader</h3>
-<div class="outline-text-3" id="text-org8ce8f47">
+<div id="outline-container-org42e70c3" class="outline-3">
+<h3 id="org42e70c3">BufferedReader</h3>
+<div class="outline-text-3" id="text-org42e70c3">
 <p>
 虽然已经有了Java8的 <b>Stream</b>,但是经典的东西总是历久弥新的；例如 <b>BufferedReader</b>
 就是JDK1.1就发布了的文件读API (对可能出现的IOException,使用更优雅try-with-resource
@@ -95,9 +95,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org0eb0fb9" class="outline-3">
-<h3 id="org0eb0fb9">Scanner</h3>
-<div class="outline-text-3" id="text-org0eb0fb9">
+<div id="outline-container-org12f21f7" class="outline-3">
+<h3 id="org12f21f7">Scanner</h3>
+<div class="outline-text-3" id="text-org12f21f7">
 <p>
 对发布于JDK1.5的Scanner,大部份Java 程序员都是相当熟悉的，因为总是用它来读取标准输入的数据
 现在只要把从标准输入变为从文件读取数据就可以了
@@ -118,9 +118,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org1a65127" class="outline-3">
-<h3 id="org1a65127">BufferedReader+Stream</h3>
-<div class="outline-text-3" id="text-org1a65127">
+<div id="outline-container-org44cd3f5" class="outline-3">
+<h3 id="org44cd3f5">BufferedReader+Stream</h3>
+<div class="outline-text-3" id="text-org44cd3f5">
 <p>
 <b>Files</b> 类作为Java NIO 的一部分在Java 7被引入，该类提供了一系列操作文件的方法
 而在Java8 又引入了另外有用的特性让Java 开发者可以更方便地操作文件。例如 <b>lines()</b>
@@ -160,9 +160,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org4eb1d52" class="outline-3">
-<h3 id="org4eb1d52">lines+Stream</h3>
-<div class="outline-text-3" id="text-org4eb1d52">
+<div id="outline-container-org6010ffb" class="outline-3">
+<h3 id="org6010ffb">lines+Stream</h3>
+<div class="outline-text-3" id="text-org6010ffb">
 <p>
 也可以直接使用 <b>lines</b> 方法来逐行读取文本文件，只是对比 <b>newBufferedReader</b> +
 <b>Stream</b>,前者颗粒度更细；
@@ -211,17 +211,17 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-org1bb5417" class="outline-2">
-<h2 id="org1bb5417">Write</h2>
-<div class="outline-text-2" id="text-org1bb5417">
+<div id="outline-container-org04c90bd" class="outline-2">
+<h2 id="org04c90bd">Write</h2>
+<div class="outline-text-2" id="text-org04c90bd">
 <p>
 我就把测试文件重新写到一个新的文件，实现复制的功能，因为我的文件很小，所以我直接
 把测试独的文件加载到内存
 </p>
 </div>
-<div id="outline-container-orgf529151" class="outline-3">
-<h3 id="orgf529151">BufferedWriter</h3>
-<div class="outline-text-3" id="text-orgf529151">
+<div id="outline-container-org659ca0a" class="outline-3">
+<h3 id="org659ca0a">BufferedWriter</h3>
+<div class="outline-text-3" id="text-org659ca0a">
 <p>
 与 <b>BufferedReader</b> 对应，对文件进行写
 </p>
@@ -272,9 +272,9 @@ this is another test
 </div>
 </div>
 </div>
-<div id="outline-container-orgcfadb7a" class="outline-3">
-<h3 id="orgcfadb7a">Files.write</h3>
-<div class="outline-text-3" id="text-orgcfadb7a">
+<div id="outline-container-org200d3bd" class="outline-3">
+<h3 id="org200d3bd">Files.write</h3>
+<div class="outline-text-3" id="text-org200d3bd">
 <p>
 使用 <b>Files.write()</b> 也可以写出相当优雅的代码
 </p>
@@ -302,9 +302,9 @@ Enjoy Java :)
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8d6656" class="outline-2">
-<h2 id="orgf8d6656">参考</h2>
-<div class="outline-text-2" id="text-orgf8d6656">
+<div id="outline-container-org2dac29e" class="outline-2">
+<h2 id="org2dac29e">参考</h2>
+<div class="outline-text-2" id="text-org2dac29e">
 <ul class="org-ul">
 <li><a href="http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/">http://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/</a></li>
 <li><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-">http://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-</a></li>
