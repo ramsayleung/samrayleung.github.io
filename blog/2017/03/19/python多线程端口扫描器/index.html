@@ -35,33 +35,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5dd6022">端口扫描器</a></li>
-<li><a href="#orgc50a89d">端口扫描原理</a>
+<li><a href="#org9808f3a">端口扫描器</a></li>
+<li><a href="#orgd11f1e4">端口扫描原理</a>
 <ul>
-<li><a href="#orge74aaea">TCP连接扫描</a>
+<li><a href="#orgb31cfec">TCP连接扫描</a>
 <ul>
-<li><a href="#orgb069de9">代码解析：</a></li>
+<li><a href="#org0999bd8">代码解析：</a></li>
 </ul>
 </li>
-<li><a href="#org6dfa0dc">SYN扫描</a>
+<li><a href="#org456fe2b">SYN扫描</a>
 <ul>
-<li><a href="#org9a74c6e">TCP三次握手</a></li>
-<li><a href="#org0adbbe8">SYN扫描原理</a></li>
-<li><a href="#org92891fb">代码解释</a></li>
+<li><a href="#org14e6c3d">TCP三次握手</a></li>
+<li><a href="#org5d6b22b">SYN扫描原理</a></li>
+<li><a href="#orgdc0d053">代码解释</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org9d35705">后话</a></li>
+<li><a href="#org2e4d0d3">后话</a></li>
 </ul>
 </div>
 </div>
 <p>
 近两日，闲来无事，就写了些端口扫描器，重温TCP/IP协议栈的部分原理。
 </p>
-<div id="outline-container-org5dd6022" class="outline-2">
-<h2 id="org5dd6022">端口扫描器</h2>
-<div class="outline-text-2" id="text-org5dd6022">
+<div id="outline-container-org9808f3a" class="outline-2">
+<h2 id="org9808f3a">端口扫描器</h2>
+<div class="outline-text-2" id="text-org9808f3a">
 <p>
 所谓的端口扫描器，其实是用来检测目标服务器有哪些端口开放所使用的工具，一般是管理员
 用来进行安全加固，检测是否有无意开放的端口；或者是恶意攻击的人员在进行攻击前的
@@ -70,9 +70,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgc50a89d" class="outline-2">
-<h2 id="orgc50a89d">端口扫描原理</h2>
-<div class="outline-text-2" id="text-orgc50a89d">
+<div id="outline-container-orgd11f1e4" class="outline-2">
+<h2 id="orgd11f1e4">端口扫描原理</h2>
+<div class="outline-text-2" id="text-orgd11f1e4">
 <p>
 上面提到过，端口扫描器是用来确定目标机器的服务的可用性的；那么具体是怎么确定的呢？
 如果还没有答案的话，可以换个角度来思考这个问题。假如你想确定邻居家的妹子是否
@@ -82,9 +82,9 @@
 只是方法的优劣。
 </p>
 </div>
-<div id="outline-container-orge74aaea" class="outline-3">
-<h3 id="orge74aaea">TCP连接扫描</h3>
-<div class="outline-text-3" id="text-orge74aaea">
+<div id="outline-container-orgb31cfec" class="outline-3">
+<h3 id="orgb31cfec">TCP连接扫描</h3>
+<div class="outline-text-3" id="text-orgb31cfec">
 <p>
 这是最简单的一种方法，一般被称为连接扫描，即利用 <b>socket</b> 对目标机器进行连接尝试，
 如果能够成功建立三次握手连接，那就说明你用 <b>socket</b> 连接的端口是开放的；然后你就
@@ -93,9 +93,9 @@
 记录下来的 (对于攻击者来说，隐藏身份是很重要的)
 </p>
 </div>
-<div id="outline-container-orgb069de9" class="outline-4">
-<h4 id="orgb069de9">代码解析：</h4>
-<div class="outline-text-4" id="text-orgb069de9">
+<div id="outline-container-org0999bd8" class="outline-4">
+<h4 id="org0999bd8">代码解析：</h4>
+<div class="outline-text-4" id="text-org0999bd8">
 <div class="org-src-container">
 <pre class="src src-python">def scan(self, args):
     host, port = args
@@ -118,16 +118,16 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org6dfa0dc" class="outline-3">
-<h3 id="org6dfa0dc">SYN扫描</h3>
-<div class="outline-text-3" id="text-org6dfa0dc">
+<div id="outline-container-org456fe2b" class="outline-3">
+<h3 id="org456fe2b">SYN扫描</h3>
+<div class="outline-text-3" id="text-org456fe2b">
 <p>
 再回顾一下TCP的三次握手：
 </p>
 </div>
-<div id="outline-container-org9a74c6e" class="outline-4">
-<h4 id="org9a74c6e">TCP三次握手</h4>
-<div class="outline-text-4" id="text-org9a74c6e">
+<div id="outline-container-org14e6c3d" class="outline-4">
+<h4 id="org14e6c3d">TCP三次握手</h4>
+<div class="outline-text-4" id="text-org14e6c3d">
 <p>
 TCP建立连接时，首先客户端和服务器处于close状态。然后客户端发送SYN同步位，此时
 客户端处于SYN-SEND状态，服务器处于lISTEN状态，当服务器收到SYN以后，向客户端发
@@ -140,10 +140,10 @@ TCP建立连接时，首先客户端和服务器处于close状态。然后客户
 </p>
 </div>
 </div>
-<div id="outline-container-org0adbbe8" class="outline-4">
-<h4 id="org0adbbe8">SYN扫描原理</h4>
-<div class="outline-text-4" id="text-org0adbbe8">
-</div><ul class="org-ul"><li><a id="orgc04cd30"></a>SYN+ACK<br /><div class="outline-text-5" id="text-orgc04cd30">
+<div id="outline-container-org5d6b22b" class="outline-4">
+<h4 id="org5d6b22b">SYN扫描原理</h4>
+<div class="outline-text-4" id="text-org5d6b22b">
+</div><ul class="org-ul"><li><a id="orgdc02812"></a>SYN+ACK<br /><div class="outline-text-5" id="text-orgdc02812">
 <p>
 那么现在再回到SYN扫描上来.如果在发送第一次握手的 <b>SYN</b> flag 时，目标机器回
 复了*SYN+ACK*, 这不就说明笔者发送的TCP包中的目标端口是开放的么！如果不开放，
@@ -152,7 +152,7 @@ TCP建立连接时，首先客户端和服务器处于close状态。然后客户
 图来自 <a href="http://resources.infosecinstitute.com/port-scanning-using-scapy/">http://resources.infosecinstitute.com/port-scanning-using-scapy/</a>
 </p>
 </div></li>
-<li><a id="orgee8c6b2"></a>RST<br /><div class="outline-text-5" id="text-orgee8c6b2">
+<li><a id="org9907b86"></a>RST<br /><div class="outline-text-5" id="text-org9907b86">
 <p>
 如果第二次握手的时候，目标机器回复的不是 <b>SYN+ACK</b>, 而是 <b>RST</b>, 就说明TCP
 包中的目标端口在目标机器上是关闭的；如图
@@ -160,7 +160,7 @@ TCP建立连接时，首先客户端和服务器处于close状态。然后客户
 图来自 <a href="http://resources.infosecinstitute.com/port-scanning-using-scapy/">http://resources.infosecinstitute.com/port-scanning-using-scapy/</a>
 </p>
 </div></li>
-<li><a id="org05c4737"></a>Filtered<br /><div class="outline-text-5" id="text-org05c4737">
+<li><a id="orgcebea4f"></a>Filtered<br /><div class="outline-text-5" id="text-orgcebea4f">
 <p>
 上面提及了目标端口的开放和关闭两种状态，那么，还有没有其他状态呢？什么，还有
 其他状态？
@@ -172,9 +172,9 @@ ICMP的包就有可能被过滤，例如响应信息是ICMP错误信息类型3�
 </p>
 </div></li></ul>
 </div>
-<div id="outline-container-org92891fb" class="outline-4">
-<h4 id="org92891fb">代码解释</h4>
-<div class="outline-text-4" id="text-org92891fb">
+<div id="outline-container-orgdc0d053" class="outline-4">
+<h4 id="orgdc0d053">代码解释</h4>
+<div class="outline-text-4" id="text-orgdc0d053">
 <div class="org-src-container">
 <pre class="src src-python">def scan(self, args):
     dst_ip, dst_port = args
@@ -217,9 +217,9 @@ ICMP的包就有可能被过滤，例如响应信息是ICMP错误信息类型3�
 </div>
 </div>
 </div>
-<div id="outline-container-org9d35705" class="outline-2">
-<h2 id="org9d35705">后话</h2>
-<div class="outline-text-2" id="text-org9d35705">
+<div id="outline-container-org2e4d0d3" class="outline-2">
+<h2 id="org2e4d0d3">后话</h2>
+<div class="outline-text-2" id="text-org2e4d0d3">
 <p>
 简单的扫描器就已经完成了，加上多线程的功能提高性能。很想吐嘈一下，真的对
 Python 的多线程恨铁不成钢，只好换成多进程；也给 Python2 Python3 API的改变折腾
