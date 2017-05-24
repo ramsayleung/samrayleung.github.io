@@ -33,15 +33,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2b64712">1. About myself</a></li>
-<li><a href="#org0700365">2. More Detail</a></li>
-<li><a href="#orge334810">3. And more</a></li>
+<li><a href="#orgf549821">1. About myself</a></li>
+<li><a href="#org962581d">2. More Detail</a></li>
+<li><a href="#org576f2e5">3. And more</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2b64712" class="outline-2">
-<h2 id="org2b64712"><span class="section-number-2">1</span> About myself</h2>
+<div id="outline-container-orgf549821" class="outline-2">
+<h2 id="orgf549821"><span class="section-number-2">1</span> About myself</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-center">
 <p>
@@ -57,8 +57,8 @@ I Am What I Am <br />
 </div>
 </div>
 
-<div id="outline-container-org0700365" class="outline-2">
-<h2 id="org0700365"><span class="section-number-2">2</span> More Detail</h2>
+<div id="outline-container-org962581d" class="outline-2">
+<h2 id="org962581d"><span class="section-number-2">2</span> More Detail</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <ul class="org-ul">
@@ -70,8 +70,8 @@ I Am What I Am <br />
 </div>
 </div>
 
-<div id="outline-container-orge334810" class="outline-2">
-<h2 id="orge334810"><span class="section-number-2">3</span> And more</h2>
+<div id="outline-container-org576f2e5" class="outline-2">
+<h2 id="org576f2e5"><span class="section-number-2">3</span> And more</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 从某位友人博客看到关于恩格斯的自白，如下：
@@ -133,44 +133,6 @@ I Am What I Am <br />
 <li>优点/缺点：安静，谨慎，懦弱，善良。你终究还是无法硬起心肠</li>
 </ul>
 </blockquote>
-<div class="org-src-container">
-<pre class="src src-groovy">class NuclearReactorSpec extends spock.lang.Specification{
-
-def "Complete test of all nuclear scenarios"() {
-
-given: "a nuclear reactor and sensor data"
-NuclearReactorMonitor nuclearReactorMonitor =new NuclearReactorMonitor()
-
-when: "we examine the sensor data"
-nuclearReactorMonitor.feedFireSensorData(fireSensors)
-nuclearReactorMonitor.feedRadiationSensorData(radiation)
-nuclearReactorMonitor.feedPressureInBar(pressure)
-NuclearReactorStatus status = nuclearReactorMonitor.getCurrentStatus()
-
-then: "we act according to safety requirements"
-status.alarmActive == alarm
-status.shutDownNeeded == shutDown
-status.evacuationMinutes == evacuation
-
-where: "possible nuclear incidents are:"
-pressure | fireSensors | radiation             || alarm | shutDown | evacuation
-150      | 0           | []                    || false | false    | -1
-150      | 1           | []                    || true  | false    | -1
-150      | 3           | []                    || true  | true     | -1
-150      | 0           | [110.4f ,0.3f, 0.0f]  || true  | true     | 1
-150      | 0           | [45.3f ,10.3f, 47.7f] || false | false    | -1
-155      | 0           | [0.0f ,0.0f, 0.0f]    || true  | false    | -1
-170      | 0           | [0.0f ,0.0f, 0.0f]    || true  | true     | 3
-180      | 0           | [110.4f ,0.3f, 0.0f]  || true  | true     | 1
-500      | 0           | [110.4f ,300f, 0.0f]  || true  | true     | 1
-30       | 0           | [110.4f ,1000f, 0.0f] || true  | true     | 1
-155      | 4           | [0.0f ,0.0f, 0.0f]    || true  | true     | -1
-170      | 1           | [45.3f ,10.3f, 47.7f] || true  | true     | 3
-}
-
-}
-</pre>
-</div>
 </div>
 </div>
 
