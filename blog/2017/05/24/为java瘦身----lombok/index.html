@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>为Java瘦身 -- Lombok - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+    <meta name="description" content="An introduction about lombok" />
+    <meta name="keywords" content="java,lombok" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>为Java瘦身 -- Lombok</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org537b866">前言</a></li>
+<li><a href="#org37842aa">Lombok</a>
+<ul>
+<li><a href="#orgb6d23d6">简介</a></li>
+<li><a href="#org972674d">@Getter and @Setter</a></li>
+<li><a href="#org3b31973">@NonNull</a></li>
+<li><a href="#orgb75e6a3">@EqualsAndHashCode</a></li>
+<li><a href="#org8ac4565">@Data</a></li>
+</ul>
+</li>
+<li><a href="#org44b6f89">小结</a></li>
+<li><a href="#orgc1b1dda">参考</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org537b866" class="outline-2">
+<h2 id="org537b866">前言</h2>
+<div class="outline-text-2" id="text-org537b866">
+<p>
+几天前 Goolge 在 I/O 大会上宣布了 Android 将官方支持 Kotlin, 这意味着 Android
+开发者可以更好地使用 Kotlin 开发 Android. 笔者虽不是 Android 开发者，但是也为
+Android 开发者多了一个选择而感到高兴，略显意外的是，接下来到处可以看到 "Java
+已死，Kotlin 当立" 之类的言论。一群人围在一起诉说被 Java "折磨" 的血泪史，然
+后为Kotlin 的到来欢欣鼓舞。笔者学过挺多的语言，也并不是一个 "Java 卫道士". 但
+是看到很多人都说 "Java 的语法啰嗦，每次都要编写一大段 "Setter/Getter" 这类的
+模板代码，还有各种的 Bean; 真的好累" 笔者就觉得其实很多人都是人云亦云，他们也
+并没有对 Java 有多少关注。其实 Java8 发布以后，使用 Java8 的函数式进行编码已
+经可以减少很多代码了；其次，一个新颖的类库也可以帮 Java 的代码进行瘦身 --
+Lombok
+</p>
+</div>
+</div>
+<div id="outline-container-org37842aa" class="outline-2">
+<h2 id="org37842aa">Lombok</h2>
+<div class="outline-text-2" id="text-org37842aa">
+</div><div id="outline-container-orgb6d23d6" class="outline-3">
+<h3 id="orgb6d23d6">简介</h3>
+<div class="outline-text-3" id="text-orgb6d23d6">
+<p>
+很多开发者都对模板代码嗤之以鼻，但是 Java 中就有很多非常类似且改动很少的样板
+代码。这问题一方面是由于类库的设计决定，另外一方面也是 Java 的自身语言的特性。
+而 Lombok 这个项目就是希望通过注解来减少模板代码。就注解而言，大多是各类框架
+用于生成代码 (典型的就是 Spring 和 Hibernate 了)，而很少直接使用注解生成的代
+码。因为如果想要直接在程序中使用注解生成的代码，就意味着在代码进行编译之前，
+注解就要进行相应的处理。这似乎是没可能发生的事情: 在编译代码之前使用编译后生
+成的代码。但是 Lombok 在 IDE 的配合下就真的做到在开发的时候就插入相应的代码。
+</p>
+</div>
+</div>
+<div id="outline-container-org972674d" class="outline-3">
+<h3 id="org972674d">@Getter and @Setter</h3>
+<div class="outline-text-3" id="text-org972674d">
+<p>
+百闻不如一见，还是直接看例子吧。对于使用过 Java 的开发者而言，笔者相信他们最
+熟悉的肯定是 Java 无处不在的封装以及对应的 Getter/Setter. 现在就来看一下如何
+为最常见的模板代码瘦身。未使用 Lombok 的代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">private boolean employed = true;
+private String name;
+
+public boolean isEmployed() {
+    return employed;
+}
+
+public void setEmployed(final boolean employed) {
+    this.employed = employed;
+}
+
+protected void setName(final String name) {
+    this.name = name;
+}
+</pre>
+</div>
+<p>
+并没有上面特点，还是 "旧把式". 那么现在来看一下使用了 Lombok 的同等作用的代
+码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">@Getter @Setter private boolean employed = true;
+@Setter(AccessLevel.PROTECTED) private String name;
+</pre>
+</div>
+<p>
+除了必要的变量定义以及 @Getter, @Setter 注解以外，没有了其他的东西的。但是使
+用 Lombok 的代码比原生的 Java 代码少了很多行，定义的类的属性越多，减少的代码
+数就越可观。而 @Getter 和 @Setter 注解的作用就是为一个类的属性生成 getter 和
+setter 方法，而这些生成的方法跟我们自己编写的代码是一样的。
+</p>
+</div>
+</div>
+<div id="outline-container-org3b31973" class="outline-3">
+<h3 id="org3b31973">@NonNull</h3>
+<div class="outline-text-3" id="text-org3b31973">
+<p>
+相信每一个使用过 Java 的开发者都不会对空指针这个异常陌生吧，因为
+NullPointException 导致了各种 Bug, 以至于它的发明者 Tony Hoare 都自嘲到他创
+造了价值十亿的错误 ("Null Reference: The Billion Dollar Mistake"). 因此在
+Java 的代码中，出于安全性的考虑，对于可能出现空指针的地方，都需要进行空指针
+检查，自然无可避免地产生了很多的模板代码。而 Lombok 引入的 @NonNull 注解可以
+让需要进行空指针检查的代码 fast-fail; 这样就无需显示添加空指针检查了。当为类
+的属性添加了 @NonNull 注解以后，在对应的 setter 函数，Lombok 也会生成对应的
+空指针检查。例子：使用 Lombok 对 <i>Family</i> 类添加注解：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">@Getter @Setter @NonNull
+private List&lt;Person&gt; members;
+</pre>
+</div>
+<p>
+对应的相同作用的原生代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">@NonNull
+private List&lt;Person&gt; members;
+
+public Family(@NonNull final List&lt;Person&gt; members) {
+    if (members == null) throw new java.lang.NullPointerException("members");
+    this.members = members;
+}
+
+@NonNull
+public List&lt;Person&gt; getMembers() {
+    return members;
+}
+
+public void setMembers(@NonNull final List&lt;Person&gt; members) {
+    if (members == null) throw new java.lang.NullPointerException("members");
+    this.members = members;
+}
+</pre>
+</div>
+<p>
+不得不感慨，使用 Lombok, 敲击键盘的次数都成指数级下降.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb75e6a3" class="outline-3">
+<h3 id="orgb75e6a3">@EqualsAndHashCode</h3>
+<div class="outline-text-3" id="text-orgb75e6a3">
+<p>
+因为 Java 的 Object 类存在用于比较的 <i>equals()</i> 以及对应的 <i>hashCode()</i> 方法，
+而很多类都经常需要重写这两个方法来实现比较操作。比较的操作大多是逐一比较子类
+的属性，而计算 hash 值的函数也基本是逐一取各个属性的 hash 值，然后与固定值相
+乘在相加. 这样的操作并不需要复杂算法，完成的都是重复性的 "体力活", 幸运的是，
+Lombok 也提供了相应的注解来减少这些模板代码。类级别的 @EqualsAndHashCode 注
+解可以为指定的属性生成 <i>equals()</i> 方法和 <i>hashCode()</i> 方法。默认情况下，所有
+非静态或者没被标注成 <i>transient</i> 的属性都会被 <i>equals()</i> 和 <i>hashCode()</i> 方
+法包含在内。当然，你也可以使用 <i>exclude</i> 声明不需要被包含的属性。例子：使用
+了 @EqualAndHashCode 注解的代码
+</p>
+<div class="org-src-container">
+<pre class="src src-java">@EqualsAndHashCode(callSuper=true,exclude={"address","city","state","zip"})
+public class Person extends SentientBeing {
+    enum Gender { Male, Female }
+
+    @NonNull private String name;
+    @NonNull private Gender gender;
+
+    private String ssn;
+    private String address;
+    private String city;
+    private String state;
+    private String zip;
+}
+</pre>
+</div>
+<p>
+对应的相同作用的原生代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public class Person extends SentientBeing {
+
+    enum Gender {
+	/*public static final*/ Male /* = new Gender() */,
+	/*public static final*/ Female /* = new Gender() */;
+    }
+    @NonNull
+    private String name;
+    @NonNull
+    private Gender gender;
+    private String ssn;
+    private String address;
+    private String city;
+    private String state;
+    private String zip;
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object o) {
+	if (o == this) return true;
+	if (o == null) return false;
+	if (o.getClass() != this.getClass()) return false;
+	if (!super.equals(o)) return false;
+	final Person other = (Person)o;
+	if (this.name == null ? other.name != null : !this.name.equals(other.name)) return false;
+	if (this.gender == null ? other.gender != null : !this.gender.equals(other.gender)) return false;
+	if (this.ssn == null ? other.ssn != null : !this.ssn.equals(other.ssn)) return false;
+	return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+	final int PRIME = 31;
+	int result = 1;
+	result = result * PRIME + super.hashCode();
+	result = result * PRIME + (this.name == null ? 0 : this.name.hashCode());
+	result = result * PRIME + (this.gender == null ? 0 : this.gender.hashCode());
+	result = result * PRIME + (this.ssn == null ? 0 : this.ssn.hashCode());
+	return result;
+    }
+}
+</pre>
+</div>
+<p>
+模板代码和使用了 Lombok 的代码简洁程度而言，差距越来越大了
+</p>
+</div>
+</div>
+<div id="outline-container-org8ac4565" class="outline-3">
+<h3 id="org8ac4565">@Data</h3>
+<div class="outline-text-3" id="text-org8ac4565">
+<p>
+下面笔者就来介绍一下在笔者项目中使用最频繁的注解 @Data. 使用 @Data 相当于同
+时在类级别使用 @EqualAndHashCode 注解以及笔者未曾提及的 @ToString 注解 (这个
+应该可以从注解名字猜出注解的作用), 以及为每一个类的属性添加上 @Setter 和
+@Getter 注解。在一个类使用 @Data, Lombok 还会为该类生成构造函数。例子：使用
+了 @Data 注解的函数：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">@Data(staticConstructor="of")
+public class Company {
+    private final Person founder;
+    private String name;
+    private List&lt;Person&gt; employees;
+}
+</pre>
+</div>
+<p>
+同等作用的原生 Java 代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public class Company {
+    private final Person founder;
+    private String name;
+    private List&lt;Person&gt; employees;
+
+    private Company(final Person founder) {
+	this.founder = founder;
+    }
+
+    public static Company of(final Person founder) {
+	return new Company(founder);
+    }
+
+    public Person getFounder() {
+	return founder;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(final String name) {
+	this.name = name;
+    }
+
+    public List&lt;Person&gt; getEmployees() {
+	return employees;
+    }
+
+    public void setEmployees(final List&lt;Person&gt; employees) {
+	this.employees = employees;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object o) {
+	if (o == this) return true;
+	if (o == null) return false;
+	if (o.getClass() != this.getClass()) return false;
+	final Company other = (Company)o;
+	if (this.founder == null ? other.founder != null : !this.founder.equals(other.founder)) return false;
+	if (this.name == null ? other.name != null : !this.name.equals(other.name)) return false;
+	if (this.employees == null ? other.employees != null : !this.employees.equals(other.employees)) return false;
+	return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+	final int PRIME = 31;
+	int result = 1;
+	result = result * PRIME + (this.founder == null ? 0 : this.founder.hashCode());
+	result = result * PRIME + (this.name == null ? 0 : this.name.hashCode());
+	result = result * PRIME + (this.employees == null ? 0 : this.employees.hashCode());
+	return result;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+	return "Company(founder=" + founder + ", name=" + name + ", employees=" + employees + ")";
+    }
+}
+</pre>
+</div>
+<p>
+差别更加显而易见了
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org44b6f89" class="outline-2">
+<h2 id="org44b6f89">小结</h2>
+<div class="outline-text-2" id="text-org44b6f89">
+<p>
+笔者在日常的开发中，使用的开发语言主要是 Java, 笔者也学习过其他的语言，所以
+Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性，优秀的 OOP 范式，以
+及大量的类库，框架 (例如 Spring "全家桶"), 以及 JIT 带来的接近 C++ 的性能，但
+是 Java 语法实在啰嗦，需要编写很多的模板代码，以至于经常出现将小项目写成中项
+目，中项目写成大项目的烦恼，更被戏称为 "搬砖". 现在看来，Lombok 为 Java 减少
+的模板代码实在算是造福 Java 开发者，让开发者在获得 Java 优势的时候，还可以尽
+量少地打字，可谓是来的及时。
+</p>
+<hr />
+</div>
+</div>
+<div id="outline-container-orgc1b1dda" class="outline-2">
+<h2 id="orgc1b1dda">参考</h2>
+<div class="outline-text-2" id="text-orgc1b1dda">
+<ul class="org-ul">
+<li><a href="https://projectlombok.org/index.html">https://projectlombok.org/index.html</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-05-24</span>
+        <span title="last modification date" class="post-info">2017-05-24</span>
+        <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
+        <span title="author" class="post-info">Samray</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/05/24/为java瘦身----lombok";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/05/24/为java瘦身----lombok";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
