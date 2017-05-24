@@ -171,7 +171,7 @@ table th.right, table td.right {
 /* body */
 .container {
     margin: 0 auto;
-    max-width: 870px;
+    max-width: 930px;
 }
 /* head */
 .masthead {
@@ -179,7 +179,7 @@ table th.right, table td.right {
 }
 .masthead:after {
     display: block;
-    content: '----------------------------------------------------------------';
+    ontent: '----------------------------------------------------------------';
     margin: 10px 0;
     color: #ccc;
 }
