@@ -31,6 +31,22 @@
 <div>
 <div class="post">
 <h1>Linux/Unix Shell 二三事之过滤器diff</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org99f56ff">语法</a></li>
+<li><a href="#org74ebef6">例子</a>
+<ul>
+<li><a href="#org1337783">用法一</a></li>
+<li><a href="#orgbcb7d15">用法2</a></li>
+<li><a href="#org2d22704">用法3</a></li>
+</ul>
+</li>
+<li><a href="#org021f346">diff 选项</a></li>
+</ul>
+</div>
+</div>
 <blockquote>
 <p>
 diff - compare files line by line
@@ -42,9 +58,9 @@ diff - compare files line by line
 都是使用 <b>diff</b> 和 <b>patch</b> 对程序进行差分和打补丁滴(现在有git了，但是diff 同样
 发挥着重要作用)
 </p>
-<div id="outline-container-org1e8abe9" class="outline-2">
-<h2 id="org1e8abe9">语法</h2>
-<div class="outline-text-2" id="text-org1e8abe9">
+<div id="outline-container-org99f56ff" class="outline-2">
+<h2 id="org99f56ff">语法</h2>
+<div class="outline-text-2" id="text-org99f56ff">
 <p>
 diff 的语法如下
 </p>
@@ -59,12 +75,12 @@ diff 将不输出任何东西。如果两个文件有差异，diff 会显示一�
 </p>
 </div>
 </div>
-<div id="outline-container-org875b16d" class="outline-2">
-<h2 id="org875b16d">例子</h2>
-<div class="outline-text-2" id="text-org875b16d">
-</div><div id="outline-container-orgb842378" class="outline-3">
-<h3 id="orgb842378">用法一</h3>
-<div class="outline-text-3" id="text-orgb842378">
+<div id="outline-container-org74ebef6" class="outline-2">
+<h2 id="org74ebef6">例子</h2>
+<div class="outline-text-2" id="text-org74ebef6">
+</div><div id="outline-container-org1337783" class="outline-3">
+<h3 id="org1337783">用法一</h3>
+<div class="outline-text-3" id="text-org1337783">
 <p>
 现在有两个文件，分别保存着不同的地址。
 address1 包含：
@@ -109,9 +125,9 @@ diff 的输出使用3个不同的单字符指导：a(append,追加),c(change,修
 </p>
 </div>
 </div>
-<div id="outline-container-orgcac5463" class="outline-3">
-<h3 id="orgcac5463">用法2</h3>
-<div class="outline-text-3" id="text-orgcac5463">
+<div id="outline-container-orgbcb7d15" class="outline-3">
+<h3 id="orgbcb7d15">用法2</h3>
+<div class="outline-text-3" id="text-orgbcb7d15">
 <p>
 现在把 <i>address2</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -146,9 +162,9 @@ beijing
 </p>
 </div>
 </div>
-<div id="outline-container-orgb26b867" class="outline-3">
-<h3 id="orgb26b867">用法3</h3>
-<div class="outline-text-3" id="text-orgb26b867">
+<div id="outline-container-org2d22704" class="outline-3">
+<h3 id="org2d22704">用法3</h3>
+<div class="outline-text-3" id="text-org2d22704">
 <p>
 现在把 <i>address1</i> 的最后一行删除，看看运行 <i>diff</i> 结果如何：
 address1 包含：
@@ -185,9 +201,9 @@ chengdu
 </div>
 </div>
 </div>
-<div id="outline-container-org2e9c199" class="outline-2">
-<h2 id="org2e9c199">diff 选项</h2>
-<div class="outline-text-2" id="text-org2e9c199">
+<div id="outline-container-org021f346" class="outline-2">
+<h2 id="org021f346">diff 选项</h2>
+<div class="outline-text-2" id="text-org021f346">
 <p>
 因为diff 是一个相当强大也是一个相当复杂的命令，所以我没办法将所有的用法一一道
 尽所以笔者将比较常用的选项列举出来
@@ -223,7 +239,7 @@ a a
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-28</span>
-        <span title="last modification date" class="post-info">2017-05-23</span>
+        <span title="last modification date" class="post-info">2017-05-24</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
         <span title="author" class="post-info">Samray</span>
       </div>

@@ -31,16 +31,34 @@
 <div>
 <div class="post">
 <h1>在Emacs中使用Ipython</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7421923">Emacs Ipython 输出错误</a>
+<ul>
+<li><a href="#orgb45da68">Update 2017-3-15</a></li>
+</ul>
+</li>
+<li><a href="#orgeb07bb5">Emacs Ipython 的使用优化</a>
+<ul>
+<li><a href="#org319bcc3">python-pop</a></li>
+<li><a href="#org2a7321d">Ipython History</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
-<div id="outline-container-org4f05e82" class="outline-2">
-<h2 id="org4f05e82">Emacs Ipython 输出错误</h2>
-<div class="outline-text-2" id="text-org4f05e82">
+<div id="outline-container-org7421923" class="outline-2">
+<h2 id="org7421923">Emacs Ipython 输出错误</h2>
+<div class="outline-text-2" id="text-org7421923">
 <p>
 在Emacs 运行 <b>run-python</b> 的时候，报错了，如下
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">[?12l[?25h2+2
-      [J[?7h[?12l[?25h[?2004l[?7hOut[1]: 4
+    [J[?7h[?12l[?25h[?2004l[?7hOut[1]: 4
 </pre>
 </div>
 <p>
@@ -51,15 +69,15 @@
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "--simple-prompt -i")
+    python-shell-interpreter-args "--simple-prompt -i")
 </pre>
 </div>
 <hr />
 </div>
 
-<div id="outline-container-orgd79fb93" class="outline-3">
-<h3 id="orgd79fb93">Update 2017-3-15</h3>
-<div class="outline-text-3" id="text-orgd79fb93">
+<div id="outline-container-orgb45da68" class="outline-3">
+<h3 id="orgb45da68">Update 2017-3-15</h3>
+<div class="outline-text-3" id="text-orgb45da68">
 <p>
 在添加了 <b>--simple-promp -i</b> 参数以后，虽说乱码的问题解决了，但是新的问题又出现了
 在Ipython 里面是没法无法输入多行内容的，即使是一个简单的循环，详情查看这条issue
@@ -73,12 +91,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org817f14f" class="outline-2">
-<h2 id="org817f14f">Emacs Ipython 的使用优化</h2>
-<div class="outline-text-2" id="text-org817f14f">
-</div><div id="outline-container-org9df56db" class="outline-3">
-<h3 id="org9df56db">python-pop</h3>
-<div class="outline-text-3" id="text-org9df56db">
+<div id="outline-container-orgeb07bb5" class="outline-2">
+<h2 id="orgeb07bb5">Emacs Ipython 的使用优化</h2>
+<div class="outline-text-2" id="text-orgeb07bb5">
+</div><div id="outline-container-org319bcc3" class="outline-3">
+<h3 id="org319bcc3">python-pop</h3>
+<div class="outline-text-3" id="text-org319bcc3">
 <p>
 因为我之前使用Emacs的时候，是使用Spacemacs的配置的，但是后来觉得还是自己的
 配置用的更舒服，所以又切换回自己的配置，但是我还是很想念Spacemacs的一些绑定
@@ -93,19 +111,19 @@ shell-pop 的功能
 similar to shell-pop"
   (interactive)
   (if (get-buffer "*Python*")
-      (if (string= (buffer-name) "*Python*")
+   (if (string= (buffer-name) "*Python*")
 	  (if (not (one-window-p))
-	      (progn (bury-buffer)
+	   (progn (bury-buffer)
 		     (delete-window))
 	    )
 	(progn (switch-to-buffer-other-window "*Python*")
-	       (end-of-buffer)
-	       (evil-insert-state)))
+	    (end-of-buffer)
+	    (evil-insert-state)))
     (progn
-      (run-python)
-      (switch-to-buffer-other-window "*Python*")
-      (end-of-buffer)
-      (evil-insert-state))))
+   (run-python)
+   (switch-to-buffer-other-window "*Python*")
+   (end-of-buffer)
+   (evil-insert-state))))
 </pre>
 </div>
 <p>
@@ -113,9 +131,9 @@ similar to shell-pop"
 </p>
 </div>
 </div>
-<div id="outline-container-orgcaec1c6" class="outline-3">
-<h3 id="orgcaec1c6">Ipython History</h3>
-<div class="outline-text-3" id="text-orgcaec1c6">
+<div id="outline-container-org2a7321d" class="outline-3">
+<h3 id="org2a7321d">Ipython History</h3>
+<div class="outline-text-3" id="text-org2a7321d">
 <p>
 我在普通的Shell使用Ipython的时候，很自然地使用上下方向键翻到上一条/下一条
 执行的命令，因为shell的使用习惯就是这样滴，但是在Emacs里面使用Ipython,上下
@@ -141,7 +159,7 @@ Enjoy Emacs :)
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
-        <span title="last modification date" class="post-info">2017-05-23</span>
+        <span title="last modification date" class="post-info">2017-05-24</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a>, <a href="/tags/python/">python</a></span>
         <span title="author" class="post-info">Samray</span>
       </div>

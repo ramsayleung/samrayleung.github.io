@@ -31,6 +31,22 @@
 <div>
 <div class="post">
 <h1>提高Emacs启动速度</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org181079d">技巧1</a></li>
+<li><a href="#org7b9a15b">技巧2</a></li>
+<li><a href="#org0570b83">技巧3</a>
+<ul>
+<li><a href="#orgdc30325">:after</a></li>
+<li><a href="#orge6928c7">:commands</a></li>
+<li><a href="#org0908308">:bind :mode</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <p>
 之前看到个笑话：
 </p>
@@ -44,9 +60,9 @@ B:打开Vim,修改代码，保存，退出
 有时候，经常看到社区里面有人吐嘈Emacs 什么都好，就是启动时间太长了，其实
 是存在一些技巧来缩短加载时间的
 </p>
-<div id="outline-container-org70bb763" class="outline-2">
-<h2 id="org70bb763">技巧1</h2>
-<div class="outline-text-2" id="text-org70bb763">
+<div id="outline-container-org181079d" class="outline-2">
+<h2 id="org181079d">技巧1</h2>
+<div class="outline-text-2" id="text-org181079d">
 <p>
 在你的 <b>.emacs</b> 或者相应的初始化文件里面添加如下代码
 </p>
@@ -67,9 +83,9 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-org2ba2c4e" class="outline-2">
-<h2 id="org2ba2c4e">技巧2</h2>
-<div class="outline-text-2" id="text-org2ba2c4e">
+<div id="outline-container-org7b9a15b" class="outline-2">
+<h2 id="org7b9a15b">技巧2</h2>
+<div class="outline-text-2" id="text-org7b9a15b">
 <p>
 <b>(let((file-name-hander-alist nil))init.file)</b> 包裹(wrap)你的初始化文件，即：
 </p>
@@ -93,18 +109,18 @@ B:打开Vim,修改代码，保存，退出
 </p>
 </div>
 </div>
-<div id="outline-container-org713b841" class="outline-2">
-<h2 id="org713b841">技巧3</h2>
-<div class="outline-text-2" id="text-org713b841">
+<div id="outline-container-org0570b83" class="outline-2">
+<h2 id="org0570b83">技巧3</h2>
+<div class="outline-text-2" id="text-org0570b83">
 <p>
 Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延迟，让笔者的Emacs
 启动加载时间减少一半，因为笔者用 <b>use-package</b> 这个macro,而 <b>use-package</b> 又集
 成了延迟加载的功能，所以笔者就直接拿自己的代码举例了
 </p>
 </div>
-<div id="outline-container-orgc2a095a" class="outline-3">
-<h3 id="orgc2a095a">:after</h3>
-<div class="outline-text-3" id="text-orgc2a095a">
+<div id="outline-container-orgdc30325" class="outline-3">
+<h3 id="orgdc30325">:after</h3>
+<div class="outline-text-3" id="text-orgdc30325">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;;; Export to twitter bootstrap
 (use-package ox-twbs
@@ -119,9 +135,9 @@ Emacs lisp 有一项auto-load 的技术，类似延迟加载，合理运用延�
 </p>
 </div>
 </div>
-<div id="outline-container-org066c97d" class="outline-3">
-<h3 id="org066c97d">:commands</h3>
-<div class="outline-text-3" id="text-org066c97d">
+<div id="outline-container-orge6928c7" class="outline-3">
+<h3 id="orge6928c7">:commands</h3>
+<div class="outline-text-3" id="text-orge6928c7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package avy
   :commands (avy-goto-char avy-goto-line)
@@ -142,9 +158,9 @@ and defers loading of the module until they are used
 </p>
 </div>
 </div>
-<div id="outline-container-org35c5a7a" class="outline-3">
-<h3 id="org35c5a7a">:bind :mode</h3>
-<div class="outline-text-3" id="text-org35c5a7a">
+<div id="outline-container-org0908308" class="outline-3">
+<h3 id="org0908308">:bind :mode</h3>
+<div class="outline-text-3" id="text-org0908308">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package hi-lock
   :bind (("M-o l" . highlight-lines-matching-regexp)
@@ -210,7 +226,7 @@ Enjoy Emacs :)
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
-        <span title="last modification date" class="post-info">2017-05-23</span>
+        <span title="last modification date" class="post-info">2017-05-24</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a></span>
         <span title="author" class="post-info">Samray</span>
       </div>

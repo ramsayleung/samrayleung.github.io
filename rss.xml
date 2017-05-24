@@ -4,10 +4,38 @@
     <title>陌上人如玉,公子世无双</title>
     <link>http://https//samrayleung.github.io/</link>
     <description>凡走过,必留下痕迹</description>
-    <pubDate>Wed, 24 May 2017 22:00:24 HKT</pubDate>
-    <lastBuildDate>Wed, 24 May 2017 22:00:24 HKT</lastBuildDate>
+    <pubDate>Wed, 24 May 2017 22:08:36 HKT</pubDate>
+    <lastBuildDate>Wed, 24 May 2017 22:08:36 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>关于工具,关于折腾</title>
+      <link>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</link>
+      <description><![CDATA[An discussion about tool  and tweak]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</guid>
+    </item>
+    <item>
+      <title>爬虫高效去重之布隆过滤器</title>
+      <link>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</link>
+      <description><![CDATA[an dscription about bloom filter]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</guid>
+    </item>
+    <item>
+      <title>Linux/Unix Shell 二三事之过滤器cat</title>
+      <link>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</link>
+      <description><![CDATA[An introduction about cat]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</guid>
+    </item>
+    <item>
+      <title>Linux/Unix Shell 二三事之过滤器diff</title>
+      <link>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</link>
+      <description><![CDATA[An introduction about diff]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</guid>
+    </item>
     <item>
       <title>关于分布式系统唯一ID的探究</title>
       <link>http://https//samrayleung.github.io/blog/2017/05/23/关于分布式系统唯一id的探究</link>
@@ -16,66 +44,38 @@
       <guid>http://https//samrayleung.github.io/blog/2017/05/23/关于分布式系统唯一id的探究</guid>
     </item>
     <item>
-      <title>关于工具,关于折腾</title>
-      <link>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</link>
-      <description><![CDATA[An discussion about tool  and tweak]]></description>
-      <pubDate>2017-05-23</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</guid>
-    </item>
-    <item>
-      <title>爬虫高效去重之布隆过滤器</title>
-      <link>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</link>
-      <description><![CDATA[an dscription about bloom filter]]></description>
-      <pubDate>2017-05-23</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</guid>
-    </item>
-    <item>
-      <title>Linux/Unix Shell 二三事之过滤器cat</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</link>
-      <description><![CDATA[An introduction about cat]]></description>
-      <pubDate>2017-05-23</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</guid>
-    </item>
-    <item>
-      <title>Linux/Unix Shell 二三事之过滤器diff</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</link>
-      <description><![CDATA[An introduction about diff]]></description>
-      <pubDate>2017-05-23</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</guid>
-    </item>
-    <item>
       <title>在Emacs中使用Ipython</title>
       <link>http://https//samrayleung.github.io/blog/2017/02/22/在emacs中使用ipython</link>
       <description><![CDATA[Use Ipython in Emasc]]></description>
-      <pubDate>2017-05-23</pubDate>
+      <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/02/22/在emacs中使用ipython</guid>
     </item>
     <item>
       <title>提高Emacs启动速度</title>
       <link>http://https//samrayleung.github.io/blog/2017/02/22/提高emacs启动速度</link>
       <description><![CDATA[Tips to reduce emacs startup time]]></description>
-      <pubDate>2017-05-23</pubDate>
+      <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/02/22/提高emacs启动速度</guid>
     </item>
     <item>
       <title>Shell神器fasd与Eshell的不期而遇</title>
       <link>http://https//samrayleung.github.io/blog/2017/03/02/shell神器fasd与eshell的不期而遇</link>
       <description><![CDATA[An introduction about tweaking eshell with fasd]]></description>
-      <pubDate>2017-05-23</pubDate>
+      <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/03/02/shell神器fasd与eshell的不期而遇</guid>
     </item>
     <item>
       <title>(翻译)从Helm到Ivy</title>
       <link>http://https//samrayleung.github.io/blog/2017/03/05/(翻译)从helm到ivy</link>
       <description><![CDATA[An Translated Post about switch from helm to ivy ]]></description>
-      <pubDate>2017-05-23</pubDate>
+      <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/03/05/(翻译)从helm到ivy</guid>
     </item>
     <item>
       <title>Linux/Unix Shell 二三事之过滤器grep</title>
       <link>http://https//samrayleung.github.io/blog/2017/03/13/linux-unix-shell-二三事之过滤器grep</link>
       <description><![CDATA[an introduction about grep]]></description>
-      <pubDate>2017-05-23</pubDate>
+      <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/03/13/linux-unix-shell-二三事之过滤器grep</guid>
     </item>
   </channel>
