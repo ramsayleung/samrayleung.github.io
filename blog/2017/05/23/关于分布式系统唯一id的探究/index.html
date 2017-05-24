@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>关于分布式系统唯一ID的探究 - 陌上人如玉,公子世无双</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Samray" />
+    <meta name="description" content="An discussion about unique id in distributed system" />
+    <meta name="keywords" content="uuid,java,python" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>关于分布式系统唯一ID的探究</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6ea3436">若干实现策略</a></li>
+<li><a href="#orgbd6ed1a">Snowflake 算法实现</a>
+<ul>
+<li><a href="#org717c4a5">Snowflake 算法</a></li>
+<li><a href="#orgc988d31">Snowflake 实现</a>
+<ul>
+<li><a href="#org07f4557">生成时间戳</a></li>
+<li><a href="#org2603f0a">生成递增序列</a></li>
+<li><a href="#org2daf7fc">获取 Mac 地址</a></li>
+</ul>
+</li>
+<li><a href="#orgc8f3df6">Snowflake 完整代码</a>
+<ul>
+<li><a href="#org35e1805">线程同步</a></li>
+<li><a href="#org70ade27">同一毫秒生成多个 ID</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgdd3a297">小结</a></li>
+</ul>
+</div>
+</div>
+<p>
+最近笔者需要为运行的分布式系统某部分模块构造系统唯一的ID, 而 ID 需要是数字的形
+式，并应该尽量的短。不得不说，这是一个有趣的问题
+</p>
+<div id="outline-container-org6ea3436" class="outline-2">
+<h2 id="org6ea3436">若干实现策略</h2>
+<div class="outline-text-2" id="text-org6ea3436">
+<p>
+查阅完相关的资料，发现为分布式系统生成唯一 ID 方法挺多的，例如：
+</p>
+<ul class="org-ul">
+<li>UUID</li>
+<li>使用一个 ticket server, 即中央的服务器，各个节点都从中央服务器取 ID</li>
+<li>Twitter 的 Snowflake 算法</li>
+<li>Boundary 的 flake 算法</li>
+</ul>
+
+<p>
+其中 UUID 生成的 ID 是字符串＋数字，不适用； ticket server 的做法略麻烦，笔者
+并不想为了个 ID 还要去访问中央服务器；剩下就是 Snowflake 和 flake 算法，
+flake 算法生成的是 128 位的 ID, 略长；所以最后笔者选择了 Snowflake 算法。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd6ed1a" class="outline-2">
+<h2 id="orgbd6ed1a">Snowflake 算法实现</h2>
+<div class="outline-text-2" id="text-orgbd6ed1a">
+<p>
+本来 Twitter 的算法是有相应实现的，不过后来删除了；笔者就只好自己卷起袖子自己
+实现了:(. 虽说 Twitter 没有了相应的实现，但是 Snowflake 算法原理很简单，实现
+起来并不难.
+</p>
+</div>
+<div id="outline-container-org717c4a5" class="outline-3">
+<h3 id="org717c4a5">Snowflake 算法</h3>
+<div class="outline-text-3" id="text-org717c4a5">
+<p>
+Snowflake 算法生成 64 位的 ID, ID 的格式是 41 位的时间戳 + 10 位的截断的 mac
+地址 + 12 位递增序列：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">"""id format =&gt;
+timestamp | machineId|sequence
+41        | 10       |12
+"""
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc988d31" class="outline-3">
+<h3 id="orgc988d31">Snowflake 实现</h3>
+<div class="outline-text-3" id="text-orgc988d31">
+</div><div id="outline-container-org07f4557" class="outline-4">
+<h4 id="org07f4557">生成时间戳</h4>
+<div class="outline-text-4" id="text-org07f4557">
+<p>
+Java 内置了生成精确到毫秒的时间戳的方法，非常便利：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">long timestamp = System.currentTimeMillis();
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2603f0a" class="outline-4">
+<h4 id="org2603f0a">生成递增序列</h4>
+<div class="outline-text-4" id="text-org2603f0a">
+<p>
+12 bits 的最大值是 2**12=4096, 所以生成递增序列也非常简单：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">private final long sequenceMax = 4096; //2**12
+private volatile long sequence = 0L;
+public void generateId(){
+    //do something
+    sequence = (sequence + 1) % sequenceMax;
+    //do something
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2daf7fc" class="outline-4">
+<h4 id="org2daf7fc">获取 Mac 地址</h4>
+<div class="outline-text-4" id="text-org2daf7fc">
+<p>
+我们通过获取当前机器的 IP 地址以获取对应的物理地址：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">protected long getMachineId() throws GetHardwareIdFailedException {
+
+    try {
+	InetAddress ip = InetAddress.getLocalHost();
+	NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+	long id;
+	if (network == null) {
+       id = 1;
+	} else {
+       byte[] mac = network.getHardwareAddress();
+       id =
+	   ((0x000000FF &amp; (long) mac[mac.length - 1]) |
+	    (0x0000FF00 &amp; (((long) mac[mac.length - 2]) &lt;&lt; 8))) &gt;&gt; 6;
+	}
+	return id;
+    } catch (SocketException e) {
+	throw new GetHardwareIdFailedException(e);
+    } catch (UnknownHostException e) {
+	throw new GetHardwareIdFailedException(e);
+    }
+}
+</pre>
+</div>
+<p>
+又因为 Mac 地址是6 个字节 (48 bits)，而需要的只是 10 bit, 所以需要取最低位
+的 2个字节 (16 bits)，然后右移 6 bits 以获取 10 个 bits 的 Mac地址
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8f3df6" class="outline-3">
+<h3 id="orgc8f3df6">Snowflake 完整代码</h3>
+<div class="outline-text-3" id="text-orgc8f3df6">
+<p>
+下面是 Snowflake 的 Java 实现：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public class IdGenerator {
+
+    //   id format  =&gt;
+    //   timestamp |datacenter | sequence
+    //   41        |10         |  12
+    private final long sequenceBits = 12;
+    private final long machineIdBits = 10L;
+    private final long MaxMachineId = -1L ^ (-1L &lt;&lt; machineIdBits);
+
+    private final long machineIdShift = sequenceBits;
+    private final long timestampLeftShift = sequenceBits + machineIdBits;
+    private static final Object lock=new Object();
+    private final long twepoch = 1288834974657L;
+    private final long machineId;
+    private final long sequenceMax = 4096; //2**12
+
+    private volatile long lastTimestamp = -1L;
+    private volatile long sequence = 0L;
+
+    private static volatile IdGenerator  instance;
+
+    public static IdGenerator getInstance() throws Exception {
+    IdGenerator generator=instance;
+    if (instance == null) {
+	synchronized(lock){
+	    generator=instance;
+	    if(generator==null){
+		generator=new IdGenerator();
+		instance=generator;
+	    }
+	}
+    }
+    return generator;
+    }
+
+    private IdGenerator() throws Exception {
+    machineId = getMachineId();
+    if (machineId &gt; MaxMachineId || machineId &lt; 0) {
+	    throw new Exception("machineId &gt; MaxMachineId");
+    }
+    }
+
+    public synchronized Long generateLongId() throws Exception {
+    long timestamp = System.currentTimeMillis();
+    if (timestamp &lt; lastTimestamp) {
+	    throw new Exception(
+			    "Clock moved backwards.  Refusing to generate id for " + (
+										      lastTimestamp - timestamp) + " milliseconds.");
+    }
+    if (lastTimestamp == timestamp) {
+	    sequence = (sequence + 1) % sequenceMax;
+	    if (sequence == 0) {
+	    timestamp = tillNextMillis(lastTimestamp);
+	    }
+    } else {
+	    sequence = 0;
+    }
+    lastTimestamp = timestamp;
+    Long id = ((timestamp - twepoch) &lt;&lt; timestampLeftShift) |
+	    (machineId &lt;&lt; machineIdShift) |
+	    sequence;
+    return id;
+    }
+
+    protected long tillNextMillis(long lastTimestamp) {
+    long timestamp = System.currentTimeMillis();
+    while (timestamp &lt;= lastTimestamp) {
+	    timestamp = System.currentTimeMillis();
+    }
+    return timestamp;
+    }
+
+    protected long getMachineId() throws GetHardwareIdFailedException {
+
+    try {
+	    InetAddress ip = InetAddress.getLocalHost();
+	    NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+	    long id;
+	    if (network == null) {
+	    id = 1;
+	    } else {
+	    byte[] mac = network.getHardwareAddress();
+	    id =
+		((0x000000FF &amp; (long) mac[mac.length - 1]) |
+		 (0x0000FF00 &amp; (((long) mac[mac.length - 2]) &lt;&lt; 8))) &gt;&gt; 6;
+	    }
+	    return id;
+    } catch (SocketException e) {
+	    throw new GetHardwareIdFailedException(e);
+    } catch (UnknownHostException e) {
+	    throw new GetHardwareIdFailedException(e);
+    }
+    }
+}
+</pre>
+</div>
+<p>
+正如笔者所言，算法并不难，就是分别获取时间戳， mac 地址，和递增序列号，然后
+移位得到 ID. 但是在具体的实现中还是有一些需要注意的细节的。
+</p>
+</div>
+<div id="outline-container-org35e1805" class="outline-4">
+<h4 id="org35e1805">线程同步</h4>
+<div class="outline-text-4" id="text-org35e1805">
+<p>
+因为算法中使用到递增的序列号来生成 ID,而在实际的开发或者生产环境中很可能不止一
+个线程在使用 IdGenerator 这个类，如果这样就很容易出现不同线程的竞争问题，所以
+笔者使用了单例模式来生成 ID, 一方面更符合生成器的设计，另一方面因为对生成 ID的
+方法进行了同步，就保证了不会出现竞争问题。
+</p>
+</div>
+</div>
+<div id="outline-container-org70ade27" class="outline-4">
+<h4 id="org70ade27">同一毫秒生成多个 ID</h4>
+<div class="outline-text-4" id="text-org70ade27">
+<p>
+因为序列号长度是 12个 bit, 那么序列号最大值就是 2**12=4096了，此外时间戳是精确
+到毫秒的，这就是意味着，当一毫秒内，产生超过 4096 个 ID 的时候就会出现重复的
+ID. 这样的情况并不是不可能发生，所以要对此进行处理；所以在 <i>generateId()</i> 函数中：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">if (lastTimestamp == timestamp) {
+    sequence = (sequence + 1) % sequenceMax;
+    if (sequence == 0) {
+	   timestamp = tillNextMillis(lastTimestamp);
+    }
+}
+</pre>
+</div>
+<p>
+有以上的一段代码。当现在的时间戳与之前的时间戳一致，那么就意味着还是同一毫秒，
+如果序列号为 0, 就说明已经产生了 4096 个 ID了，继续产生 ID,就会出现重复 ID, 所
+以要等待一毫秒，这个就是 <i>tillNextMills()</i> 函数的作用了。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdd3a297" class="outline-2">
+<h2 id="orgdd3a297">小结</h2>
+<div class="outline-text-2" id="text-orgdd3a297">
+<p>
+算法虽然简单，但是在找到 Snowflake 算法之前，笔者尝试了挺多的算法，但是都是因
+为不符合要求而被一一否决， 而 Snowflake 算法虽然简单，但是胜在实用。最后附上
+笔者 snowflake 算法的 Python 实现：
+<a href="https://github.com/samrayleung/snowflake">Snowfloke</a>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-05-23</span>
+        <span title="last modification date" class="post-info">2017-05-24</span>
+        <span title="tags" class="post-info"><a href="/tags/python/">python</a>, <a href="/tags/java/">java</a></span>
+        <span title="author" class="post-info">Samray</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/05/23/关于分布式系统唯一id的探究";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/05/23/关于分布式系统唯一id的探究";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; localhost &lt;dot&gt; localdomain">Samray</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

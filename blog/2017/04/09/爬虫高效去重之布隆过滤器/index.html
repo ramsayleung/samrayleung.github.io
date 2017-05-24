@@ -38,9 +38,9 @@ url 的去重，即如何判别 url 是否已经被爬取，如果被爬取，�
 用 set 内存利用率不高，此外对于那些不像Python 那样用 hash 实现的 set 而言，时间
 复杂度是 log(N),实在难说高效。
 </p>
-<div id="outline-container-org490a373" class="outline-2">
-<h2 id="org490a373">Bloom Filter</h2>
-<div class="outline-text-2" id="text-org490a373">
+<div id="outline-container-org0ab75fd" class="outline-2">
+<h2 id="org0ab75fd">Bloom Filter</h2>
+<div class="outline-text-2" id="text-org0ab75fd">
 <p>
 那么如何实现高效的去重呢？ 笔者查阅资料之后得知：使用布隆过滤器 (Bloom
 Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集合中。布隆过滤器实际上
@@ -51,9 +51,9 @@ Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集�
 时间不随元素增长而增加).那么布隆过滤器又是怎样实现的呢
 </p>
 </div>
-<div id="outline-container-org2940b8c" class="outline-3">
-<h3 id="org2940b8c">布隆过滤器实现原理</h3>
-<div class="outline-text-3" id="text-org2940b8c">
+<div id="outline-container-org9fb696b" class="outline-3">
+<h3 id="org9fb696b">布隆过滤器实现原理</h3>
+<div class="outline-text-3" id="text-org9fb696b">
 <p>
 一个Bloom Filter是基于一个m位的位向量（Bit Vector），这些位向量的初始值为0,并
 且有一系列的 hash 函数，hash 函数值域为1-m.在下面例子中，是15位的位向量，初始
@@ -105,9 +105,9 @@ hash 函数对 <b>whatever</b> 进行散列值计算，然后与位向量做 "�
 </div>
 </div>
 </div>
-<div id="outline-container-org9588cdc" class="outline-2">
-<h2 id="org9588cdc">Python BloomFilter</h2>
-<div class="outline-text-2" id="text-org9588cdc">
+<div id="outline-container-org4fc7f77" class="outline-2">
+<h2 id="org4fc7f77">Python BloomFilter</h2>
+<div class="outline-text-2" id="text-org4fc7f77">
 <p>
 算法都是为了实际问题服务的，又回到爬虫这个话题上。在了解布隆过滤器原理之后，可
 以很容易地实现自己的布隆过滤器，但是想要实现一个高效健壮的布隆过滤器就需要比较
@@ -132,18 +132,18 @@ print 'apple' in bf
 </p>
 </div>
 </div>
-<div id="outline-container-orgd16844f" class="outline-2">
-<h2 id="orgd16844f">结果</h2>
-<div class="outline-text-2" id="text-orgd16844f">
+<div id="outline-container-org369a3d2" class="outline-2">
+<h2 id="org369a3d2">结果</h2>
+<div class="outline-text-2" id="text-org369a3d2">
 <p>
 原理就说得差不多了，要想对布隆过滤器有更深的认识，还需要更多的实战。多写，多思
 考。 Enjoy Python,Enjoy Crawler :)
 </p>
 </div>
 </div>
-<div id="outline-container-org12c9572" class="outline-2">
-<h2 id="org12c9572">参考</h2>
-<div class="outline-text-2" id="text-org12c9572">
+<div id="outline-container-org1dc246f" class="outline-2">
+<h2 id="org1dc246f">参考</h2>
+<div class="outline-text-2" id="text-org1dc246f">
 <ul class="org-ul">
 <li><a href="https://llimllib.github.io/bloomfilter-tutorial/">https://llimllib.github.io/bloomfilter-tutorial/</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Bloom_filter">https://en.wikipedia.org/wiki/Bloom_filter</a></li>
