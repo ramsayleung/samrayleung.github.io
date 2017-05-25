@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>为Java瘦身 -- Lombok - 陌上人如玉,公子世无双</title>
+    <title>为Java瘦身 -- Lombok - 公子世无双，陌上人如玉</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
     <meta name="description" content="An introduction about lombok" />
@@ -12,7 +12,7 @@
   <body class="container">
     <div>
       <header class="masthead">
-        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <h1 class="masthead-title"><a href="/">公子世无双，陌上人如玉</a></h1>
         <p>凡走过,必留下痕迹</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
@@ -35,24 +35,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9dfa573">前言</a></li>
-<li><a href="#org14fd364">Lombok</a>
+<li><a href="#orgf0c18cd">前言</a></li>
+<li><a href="#org7d84158">Lombok</a>
 <ul>
-<li><a href="#org3864f70">简介</a></li>
-<li><a href="#org413b88b">@Getter and @Setter</a></li>
-<li><a href="#org1dd2895">@NonNull</a></li>
-<li><a href="#orgb1fe5a8">@EqualsAndHashCode</a></li>
-<li><a href="#org6278b8a">@Data</a></li>
+<li><a href="#orga77edd6">简介</a></li>
+<li><a href="#org109a205">@Getter and @Setter</a></li>
+<li><a href="#org31b7162">@NonNull</a></li>
+<li><a href="#org835ead7">@EqualsAndHashCode</a></li>
+<li><a href="#org90e4453">@Data</a></li>
 </ul>
 </li>
-<li><a href="#org9bef9f4">小结</a></li>
-<li><a href="#org2a9efb0">参考</a></li>
+<li><a href="#orgcc18d15">小结</a></li>
+<li><a href="#org7b47320">参考</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9dfa573" class="outline-2">
-<h2 id="org9dfa573">前言</h2>
-<div class="outline-text-2" id="text-org9dfa573">
+<div id="outline-container-orgf0c18cd" class="outline-2">
+<h2 id="orgf0c18cd">前言</h2>
+<div class="outline-text-2" id="text-orgf0c18cd">
 <p>
 几天前 Goolge 在 I/O 大会上宣布了 Android 将官方支持 Kotlin, 这意味着 Android
 开发者可以更好地使用 Kotlin 开发 Android. 笔者虽不是 Android 开发者，但是也为
@@ -67,12 +67,12 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-org14fd364" class="outline-2">
-<h2 id="org14fd364">Lombok</h2>
-<div class="outline-text-2" id="text-org14fd364">
-</div><div id="outline-container-org3864f70" class="outline-3">
-<h3 id="org3864f70">简介</h3>
-<div class="outline-text-3" id="text-org3864f70">
+<div id="outline-container-org7d84158" class="outline-2">
+<h2 id="org7d84158">Lombok</h2>
+<div class="outline-text-2" id="text-org7d84158">
+</div><div id="outline-container-orga77edd6" class="outline-3">
+<h3 id="orga77edd6">简介</h3>
+<div class="outline-text-3" id="text-orga77edd6">
 <p>
 很多开发者都对模板代码嗤之以鼻，但是 Java 中就有很多非常类似且改动很少的样板
 代码。这问题一方面是由于类库的设计决定，另外一方面也是 Java 的自身语言的特性。
@@ -84,9 +84,9 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-org413b88b" class="outline-3">
-<h3 id="org413b88b">@Getter and @Setter</h3>
-<div class="outline-text-3" id="text-org413b88b">
+<div id="outline-container-org109a205" class="outline-3">
+<h3 id="org109a205">@Getter and @Setter</h3>
+<div class="outline-text-3" id="text-org109a205">
 <p>
 百闻不如一见，还是直接看例子吧。对于使用过 Java 的开发者而言，笔者相信他们最
 熟悉的肯定是 Java 无处不在的封装以及对应的 Getter/Setter. 现在就来看一下如何
@@ -126,9 +126,9 @@ setter 方法，而这些生成的方法跟我们自己编写的代码是一样�
 </p>
 </div>
 </div>
-<div id="outline-container-org1dd2895" class="outline-3">
-<h3 id="org1dd2895">@NonNull</h3>
-<div class="outline-text-3" id="text-org1dd2895">
+<div id="outline-container-org31b7162" class="outline-3">
+<h3 id="org31b7162">@NonNull</h3>
+<div class="outline-text-3" id="text-org31b7162">
 <p>
 相信每一个使用过 Java 的开发者都不会对空指针这个异常陌生吧，因为
 NullPointException 导致了各种 Bug, 以至于它的发明者 Tony Hoare 都自嘲到他创
@@ -172,9 +172,9 @@ public void setMembers(@NonNull final List&lt;Person&gt; members) {
 </p>
 </div>
 </div>
-<div id="outline-container-orgb1fe5a8" class="outline-3">
-<h3 id="orgb1fe5a8">@EqualsAndHashCode</h3>
-<div class="outline-text-3" id="text-orgb1fe5a8">
+<div id="outline-container-org835ead7" class="outline-3">
+<h3 id="org835ead7">@EqualsAndHashCode</h3>
+<div class="outline-text-3" id="text-org835ead7">
 <p>
 因为 Java 的 Object 类存在用于比较的 <i>equals()</i> 以及对应的 <i>hashCode()</i> 方法，
 而很多类都经常需要重写这两个方法来实现比较操作。比较的操作大多是逐一比较子类
@@ -259,9 +259,9 @@ public class Person extends SentientBeing {
 </p>
 </div>
 </div>
-<div id="outline-container-org6278b8a" class="outline-3">
-<h3 id="org6278b8a">@Data</h3>
-<div class="outline-text-3" id="text-org6278b8a">
+<div id="outline-container-org90e4453" class="outline-3">
+<h3 id="org90e4453">@Data</h3>
+<div class="outline-text-3" id="text-org90e4453">
 <p>
 下面笔者就来介绍一下在笔者项目中使用最频繁的注解 @Data. 使用 @Data 相当于同
 时在类级别使用 @EqualAndHashCode 注解以及笔者未曾提及的 @ToString 注解 (这个
@@ -369,9 +369,9 @@ public class Company {
 </div>
 </div>
 </div>
-<div id="outline-container-org9bef9f4" class="outline-2">
-<h2 id="org9bef9f4">小结</h2>
-<div class="outline-text-2" id="text-org9bef9f4">
+<div id="outline-container-orgcc18d15" class="outline-2">
+<h2 id="orgcc18d15">小结</h2>
+<div class="outline-text-2" id="text-orgcc18d15">
 <p>
 笔者在日常的开发中，使用的开发语言主要是 Java, 笔者也学习过其他的语言，所以
 Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性，优秀的 OOP 范式，以
@@ -384,9 +384,9 @@ Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性�
 <hr />
 </div>
 </div>
-<div id="outline-container-org2a9efb0" class="outline-2">
-<h2 id="org2a9efb0">参考</h2>
-<div class="outline-text-2" id="text-org2a9efb0">
+<div id="outline-container-org7b47320" class="outline-2">
+<h2 id="org7b47320">参考</h2>
+<div class="outline-text-2" id="text-org7b47320">
 <ul class="org-ul">
 <li><a href="https://projectlombok.org/index.html">https://projectlombok.org/index.html</a></li>
 </ul>

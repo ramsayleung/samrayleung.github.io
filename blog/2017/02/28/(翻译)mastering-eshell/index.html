@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>(翻译)Mastering Eshell - 陌上人如玉,公子世无双</title>
+    <title>(翻译)Mastering Eshell - 公子世无双，陌上人如玉</title>
     <meta charset="utf-8" />
     <meta name="author" content="Samray" />
     <meta name="description" content="An complete instroduction about Eshell" />
@@ -12,7 +12,7 @@
   <body class="container">
     <div>
       <header class="masthead">
-        <h1 class="masthead-title"><a href="/">陌上人如玉,公子世无双</a></h1>
+        <h1 class="masthead-title"><a href="/">公子世无双，陌上人如玉</a></h1>
         <p>凡走过,必留下痕迹</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
@@ -35,85 +35,85 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga059dfd">Overview</a></li>
-<li><a href="#org69f8499">Commands</a></li>
-<li><a href="#org5fc0a7b">Technical Details</a></li>
-<li><a href="#orgbfc5afb">Built-in Commands</a></li>
-<li><a href="#org6ce3872">Command Interception</a></li>
-<li><a href="#org10f729b">Subshells</a></li>
-<li><a href="#org1ea85b4">Useful Elisp Commands</a>
+<li><a href="#org3069c39">Overview</a></li>
+<li><a href="#org3f00780">Commands</a></li>
+<li><a href="#org2111412">Technical Details</a></li>
+<li><a href="#org957607d">Built-in Commands</a></li>
+<li><a href="#orgd1a89ab">Command Interception</a></li>
+<li><a href="#orge54f160">Subshells</a></li>
+<li><a href="#orgdaa6868">Useful Elisp Commands</a>
 <ul>
-<li><a href="#orgb0730a1">listify ARGS</a></li>
-<li><a href="#orga538546">addpath PATH</a></li>
-<li><a href="#orgbd049e1">unset ENV-VAR</a></li>
-<li><a href="#orged0a10e">find-file FILE</a></li>
-<li><a href="#org84e89d9">dired DIRECTORY</a></li>
-<li><a href="#org8716c12">calc-eval EXPR</a></li>
-<li><a href="#orgd3a41c5">upcase STR /downcase STR</a></li>
-<li><a href="#org6d2ee74">vc-dir DIRECTORY</a></li>
-<li><a href="#orge7a36e3">ediff-files FILE1 FILE2</a></li>
+<li><a href="#org42705db">listify ARGS</a></li>
+<li><a href="#orgea591ea">addpath PATH</a></li>
+<li><a href="#org9762137">unset ENV-VAR</a></li>
+<li><a href="#orgf40c4e5">find-file FILE</a></li>
+<li><a href="#org6802088">dired DIRECTORY</a></li>
+<li><a href="#org960e6cf">calc-eval EXPR</a></li>
+<li><a href="#org5081c07">upcase STR /downcase STR</a></li>
+<li><a href="#orgd49cfb5">vc-dir DIRECTORY</a></li>
+<li><a href="#org16729d2">ediff-files FILE1 FILE2</a></li>
 </ul>
 </li>
-<li><a href="#org861a5f7">Aliasing</a>
+<li><a href="#orgc671d15">Aliasing</a>
 <ul>
-<li><a href="#org1890804">Useful Examples</a></li>
+<li><a href="#orgb618dce">Useful Examples</a></li>
 </ul>
 </li>
-<li><a href="#orgd66c007">Visual Commands</a></li>
-<li><a href="#org594ecb2">Command History</a>
+<li><a href="#org21b4ead">Visual Commands</a></li>
+<li><a href="#orga72cf21">Command History</a>
 <ul>
-<li><a href="#org0a2b36b">M-r /M-s</a></li>
-<li><a href="#org4b265fd">M-p/M-n</a></li>
-<li><a href="#org29ab4ca">C-p/C-n</a></li>
-<li><a href="#orgee643bd">C-c M-r /C-c M-s</a></li>
+<li><a href="#org248ce43">M-r /M-s</a></li>
+<li><a href="#org9c7434c">M-p/M-n</a></li>
+<li><a href="#org3ea39e3">C-p/C-n</a></li>
+<li><a href="#orge902097">C-c M-r /C-c M-s</a></li>
 </ul>
 </li>
-<li><a href="#org0a72cb4">History Interaction</a>
+<li><a href="#orga8ab70e">History Interaction</a>
 <ul>
-<li><a href="#orgca5aad3">!!</a></li>
-<li><a href="#orga27a81f">!ls</a></li>
-<li><a href="#orgf978972">!?ls</a></li>
-<li><a href="#orgbbd1e0b">!ls:n</a></li>
-<li><a href="#orgb80c36e">!ls&lt;tab&gt;</a></li>
-<li><a href="#org27fd872">^old^new</a></li>
-<li><a href="#org98b7f09">$_</a></li>
+<li><a href="#orgea70fea">!!</a></li>
+<li><a href="#orgdf6e2e6">!ls</a></li>
+<li><a href="#orgfdaadd3">!?ls</a></li>
+<li><a href="#org3a530a6">!ls:n</a></li>
+<li><a href="#org568af31">!ls&lt;tab&gt;</a></li>
+<li><a href="#org9f4337f">^old^new</a></li>
+<li><a href="#org3359cac">$_</a></li>
 </ul>
 </li>
-<li><a href="#orgeaa9228">Commandline Interaction</a></li>
-<li><a href="#org757d7a2">The Eshell Prompt</a></li>
-<li><a href="#org3abf60a">The Commandline</a></li>
-<li><a href="#orgc01623f">Useful Keybindings</a>
+<li><a href="#org30fdb82">Commandline Interaction</a></li>
+<li><a href="#orgf23e87b">The Eshell Prompt</a></li>
+<li><a href="#org2310e43">The Commandline</a></li>
+<li><a href="#orge8679a7">Useful Keybindings</a>
 <ul>
-<li><a href="#org415e288">C-c M-b</a></li>
-<li><a href="#orga8b1f66">C-c M-i</a></li>
-<li><a href="#orga669d72">C-c M-v</a></li>
-<li><a href="#org4319914">C-c M-d</a></li>
+<li><a href="#orge94af7d">C-c M-b</a></li>
+<li><a href="#org6d1164d">C-c M-i</a></li>
+<li><a href="#org9e88717">C-c M-v</a></li>
+<li><a href="#org8763465">C-c M-d</a></li>
 </ul>
 </li>
-<li><a href="#orgb35052f">Argument Predicates</a>
+<li><a href="#org295d033">Argument Predicates</a>
 <ul>
-<li><a href="#org381aec5">Syntax Reference</a></li>
-<li><a href="#org81917a6">Globbing</a></li>
-<li><a href="#org598a9f9">Elisp Lists</a></li>
-<li><a href="#org10520c5">Adding New Modifiers and Predicates</a></li>
+<li><a href="#org7c5dfea">Syntax Reference</a></li>
+<li><a href="#org0dfdd6d">Globbing</a></li>
+<li><a href="#orga241d8b">Elisp Lists</a></li>
+<li><a href="#orge3fa7bc">Adding New Modifiers and Predicates</a></li>
 </ul>
 </li>
-<li><a href="#org7638f12">Plan 9 Smart Shell</a></li>
-<li><a href="#org6156d07">Redirection</a></li>
-<li><a href="#orgf103f55">To Emacs</a></li>
-<li><a href="#orgdd5c8c6">To Pseudo-Devices</a>
+<li><a href="#orge3f0810">Plan 9 Smart Shell</a></li>
+<li><a href="#orgc75928f">Redirection</a></li>
+<li><a href="#org83dbb4d">To Emacs</a></li>
+<li><a href="#org42b3844">To Pseudo-Devices</a>
 <ul>
-<li><a href="#orge61fd8f">/dev/eshell</a></li>
-<li><a href="#org53c73b4">/dev/null</a></li>
-<li><a href="#org01eaff3">/dev/clip</a></li>
-<li><a href="#org62d7879">/dev/kill</a></li>
-<li><a href="#orgc676022">To custom virtual target</a></li>
+<li><a href="#org2fc2334">/dev/eshell</a></li>
+<li><a href="#orge903a16">/dev/null</a></li>
+<li><a href="#orgf562415">/dev/clip</a></li>
+<li><a href="#org4822fc4">/dev/kill</a></li>
+<li><a href="#org32a2b2b">To custom virtual target</a></li>
 </ul>
 </li>
-<li><a href="#org1525ac9">TRAMP</a></li>
-<li><a href="#org7cc97e9">Startup Scripts</a></li>
-<li><a href="#orgafd3e0b">More Customization</a></li>
-<li><a href="#orga19b4a5">Conclusion</a></li>
+<li><a href="#org890520b">TRAMP</a></li>
+<li><a href="#orgd116e8f">Startup Scripts</a></li>
+<li><a href="#org7cfdf18">More Customization</a></li>
+<li><a href="#org3328f1f">Conclusion</a></li>
 </ul>
 </div>
 </div>
@@ -125,9 +125,9 @@ Eshell在功能上就会先天不足，它能代替绝大部分GNU核心功能�
 可以成为真正的跨平台Shell.但是，Eshell 有一个很大的不足，那就是Eshell 严重缺乏文档
 与之形成鲜明对比的是，Emacs 及其生态都拥有丰富的文档
 </p>
-<div id="outline-container-orga059dfd" class="outline-2">
-<h2 id="orga059dfd">Overview</h2>
-<div class="outline-text-2" id="text-orga059dfd">
+<div id="outline-container-org3069c39" class="outline-2">
+<h2 id="org3069c39">Overview</h2>
+<div class="outline-text-2" id="text-org3069c39">
 <p>
 与Emacs 中的其他shell 不一样的是，Eshell 不是继承默认与的子进程进行交互的 <b>comint-mode</b>
 因为Eshell 不是一个子进程，所以它就没有必要使用 <b>comint-mode</b> 了；不过似乎这是件
@@ -171,9 +171,9 @@ Eshell 可以在所有的平台都正常工作，其实和Eshell 真正进行交
 </p>
 </div>
 </div>
-<div id="outline-container-org69f8499" class="outline-2">
-<h2 id="org69f8499">Commands</h2>
-<div class="outline-text-2" id="text-org69f8499">
+<div id="outline-container-org3f00780" class="outline-2">
+<h2 id="org3f00780">Commands</h2>
+<div class="outline-text-2" id="text-org3f00780">
 <p>
 Eshell 是可以调用几乎所有的已加载的elisp 函数的；这种灵活性是其它shell 无法想象的
 也是它们力所不能及的。事实上，这种在shell 里面跟elisp 函数结合的玩法理应得到更多
@@ -183,9 +183,9 @@ Eshell 是可以调用几乎所有的已加载的elisp 函数的；这种灵活�
 </p>
 </div>
 </div>
-<div id="outline-container-org5fc0a7b" class="outline-2">
-<h2 id="org5fc0a7b">Technical Details</h2>
-<div class="outline-text-2" id="text-org5fc0a7b">
+<div id="outline-container-org2111412" class="outline-2">
+<h2 id="org2111412">Technical Details</h2>
+<div class="outline-text-2" id="text-org2111412">
 <p>
 所有被Eshell 执行的命令都有一个执行的顺序，这是必需传递给Emacs 的有序列表，因为
 这个列表决定了Eshell 的哪一部分应该处理该命令的。如果该列表中没有找到可以执行
@@ -206,9 +206,9 @@ Eshell 是可以调用几乎所有的已加载的elisp 函数的；这种灵活�
 </p>
 </div>
 </div>
-<div id="outline-container-orgbfc5afb" class="outline-2">
-<h2 id="orgbfc5afb">Built-in Commands</h2>
-<div class="outline-text-2" id="text-orgbfc5afb">
+<div id="outline-container-org957607d" class="outline-2">
+<h2 id="org957607d">Built-in Commands</h2>
+<div class="outline-text-2" id="text-org957607d">
 <p>
 Eshell 有很多很好用的通过Emacs-Lisp 重写的命令，这些命令实现了绝大部分GNU 核心工具集
 或者你所钟爱的shell 的特性，所以这些命令被称为"Alias functions"(别名函数).
@@ -224,9 +224,9 @@ Eshell 注重跟原有的GNU工具功能同步，所以你不用担心因Eshell 
 </p>
 </div>
 </div>
-<div id="outline-container-org6ce3872" class="outline-2">
-<h2 id="org6ce3872">Command Interception</h2>
-<div class="outline-text-2" id="text-org6ce3872">
+<div id="outline-container-orgd1a89ab" class="outline-2">
+<h2 id="orgd1a89ab">Command Interception</h2>
+<div class="outline-text-2" id="text-orgd1a89ab">
 <p>
 Eshell 有一个很cool 的特性，那就是某些命令会被拦截并且传递给Emacs.这种机制允许
 你调用一个命令例如 <b>man ls</b>,但是真正调用处理的是Emacs 内置的 <b>man</b>.此外，对于
@@ -242,9 +242,9 @@ Eshell 有一个很cool 的特性，那就是某些命令会被拦截并且传�
 </p>
 </div>
 </div>
-<div id="outline-container-org10f729b" class="outline-2">
-<h2 id="org10f729b">Subshells</h2>
-<div class="outline-text-2" id="text-org10f729b">
+<div id="outline-container-orge54f160" class="outline-2">
+<h2 id="orge54f160">Subshells</h2>
+<div class="outline-text-2" id="text-orge54f160">
 <p>
 你可以使用 <b>$()</b> 来调用命令，并且把命令对应的输出当作接下来命令的参数，就好像
 你在bash 那样使用。但是你要谨记的一样事情就是你是无法使用反引号 *``*来生成
@@ -254,9 +254,9 @@ Eshell 有一个很cool 的特性，那就是某些命令会被拦截并且传�
 </p>
 </div>
 </div>
-<div id="outline-container-org1ea85b4" class="outline-2">
-<h2 id="org1ea85b4">Useful Elisp Commands</h2>
-<div class="outline-text-2" id="text-org1ea85b4">
+<div id="outline-container-orgdaa6868" class="outline-2">
+<h2 id="orgdaa6868">Useful Elisp Commands</h2>
+<div class="outline-text-2" id="text-orgdaa6868">
 <p>
 Eshell 有一套可以让你每天的生活变得更美好的帮助函数(helper function),此外
 你可以在Eshell调用几乎所有的elisp 函数，这就意味着，你拥有无上的能力来控制你
@@ -264,86 +264,86 @@ Eshell 有一套可以让你每天的生活变得更美好的帮助函数(helper
 我也编写了挺多的elisp 函数了 (部分是专门写给Eshell,其他的就不是了)
 </p>
 </div>
-<div id="outline-container-orgb0730a1" class="outline-3">
-<h3 id="orgb0730a1">listify ARGS</h3>
-<div class="outline-text-3" id="text-orgb0730a1">
+<div id="outline-container-org42705db" class="outline-3">
+<h3 id="org42705db">listify ARGS</h3>
+<div class="outline-text-3" id="text-org42705db">
 <p>
 将字符串参数解析成 elisp 列表符号，然后打印到屏幕。该函数不仅可以解析 POSIX
 类型的参数，也可以解析 MS-DOS/Windows 类型参数
 </p>
 </div>
 </div>
-<div id="outline-container-orga538546" class="outline-3">
-<h3 id="orga538546">addpath PATH</h3>
-<div class="outline-text-3" id="text-orga538546">
+<div id="outline-container-orgea591ea" class="outline-3">
+<h3 id="orgea591ea">addpath PATH</h3>
+<div class="outline-text-3" id="text-orgea591ea">
 <p>
 将参数 (必须是文件路径) 添加到环境变量 <b>$PATH</b>,如果没有参数被指定的话，那么
 将原有的变量值输出到屏幕
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd049e1" class="outline-3">
-<h3 id="orgbd049e1">unset ENV-VAR</h3>
-<div class="outline-text-3" id="text-orgbd049e1">
+<div id="outline-container-org9762137" class="outline-3">
+<h3 id="org9762137">unset ENV-VAR</h3>
+<div class="outline-text-3" id="text-org9762137">
 <p>
 移除已有的环境变量
 </p>
 </div>
 </div>
-<div id="outline-container-orged0a10e" class="outline-3">
-<h3 id="orged0a10e">find-file FILE</h3>
-<div class="outline-text-3" id="text-orged0a10e">
+<div id="outline-container-orgf40c4e5" class="outline-3">
+<h3 id="orgf40c4e5">find-file FILE</h3>
+<div class="outline-text-3" id="text-orgf40c4e5">
 <p>
 搜索文件FILE,然后在Emacs 中打开该文件。这个函数与 <b>TRAMP</b> 相关，所以也可以
 远程工作
 </p>
 </div>
 </div>
-<div id="outline-container-org84e89d9" class="outline-3">
-<h3 id="org84e89d9">dired DIRECTORY</h3>
-<div class="outline-text-3" id="text-org84e89d9">
+<div id="outline-container-org6802088" class="outline-3">
+<h3 id="org6802088">dired DIRECTORY</h3>
+<div class="outline-text-3" id="text-org6802088">
 <p>
 在目录 <b>DIRECTORY</b> 下打开一个 dired 缓冲区
 </p>
 </div>
 </div>
-<div id="outline-container-org8716c12" class="outline-3">
-<h3 id="org8716c12">calc-eval EXPR</h3>
-<div class="outline-text-3" id="text-org8716c12">
+<div id="outline-container-org960e6cf" class="outline-3">
+<h3 id="org960e6cf">calc-eval EXPR</h3>
+<div class="outline-text-3" id="text-org960e6cf">
 <p>
 在Emacs calculator 执行该表达式 <b>EXPR</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd3a41c5" class="outline-3">
-<h3 id="orgd3a41c5">upcase STR /downcase STR</h3>
-<div class="outline-text-3" id="text-orgd3a41c5">
+<div id="outline-container-org5081c07" class="outline-3">
+<h3 id="org5081c07">upcase STR /downcase STR</h3>
+<div class="outline-text-3" id="text-org5081c07">
 <p>
 字符串 STR 大小写转换
 </p>
 </div>
 </div>
-<div id="outline-container-org6d2ee74" class="outline-3">
-<h3 id="org6d2ee74">vc-dir DIRECTORY</h3>
-<div class="outline-text-3" id="text-org6d2ee74">
+<div id="outline-container-orgd49cfb5" class="outline-3">
+<h3 id="orgd49cfb5">vc-dir DIRECTORY</h3>
+<div class="outline-text-3" id="text-orgd49cfb5">
 <p>
 展示在版本控制下的目录 <b>DIRECTORY</b> 的状态，跟大多数版本控制工具的 <b>status</b> 
 命令相同
 </p>
 </div>
 </div>
-<div id="outline-container-orge7a36e3" class="outline-3">
-<h3 id="orge7a36e3">ediff-files FILE1 FILE2</h3>
-<div class="outline-text-3" id="text-orge7a36e3">
+<div id="outline-container-org16729d2" class="outline-3">
+<h3 id="org16729d2">ediff-files FILE1 FILE2</h3>
+<div class="outline-text-3" id="text-org16729d2">
 <p>
 使用Emacs 的比较引擎 (diff engine) ediff,对文件 <b>FILE1</b> <b>FILE2</b> 进行比较
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org861a5f7" class="outline-2">
-<h2 id="org861a5f7">Aliasing</h2>
-<div class="outline-text-2" id="text-org861a5f7">
+<div id="outline-container-orgc671d15" class="outline-2">
+<h2 id="orgc671d15">Aliasing</h2>
+<div class="outline-text-2" id="text-orgc671d15">
 <p>
 你可以像在其它主流的shell 那样给Eshell命令赋予别名，操作是一样滴，此外，你甚至可以
 混合使用elisp 函数和Eshell 命令。 <b>alias</b> 命令的格式是 <b>alias alias-name definition</b>
@@ -363,9 +363,9 @@ Eshell 会把命令的别名及其定义写入到变量 <b>eshell-aliases-file</
 当然，如果你不喜欢这种特性的话，你可以把最低次数设得很大
 </p>
 </div>
-<div id="outline-container-org1890804" class="outline-3">
-<h3 id="org1890804">Useful Examples</h3>
-<div class="outline-text-3" id="text-org1890804">
+<div id="outline-container-orgb618dce" class="outline-3">
+<h3 id="orgb618dce">Useful Examples</h3>
+<div class="outline-text-3" id="text-orgb618dce">
 <p>
 让我们把长长的 <b>find-file</b> 命令映射到更顺手的别名 <b>ff</b>:
 </p>
@@ -383,9 +383,9 @@ Eshell 会把命令的别名及其定义写入到变量 <b>eshell-aliases-file</
 </div>
 </div>
 </div>
-<div id="outline-container-orgd66c007" class="outline-2">
-<h2 id="orgd66c007">Visual Commands</h2>
-<div class="outline-text-2" id="text-orgd66c007">
+<div id="outline-container-org21b4ead" class="outline-2">
+<h2 id="org21b4ead">Visual Commands</h2>
+<div class="outline-text-2" id="text-org21b4ead">
 <p>
 有一些对Eshell 而言是太复杂的命令，Eshell 是无法直接显示的，所以需要特殊的处理
 例如 <b>top</b> ,是无法与一些哑终端(dumb terminal)一起正常工作的。为了使这些命令正常
@@ -394,42 +394,42 @@ Eshell 会把命令的别名及其定义写入到变量 <b>eshell-aliases-file</
 </p>
 </div>
 </div>
-<div id="outline-container-org594ecb2" class="outline-2">
-<h2 id="org594ecb2">Command History</h2>
-<div class="outline-text-2" id="text-org594ecb2">
+<div id="outline-container-orga72cf21" class="outline-2">
+<h2 id="orga72cf21">Command History</h2>
+<div class="outline-text-2" id="text-orga72cf21">
 <p>
 Eshell 有功能丰富的命令行历史机制，但是因为Eshell 不是继承 <b>comint-mode</b> 的
 所以 <b>comint-mode</b> 与历史相关的功能，Eshell 是没法用的，不过它绝大部份的功能
 都已经在Eshell 重新实现了
 </p>
 </div>
-<div id="outline-container-org0a2b36b" class="outline-3">
-<h3 id="org0a2b36b">M-r /M-s</h3>
-<div class="outline-text-3" id="text-org0a2b36b">
+<div id="outline-container-org248ce43" class="outline-3">
+<h3 id="org248ce43">M-r /M-s</h3>
+<div class="outline-text-3" id="text-org248ce43">
 <p>
 向前或者向后搜索命令，支持正则表达式
 </p>
 </div>
 </div>
-<div id="outline-container-org4b265fd" class="outline-3">
-<h3 id="org4b265fd">M-p/M-n</h3>
-<div class="outline-text-3" id="text-org4b265fd">
+<div id="outline-container-org9c7434c" class="outline-3">
+<h3 id="org9c7434c">M-p/M-n</h3>
+<div class="outline-text-3" id="text-org9c7434c">
 <p>
 在历史命令列表中前进或者后退
 </p>
 </div>
 </div>
-<div id="outline-container-org29ab4ca" class="outline-3">
-<h3 id="org29ab4ca">C-p/C-n</h3>
-<div class="outline-text-3" id="text-org29ab4ca">
+<div id="outline-container-org3ea39e3" class="outline-3">
+<h3 id="org3ea39e3">C-p/C-n</h3>
+<div class="outline-text-3" id="text-org3ea39e3">
 <p>
 Eshell上一条命令或者下一条命令
 </p>
 </div>
 </div>
-<div id="outline-container-orgee643bd" class="outline-3">
-<h3 id="orgee643bd">C-c M-r /C-c M-s</h3>
-<div class="outline-text-3" id="text-orgee643bd">
+<div id="outline-container-orge902097" class="outline-3">
+<h3 id="orge902097">C-c M-r /C-c M-s</h3>
+<div class="outline-text-3" id="text-orge902097">
 <p>
 回到上一条/下一条历史命令，历史命令必须与现在的命令输入一致。例如 现在的输入是：
 <b>ls</b> ,那么回到的上一条 /下一条历史命令必须是 <b>ls</b>,或者以 <b>ls</b> 开头的命令，如 <b>lsmod</b>
@@ -443,66 +443,66 @@ Eshell上一条命令或者下一条命令
 </div>
 </div>
 </div>
-<div id="outline-container-org0a72cb4" class="outline-2">
-<h2 id="org0a72cb4">History Interaction</h2>
-<div class="outline-text-2" id="text-org0a72cb4">
+<div id="outline-container-orga8ab70e" class="outline-2">
+<h2 id="orga8ab70e">History Interaction</h2>
+<div class="outline-text-2" id="text-orga8ab70e">
 <p>
 像bash 和其它shell 那样，Eshell 也支持历史的修改和交互。如果想要知道历史交互
 是怎么操作的，你就需要回去翻一下 bash 的手册了。接下来我会总结一下Eshell 大部份
 的历史交互用法
 </p>
 </div>
-<div id="outline-container-orgca5aad3" class="outline-3">
-<h3 id="orgca5aad3">!!</h3>
-<div class="outline-text-3" id="text-orgca5aad3">
+<div id="outline-container-orgea70fea" class="outline-3">
+<h3 id="orgea70fea">!!</h3>
+<div class="outline-text-3" id="text-orgea70fea">
 <p>
 重复上一条命令
 </p>
 </div>
 </div>
-<div id="outline-container-orga27a81f" class="outline-3">
-<h3 id="orga27a81f">!ls</h3>
-<div class="outline-text-3" id="text-orga27a81f">
+<div id="outline-container-orgdf6e2e6" class="outline-3">
+<h3 id="orgdf6e2e6">!ls</h3>
+<div class="outline-text-3" id="text-orgdf6e2e6">
 <p>
 重复上一条以 <i>ls</i> 开头的命令
 </p>
 </div>
 </div>
-<div id="outline-container-orgf978972" class="outline-3">
-<h3 id="orgf978972">!?ls</h3>
-<div class="outline-text-3" id="text-orgf978972">
+<div id="outline-container-orgfdaadd3" class="outline-3">
+<h3 id="orgfdaadd3">!?ls</h3>
+<div class="outline-text-3" id="text-orgfdaadd3">
 <p>
 重复上一条包含 <i>ls</i> 的命令
 </p>
 </div>
 </div>
-<div id="outline-container-orgbbd1e0b" class="outline-3">
-<h3 id="orgbbd1e0b">!ls:n</h3>
-<div class="outline-text-3" id="text-orgbbd1e0b">
+<div id="outline-container-org3a530a6" class="outline-3">
+<h3 id="org3a530a6">!ls:n</h3>
+<div class="outline-text-3" id="text-org3a530a6">
 <p>
 从上一条以 <i>ls</i> 开头的命令截取第n个参数
 </p>
 </div>
 </div>
-<div id="outline-container-orgb80c36e" class="outline-3">
-<h3 id="orgb80c36e">!ls&lt;tab&gt;</h3>
-<div class="outline-text-3" id="text-orgb80c36e">
+<div id="outline-container-org568af31" class="outline-3">
+<h3 id="org568af31">!ls&lt;tab&gt;</h3>
+<div class="outline-text-3" id="text-org568af31">
 <p>
 使用命令补全，显示补全结果中包含 <b>ls</b> 的命令
 </p>
 </div>
 </div>
-<div id="outline-container-org27fd872" class="outline-3">
-<h3 id="org27fd872">^old^new</h3>
-<div class="outline-text-3" id="text-org27fd872">
+<div id="outline-container-org9f4337f" class="outline-3">
+<h3 id="org9f4337f">^old^new</h3>
+<div class="outline-text-3" id="text-org9f4337f">
 <p>
 快速替换，对于上一条命令，使用 <b>old</b> 来代替命令中的 <b>new</b> (备注：似乎有Bug)
 </p>
 </div>
 </div>
-<div id="outline-container-org98b7f09" class="outline-3">
-<h3 id="org98b7f09">$_</h3>
-<div class="outline-text-3" id="text-org98b7f09">
+<div id="outline-container-org3359cac" class="outline-3">
+<h3 id="org3359cac">$_</h3>
+<div class="outline-text-3" id="text-org3359cac">
 <p>
 返回上一条执行的命令的最后一个参数
 </p>
@@ -514,12 +514,12 @@ Eshll 也支持bash 历史修改(例如 !!:s/old/new/),如果你想了解更多�
 </div>
 </div>
 </div>
-<div id="outline-container-orgeaa9228" class="outline-2">
-<h2 id="orgeaa9228">Commandline Interaction</h2>
+<div id="outline-container-org30fdb82" class="outline-2">
+<h2 id="org30fdb82">Commandline Interaction</h2>
 </div>
-<div id="outline-container-org757d7a2" class="outline-2">
-<h2 id="org757d7a2">The Eshell Prompt</h2>
-<div class="outline-text-2" id="text-org757d7a2">
+<div id="outline-container-orgf23e87b" class="outline-2">
+<h2 id="orgf23e87b">The Eshell Prompt</h2>
+<div class="outline-text-2" id="text-orgf23e87b">
 <p>
 你可以通过修改变量 <b>eshell-prompt-function</b> 来自定义Eshell 的提示符；该变量
 有一个函数定义了Eshell 命令行提示符应该包含的内容。通过用elisp 来管理Eshell
@@ -529,9 +529,9 @@ Eshll 也支持bash 历史修改(例如 !!:s/old/new/),如果你想了解更多�
 </p>
 </div>
 </div>
-<div id="outline-container-org3abf60a" class="outline-2">
-<h2 id="org3abf60a">The Commandline</h2>
-<div class="outline-text-2" id="text-org3abf60a">
+<div id="outline-container-org2310e43" class="outline-2">
+<h2 id="org2310e43">The Commandline</h2>
+<div class="outline-text-2" id="text-org2310e43">
 <p>
 Eshell 可以使用反斜杠 <b>\</b> 来转义新行，以及基本的多行输入。另外一个输入多行的
 文学字符串 (literal string)的方法就是使用单引号：输入一个单引号，然后回车，
@@ -543,41 +543,41 @@ Eshell 可以使用反斜杠 <b>\</b> 来转义新行，以及基本的多行输
 </p>
 </div>
 </div>
-<div id="outline-container-orgc01623f" class="outline-2">
-<h2 id="orgc01623f">Useful Keybindings</h2>
-<div class="outline-text-2" id="text-orgc01623f">
+<div id="outline-container-orge8679a7" class="outline-2">
+<h2 id="orge8679a7">Useful Keybindings</h2>
+<div class="outline-text-2" id="text-orge8679a7">
 <p>
 Eshell 做了很多与Eamcs 进行交互的功能的改进，而且，这些改进足以影响你的生活
 质量，让我为你一一道来：
 </p>
 </div>
-<div id="outline-container-org415e288" class="outline-3">
-<h3 id="org415e288">C-c M-b</h3>
-<div class="outline-text-3" id="text-org415e288">
+<div id="outline-container-orge94af7d" class="outline-3">
+<h3 id="orge94af7d">C-c M-b</h3>
+<div class="outline-text-3" id="text-orge94af7d">
 <p>
 将已经某个缓冲区的名字插入到当前光标
 </p>
 </div>
 </div>
-<div id="outline-container-orga8b1f66" class="outline-3">
-<h3 id="orga8b1f66">C-c M-i</h3>
-<div class="outline-text-3" id="text-orga8b1f66">
+<div id="outline-container-org6d1164d" class="outline-3">
+<h3 id="org6d1164d">C-c M-i</h3>
+<div class="outline-text-3" id="text-org6d1164d">
 <p>
 将已经某个进程的名字插入到当前光标
 </p>
 </div>
 </div>
-<div id="outline-container-orga669d72" class="outline-3">
-<h3 id="orga669d72">C-c M-v</h3>
-<div class="outline-text-3" id="text-orga669d72">
+<div id="outline-container-org9e88717" class="outline-3">
+<h3 id="org9e88717">C-c M-v</h3>
+<div class="outline-text-3" id="text-org9e88717">
 <p>
 将一个环境变量的名字插入到当前光标
 </p>
 </div>
 </div>
-<div id="outline-container-org4319914" class="outline-3">
-<h3 id="org4319914">C-c M-d</h3>
-<div class="outline-text-3" id="text-org4319914">
+<div id="outline-container-org8763465" class="outline-3">
+<h3 id="org8763465">C-c M-d</h3>
+<div class="outline-text-3" id="text-org8763465">
 <p>
 在直接输入和延迟输入(回车确认)之间切换 (对不能与来源于其他缓冲区的输入正常工作
 的命令来说就很有用了)
@@ -585,9 +585,9 @@ Eshell 做了很多与Eamcs 进行交互的功能的改进，而且，这些改�
 </div>
 </div>
 </div>
-<div id="outline-container-orgb35052f" class="outline-2">
-<h2 id="orgb35052f">Argument Predicates</h2>
-<div class="outline-text-2" id="text-orgb35052f">
+<div id="outline-container-org295d033" class="outline-2">
+<h2 id="org295d033">Argument Predicates</h2>
+<div class="outline-text-2" id="text-org295d033">
 <p>
 参数谓词是一个很擅长过滤文件，甚至elisp列表的工具。Eshell的谓词语法是参照zsh
 的，所以如果你熟悉zsh的参数谓词，你也可以以同样的方式来使用Eshell.
@@ -599,18 +599,18 @@ Eshell 做了很多与Eamcs 进行交互的功能的改进，而且，这些改�
 了解相关特性。但是最好的学习方法还是多尝试，多出错，多总结
 </p>
 </div>
-<div id="outline-container-org381aec5" class="outline-3">
-<h3 id="org381aec5">Syntax Reference</h3>
-<div class="outline-text-3" id="text-org381aec5">
+<div id="outline-container-org7c5dfea" class="outline-3">
+<h3 id="org7c5dfea">Syntax Reference</h3>
+<div class="outline-text-3" id="text-org7c5dfea">
 <p>
 我就不把那么多的谓词和修饰符一一列出来了，因为Eshell 的手册已经作了很详细
 的解释了，你需要做的就是自己查看
 </p>
 </div>
 </div>
-<div id="outline-container-org81917a6" class="outline-3">
-<h3 id="org81917a6">Globbing</h3>
-<div class="outline-text-3" id="text-org81917a6">
+<div id="outline-container-org0dfdd6d" class="outline-3">
+<h3 id="org0dfdd6d">Globbing</h3>
+<div class="outline-text-3" id="text-org0dfdd6d">
 <p>
 Eshell 的匹配模式和其他常用shell 的是基本一致滴：shell 会扩展文件和路径的匹配
 模式，然后将匹配后的列表当作参数传递给相应的命令，例如 <b>ls</b>.这就是为什么你一起使用
@@ -621,9 +621,9 @@ Eshell 的匹配模式和其他常用shell 的是基本一致滴：shell 会扩�
 </p>
 </div>
 </div>
-<div id="outline-container-org598a9f9" class="outline-3">
-<h3 id="org598a9f9">Elisp Lists</h3>
-<div class="outline-text-3" id="text-org598a9f9">
+<div id="outline-container-orga241d8b" class="outline-3">
+<h3 id="orga241d8b">Elisp Lists</h3>
+<div class="outline-text-3" id="text-orga241d8b">
 <p>
 如果你把Eshell 的列表理解成输出的 <i>form</i> 的elisp列表，你会发现理解起来变得容易
 因为事实上Eshell 是可以通过Elisp 来处理列表的，而处理列表恰恰是Lisp 擅长的东西
@@ -669,9 +669,9 @@ Eshell 的匹配模式和其他常用shell 的是基本一致滴：shell 会扩�
 </p>
 </div>
 </div>
-<div id="outline-container-org10520c5" class="outline-3">
-<h3 id="org10520c5">Adding New Modifiers and Predicates</h3>
-<div class="outline-text-3" id="text-org10520c5">
+<div id="outline-container-orge3fa7bc" class="outline-3">
+<h3 id="orge3fa7bc">Adding New Modifiers and Predicates</h3>
+<div class="outline-text-3" id="text-orge3fa7bc">
 <p>
 你也可以添加自己的谓词 (<b>eshell-predicate-alist</b>)或者修饰符 (<b>eshell-modifier-alist</b>):
 </p>
@@ -691,9 +691,9 @@ Eshell 的匹配模式和其他常用shell 的是基本一致滴：shell 会扩�
 </div>
 </div>
 
-<div id="outline-container-org7638f12" class="outline-2">
-<h2 id="org7638f12">Plan 9 Smart Shell</h2>
-<div class="outline-text-2" id="text-org7638f12">
+<div id="outline-container-orge3f0810" class="outline-2">
+<h2 id="orge3f0810">Plan 9 Smart Shell</h2>
+<div class="outline-text-2" id="text-orge3f0810">
 <p>
 Eshell 有一个 <b>Plan 9</b> 终端的弱化版，叫做 <i>the Eshell smart display</i>.
 Eshell 的智能展示(<i>smart display</i>)意味着它改进了所有黑客所习惯的 <i>输入－运行－修改</i> 
@@ -730,9 +730,9 @@ Eshell 的智能展示(<i>smart display</i>)意味着它改进了所有黑客所
 </p>
 </div>
 </div>
-<div id="outline-container-org6156d07" class="outline-2">
-<h2 id="org6156d07">Redirection</h2>
-<div class="outline-text-2" id="text-org6156d07">
+<div id="outline-container-orgc75928f" class="outline-2">
+<h2 id="orgc75928f">Redirection</h2>
+<div class="outline-text-2" id="text-orgc75928f">
 <p>
 Eshell 的重定向跟其它shell 的工作方式基本是一样的，但是，有一项非常重要的差异
 就是Eshell 必须模拟可能不存在的伪设备，例如Windows 平台上的 <b>/dev/null</b> 其实是 <b>NUL</b>
@@ -742,9 +742,9 @@ Eshell 的重定向跟其它shell 的工作方式基本是一样的，但是，�
 </p>
 </div>
 </div>
-<div id="outline-container-orgf103f55" class="outline-2">
-<h2 id="orgf103f55">To Emacs</h2>
-<div class="outline-text-2" id="text-orgf103f55">
+<div id="outline-container-org83dbb4d" class="outline-2">
+<h2 id="org83dbb4d">To Emacs</h2>
+<div class="outline-text-2" id="text-org83dbb4d">
 <p>
 因为Eshell 在内部用Elisp重新实现了各种伪设备，所以也就无需跟Unix 的设备文件打
 交道了，甚至，可以用Elisp实现自己的伪设备。
@@ -770,40 +770,40 @@ bar
 </p>
 </div>
 </div>
-<div id="outline-container-orgdd5c8c6" class="outline-2">
-<h2 id="orgdd5c8c6">To Pseudo-Devices</h2>
-<div class="outline-text-2" id="text-orgdd5c8c6">
+<div id="outline-container-org42b3844" class="outline-2">
+<h2 id="org42b3844">To Pseudo-Devices</h2>
+<div class="outline-text-2" id="text-org42b3844">
 <p>
 Eshell 重新实现了以下的伪设备：
 </p>
 </div>
-<div id="outline-container-orge61fd8f" class="outline-3">
-<h3 id="orge61fd8f">/dev/eshell</h3>
-<div class="outline-text-3" id="text-orge61fd8f">
+<div id="outline-container-org2fc2334" class="outline-3">
+<h3 id="org2fc2334">/dev/eshell</h3>
+<div class="outline-text-3" id="text-org2fc2334">
 <p>
 以交互的方式，把结果输出到Eshell
 </p>
 </div>
 </div>
-<div id="outline-container-org53c73b4" class="outline-3">
-<h3 id="org53c73b4">/dev/null</h3>
-<div class="outline-text-3" id="text-org53c73b4">
+<div id="outline-container-orge903a16" class="outline-3">
+<h3 id="orge903a16">/dev/null</h3>
+<div class="outline-text-3" id="text-orge903a16">
 <p>
 把结果输出到 <b>NULL</b> 设备
 </p>
 </div>
 </div>
-<div id="outline-container-org01eaff3" class="outline-3">
-<h3 id="org01eaff3">/dev/clip</h3>
-<div class="outline-text-3" id="text-org01eaff3">
+<div id="outline-container-orgf562415" class="outline-3">
+<h3 id="orgf562415">/dev/clip</h3>
+<div class="outline-text-3" id="text-orgf562415">
 <p>
 把结果输出到剪切板
 </p>
 </div>
 </div>
-<div id="outline-container-org62d7879" class="outline-3">
-<h3 id="org62d7879">/dev/kill</h3>
-<div class="outline-text-3" id="text-org62d7879">
+<div id="outline-container-org4822fc4" class="outline-3">
+<h3 id="org4822fc4">/dev/kill</h3>
+<div class="outline-text-3" id="text-org4822fc4">
 <p>
 把结果输出到 <i>kill ring</i>
 </p>
@@ -813,9 +813,9 @@ Eshell 重新实现了以下的伪设备：
 </p>
 </div>
 </div>
-<div id="outline-container-orgc676022" class="outline-3">
-<h3 id="orgc676022">To custom virtual target</h3>
-<div class="outline-text-3" id="text-orgc676022">
+<div id="outline-container-org32a2b2b" class="outline-3">
+<h3 id="org32a2b2b">To custom virtual target</h3>
+<div class="outline-text-3" id="text-org32a2b2b">
 <p>
 你通过修改变量 <b>eshell-virtual-targets</b> 创建自己的可视化目标(即存储你想创建的
 伪设备的名字的一个列表),以及修改代表重定向行为(即覆盖或追加或插入)的函数 <b>mode</b>
@@ -823,9 +823,9 @@ Eshell 重新实现了以下的伪设备：
 </div>
 </div>
 </div>
-<div id="outline-container-org1525ac9" class="outline-2">
-<h2 id="org1525ac9">TRAMP</h2>
-<div class="outline-text-2" id="text-org1525ac9">
+<div id="outline-container-org890520b" class="outline-2">
+<h2 id="org890520b">TRAMP</h2>
+<div class="outline-text-2" id="text-org890520b">
 <p>
 Eshell 可以很好地支持TRAMP,这意味着如果Eshell 所在的目录是在远程服务器的话，
 像 <b>su</b> <b>sudo</b> <b>whoami</b> 这样的命令会自动作用在远程服务器 
@@ -838,9 +838,9 @@ Eshell 可以很好地支持TRAMP,这意味着如果Eshell 所在的目录是在
 </p>
 </div>
 </div>
-<div id="outline-container-org7cc97e9" class="outline-2">
-<h2 id="org7cc97e9">Startup Scripts</h2>
-<div class="outline-text-2" id="text-org7cc97e9">
+<div id="outline-container-orgd116e8f" class="outline-2">
+<h2 id="orgd116e8f">Startup Scripts</h2>
+<div class="outline-text-2" id="text-orgd116e8f">
 <p>
 跟其它的shell 一样，Eshell 也支持 <i>login</i> 和 <i>profile</i> 的配置文件。 <i>login</i> 和
 <i>profile</i> 配置文件的绝对路径分别保存在变量 <b>eshell-login-script</b> 和 <b>eshell-rc-script</b>
@@ -849,18 +849,18 @@ Eshell 可以很好地支持TRAMP,这意味着如果Eshell 所在的目录是在
 </p>
 </div>
 </div>
-<div id="outline-container-orgafd3e0b" class="outline-2">
-<h2 id="orgafd3e0b">More Customization</h2>
-<div class="outline-text-2" id="text-orgafd3e0b">
+<div id="outline-container-org7cfdf18" class="outline-2">
+<h2 id="org7cfdf18">More Customization</h2>
+<div class="outline-text-2" id="text-org7cfdf18">
 <p>
 如果你想折腾的话，Eshell 有成百上千的选项供你选择。如果你想配置Eshell 的话，按下
 <b>M-x</b> 然后输入 <b>customize-group</b> 回车，然后输入 <b>eshell</b> 回车确认
 </p>
 </div>
 </div>
-<div id="outline-container-orga19b4a5" class="outline-2">
-<h2 id="orga19b4a5">Conclusion</h2>
-<div class="outline-text-2" id="text-orga19b4a5">
+<div id="outline-container-org3328f1f" class="outline-2">
+<h2 id="org3328f1f">Conclusion</h2>
+<div class="outline-text-2" id="text-org3328f1f">
 <p>
 额，我觉得我已经总结了Eshell 的大部份用法了，希望你可以在其中发现乐趣。因为与Emacs
 的紧密结合，Eshell 有了各种各样突出好用的特性，但是你需要理解的是，Eshell 的诞生不是
