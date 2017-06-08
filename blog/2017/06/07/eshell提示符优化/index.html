@@ -32,9 +32,9 @@
 <div class="post">
 <h1>Eshell提示符优化</h1>
 
-<div id="outline-container-org724a4f7" class="outline-2">
-<h2 id="org724a4f7">发现帅气的提示符</h2>
-<div class="outline-text-2" id="text-org724a4f7">
+<div id="outline-container-orga393d32" class="outline-2">
+<h2 id="orga393d32">发现帅气的提示符</h2>
+<div class="outline-text-2" id="text-orga393d32">
 <p>
 近日，笔者在浏览 <a href="https://www.reddit.com/r/emacs/comments/6f0rkz/my_fancy_eshell_prompt/">Reddit</a> 的时候，发现了一位 Emacs 用户把他的 Eshell 提示符修改得
 很帅，如图：
@@ -42,7 +42,7 @@
 </p>
 
 <p>
-本着拿来主意的想法，我就直接把这位小哥的代码添加到了我的配置文件里面：
+本着拿来主义的想法，我就直接把这位小哥的代码添加到了我的配置文件里面：
 </p>
 <div class="org-src-container">
 <pre class="src src-elisp">(setq eshell-prompt-function
@@ -68,9 +68,9 @@
 </div>
 </div>
 
-<div id="outline-container-org61f351c" class="outline-2">
-<h2 id="org61f351c">与原有提示符冲突</h2>
-<div class="outline-text-2" id="text-org61f351c">
+<div id="outline-container-org83b5e86" class="outline-2">
+<h2 id="org83b5e86">与原有提示符冲突</h2>
+<div class="outline-text-2" id="text-org83b5e86">
 <p>
 但是我原来使用的 <a href="https://github.com/kaihaosw/eshell-prompt-extras">eshell-prompt-extra</a> 的效果就被覆盖了。而
 <code>eshell_prompt_extra</code> 可以提供的额外信息非常多，包括：git, python
@@ -79,7 +79,7 @@ virtualenv, 以及远程登录时的主机信息，如图：
 
 
 <div class="figure">
-<p><img src="./images/eshell_prompt_extra.png" alt="eshell_prompt_extra.png" />
+<p><img src="/assets/blog/2017/06/07/eshell提示符优化/eshell_extra_prompt.png" alt="eshell_extra_prompt.png" />
 </p>
 </div>
 
@@ -90,9 +90,9 @@ virtualenv, 以及远程登录时的主机信息，如图：
 </div>
 </div>
 
-<div id="outline-container-org2e10c4e" class="outline-2">
-<h2 id="org2e10c4e">折腾源码</h2>
-<div class="outline-text-2" id="text-org2e10c4e">
+<div id="outline-container-org15729be" class="outline-2">
+<h2 id="org15729be">折腾源码</h2>
+<div class="outline-text-2" id="text-org15729be">
 <p>
 <code>eshell_prompt_extra</code> 这个包注释加上全部代码也只是 400 行，代码也写得很清晰.
 其中大部份是辅助函数，而 Eshell 的提示符效果是通过两个 eshell-theme 函数来实现
@@ -158,9 +158,9 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </p>
 </div>
 
-<div id="outline-container-orgf194cd3" class="outline-3">
-<h3 id="orgf194cd3">定义所需的 face</h3>
-<div class="outline-text-3" id="text-orgf194cd3">
+<div id="outline-container-org7c44039" class="outline-3">
+<h3 id="org7c44039">定义所需的 face</h3>
+<div class="outline-text-3" id="text-org7c44039">
 <p>
 因为我需要显示的 face(颜色), <code>eshell-extra-prompt</code> 并没有定义，所以就只好自己
 动手啦：
@@ -243,9 +243,9 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </div>
 </div>
 
-<div id="outline-container-orge64daff" class="outline-2">
-<h2 id="orge64daff">总结</h2>
-<div class="outline-text-2" id="text-orge64daff">
+<div id="outline-container-org37958f6" class="outline-2">
+<h2 id="org37958f6">总结</h2>
+<div class="outline-text-2" id="text-org37958f6">
 <p>
 这样一个新的 Eshell 主题就完工了，然后我给 <code>eshell-extra-prompt</code> 发了一个<a href="https://github.com/kaihaosw/eshell-prompt-extras/pull/16">Pull
 Request</a>, 最终效果如下：
@@ -263,7 +263,7 @@ Enjoy Emacs, Enjor Tweaking :)
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-06-07</span>
-        <span title="last modification date" class="post-info">2017-06-07</span>
+        <span title="last modification date" class="post-info">2017-06-08</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a></span>
         <span title="author" class="post-info"></span>
       </div>
