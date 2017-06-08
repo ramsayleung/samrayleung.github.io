@@ -35,16 +35,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga5ad43c">过滤器</a></li>
-<li><a href="#org40f7a31">cat</a>
+<li><a href="#org1e9a281">过滤器</a></li>
+<li><a href="#org4539177">cat</a>
 <ul>
-<li><a href="#org0715761">场景1</a></li>
-<li><a href="#orga5c28f0">场景2</a></li>
-<li><a href="#org7c22870">场景3</a></li>
-<li><a href="#org57a68a3">场景4</a></li>
+<li><a href="#org41db159">场景1</a></li>
+<li><a href="#org3ccb681">场景2</a></li>
+<li><a href="#org64f5d06">场景3</a></li>
+<li><a href="#org23bb665">场景4</a></li>
 </ul>
 </li>
-<li><a href="#org92cdd88">总结</a></li>
+<li><a href="#org6805335">总结</a></li>
 </ul>
 </div>
 </div>
@@ -53,9 +53,9 @@
 cat - concatenate files and print on the standard output
 </p>
 </blockquote>
-<div id="outline-container-orga5ad43c" class="outline-2">
-<h2 id="orga5ad43c">过滤器</h2>
-<div class="outline-text-2" id="text-orga5ad43c">
+<div id="outline-container-org1e9a281" class="outline-2">
+<h2 id="org1e9a281">过滤器</h2>
+<div class="outline-text-2" id="text-org1e9a281">
 <p>
 何谓过滤器呢，例如cat,grep,wl 之类的命令就是过滤器了。这样的命令
 读取数据，对数据执行一些操作，然后写入结果。更准确地说，过滤器就是任何能够从标准
@@ -65,9 +65,9 @@ cat - concatenate files and print on the standard output
 </p>
 </div>
 </div>
-<div id="outline-container-org40f7a31" class="outline-2">
-<h2 id="org40f7a31">cat</h2>
-<div class="outline-text-2" id="text-org40f7a31">
+<div id="outline-container-org4539177" class="outline-2">
+<h2 id="org4539177">cat</h2>
+<div class="outline-text-2" id="text-org4539177">
 <p>
 在shell 里面运行cat,你会被要求输入文本数据，当你输入一行数据以后，然后按下回
 车你输入的数据就会显示在屏幕，当你按下 ^D(&lt;ctrl&gt;+d),发送eof 信号给shell,退出
@@ -76,9 +76,9 @@ cat。cat 做的事就是把你输入的字符，复制到标准输出 (一般�
 且容笔者细细禀来
 </p>
 </div>
-<div id="outline-container-org0715761" class="outline-3">
-<h3 id="org0715761">场景1</h3>
-<div class="outline-text-3" id="text-org0715761">
+<div id="outline-container-org41db159" class="outline-3">
+<h3 id="org41db159">场景1</h3>
+<div class="outline-text-3" id="text-org41db159">
 <p>
 假如你要新建一个文本文件，里面只是很少的文本，你会怎么做呢？一般情况下，都是用 
 vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退出。这是一般的做法，
@@ -86,7 +86,7 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 的hacking方法：
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">$ cat &gt; data
+<pre class="src src-sh">cat &gt; data
 </pre>
 </div>
 <p>
@@ -94,28 +94,26 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 ,就会被代替，当然，你也可以也在原来文本末尾添加的方法：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">$ cat &gt;&gt; data
+<pre class="src src-sh">cat &gt;&gt; data
 </pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orga5c28f0" class="outline-3">
-<h3 id="orga5c28f0">场景2</h3>
-<div class="outline-text-3" id="text-orga5c28f0">
+<div id="outline-container-org3ccb681" class="outline-3">
+<h3 id="org3ccb681">场景2</h3>
+<div class="outline-text-3" id="text-org3ccb681">
 <p>
 如果你有一个短文件，你想查看一下，同样，你可以使用cat
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">$ cat &lt; data
+<pre class="src src-sh">cat &lt; data
 </pre>
 </div>
 <p>
 当然，你也可以省略 <b>&lt;</b> 这个重定向符号：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">$ cat data
+<pre class="src src-sh">cat data
 </pre>
 </div>
 <p>
@@ -125,15 +123,15 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-org7c22870" class="outline-3">
-<h3 id="org7c22870">场景3</h3>
-<div class="outline-text-3" id="text-org7c22870">
+<div id="outline-container-org64f5d06" class="outline-3">
+<h3 id="org64f5d06">场景3</h3>
+<div class="outline-text-3" id="text-org64f5d06">
 <p>
 如果你想复制文本文件，你首先会想起什么命令？ <b>cp</b>,很自然嘛，我也不例外，但是cat 
 也可以实现同样的功能，很意外吧：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">$ cat &lt; file &gt; newfile
+<pre class="src src-sh">cat &lt; file &gt; newfile
 </pre>
 </div>
 <p>
@@ -141,31 +139,32 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-org57a68a3" class="outline-3">
-<h3 id="org57a68a3">场景4</h3>
-<div class="outline-text-3" id="text-org57a68a3">
+<div id="outline-container-org23bb665" class="outline-3">
+<h3 id="org23bb665">场景4</h3>
+<div class="outline-text-3" id="text-org23bb665">
 <p>
 如果你想把多个文本文件的组合到一个文件，你会怎么做？用编辑器打开所有的文件
 然后 select,cut,paste,save.我也会很自然地想到这个方法，但是是否存在着更
 优雅的解决方案呢？当然：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">$ cat file1 file2 file3 &gt;newfile
+<pre class="src src-sh">cat file1 file2 file3 &gt;newfile
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org92cdd88" class="outline-2">
-<h2 id="org92cdd88">总结</h2>
-<div class="outline-text-2" id="text-org92cdd88">
+<div id="outline-container-org6805335" class="outline-2">
+<h2 id="org6805335">总结</h2>
+<div class="outline-text-2" id="text-org6805335">
 <p>
 上面已经介绍了挺多cat 的使用场景了，你觉得cat 表现滴怎么样呢？相信你的感觉是
 还行，但是并没有，我吹嘘的那么令人惊艳。因为这只是cat 最基本的功能，它最大的
 用法还没有完全展现出来，笔者先举一例，以后再慢慢详叙：
 </p>
+
 <div class="org-src-container">
-<pre class="src src-shell">$ cat file |grep "something" |sort -n |tee newfile
+<pre class="src src-sh">cat file |grep "something" |sort -n |tee newfile
 </pre>
 </div>
 
@@ -217,7 +216,7 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-02-22</span>
-        <span title="last modification date" class="post-info">2017-05-24</span>
+        <span title="last modification date" class="post-info">2017-06-08</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
         <span title="author" class="post-info">Samray</span>
       </div>

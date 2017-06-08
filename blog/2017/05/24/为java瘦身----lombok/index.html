@@ -35,24 +35,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf0c18cd">前言</a></li>
-<li><a href="#org7d84158">Lombok</a>
+<li><a href="#org78f0a9d">前言</a></li>
+<li><a href="#org0c31c45">Lombok</a>
 <ul>
-<li><a href="#orga77edd6">简介</a></li>
-<li><a href="#org109a205">@Getter and @Setter</a></li>
-<li><a href="#org31b7162">@NonNull</a></li>
-<li><a href="#org835ead7">@EqualsAndHashCode</a></li>
-<li><a href="#org90e4453">@Data</a></li>
+<li><a href="#orga25644d">简介</a></li>
+<li><a href="#orgb3c82dd">@Getter and @Setter</a></li>
+<li><a href="#org36ac1d6">@NonNull</a></li>
+<li><a href="#org86bccda">@EqualsAndHashCode</a></li>
+<li><a href="#org6ce70af">@Data</a></li>
 </ul>
 </li>
-<li><a href="#orgcc18d15">小结</a></li>
-<li><a href="#org7b47320">参考</a></li>
+<li><a href="#orgf7a2295">小结</a></li>
+<li><a href="#orgc2a2aff">参考</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf0c18cd" class="outline-2">
-<h2 id="orgf0c18cd">前言</h2>
-<div class="outline-text-2" id="text-orgf0c18cd">
+
+<div id="outline-container-org78f0a9d" class="outline-2">
+<h2 id="org78f0a9d">前言</h2>
+<div class="outline-text-2" id="text-org78f0a9d">
 <p>
 几天前 Goolge 在 I/O 大会上宣布了 Android 将官方支持 Kotlin, 这意味着 Android
 开发者可以更好地使用 Kotlin 开发 Android. 笔者虽不是 Android 开发者，但是也为
@@ -67,12 +68,12 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-org7d84158" class="outline-2">
-<h2 id="org7d84158">Lombok</h2>
-<div class="outline-text-2" id="text-org7d84158">
-</div><div id="outline-container-orga77edd6" class="outline-3">
-<h3 id="orga77edd6">简介</h3>
-<div class="outline-text-3" id="text-orga77edd6">
+<div id="outline-container-org0c31c45" class="outline-2">
+<h2 id="org0c31c45">Lombok</h2>
+<div class="outline-text-2" id="text-org0c31c45">
+</div><div id="outline-container-orga25644d" class="outline-3">
+<h3 id="orga25644d">简介</h3>
+<div class="outline-text-3" id="text-orga25644d">
 <p>
 很多开发者都对模板代码嗤之以鼻，但是 Java 中就有很多非常类似且改动很少的样板
 代码。这问题一方面是由于类库的设计决定，另外一方面也是 Java 的自身语言的特性。
@@ -84,9 +85,9 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-org109a205" class="outline-3">
-<h3 id="org109a205">@Getter and @Setter</h3>
-<div class="outline-text-3" id="text-org109a205">
+<div id="outline-container-orgb3c82dd" class="outline-3">
+<h3 id="orgb3c82dd">@Getter and @Setter</h3>
+<div class="outline-text-3" id="text-orgb3c82dd">
 <p>
 百闻不如一见，还是直接看例子吧。对于使用过 Java 的开发者而言，笔者相信他们最
 熟悉的肯定是 Java 无处不在的封装以及对应的 Getter/Setter. 现在就来看一下如何
@@ -126,9 +127,9 @@ setter 方法，而这些生成的方法跟我们自己编写的代码是一样�
 </p>
 </div>
 </div>
-<div id="outline-container-org31b7162" class="outline-3">
-<h3 id="org31b7162">@NonNull</h3>
-<div class="outline-text-3" id="text-org31b7162">
+<div id="outline-container-org36ac1d6" class="outline-3">
+<h3 id="org36ac1d6">@NonNull</h3>
+<div class="outline-text-3" id="text-org36ac1d6">
 <p>
 相信每一个使用过 Java 的开发者都不会对空指针这个异常陌生吧，因为
 NullPointException 导致了各种 Bug, 以至于它的发明者 Tony Hoare 都自嘲到他创
@@ -172,9 +173,9 @@ public void setMembers(@NonNull final List&lt;Person&gt; members) {
 </p>
 </div>
 </div>
-<div id="outline-container-org835ead7" class="outline-3">
-<h3 id="org835ead7">@EqualsAndHashCode</h3>
-<div class="outline-text-3" id="text-org835ead7">
+<div id="outline-container-org86bccda" class="outline-3">
+<h3 id="org86bccda">@EqualsAndHashCode</h3>
+<div class="outline-text-3" id="text-org86bccda">
 <p>
 因为 Java 的 Object 类存在用于比较的 <i>equals()</i> 以及对应的 <i>hashCode()</i> 方法，
 而很多类都经常需要重写这两个方法来实现比较操作。比较的操作大多是逐一比较子类
@@ -223,35 +224,36 @@ public class Person extends SentientBeing {
     private String zip;
 
     @java.lang.Override
-    public boolean equals(final java.lang.Object o) {
+	public boolean equals(final java.lang.Object o) {
 	if (o == this) return true;
 	if (o == null) return false;
 	if (o.getClass() != this.getClass()) return false;
 	if (!super.equals(o)) return false;
 	final Person other = (Person)o;
 	if (this.name == null ?
-	other.name != null : !this.name.equals(other.name)) return false;
+	    other.name != null : !this.name.equals(other.name)) return false;
 	if (this.gender == null ?
-	other.gender != null : !this.gender.equals(other.gender)) return false;
+	    other.gender != null : !this.gender.equals(other.gender)) return false;
 	if (this.ssn == null ?
-	other.ssn != null : !this.ssn.equals(other.ssn)) return false;
+	    other.ssn != null : !this.ssn.equals(other.ssn)) return false;
 	return true;
     }
 
     @java.lang.Override
-    public int hashCode() {
+	public int hashCode() {
 	final int PRIME = 31;
 	int result = 1;
 	result = result * PRIME + super.hashCode();
 	result = result * PRIME + (this.name == null ?
-			       0 : this.name.hashCode());
+				   0 : this.name.hashCode());
 	result = result * PRIME + (this.gender == null ?
-			       0 : this.gender.hashCode());
+				   0 : this.gender.hashCode());
 	result = result * PRIME + (this.ssn == null ?
-			       0 : this.ssn.hashCode());
+				   0 : this.ssn.hashCode());
 	return result;
     }
 }
+
 </pre>
 </div>
 <p>
@@ -259,9 +261,9 @@ public class Person extends SentientBeing {
 </p>
 </div>
 </div>
-<div id="outline-container-org90e4453" class="outline-3">
-<h3 id="org90e4453">@Data</h3>
-<div class="outline-text-3" id="text-org90e4453">
+<div id="outline-container-org6ce70af" class="outline-3">
+<h3 id="org6ce70af">@Data</h3>
+<div class="outline-text-3" id="text-org6ce70af">
 <p>
 下面笔者就来介绍一下在笔者项目中使用最频繁的注解 @Data. 使用 @Data 相当于同
 时在类级别使用 @EqualAndHashCode 注解以及笔者未曾提及的 @ToString 注解 (这个
@@ -316,7 +318,7 @@ public class Company {
     }
 
     @java.lang.Override
-    public boolean equals(final java.lang.Object o) {
+	public boolean equals(final java.lang.Object o) {
 	if (o == this) {
 	    return true;
 	}
@@ -328,39 +330,40 @@ public class Company {
 	}
 	final Company other = (Company) o;
 	if (this.founder == null ?
-	other.founder != null : !this.founder.equals(other.founder)) {
+	    other.founder != null : !this.founder.equals(other.founder)) {
 	    return false;
 	}
 	if (this.name == null ?
-	other.name != null : !this.name.equals(other.name)) {
+	    other.name != null : !this.name.equals(other.name)) {
 	    return false;
 	}
 	if (this.employees == null ?
-	other.employees != null : !this.employees.equals(other.employees)) {
+	    other.employees != null : !this.employees.equals(other.employees)) {
 	    return false;
 	}
 	return true;
     }
 
     @java.lang.Override
-    public int hashCode() {
+	public int hashCode() {
 	final int PRIME = 31;
 	int result = 1;
 	result = result * PRIME + (this.founder == null ?
-			       0 : this.founder.hashCode());
+				   0 : this.founder.hashCode());
 	result = result * PRIME + (this.name == null ?
-			       0 : this.name.hashCode());
+				   0 : this.name.hashCode());
 	result = result * PRIME + (this.employees == null ?
-			       0 : this.employees.hashCode());
+				   0 : this.employees.hashCode());
 	return result;
     }
 
     @java.lang.Override
-    public java.lang.String toString() {
+	public java.lang.String toString() {
 	return "Company(founder=" + founder + ", name=" + name + "," +
-	" employees=" + employees + ")";
+	    " employees=" + employees + ")";
     }
 }
+
 </pre>
 </div>
 <p>
@@ -369,9 +372,9 @@ public class Company {
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc18d15" class="outline-2">
-<h2 id="orgcc18d15">小结</h2>
-<div class="outline-text-2" id="text-orgcc18d15">
+<div id="outline-container-orgf7a2295" class="outline-2">
+<h2 id="orgf7a2295">小结</h2>
+<div class="outline-text-2" id="text-orgf7a2295">
 <p>
 笔者在日常的开发中，使用的开发语言主要是 Java, 笔者也学习过其他的语言，所以
 Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性，优秀的 OOP 范式，以
@@ -384,9 +387,9 @@ Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性�
 <hr />
 </div>
 </div>
-<div id="outline-container-org7b47320" class="outline-2">
-<h2 id="org7b47320">参考</h2>
-<div class="outline-text-2" id="text-org7b47320">
+<div id="outline-container-orgc2a2aff" class="outline-2">
+<h2 id="orgc2a2aff">参考</h2>
+<div class="outline-text-2" id="text-orgc2a2aff">
 <ul class="org-ul">
 <li><a href="https://projectlombok.org/index.html">https://projectlombok.org/index.html</a></li>
 </ul>
@@ -398,7 +401,7 @@ Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性�
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2017-05-24</span>
-        <span title="last modification date" class="post-info">2017-05-24</span>
+        <span title="last modification date" class="post-info">2017-06-07</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
         <span title="author" class="post-info">Samray</span>
       </div>

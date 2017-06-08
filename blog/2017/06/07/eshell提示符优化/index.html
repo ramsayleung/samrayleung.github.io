@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Eshell提示符优化 - 公子世无双，陌上人如玉</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="Tweak with Emacs shell prompt" />
+    <meta name="keywords" content="eshell,emacs" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">公子世无双，陌上人如玉</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Eshell提示符优化</h1>
+
+<div id="outline-container-org972f2ef" class="outline-2">
+<h2 id="org972f2ef">发现帅气的提示符</h2>
+<div class="outline-text-2" id="text-org972f2ef">
+<p>
+近日，笔者在浏览 <a href="https://www.reddit.com/r/emacs/comments/6f0rkz/my_fancy_eshell_prompt/">Reddit</a> 的时候，发现了一位 Emacs 用户把他的 Eshell 提示符修改得
+很帅，如图：
+<img src="./images/eshell_prompt.png" alt="eshell_prompt.png" />
+</p>
+
+<p>
+本着拿来主意的想法，我就直接把这位小哥的代码添加到了我的配置文件里面：
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq eshell-prompt-function
+      (lambda ()
+	(concat
+	 (propertize "┌─[" 'face `(:foreground "green"))
+	 (propertize (user-login-name) 'face `(:foreground "red"))
+	 (propertize "@" 'face `(:foreground "green"))
+	 (propertize (system-name) 'face `(:foreground "blue"))
+	 (propertize "]──[" 'face `(:foreground "green"))
+	 (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "yellow"))
+	 (propertize "]──[" 'face `(:foreground "green"))
+	 (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))
+	 (propertize "]\n" 'face `(:foreground "green"))
+	 (propertize "└─&gt;" 'face `(:foreground "green"))
+	 (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "green"))
+	 )))
+</pre>
+</div>
+<p>
+效果自然是很 sexy.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5204b15" class="outline-2">
+<h2 id="org5204b15">与原有提示符冲突</h2>
+<div class="outline-text-2" id="text-org5204b15">
+<p>
+但是我原来使用的 <a href="https://github.com/kaihaosw/eshell-prompt-extras">eshell-prompt-extra</a> 的效果就被覆盖了。而
+<code>eshell_prompt_extra</code> 可以提供的额外信息非常多，包括：git, python
+virtualenv, 以及远程登录时的主机信息，如图：
+</p>
+
+
+<div class="figure">
+<p><img src="./images/eshell_prompt_extra.png" alt="eshell_prompt_extra.png" />
+</p>
+</div>
+
+<p>
+如果用上这个 sexy 的提示符，eshell-extra-prompt 的额外的信息就不能显示，感觉好亏:(
+鱼和熊掌我都想要，似乎太贪心了？怎么办，自己去修改 <code>eshell_prompt_extra</code> 的<a href="https://github.com/kaihaosw/eshell-prompt-extras/blob/master/eshell-prompt-extras.el">源码</a> :).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb84b8f2" class="outline-2">
+<h2 id="orgb84b8f2">折腾源码</h2>
+<div class="outline-text-2" id="text-orgb84b8f2">
+<p>
+<code>eshell_prompt_extra</code> 这个包注释加上全部代码也只是 400 行，代码也写得很清晰.
+其中大部份是辅助函数，而 Eshell 的提示符效果是通过两个 eshell-theme 函数来实现
+的。use-package 的配置：
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package eshell-prompt-extras
+  :ensure t
+  :load-path "~/Code/github/eshell-prompt-extras"
+  :config (progn
+	    (with-eval-after-load "esh-opt"
+	      (use-package virtualenvwrapper :ensure t)
+	      (venv-initialize-eshell)
+	      (autoload 'epe-theme-lambda "eshell-prompt-extras")
+	      (setq eshell-highlight-prompt nil
+		    eshell-prompt-function 'epe-theme-lambda))
+	    ))
+</pre>
+</div>
+<p>
+而 <code>epe-theme-lambda</code> 的代码如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">
+(defun epe-theme-lambda ()
+  "A eshell-prompt lambda theme."
+  (setq eshell-prompt-regexp "^[^#\nλ]*[#λ] ")
+  (concat
+   (when (epe-remote-p)
+     (epe-colorize-with-face
+      (concat (epe-remote-user) "@" (epe-remote-host) " ")
+      'epe-remote-face))
+   (when epe-show-python-info
+     (when (fboundp 'epe-venv-p)
+       (when (and (epe-venv-p) venv-current-name)
+	 (epe-colorize-with-face (concat "(" venv-current-name ") ") 'epe-venv-face))))
+   (let ((f (cond ((eq epe-path-style 'fish) 'epe-fish-path)
+		  ((eq epe-path-style 'single) 'epe-abbrev-dir-name)
+		  ((eq epe-path-style 'full) 'abbreviate-file-name))))
+     (epe-colorize-with-face (funcall f (eshell/pwd)) 'epe-dir-face))
+   (when (epe-git-p)
+     (concat
+      (epe-colorize-with-face ":" 'epe-dir-face)
+      (epe-colorize-with-face
+       (concat (epe-git-branch)
+	       (epe-git-dirty)
+	       (epe-git-untracked)
+	       (let ((unpushed (epe-git-unpushed-number)))
+		 (unless (= unpushed 0)
+		   (concat ":" (number-to-string unpushed)))))
+       'epe-git-face)))
+   (epe-colorize-with-face " λ" 'epe-symbol-face)
+   (epe-colorize-with-face (if (= (user-uid) 0) "#" "") 'epe-sudo-symbol-face)
+   " "))
+</pre>
+</div>
+<p>
+代码主要逻辑是调用之前定义的辅助函数，判断是否需要显示 git, python, 远程主机等
+信息，然后对相应的提示符进行拼接。而其中出现得比较频繁的
+<code>epe-colorize-with-face</code> 就是作者定义的一个宏(macro), 用来显示字符串以及对应的
+face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可以自己添加一个 Eshell
+主题。
+</p>
+</div>
+
+<div id="outline-container-orga217634" class="outline-3">
+<h3 id="orga217634">定义所需的 face</h3>
+<div class="outline-text-3" id="text-orga217634">
+<p>
+因为我需要显示的 face(颜色), <code>eshell-extra-prompt</code> 并没有定义，所以就只好自己
+动手啦：
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defface epe-pipeline-delimiter-face
+  '((t :foreground "green"))
+  "Face for pipeline theme delimiter."
+  :group 'epe)
+
+(defface epe-pipeline-user-face
+  '((t :foreground "red"))
+  "Face for user in pipeline theme."
+  :group 'epe)
+
+(defface epe-pipeline-host-face
+  '((t :foreground "blue"))
+  "Face for host in pipeline theme."
+  :group 'epe)
+
+(defface epe-pipeline-time-face
+  '((t :foreground "yellow"))
+  "Face for time in pipeline theme."
+  :group 'epe)
+</pre>
+</div>
+<p>
+然后就是按着原有的 Eshell 提示符来组装一个新的 Eshell 主题了，然后把这个主题
+定义成 pipeline (其实是我自己也没想出比较新颖的名字啦):
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defun epe-theme-pipeline ()
+  "A eshell-prompt theme with full path, smiliar to oh-my-zsh theme."
+  (setq eshell-prompt-regexp "^[^#\nλ]* λ[#]* ")
+  (concat
+   (if (epe-remote-p)
+       (progn
+	 (concat
+	  (epe-colorize-with-face "┌─[" 'epe-pipeline-delimiter-face)
+	  (epe-colorize-with-face (epe-remote-user) 'epe-pipeline-user-face)
+	  (epe-colorize-with-face "@" 'epe-pipeline-delimiter-face)
+	  (epe-colorize-with-face (epe-remote-host) 'epe-pipeline-host-face))
+	 )
+     (progn
+       (concat
+	(epe-colorize-with-face "┌─[" 'epe-pipeline-delimiter-face)
+	(epe-colorize-with-face (user-login-name) 'epe-pipeline-user-face)
+	(epe-colorize-with-face "@" 'epe-pipeline-delimiter-face)
+	(epe-colorize-with-face (system-name) 'epe-pipeline-host-face)))
+     )
+   (concat
+    (epe-colorize-with-face "]──[" 'epe-pipeline-delimiter-face)
+    (epe-colorize-with-face (format-time-string "%H:%M" (current-time)) 'epe-pipeline-time-face)
+    (epe-colorize-with-face "]──[" 'epe-pipeline-delimiter-face)
+    (epe-colorize-with-face (concat (eshell/pwd)) 'epe-dir-face)
+    (epe-colorize-with-face  "]\n" 'epe-pipeline-delimiter-face)
+    (epe-colorize-with-face "└─&gt;" 'epe-pipeline-delimiter-face)
+    )
+   (when epe-show-python-info
+     (when (fboundp 'epe-venv-p)
+       (when (and (epe-venv-p) venv-current-name)
+	 (epe-colorize-with-face (concat "(" venv-current-name ") ") 'epe-venv-face))))
+   (when (epe-git-p)
+     (concat
+      (epe-colorize-with-face ":" 'epe-dir-face)
+      (epe-colorize-with-face
+       (concat (epe-git-branch)
+	       (epe-git-dirty)
+	       (epe-git-untracked)
+	       (let ((unpushed (epe-git-unpushed-number)))
+		 (unless (= unpushed 0)
+		   (concat ":" (number-to-string unpushed)))))
+       'epe-git-face)))
+   (epe-colorize-with-face " λ" 'epe-symbol-face)
+   (epe-colorize-with-face (if (= (user-uid) 0) "#" "") 'epe-sudo-symbol-face)
+   " "))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org00ac762" class="outline-2">
+<h2 id="org00ac762">总结</h2>
+<div class="outline-text-2" id="text-org00ac762">
+<p>
+这样一个新的 Eshell 主题就完工了，然后我给 <code>eshell-extra-prompt</code> 发了一个<a href="https://github.com/kaihaosw/eshell-prompt-extras/pull/16">Pull
+Request</a>, 最终效果如下：
+<img src="./images/epe.png" alt="epe.png" />
+</p>
+
+<p>
+Enjoy Emacs, Enjor Tweaking :)
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-06-07</span>
+        <span title="last modification date" class="post-info">2017-06-07</span>
+        <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a></span>
+        <span title="author" class="post-info"></span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/06/07/eshell提示符优化";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/06/07/eshell提示符优化";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; workstation"></a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
