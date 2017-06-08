@@ -32,13 +32,13 @@
 <div class="post">
 <h1>Eshell提示符优化</h1>
 
-<div id="outline-container-org972f2ef" class="outline-2">
-<h2 id="org972f2ef">发现帅气的提示符</h2>
-<div class="outline-text-2" id="text-org972f2ef">
+<div id="outline-container-org724a4f7" class="outline-2">
+<h2 id="org724a4f7">发现帅气的提示符</h2>
+<div class="outline-text-2" id="text-org724a4f7">
 <p>
 近日，笔者在浏览 <a href="https://www.reddit.com/r/emacs/comments/6f0rkz/my_fancy_eshell_prompt/">Reddit</a> 的时候，发现了一位 Emacs 用户把他的 Eshell 提示符修改得
 很帅，如图：
-<img src="./images/eshell_prompt.png" alt="eshell_prompt.png" />
+<img src="/assets/blog/2017/06/07/eshell提示符优化/eshell_prompt.png" alt="eshell_prompt.png" />
 </p>
 
 <p>
@@ -68,9 +68,9 @@
 </div>
 </div>
 
-<div id="outline-container-org5204b15" class="outline-2">
-<h2 id="org5204b15">与原有提示符冲突</h2>
-<div class="outline-text-2" id="text-org5204b15">
+<div id="outline-container-org61f351c" class="outline-2">
+<h2 id="org61f351c">与原有提示符冲突</h2>
+<div class="outline-text-2" id="text-org61f351c">
 <p>
 但是我原来使用的 <a href="https://github.com/kaihaosw/eshell-prompt-extras">eshell-prompt-extra</a> 的效果就被覆盖了。而
 <code>eshell_prompt_extra</code> 可以提供的额外信息非常多，包括：git, python
@@ -90,9 +90,9 @@ virtualenv, 以及远程登录时的主机信息，如图：
 </div>
 </div>
 
-<div id="outline-container-orgb84b8f2" class="outline-2">
-<h2 id="orgb84b8f2">折腾源码</h2>
-<div class="outline-text-2" id="text-orgb84b8f2">
+<div id="outline-container-org2e10c4e" class="outline-2">
+<h2 id="org2e10c4e">折腾源码</h2>
+<div class="outline-text-2" id="text-org2e10c4e">
 <p>
 <code>eshell_prompt_extra</code> 这个包注释加上全部代码也只是 400 行，代码也写得很清晰.
 其中大部份是辅助函数，而 Eshell 的提示符效果是通过两个 eshell-theme 函数来实现
@@ -158,9 +158,9 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </p>
 </div>
 
-<div id="outline-container-orga217634" class="outline-3">
-<h3 id="orga217634">定义所需的 face</h3>
-<div class="outline-text-3" id="text-orga217634">
+<div id="outline-container-orgf194cd3" class="outline-3">
+<h3 id="orgf194cd3">定义所需的 face</h3>
+<div class="outline-text-3" id="text-orgf194cd3">
 <p>
 因为我需要显示的 face(颜色), <code>eshell-extra-prompt</code> 并没有定义，所以就只好自己
 动手啦：
@@ -243,13 +243,13 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </div>
 </div>
 
-<div id="outline-container-org00ac762" class="outline-2">
-<h2 id="org00ac762">总结</h2>
-<div class="outline-text-2" id="text-org00ac762">
+<div id="outline-container-orge64daff" class="outline-2">
+<h2 id="orge64daff">总结</h2>
+<div class="outline-text-2" id="text-orge64daff">
 <p>
 这样一个新的 Eshell 主题就完工了，然后我给 <code>eshell-extra-prompt</code> 发了一个<a href="https://github.com/kaihaosw/eshell-prompt-extras/pull/16">Pull
 Request</a>, 最终效果如下：
-<img src="./images/epe.png" alt="epe.png" />
+<img src="/assets/blog/2017/06/07/eshell提示符优化/epe.png" alt="epe.png" />
 </p>
 
 <p>

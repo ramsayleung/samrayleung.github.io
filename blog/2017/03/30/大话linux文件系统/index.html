@@ -35,23 +35,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org44456a6">File System</a></li>
-<li><a href="#orga46656f">Journaling</a></li>
-<li><a href="#org859b92b">Comparison</a>
+<li><a href="#orgf71ea79">File System</a></li>
+<li><a href="#org2e2312d">Journaling</a></li>
+<li><a href="#org5371aa8">Comparison</a>
 <ul>
-<li><a href="#org3dc910c">Ext</a></li>
-<li><a href="#orge4c5e24">Ext2</a></li>
-<li><a href="#org9ca9a2c">Ext3</a></li>
-<li><a href="#org74f410a">Ext4</a></li>
-<li><a href="#orgf697e93">ZFS</a></li>
-<li><a href="#org4a3339e">BrtFS</a></li>
-<li><a href="#orge84e5bb">JFS</a></li>
-<li><a href="#org90841ba">ReiserFS</a></li>
-<li><a href="#org9197e32">XFS</a></li>
+<li><a href="#org9b7022e">Ext</a></li>
+<li><a href="#org63a36e7">Ext2</a></li>
+<li><a href="#org0e97b7f">Ext3</a></li>
+<li><a href="#orgc685f0a">Ext4</a></li>
+<li><a href="#org5433181">ZFS</a></li>
+<li><a href="#orgeca379a">BrtFS</a></li>
+<li><a href="#orga1f9060">JFS</a></li>
+<li><a href="#org69b5341">ReiserFS</a></li>
+<li><a href="#org4261464">XFS</a></li>
 </ul>
 </li>
-<li><a href="#orge082283">小结</a></li>
-<li><a href="#org031c40b">参考</a></li>
+<li><a href="#org079e37a">小结</a></li>
+<li><a href="#org120f249">参考</a></li>
 </ul>
 </div>
 </div>
@@ -63,9 +63,9 @@ APFS "评头品足",我是不了解 APFS ,所以也没有什么发言权嘛，�
 文件系统，这个也是Linux 文件系统众多的主要原因。那么有众多的Linux 文件系统，它们
 的差异,优缺点又是什么呢？
 </p>
-<div id="outline-container-org44456a6" class="outline-2">
-<h2 id="org44456a6">File System</h2>
-<div class="outline-text-2" id="text-org44456a6">
+<div id="outline-container-orgf71ea79" class="outline-2">
+<h2 id="orgf71ea79">File System</h2>
+<div class="outline-text-2" id="text-orgf71ea79">
 <p>
 在开始 "大话" 各种文件系统的时候，我先想谈谈什么是文件系统。一般用户平时都会有
 上百G 的数据，那么多的数据，应该怎么保存呢？不知道怎么回答，可以先类比一下，想
@@ -78,9 +78,9 @@ APFS "评头品足",我是不了解 APFS ,所以也没有什么发言权嘛，�
 </p>
 </div>
 </div>
-<div id="outline-container-orga46656f" class="outline-2">
-<h2 id="orga46656f">Journaling</h2>
-<div class="outline-text-2" id="text-orga46656f">
+<div id="outline-container-org2e2312d" class="outline-2">
+<h2 id="org2e2312d">Journaling</h2>
+<div class="outline-text-2" id="text-org2e2312d">
 <p>
 在比较文件系统之前，先聊聊文件系统中的日志 (Journaling),而有些文件系统是有日志
 功能的，而有些是没有日志功能的；为了了解它们之间的差异，就需要先了解一下什么是
@@ -99,9 +99,9 @@ APFS "评头品足",我是不了解 APFS ,所以也没有什么发言权嘛，�
 </p>
 </div>
 </div>
-<div id="outline-container-org859b92b" class="outline-2">
-<h2 id="org859b92b">Comparison</h2>
-<div class="outline-text-2" id="text-org859b92b">
+<div id="outline-container-org5371aa8" class="outline-2">
+<h2 id="org5371aa8">Comparison</h2>
+<div class="outline-text-2" id="text-org5371aa8">
 <p>
 下面对比一下 各种文件系统的特性
 <img src="/assets/blog/2017/03/30/大话linux文件系统/comparison_file_system.png" alt="comparison_file_system.png" />
@@ -117,9 +117,9 @@ APFS "评头品足",我是不了解 APFS ,所以也没有什么发言权嘛，�
 现在就来比较一下各种常见的Linux文件系统
 </p>
 </div>
-<div id="outline-container-org3dc910c" class="outline-3">
-<h3 id="org3dc910c">Ext</h3>
-<div class="outline-text-3" id="text-org3dc910c">
+<div id="outline-container-org9b7022e" class="outline-3">
+<h3 id="org9b7022e">Ext</h3>
+<div class="outline-text-3" id="text-org9b7022e">
 <p>
 Ext 是指"Extended file system(扩展文件系统)",应该算是Linux 文件系统里面的老大
 爷了，它是从经典的 Minix 的文件系统衍生过来的，为Linux 专门设计的，但是它缺乏
@@ -128,9 +128,9 @@ Ext 了
 </p>
 </div>
 </div>
-<div id="outline-container-orge4c5e24" class="outline-3">
-<h3 id="orge4c5e24">Ext2</h3>
-<div class="outline-text-3" id="text-orge4c5e24">
+<div id="outline-container-org63a36e7" class="outline-3">
+<h3 id="org63a36e7">Ext2</h3>
+<div class="outline-text-3" id="text-org63a36e7">
 <p>
 Ext2 也是不支持日志的，但是它是第一个支持扩展文件属性和2T 容量的Linux 文件系
 统，但是正由于Ext2 不支持日志功能，它可以更少地写磁盘，所以它适合像USB 这种闪
@@ -139,18 +139,18 @@ Ext2 也是不支持日志的，但是它是第一个支持扩展文件属性和
 </p>
 </div>
 </div>
-<div id="outline-container-org9ca9a2c" class="outline-3">
-<h3 id="org9ca9a2c">Ext3</h3>
-<div class="outline-text-3" id="text-org9ca9a2c">
+<div id="outline-container-org0e97b7f" class="outline-3">
+<h3 id="org0e97b7f">Ext3</h3>
+<div class="outline-text-3" id="text-org0e97b7f">
 <p>
 Ext3 就是Ext2 带有日志功能的扩展，并且Ext3 也向后兼容Ext2,所以你在Ext2 和Ext3
 之间切换也是不需要重新格式化滴，但是最常用的还不是Ext3,而是Ext4 :)
 </p>
 </div>
 </div>
-<div id="outline-container-org74f410a" class="outline-3">
-<h3 id="org74f410a">Ext4</h3>
-<div class="outline-text-3" id="text-org74f410a">
+<div id="outline-container-orgc685f0a" class="outline-3">
+<h3 id="orgc685f0a">Ext4</h3>
+<div class="outline-text-3" id="text-orgc685f0a">
 <p>
 Ext4 也是向后兼容 Ext3 和Ext2 的，所以你是可以在Ext4,Ext3,Ext2 之间切换而无需
 格式化文件系统。Ext4 包含很多新的特性，例如支持存储更大的文件，支持延迟分配以
@@ -159,9 +159,9 @@ Ext4 也是向后兼容 Ext3 和Ext2 的，所以你是可以在Ext4,Ext3,Ext2 �
 </p>
 </div>
 </div>
-<div id="outline-container-orgf697e93" class="outline-3">
-<h3 id="orgf697e93">ZFS</h3>
-<div class="outline-text-3" id="text-orgf697e93">
+<div id="outline-container-org5433181" class="outline-3">
+<h3 id="org5433181">ZFS</h3>
+<div class="outline-text-3" id="text-org5433181">
 <p>
 ZFS 最初是给Sun 的Solaris 设计的，Sun 被收购后，现在是属于Oracle 的，ZFS 支持
 大量非常先进的特性，比如说 快照 (snapshot),动态存储 (dynamic disk striping),
@@ -172,9 +172,9 @@ Linux 发行版本上面添加ZFS 的支持
 </p>
 </div>
 </div>
-<div id="outline-container-org4a3339e" class="outline-3">
-<h3 id="org4a3339e">BrtFS</h3>
-<div class="outline-text-3" id="text-org4a3339e">
+<div id="outline-container-orgeca379a" class="outline-3">
+<h3 id="orgeca379a">BrtFS</h3>
+<div class="outline-text-3" id="text-orgeca379a">
 <p>
 Brtfs 是由Oracle 设计的一个支持写时复制 (copy on write) 的现代文件系统;而
 Btrfs 的意思是 B 树文件系统 (B-Tree File System),它支持大量非常先进的特性，例
@@ -185,9 +185,9 @@ Btrfs 的意思是 B 树文件系统 (B-Tree File System),它支持大量非常�
 </p>
 </div>
 </div>
-<div id="outline-container-orge84e5bb" class="outline-3">
-<h3 id="orge84e5bb">JFS</h3>
-<div class="outline-text-3" id="text-orge84e5bb">
+<div id="outline-container-orga1f9060" class="outline-3">
+<h3 id="orga1f9060">JFS</h3>
+<div class="outline-text-3" id="text-orga1f9060">
 <p>
 JFS 是IBM 为IBM 自家的AIX 操作系统设计的日志文件系统 (Journaled File System),
 后来迁移到了Linux 系统上 (HP-UX 也有一个叫做JFS 的文件系统).在AIX 系统上是存
@@ -199,9 +199,9 @@ IO等。JFS 也是一个设计优秀的文件系统并且支持大部分的Linux
 </p>
 </div>
 </div>
-<div id="outline-container-org90841ba" class="outline-3">
-<h3 id="org90841ba">ReiserFS</h3>
-<div class="outline-text-3" id="text-org90841ba">
+<div id="outline-container-org69b5341" class="outline-3">
+<h3 id="org69b5341">ReiserFS</h3>
+<div class="outline-text-3" id="text-org69b5341">
 <p>
 ReiserFs 是第一个被引进Linux 标准内核的日志文件系统(在内核版本为2.4.1的时候引
 进),也是Linux 文件系统的一次飞跃，那时的ReiserFS 包含了很多Ext 没有的新特性。
@@ -212,9 +212,9 @@ ReiserFs 是第一个被引进Linux 标准内核的日志文件系统(在内核�
 </p>
 </div>
 </div>
-<div id="outline-container-org9197e32" class="outline-3">
-<h3 id="org9197e32">XFS</h3>
-<div class="outline-text-3" id="text-org9197e32">
+<div id="outline-container-org4261464" class="outline-3">
+<h3 id="org4261464">XFS</h3>
+<div class="outline-text-3" id="text-org4261464">
 <p>
 XFS 最初是Silicon Graphics 为SGI IRX 操作系统设计的64位高性能文件系统，在2001
 年迁移到了Linux.得益于XFS 基于 allocation groups 的设计，XFS 拥有非常优秀的并
@@ -226,9 +226,9 @@ XFS 和Ext 有一定的相似；此外，虽说XFS 是高性能的文件系统�
 </div>
 </div>
 </div>
-<div id="outline-container-orge082283" class="outline-2">
-<h2 id="orge082283">小结</h2>
-<div class="outline-text-2" id="text-orge082283">
+<div id="outline-container-org079e37a" class="outline-2">
+<h2 id="org079e37a">小结</h2>
+<div class="outline-text-2" id="text-org079e37a">
 <p>
 如果将Linux 的文件系统进行分类的话，还可以分成 FUSE (Filesystem in Userspace,
 让用户在没有权限的情况下，创建自己的文件系统),Stackable file System (先进的多
@@ -242,9 +242,9 @@ XFS 和Ext 有一定的相似；此外，虽说XFS 是高性能的文件系统�
 </p>
 </div>
 </div>
-<div id="outline-container-org031c40b" class="outline-2">
-<h2 id="org031c40b">参考</h2>
-<div class="outline-text-2" id="text-org031c40b">
+<div id="outline-container-org120f249" class="outline-2">
+<h2 id="org120f249">参考</h2>
+<div class="outline-text-2" id="text-org120f249">
 <ul class="org-ul">
 <li><a href="https://en.wikipedia.org/wiki/File_system">https://en.wikipedia.org/wiki/File_system</a></li>
 <li><a href="https://btrfs.wiki.kernel.org/index.php/Main_Page">https://btrfs.wiki.kernel.org/index.php/Main_Page</a></li>
