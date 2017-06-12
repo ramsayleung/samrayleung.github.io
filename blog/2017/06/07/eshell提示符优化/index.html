@@ -32,9 +32,9 @@
 <div class="post">
 <h1>Eshell提示符优化</h1>
 
-<div id="outline-container-org90dcad6" class="outline-2">
-<h2 id="org90dcad6">发现帅气的提示符</h2>
-<div class="outline-text-2" id="text-org90dcad6">
+<div id="outline-container-org193b39d" class="outline-2">
+<h2 id="org193b39d">发现帅气的提示符</h2>
+<div class="outline-text-2" id="text-org193b39d">
 <p>
 近日，笔者在浏览 <a href="https://www.reddit.com/r/emacs/comments/6f0rkz/my_fancy_eshell_prompt/">Reddit</a> 的时候，发现了一位 Emacs 用户把他的 Eshell 提示符修改得
 很帅，如图：
@@ -68,9 +68,9 @@
 </div>
 </div>
 
-<div id="outline-container-orge86f58e" class="outline-2">
-<h2 id="orge86f58e">与原有提示符冲突</h2>
-<div class="outline-text-2" id="text-orge86f58e">
+<div id="outline-container-org8ae5406" class="outline-2">
+<h2 id="org8ae5406">与原有提示符冲突</h2>
+<div class="outline-text-2" id="text-org8ae5406">
 <p>
 但是我原来使用的 <a href="https://github.com/kaihaosw/eshell-prompt-extras">eshell-prompt-extra</a> 的效果就被覆盖了。而
 <code>eshell_prompt_extra</code> 可以提供的额外信息非常多，包括：git, python
@@ -90,9 +90,9 @@ virtualenv, 以及远程登录时的主机信息，如图：
 </div>
 </div>
 
-<div id="outline-container-org70a3d34" class="outline-2">
-<h2 id="org70a3d34">折腾源码</h2>
-<div class="outline-text-2" id="text-org70a3d34">
+<div id="outline-container-org02aff04" class="outline-2">
+<h2 id="org02aff04">折腾源码</h2>
+<div class="outline-text-2" id="text-org02aff04">
 <p>
 <code>eshell_prompt_extra</code> 这个包注释加上全部代码也只是 400 行，代码也写得很清晰.
 其中大部份是辅助函数，而 Eshell 的提示符效果是通过两个 eshell-theme 函数来实现
@@ -160,9 +160,9 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </p>
 </div>
 
-<div id="outline-container-org7d54d16" class="outline-3">
-<h3 id="org7d54d16">定义所需的 face</h3>
-<div class="outline-text-3" id="text-org7d54d16">
+<div id="outline-container-orgfdfddb8" class="outline-3">
+<h3 id="orgfdfddb8">定义所需的 face</h3>
+<div class="outline-text-3" id="text-orgfdfddb8">
 <p>
 因为我需要显示的 face(颜色), <code>eshell-extra-prompt</code> 并没有定义，所以就只好自己
 动手啦：
@@ -248,9 +248,9 @@ face(其实就是不同的颜色啦). 看懂了代码就好办了，现在就可
 </div>
 </div>
 
-<div id="outline-container-org9ad8476" class="outline-2">
-<h2 id="org9ad8476">总结</h2>
-<div class="outline-text-2" id="text-org9ad8476">
+<div id="outline-container-orgbe3435d" class="outline-2">
+<h2 id="orgbe3435d">总结</h2>
+<div class="outline-text-2" id="text-orgbe3435d">
 <p>
 这样一个新的 Eshell 主题就完工了，然后我给 <code>eshell-extra-prompt</code> 发了一个<a href="https://github.com/kaihaosw/eshell-prompt-extras/pull/16">Pull
 Request</a>, 最终效果如下：

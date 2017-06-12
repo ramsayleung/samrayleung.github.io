@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>SSD HDD 双硬盘安装 Arch Linux -- 性能最高效探究 - 公子世无双，陌上人如玉</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="An discussion about install arch linux on lvm" />
+    <meta name="keywords" content="linux,ssd,hdd,lvm" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">公子世无双，陌上人如玉</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>SSD HDD 双硬盘安装 Arch Linux -- 性能最高效探究</h1>
+
+<div id="outline-container-org99314cb" class="outline-2">
+<h2 id="org99314cb">SSD+HDD 最佳实践</h2>
+<div class="outline-text-2" id="text-org99314cb">
+<p>
+笔者最近买了一块新的 250G 的固态硬盘，打算用来安装 Arch Linux,但是自己原来已经有
+一块 1T 的 HDD，担心容量不足，以及本着物尽其用的原则，打算两块硬盘一起用。现在想
+实现最佳的分区方案，即可以充分利用好 SSD 的速度以及 HDD 的容量。但是自己心中但是
+感觉自己分区方案不是最佳实践，所以在实施分区之前就在 <a href="https://www.reddit.com/r/archlinux/comments/6ds15v/any_suggestion_about_disk_partition_on_both_ssd/">Reddit</a> 和 <a href="https://www.v2ex.com/t/364418#reply38">V2ex</a> 上各发了一个
+贴子，跟社区的 Linux 用户一起讨论一下。其中绝大多数有建设性的建议都提到了 Cache,
+我突然意识到之前自己似乎在一个误区，一直在考虑的是，什么样的路径对应怎么分区，但
+是我可以组合来用嘛。正如一位朋友所言：
+</p>
+<blockquote>
+<p>
+一个原则: 频繁读写的数据放高速存储
+至于怎么叫频繁，得你自己定义了，每天都要开机关机的，那系统本身也算频繁数据，因此
+一般家用机器都把系统安装在 SSD ；然而服务器极少开关机，因此系统不算频繁数据，而
+是把数据库数据等真正服务频繁的放到 SSD ； home 目录虽然数据很多，但是很多情况下
+都只是沉淀下来的个人数据。
+因此这些麻烦的考虑，完全可以交给程序决定！！！于是早就有软件实现了自动把频繁数据
+在 SSD Cache，沉淀数据写 HHD 的方案了
+</p>
+</blockquote>
+<p>
+所以他给我提供了三个方案： bcache,lvmcache,EnhanceIO. Reddit 上的朋友也提到了
+lvmcache. 我突然又意识到自己从一个误区走到了另外一个误区，在看了社区的朋友提供的
+方案，我就一直在考虑如何高效组合地利用 SSD 和 HDD; 但是我最初的问题是想使用 SSD,
+但是担心以后容量不够，扩展起来不容易，可能需要为整个根目录迁移数据。但是如果我使
+用 lvm, 即使新增加一块硬盘，也是非常容易扩展的。之前的担忧自然都解决了。
+</p>
+</div>
+</div>
+<div id="outline-container-org1471c90" class="outline-2">
+<h2 id="org1471c90">LVM</h2>
+<div class="outline-text-2" id="text-org1471c90">
+<p>
+最后我决定直接使用 LVM, 在 LVM 之上安装 Arch Linux, 以后容量不足，就可以直接再
+把另外一块磁盘添加进来。可能有朋友对 LVM 不太了解，我在这里就简单介绍一下，详
+情就需要自行去查看文档了。LVM 是逻辑卷管理器 (logical volume manager), 是
+Linux 内核所特有的管理磁盘设备以及管理其他大容量存储设备的工具。简而言之，就是
+Linux 内核使用 LVM 在存储设备上添加了一层抽象层，可以让用户更方便地进行存储的
+管理。以 Arch wiki 上提到的例子说明，假如你有两块磁盘，总共3个分区：
+</p>
+<pre class="example">
+Physical disks
+
+Disk1 (/dev/sda):
+   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  |Partition1 50GB (Physical volume) |Partition2 80GB (Physical volume)     |
+  |/dev/sda1                         |/dev/sda2                             |
+  |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
+
+Disk2 (/dev/sdb):
+   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  |Partition1 120GB (Physical volume)                 |
+  |/dev/sdb1                                          |
+  | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _|
+</pre>
+<p>
+当你对磁盘进行操作的时候，就只能操作对应的分区，例如你想给 /media 目录划一个
+200G 的分区，你就没办法实现了，因为单个磁盘最大的容量只有 130G,但是又无法把两
+个磁盘合起来划分分区。但是，当你使用了 LVM:
+</p>
+<pre class="example">
+LVM logical volumes
+
+Volume Group1 (/dev/MyStorage/ = /dev/sda1 + /dev/sda2 + /dev/sdb1):
+   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+  |Logical volume1 15GB  |Logical volume2 35GB      |Logical volume3 200GB               |
+  |/dev/MyStorage/rootvol|/dev/MyStorage/homevol    |/dev/MyStorage/mediavol             |
+  |_ _ _ _ _ _ _ _ _ _ _ |_ _ _ _ _ _ _ _ _ _ _ _ _ |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
+</pre>
+<p>
+通过 LVM, 可以把两个磁盘 "拼" 在一次，组成一个单元(用 LVM 的术语来表述，就是一
+个 VG(Volume group)),然后你不在对磁盘进行操作，因为 LVM 这个抽象层的存在，你操
+作的是 VG(Volome group) 和 LV(Logical volume). 因此我可以轻易为 /media 划分一
+个 200G 的分区 (用 LVM 的术语来表述，就是一个 LV(Logical Volume)). 所以话题再
+回到我安装 Arch Linux 的话题上，因为我使用把 SSD 做成 LVM, 所以即使以后我容量
+不足，我只需将我 1T 的 HDD 也做成 LVM, 添加到同一个 VG, 再使用 lvmcache, 还是
+可以快乐地玩耍
+</p>
+</div>
+</div>
+<div id="outline-container-org02aaf5c" class="outline-2">
+<h2 id="org02aaf5c">小节</h2>
+<div class="outline-text-2" id="text-org02aaf5c">
+<p>
+关于怎么使用 LVM 安装 Arch Linux, 我就不赘言了。Arch Wiki 描述得非常仔细了，我
+之前也写了一篇关于然后安装 Arch Linux 的文章了，只是其中分区的部分变成了构建
+LVM 了。最后，展示一下我的 LVM 分区结果：
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">NAME                  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                     8:0    0 232.9G  0 disk 
+└─sda1                  8:1    0 228.9G  0 part 
+├─volgroup-lvolroot 254:0    0   100G  0 lvm  /
+└─volgroup-lvolhome 254:1    0 128.9G  0 lvm  /home
+sdb                     8:16   0 931.5G  0 disk 
+sdc                     8:32   1  14.7G  0 disk 
+└─sdc4                  8:36   1  14.7G  0 part 
+sr0                    11:0    1  1024M  0 rom 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0dae562" class="outline-2">
+<h2 id="org0dae562">参考</h2>
+<div class="outline-text-2" id="text-org0dae562">
+<ul class="org-ul">
+<li><a href="https://wiki.archlinux.org/index.php/LVM">https://wiki.archlinux.org/index.php/LVM</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)">https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)</a></li>
+</ul>
+<p>
+Enjoy Linux, Enjoy Tweaking :)
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-06-12</span>
+        <span title="last modification date" class="post-info">2017-06-12</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
+        <span title="author" class="post-info"></span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/06/12/ssd-hdd-双硬盘安装-arch-linux----性能最高效探究";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/06/12/ssd-hdd-双硬盘安装-arch-linux----性能最高效探究";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; workstation"></a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
