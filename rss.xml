@@ -4,10 +4,17 @@
     <title>公子世无双，陌上人如玉</title>
     <link>http://https//samrayleung.github.io/</link>
     <description>凡走过,必留下痕迹</description>
-    <pubDate>Mon, 12 Jun 2017 09:23:22 HKT</pubDate>
-    <lastBuildDate>Mon, 12 Jun 2017 09:23:22 HKT</lastBuildDate>
+    <pubDate>Mon, 12 Jun 2017 09:38:49 HKT</pubDate>
+    <lastBuildDate>Mon, 12 Jun 2017 09:38:49 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>SSD HDD 双硬盘安装 Arch Linux -- 性能最高效探究</title>
+      <link>http://https//samrayleung.github.io/blog/2017/06/12/ssd-hdd-双硬盘安装-arch-linux----性能最高效探究</link>
+      <description><![CDATA[An discussion about install arch linux on lvm]]></description>
+      <pubDate>2017-06-12</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/06/12/ssd-hdd-双硬盘安装-arch-linux----性能最高效探究</guid>
+    </item>
     <item>
       <title>Linux/Unix Shell 二三事之过滤器cat</title>
       <link>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</link>
@@ -16,39 +23,60 @@
       <guid>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之cat</guid>
     </item>
     <item>
+      <title>Eshell提示符优化</title>
+      <link>http://https//samrayleung.github.io/blog/2017/06/07/eshell提示符优化</link>
+      <description><![CDATA[Tweak with Emacs shell prompt]]></description>
+      <pubDate>2017-06-08</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/06/07/eshell提示符优化</guid>
+    </item>
+    <item>
+      <title>为Java瘦身 -- Lombok</title>
+      <link>http://https//samrayleung.github.io/blog/2017/05/24/为java瘦身----lombok</link>
+      <description><![CDATA[An introduction about lombok]]></description>
+      <pubDate>2017-06-07</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/05/24/为java瘦身----lombok</guid>
+    </item>
+    <item>
+      <title>python3 module of the week 读书笔记</title>
+      <link>http://https//samrayleung.github.io/blog/2017/06/07/python3-module-of-the-week-读书笔记</link>
+      <description><![CDATA[After reading about python3 module of the week]]></description>
+      <pubDate>2017-06-07</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/06/07/python3-module-of-the-week-读书笔记</guid>
+    </item>
+    <item>
+      <title>关于工具,关于折腾</title>
+      <link>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</link>
+      <description><![CDATA[An discussion about tool  and tweak]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/03/24/关于工具,关于折腾</guid>
+    </item>
+    <item>
+      <title>爬虫高效去重之布隆过滤器</title>
+      <link>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</link>
+      <description><![CDATA[an dscription about bloom filter]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</guid>
+    </item>
+    <item>
+      <title>Linux/Unix Shell 二三事之过滤器diff</title>
+      <link>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</link>
+      <description><![CDATA[An introduction about diff]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</guid>
+    </item>
+    <item>
+      <title>关于分布式系统唯一ID的探究</title>
+      <link>http://https//samrayleung.github.io/blog/2017/05/23/关于分布式系统唯一id的探究</link>
+      <description><![CDATA[An discussion about unique id in distributed system]]></description>
+      <pubDate>2017-05-24</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/05/23/关于分布式系统唯一id的探究</guid>
+    </item>
+    <item>
       <title>在Emacs中使用Ipython</title>
       <link>http://https//samrayleung.github.io/blog/2017/02/22/在emacs中使用ipython</link>
       <description><![CDATA[Use Ipython in Emasc]]></description>
       <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/02/22/在emacs中使用ipython</guid>
-    </item>
-    <item>
-      <title>提高Emacs启动速度</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/22/提高emacs启动速度</link>
-      <description><![CDATA[Tips to reduce emacs startup time]]></description>
-      <pubDate>2017-05-24</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/22/提高emacs启动速度</guid>
-    </item>
-    <item>
-      <title>Linux/Unix Shell 二三事之过滤器head+tail</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail</link>
-      <description><![CDATA[An introduction about head and tail]]></description>
-      <pubDate>2017-05-24</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之过滤器head+tail</guid>
-    </item>
-    <item>
-      <title>Linux/Unix Shell 二三事之神器percol</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之神器percol</link>
-      <description><![CDATA[An introduction about percol]]></description>
-      <pubDate>2017-05-24</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/22/linux-unix-shell-二三事之神器percol</guid>
-    </item>
-    <item>
-      <title>flask牛刀小试之微信公众号开发</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/23/flask牛刀小试之微信工作号开发</link>
-      <description><![CDATA[An flask project]]></description>
-      <pubDate>2017-05-24</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/23/flask牛刀小试之微信工作号开发</guid>
     </item>
   </channel>
 </rss>

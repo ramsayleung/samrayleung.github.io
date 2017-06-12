@@ -35,22 +35,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7640b49">基本用法</a>
+<li><a href="#orgb64f285">基本用法</a>
 <ul>
-<li><a href="#org780d92d">基础用法</a></li>
-<li><a href="#org4974eca">结合正则表达式</a></li>
-<li><a href="#org95e824f">统计出现的次数</a></li>
-<li><a href="#orgd01ab69">忽略大小写</a></li>
+<li><a href="#org66f3029">基础用法</a></li>
+<li><a href="#org45518f2">结合正则表达式</a></li>
+<li><a href="#org39a0611">统计出现的次数</a></li>
+<li><a href="#orgc3010a8">忽略大小写</a></li>
 </ul>
 </li>
-<li><a href="#orgf62aa56">搜索多个文件</a>
+<li><a href="#orgc925ef4">搜索多个文件</a>
 <ul>
-<li><a href="#org37c0e5e">递归搜索</a></li>
+<li><a href="#org8c6a349">递归搜索</a></li>
 </ul>
 </li>
-<li><a href="#org76390f3">在标准输入搜索</a></li>
-<li><a href="#org0f7b46b">逆搜索</a></li>
-<li><a href="#org5c3975d">小结</a></li>
+<li><a href="#org49a75d6">在标准输入搜索</a></li>
+<li><a href="#org13a31ee">逆搜索</a></li>
+<li><a href="#org171e83a">小结</a></li>
 </ul>
 </div>
 </div>
@@ -65,12 +65,12 @@ grep - print  lines matching a pattern
 搜索特定内容或者模式的工具(配合正则表达式“食用”，味道更佳 :))现在就来一起看看
 <b>grep</b> 的用法
 </p>
-<div id="outline-container-org7640b49" class="outline-2">
-<h2 id="org7640b49">基本用法</h2>
-<div class="outline-text-2" id="text-org7640b49">
-</div><div id="outline-container-org780d92d" class="outline-3">
-<h3 id="org780d92d">基础用法</h3>
-<div class="outline-text-3" id="text-org780d92d">
+<div id="outline-container-orgb64f285" class="outline-2">
+<h2 id="orgb64f285">基本用法</h2>
+<div class="outline-text-2" id="text-orgb64f285">
+</div><div id="outline-container-org66f3029" class="outline-3">
+<h3 id="org66f3029">基础用法</h3>
+<div class="outline-text-3" id="text-org66f3029">
 <p>
 现在假设有一个简单的文本文件(双城记开头)tinytale.txt,内容如下
 </p>
@@ -100,9 +100,9 @@ it was the season of light it was the season of darkness
 </pre>
 </div>
 </div>
-<div id="outline-container-org4974eca" class="outline-3">
-<h3 id="org4974eca">结合正则表达式</h3>
-<div class="outline-text-3" id="text-org4974eca">
+<div id="outline-container-org45518f2" class="outline-3">
+<h3 id="org45518f2">结合正则表达式</h3>
+<div class="outline-text-3" id="text-org45518f2">
 <p>
 默认情况下， <b>grep</b> 是开启正则表达式的模式的，所以你可以直接在文件搜索中使用
 正则表达式。现在在文件中搜索以字母 <b>e</b> 开头后接三个字符，然后以 <b>h</b> 结尾的单词：
@@ -128,9 +128,9 @@ it was the epoch of belief it was the epoch of incredulity
 </p>
 </div>
 </div>
-<div id="outline-container-org95e824f" class="outline-3">
-<h3 id="org95e824f">统计出现的次数</h3>
-<div class="outline-text-3" id="text-org95e824f">
+<div id="outline-container-org39a0611" class="outline-3">
+<h3 id="org39a0611">统计出现的次数</h3>
+<div class="outline-text-3" id="text-org39a0611">
 <p>
 有时，如果你需要统计某种模式或者某个单词出现的个数，你会发现 <b>grep</b> 非常有用；
 要实现该功能，只需给 <b>grep</b> 添加 <b>-c</b> 参数；例如统计单词 <b>the</b> 出现的个数：
@@ -150,9 +150,9 @@ it was the epoch of belief it was the epoch of incredulity
 </p>
 </div>
 </div>
-<div id="outline-container-orgd01ab69" class="outline-3">
-<h3 id="orgd01ab69">忽略大小写</h3>
-<div class="outline-text-3" id="text-orgd01ab69">
+<div id="outline-container-orgc3010a8" class="outline-3">
+<h3 id="orgc3010a8">忽略大小写</h3>
+<div class="outline-text-3" id="text-orgc3010a8">
 <p>
 前面提到， <b>grep</b> 默认是使用正则表达式来搜索文件的，所以 <b>grep</b> 是区分大小写的；
 如果你想修改 <b>grep</b> 的默认行为来忽略大小写，你可以添加 <b>-i</b> 参数
@@ -178,9 +178,9 @@ IT WAS THE SPRING OF HOPE IT WAS THE WINTER OF DESPAIRE
 </div>
 </div>
 </div>
-<div id="outline-container-orgf62aa56" class="outline-2">
-<h2 id="orgf62aa56">搜索多个文件</h2>
-<div class="outline-text-2" id="text-orgf62aa56">
+<div id="outline-container-orgc925ef4" class="outline-2">
+<h2 id="orgc925ef4">搜索多个文件</h2>
+<div class="outline-text-2" id="text-orgc925ef4">
 <p>
 上面搜索的都只是单个文件，而 grep 可以让你同时搜索多个文件；现在就来看看怎么搜
 索多个文件吧。下面两种写法结果都是一样的，但是笔者个人推崇第一种，因为可以输入
@@ -220,9 +220,9 @@ tale.txt:herself into the show of a belief that they would soon be reunited
 <b>grep</b> 搜索*/tmp* 下所有的 <b>.txt</b> 文件。
 </p>
 </div>
-<div id="outline-container-org37c0e5e" class="outline-3">
-<h3 id="org37c0e5e">递归搜索</h3>
-<div class="outline-text-3" id="text-org37c0e5e">
+<div id="outline-container-org8c6a349" class="outline-3">
+<h3 id="org8c6a349">递归搜索</h3>
+<div class="outline-text-3" id="text-org8c6a349">
 <p>
 你也可以使用 <b>grep</b> 递归搜索目录；你只需在指定目录后，添加 <b>-R</b> , <b>grep</b> 就会
 递归搜索指定目录的所有子目录。笔者已经把当前目录切换到 <b>/tmp</b>:
@@ -255,9 +255,9 @@ tale.txt:herself into the show of a belief that they would soon be reunited
 </div>
 </div>
 </div>
-<div id="outline-container-org76390f3" class="outline-2">
-<h2 id="org76390f3">在标准输入搜索</h2>
-<div class="outline-text-2" id="text-org76390f3">
+<div id="outline-container-org49a75d6" class="outline-2">
+<h2 id="org49a75d6">在标准输入搜索</h2>
+<div class="outline-text-2" id="text-org49a75d6">
 <p>
 <b>grep</b> 也是过滤器，所以 <b>grep</b> 自然而然具有处理标准输入输出的能力了；处理其他
 命令的输出结果也是 <b>grep</b> 非常常用的场景之一。假设你现在的 <b>vim</b> 突然卡顿，挂了(:))
@@ -284,9 +284,9 @@ samray   21939     1  0 19:42 ?        00:00:00 gvim
 </p>
 </div>
 </div>
-<div id="outline-container-org0f7b46b" class="outline-2">
-<h2 id="org0f7b46b">逆搜索</h2>
-<div class="outline-text-2" id="text-org0f7b46b">
+<div id="outline-container-org13a31ee" class="outline-2">
+<h2 id="org13a31ee">逆搜索</h2>
+<div class="outline-text-2" id="text-org13a31ee">
 <p>
 现在执行的搜索都是匹配搜索，即将匹配的内容显示出来，而 <b>grep</b> 还有逆搜索的功能 (invert Searches)
 就是将不包含有指定模式的内容显示出来。该功能在用来修改有很多注释的配置文件时特别有用；
@@ -523,9 +523,9 @@ proxy_pass http://gunicorn_server;
 </p>
 </div>
 </div>
-<div id="outline-container-org5c3975d" class="outline-2">
-<h2 id="org5c3975d">小结</h2>
-<div class="outline-text-2" id="text-org5c3975d">
+<div id="outline-container-org171e83a" class="outline-2">
+<h2 id="org171e83a">小结</h2>
+<div class="outline-text-2" id="text-org171e83a">
 <p>
 在以前 <b>grep</b> 是 <b>hacker</b> 工具箱里面审查源代码必不可少的工具之一，但是随着技术的
 发展，似乎对比其他同类型的工具， <b>grep</b> 的性能已经难尽人意，特别是对比 <b>ag</b> 这个
