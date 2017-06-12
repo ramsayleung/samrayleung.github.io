@@ -35,25 +35,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1d7dbbf">前言</a></li>
-<li><a href="#org8fbde36">Lombok</a>
+<li><a href="#org9d25d85">前言</a></li>
+<li><a href="#orgf0ef8ad">Lombok</a>
 <ul>
-<li><a href="#orgd1bbe2c">简介</a></li>
-<li><a href="#orgc7d913f">@Getter and @Setter</a></li>
-<li><a href="#org939e10f">@NonNull</a></li>
-<li><a href="#org575ced6">@EqualsAndHashCode</a></li>
-<li><a href="#org190f61e">@Data</a></li>
+<li><a href="#orga369638">简介</a></li>
+<li><a href="#orgba18812">@Getter and @Setter</a></li>
+<li><a href="#orgbedcd9c">@NonNull</a></li>
+<li><a href="#org9a3866b">@EqualsAndHashCode</a></li>
+<li><a href="#orgdc7ddc9">@Data</a></li>
 </ul>
 </li>
-<li><a href="#org534d8b5">小结</a></li>
-<li><a href="#org92ee258">参考</a></li>
+<li><a href="#orgf4721fb">小结</a></li>
+<li><a href="#orgd3798df">参考</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1d7dbbf" class="outline-2">
-<h2 id="org1d7dbbf">前言</h2>
-<div class="outline-text-2" id="text-org1d7dbbf">
+<div id="outline-container-org9d25d85" class="outline-2">
+<h2 id="org9d25d85">前言</h2>
+<div class="outline-text-2" id="text-org9d25d85">
 <p>
 几天前 Goolge 在 I/O 大会上宣布了 Android 将官方支持 Kotlin, 这意味着 Android
 开发者可以更好地使用 Kotlin 开发 Android. 笔者虽不是 Android 开发者，但是也为
@@ -68,12 +68,12 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-org8fbde36" class="outline-2">
-<h2 id="org8fbde36">Lombok</h2>
-<div class="outline-text-2" id="text-org8fbde36">
-</div><div id="outline-container-orgd1bbe2c" class="outline-3">
-<h3 id="orgd1bbe2c">简介</h3>
-<div class="outline-text-3" id="text-orgd1bbe2c">
+<div id="outline-container-orgf0ef8ad" class="outline-2">
+<h2 id="orgf0ef8ad">Lombok</h2>
+<div class="outline-text-2" id="text-orgf0ef8ad">
+</div><div id="outline-container-orga369638" class="outline-3">
+<h3 id="orga369638">简介</h3>
+<div class="outline-text-3" id="text-orga369638">
 <p>
 很多开发者都对模板代码嗤之以鼻，但是 Java 中就有很多非常类似且改动很少的样板
 代码。这问题一方面是由于类库的设计决定，另外一方面也是 Java 的自身语言的特性。
@@ -85,9 +85,9 @@ Lombok
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7d913f" class="outline-3">
-<h3 id="orgc7d913f">@Getter and @Setter</h3>
-<div class="outline-text-3" id="text-orgc7d913f">
+<div id="outline-container-orgba18812" class="outline-3">
+<h3 id="orgba18812">@Getter and @Setter</h3>
+<div class="outline-text-3" id="text-orgba18812">
 <p>
 百闻不如一见，还是直接看例子吧。对于使用过 Java 的开发者而言，笔者相信他们最
 熟悉的肯定是 Java 无处不在的封装以及对应的 Getter/Setter. 现在就来看一下如何
@@ -127,9 +127,9 @@ setter 方法，而这些生成的方法跟我们自己编写的代码是一样�
 </p>
 </div>
 </div>
-<div id="outline-container-org939e10f" class="outline-3">
-<h3 id="org939e10f">@NonNull</h3>
-<div class="outline-text-3" id="text-org939e10f">
+<div id="outline-container-orgbedcd9c" class="outline-3">
+<h3 id="orgbedcd9c">@NonNull</h3>
+<div class="outline-text-3" id="text-orgbedcd9c">
 <p>
 相信每一个使用过 Java 的开发者都不会对空指针这个异常陌生吧，因为
 NullPointException 导致了各种 Bug, 以至于它的发明者 Tony Hoare 都自嘲到他创
@@ -173,9 +173,9 @@ public void setMembers(@NonNull final List&lt;Person&gt; members) {
 </p>
 </div>
 </div>
-<div id="outline-container-org575ced6" class="outline-3">
-<h3 id="org575ced6">@EqualsAndHashCode</h3>
-<div class="outline-text-3" id="text-org575ced6">
+<div id="outline-container-org9a3866b" class="outline-3">
+<h3 id="org9a3866b">@EqualsAndHashCode</h3>
+<div class="outline-text-3" id="text-org9a3866b">
 <p>
 因为 Java 的 Object 类存在用于比较的 <i>equals()</i> 以及对应的 <i>hashCode()</i> 方法，
 而很多类都经常需要重写这两个方法来实现比较操作。比较的操作大多是逐一比较子类
@@ -261,9 +261,9 @@ public class Person extends SentientBeing {
 </p>
 </div>
 </div>
-<div id="outline-container-org190f61e" class="outline-3">
-<h3 id="org190f61e">@Data</h3>
-<div class="outline-text-3" id="text-org190f61e">
+<div id="outline-container-orgdc7ddc9" class="outline-3">
+<h3 id="orgdc7ddc9">@Data</h3>
+<div class="outline-text-3" id="text-orgdc7ddc9">
 <p>
 下面笔者就来介绍一下在笔者项目中使用最频繁的注解 @Data. 使用 @Data 相当于同
 时在类级别使用 @EqualAndHashCode 注解以及笔者未曾提及的 @ToString 注解 (这个
@@ -372,9 +372,9 @@ public class Company {
 </div>
 </div>
 </div>
-<div id="outline-container-org534d8b5" class="outline-2">
-<h2 id="org534d8b5">小结</h2>
-<div class="outline-text-2" id="text-org534d8b5">
+<div id="outline-container-orgf4721fb" class="outline-2">
+<h2 id="orgf4721fb">小结</h2>
+<div class="outline-text-2" id="text-orgf4721fb">
 <p>
 笔者在日常的开发中，使用的开发语言主要是 Java, 笔者也学习过其他的语言，所以
 Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性，优秀的 OOP 范式，以
@@ -387,9 +387,9 @@ Java 和其他语言相比的优缺点也了然于心。Java 绝佳的工程性�
 <hr />
 </div>
 </div>
-<div id="outline-container-org92ee258" class="outline-2">
-<h2 id="org92ee258">参考</h2>
-<div class="outline-text-2" id="text-org92ee258">
+<div id="outline-container-orgd3798df" class="outline-2">
+<h2 id="orgd3798df">参考</h2>
+<div class="outline-text-2" id="text-orgd3798df">
 <ul class="org-ul">
 <li><a href="https://projectlombok.org/index.html">https://projectlombok.org/index.html</a></li>
 </ul>

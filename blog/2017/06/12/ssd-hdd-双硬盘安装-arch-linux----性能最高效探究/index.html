@@ -35,17 +35,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb7f420f">SSD+HDD 最佳实践</a></li>
-<li><a href="#orgf78f335">LVM</a></li>
-<li><a href="#org43da81b">小节</a></li>
-<li><a href="#orgdc6377b">参考</a></li>
+<li><a href="#org8bdbcf2">SSD+HDD 最佳实践</a></li>
+<li><a href="#orga9dae9e">LVM</a></li>
+<li><a href="#org158c9c9">小节</a></li>
+<li><a href="#orge78c694">参考</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb7f420f" class="outline-2">
-<h2 id="orgb7f420f">SSD+HDD 最佳实践</h2>
-<div class="outline-text-2" id="text-orgb7f420f">
+<div id="outline-container-org8bdbcf2" class="outline-2">
+<h2 id="org8bdbcf2">SSD+HDD 最佳实践</h2>
+<div class="outline-text-2" id="text-org8bdbcf2">
 <p>
 笔者最近买了一块新的 250G 的固态硬盘，打算用来安装 Arch Linux,但是自己原来已经有
 一块 1T 的 HDD，担心容量不足，以及本着物尽其用的原则，打算两块硬盘一起用。现在想
@@ -75,9 +75,9 @@ lvmcache. 我突然又意识到自己从一个误区走到了另外一个误区�
 </p>
 </div>
 </div>
-<div id="outline-container-orgf78f335" class="outline-2">
-<h2 id="orgf78f335">LVM</h2>
-<div class="outline-text-2" id="text-orgf78f335">
+<div id="outline-container-orga9dae9e" class="outline-2">
+<h2 id="orga9dae9e">LVM</h2>
+<div class="outline-text-2" id="text-orga9dae9e">
 <p>
 最后我决定直接使用 LVM, 在 LVM 之上安装 Arch Linux, 以后容量不足，就可以直接再
 把另外一块磁盘添加进来。可能有朋友对 LVM 不太了解，我在这里就简单介绍一下，详
@@ -126,9 +126,9 @@ Volume Group1 (/dev/MyStorage/ = /dev/sda1 + /dev/sda2 + /dev/sdb1):
 </p>
 </div>
 </div>
-<div id="outline-container-org43da81b" class="outline-2">
-<h2 id="org43da81b">小节</h2>
-<div class="outline-text-2" id="text-org43da81b">
+<div id="outline-container-org158c9c9" class="outline-2">
+<h2 id="org158c9c9">小节</h2>
+<div class="outline-text-2" id="text-org158c9c9">
 <p>
 关于怎么使用 LVM 安装 Arch Linux, 我就不赘言了。Arch Wiki 描述得非常仔细了，我
 之前也写了一篇关于然后安装 Arch Linux 的文章了，只是其中分区的部分变成了构建
@@ -148,9 +148,9 @@ sr0                    11:0    1  1024M  0 rom
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc6377b" class="outline-2">
-<h2 id="orgdc6377b">参考</h2>
-<div class="outline-text-2" id="text-orgdc6377b">
+<div id="outline-container-orge78c694" class="outline-2">
+<h2 id="orge78c694">参考</h2>
+<div class="outline-text-2" id="text-orge78c694">
 <ul class="org-ul">
 <li><a href="https://wiki.archlinux.org/index.php/LVM">https://wiki.archlinux.org/index.php/LVM</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)">https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)</a></li>

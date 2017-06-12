@@ -35,15 +35,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5d5629a">准备工作</a></li>
-<li><a href="#orgfaa975e">有趣的脚本</a>
+<li><a href="#org2ed1c92">准备工作</a></li>
+<li><a href="#org0c2cad7">有趣的脚本</a>
 <ul>
-<li><a href="#orga94ab04">SSH 免密码登录</a></li>
-<li><a href="#org7c569a0">生成若干位密钥</a></li>
-<li><a href="#orgc81dd26">复制命令行输出</a></li>
-<li><a href="#orgefb5723">复制当前目录</a></li>
-<li><a href="#org6ac55f8">判断 Unix 系统的版本</a></li>
-<li><a href="#org7917400">根据不同的发行版本安装软件</a></li>
+<li><a href="#orge2ca5ca">SSH 免密码登录</a></li>
+<li><a href="#orgb99dda6">生成若干位密钥</a></li>
+<li><a href="#orgd8ee98c">复制命令行输出</a></li>
+<li><a href="#org749b4f7">复制当前目录</a></li>
+<li><a href="#org541dc49">判断 Unix 系统的版本</a></li>
+<li><a href="#orgeb8c012">根据不同的发行版本安装软件</a></li>
 </ul>
 </li>
 </ul>
@@ -52,9 +52,9 @@
 <p>
 分享一下平时工作生活中编写的一些脚本片段(一直更新). 适用于 OS X 和 Linux
 </p>
-<div id="outline-container-org5d5629a" class="outline-2">
-<h2 id="org5d5629a">准备工作</h2>
-<div class="outline-text-2" id="text-org5d5629a">
+<div id="outline-container-org2ed1c92" class="outline-2">
+<h2 id="org2ed1c92">准备工作</h2>
+<div class="outline-text-2" id="text-org2ed1c92">
 <p>
 因为笔者比较多的脚本都是基于 <b>percol</b> 这个神器，所以需要先安装 <b>percol</b>, 如果
 不了解 <b>percol</b> 的话，可以翻看一下笔者之前的文章 <a href="http://samrayleung.github.io/blog/2017/02/22/linux-unix-shell-%E4%BA%8C%E4%B8%89%E4%BA%8B%E4%B9%8B%E7%A5%9E%E5%99%A8percol/">Linux/Unix Shell 二三事之神器
@@ -70,12 +70,12 @@ percol</a> . 笔者一般将写好的函数 source 命令添加到 Shell. 例如
 </p>
 </div>
 </div>
-<div id="outline-container-orgfaa975e" class="outline-2">
-<h2 id="orgfaa975e">有趣的脚本</h2>
-<div class="outline-text-2" id="text-orgfaa975e">
-</div><div id="outline-container-orga94ab04" class="outline-3">
-<h3 id="orga94ab04">SSH 免密码登录</h3>
-<div class="outline-text-3" id="text-orga94ab04">
+<div id="outline-container-org0c2cad7" class="outline-2">
+<h2 id="org0c2cad7">有趣的脚本</h2>
+<div class="outline-text-2" id="text-org0c2cad7">
+</div><div id="outline-container-orge2ca5ca" class="outline-3">
+<h3 id="orge2ca5ca">SSH 免密码登录</h3>
+<div class="outline-text-3" id="text-orge2ca5ca">
 <p>
 SSH 基本就是登录远程服务器的标配了，只是每次登录服务器都要输入密码，未免太麻
 烦了(好吧，笔者拥有懒惰这个美德)，所以我决定配置 SSH 的免密码登录。代码如下：
@@ -142,9 +142,9 @@ SSH 基本就是登录远程服务器的标配了，只是每次登录服务器�
 </p>
 </div>
 </div>
-<div id="outline-container-org7c569a0" class="outline-3">
-<h3 id="org7c569a0">生成若干位密钥</h3>
-<div class="outline-text-3" id="text-org7c569a0">
+<div id="outline-container-orgb99dda6" class="outline-3">
+<h3 id="orgb99dda6">生成若干位密钥</h3>
+<div class="outline-text-3" id="text-orgb99dda6">
 <p>
 生成若干位的密钥是常见的需求，得益于 Linux/Unix 命令行强大的过滤器，所以只需
 把命令整理成脚本即可：
@@ -179,9 +179,9 @@ function gkey(){
 </p>
 </div>
 </div>
-<div id="outline-container-orgc81dd26" class="outline-3">
-<h3 id="orgc81dd26">复制命令行输出</h3>
-<div class="outline-text-3" id="text-orgc81dd26">
+<div id="outline-container-orgd8ee98c" class="outline-3">
+<h3 id="orgd8ee98c">复制命令行输出</h3>
+<div class="outline-text-3" id="text-orgd8ee98c">
 <p>
 有时可能需要复制某个命令的输出，一般的做法都是运行某个命令，用鼠标选中，然后
 复制。例如在生成密钥之后，需要复制到项目的配置文件。但是每次都要用鼠标，效率
@@ -224,9 +224,9 @@ function pclip() {
 </p>
 </div>
 </div>
-<div id="outline-container-orgefb5723" class="outline-3">
-<h3 id="orgefb5723">复制当前目录</h3>
-<div class="outline-text-3" id="text-orgefb5723">
+<div id="outline-container-org749b4f7" class="outline-3">
+<h3 id="org749b4f7">复制当前目录</h3>
+<div class="outline-text-3" id="text-org749b4f7">
 <p>
 有时候，笔者需要复制当前目录下某个文件的路径，但是无论是文件管理器，还是在
 Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高且很不方便。所以笔者通
@@ -252,9 +252,9 @@ Shell 中都要用鼠标选中然后复制指定文件的路径，效率不高�
 </p>
 </div>
 </div>
-<div id="outline-container-org6ac55f8" class="outline-3">
-<h3 id="org6ac55f8">判断 Unix 系统的版本</h3>
-<div class="outline-text-3" id="text-org6ac55f8">
+<div id="outline-container-org541dc49" class="outline-3">
+<h3 id="org541dc49">判断 Unix 系统的版本</h3>
+<div class="outline-text-3" id="text-org541dc49">
 <p>
 因为笔者经常需要在不同的 Unix 机器之间切换，例如工作用的 Mac OS X, 另外一台笔
 记本上的 Fedora, 还有一台工作站上的 Arch Linux, 以及各种发行版本的 VPS 等，在
@@ -321,9 +321,9 @@ function GetOSVersion {
 </div>
 </div>
 </div>
-<div id="outline-container-org7917400" class="outline-3">
-<h3 id="org7917400">根据不同的发行版本安装软件</h3>
-<div class="outline-text-3" id="text-org7917400">
+<div id="outline-container-orgeb8c012" class="outline-3">
+<h3 id="orgeb8c012">根据不同的发行版本安装软件</h3>
+<div class="outline-text-3" id="text-orgeb8c012">
 <p>
 刚刚上面的脚本是为了准确判断出所有的 *nix 系统的，但是方便起见，也可以直接使用
 <i>uname</i> 命令

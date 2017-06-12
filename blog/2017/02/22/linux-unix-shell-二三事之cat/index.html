@@ -35,16 +35,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6e4bc3e">过滤器</a></li>
-<li><a href="#org3b6a8ad">cat</a>
+<li><a href="#orge86ca2a">过滤器</a></li>
+<li><a href="#org015d537">cat</a>
 <ul>
-<li><a href="#org6e97a2a">场景1</a></li>
-<li><a href="#org2cf49b9">场景2</a></li>
-<li><a href="#orgdf8b0fb">场景3</a></li>
-<li><a href="#org949a7a5">场景4</a></li>
+<li><a href="#org44c84cc">场景1</a></li>
+<li><a href="#orge0ea290">场景2</a></li>
+<li><a href="#org051e1c9">场景3</a></li>
+<li><a href="#org3dbdeb6">场景4</a></li>
 </ul>
 </li>
-<li><a href="#org77c0c77">总结</a></li>
+<li><a href="#org6ce1322">总结</a></li>
 </ul>
 </div>
 </div>
@@ -53,9 +53,9 @@
 cat - concatenate files and print on the standard output
 </p>
 </blockquote>
-<div id="outline-container-org6e4bc3e" class="outline-2">
-<h2 id="org6e4bc3e">过滤器</h2>
-<div class="outline-text-2" id="text-org6e4bc3e">
+<div id="outline-container-orge86ca2a" class="outline-2">
+<h2 id="orge86ca2a">过滤器</h2>
+<div class="outline-text-2" id="text-orge86ca2a">
 <p>
 何谓过滤器呢，例如cat,grep,wl 之类的命令就是过滤器了。这样的命令
 读取数据，对数据执行一些操作，然后写入结果。更准确地说，过滤器就是任何能够从标准
@@ -65,9 +65,9 @@ cat - concatenate files and print on the standard output
 </p>
 </div>
 </div>
-<div id="outline-container-org3b6a8ad" class="outline-2">
-<h2 id="org3b6a8ad">cat</h2>
-<div class="outline-text-2" id="text-org3b6a8ad">
+<div id="outline-container-org015d537" class="outline-2">
+<h2 id="org015d537">cat</h2>
+<div class="outline-text-2" id="text-org015d537">
 <p>
 在shell 里面运行cat,你会被要求输入文本数据，当你输入一行数据以后，然后按下回
 车你输入的数据就会显示在屏幕，当你按下 ^D(&lt;ctrl&gt;+d),发送eof 信号给shell,退出
@@ -76,9 +76,9 @@ cat。cat 做的事就是把你输入的字符，复制到标准输出 (一般�
 且容笔者细细禀来
 </p>
 </div>
-<div id="outline-container-org6e97a2a" class="outline-3">
-<h3 id="org6e97a2a">场景1</h3>
-<div class="outline-text-3" id="text-org6e97a2a">
+<div id="outline-container-org44c84cc" class="outline-3">
+<h3 id="org44c84cc">场景1</h3>
+<div class="outline-text-3" id="text-org44c84cc">
 <p>
 假如你要新建一个文本文件，里面只是很少的文本，你会怎么做呢？一般情况下，都是用 
 vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退出。这是一般的做法，
@@ -99,9 +99,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </div>
 </div>
 </div>
-<div id="outline-container-org2cf49b9" class="outline-3">
-<h3 id="org2cf49b9">场景2</h3>
-<div class="outline-text-3" id="text-org2cf49b9">
+<div id="outline-container-orge0ea290" class="outline-3">
+<h3 id="orge0ea290">场景2</h3>
+<div class="outline-text-3" id="text-orge0ea290">
 <p>
 如果你有一个短文件，你想查看一下，同样，你可以使用cat
 </p>
@@ -123,9 +123,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf8b0fb" class="outline-3">
-<h3 id="orgdf8b0fb">场景3</h3>
-<div class="outline-text-3" id="text-orgdf8b0fb">
+<div id="outline-container-org051e1c9" class="outline-3">
+<h3 id="org051e1c9">场景3</h3>
+<div class="outline-text-3" id="text-org051e1c9">
 <p>
 如果你想复制文本文件，你首先会想起什么命令？ <b>cp</b>,很自然嘛，我也不例外，但是cat 
 也可以实现同样的功能，很意外吧：
@@ -139,9 +139,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </p>
 </div>
 </div>
-<div id="outline-container-org949a7a5" class="outline-3">
-<h3 id="org949a7a5">场景4</h3>
-<div class="outline-text-3" id="text-org949a7a5">
+<div id="outline-container-org3dbdeb6" class="outline-3">
+<h3 id="org3dbdeb6">场景4</h3>
+<div class="outline-text-3" id="text-org3dbdeb6">
 <p>
 如果你想把多个文本文件的组合到一个文件，你会怎么做？用编辑器打开所有的文件
 然后 select,cut,paste,save.我也会很自然地想到这个方法，但是是否存在着更
@@ -154,9 +154,9 @@ vim/emacs 新建一个文本文件，然后输入几行文字，然后保存退�
 </div>
 </div>
 </div>
-<div id="outline-container-org77c0c77" class="outline-2">
-<h2 id="org77c0c77">总结</h2>
-<div class="outline-text-2" id="text-org77c0c77">
+<div id="outline-container-org6ce1322" class="outline-2">
+<h2 id="org6ce1322">总结</h2>
+<div class="outline-text-2" id="text-org6ce1322">
 <p>
 上面已经介绍了挺多cat 的使用场景了，你觉得cat 表现滴怎么样呢？相信你的感觉是
 还行，但是并没有，我吹嘘的那么令人惊艳。因为这只是cat 最基本的功能，它最大的
