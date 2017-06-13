@@ -35,14 +35,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8e2114e">Bloom Filter</a>
+<li><a href="#orga706f00">Bloom Filter</a>
 <ul>
-<li><a href="#org4338063">布隆过滤器实现原理</a></li>
+<li><a href="#orgca58f9c">布隆过滤器实现原理</a></li>
 </ul>
 </li>
-<li><a href="#org1ad62fd">Python BloomFilter</a></li>
-<li><a href="#orgaacf9e0">结果</a></li>
-<li><a href="#org825d064">参考</a></li>
+<li><a href="#orgae8ab96">Python BloomFilter</a></li>
+<li><a href="#orge317143">结果</a></li>
+<li><a href="#org4c47617">参考</a></li>
 </ul>
 </div>
 </div>
@@ -53,9 +53,9 @@ url 的去重，即如何判别 url 是否已经被爬取，如果被爬取，�
 用 set 内存利用率不高，此外对于那些不像Python 那样用 hash 实现的 set 而言，时间
 复杂度是 log(N),实在难说高效。
 </p>
-<div id="outline-container-org8e2114e" class="outline-2">
-<h2 id="org8e2114e">Bloom Filter</h2>
-<div class="outline-text-2" id="text-org8e2114e">
+<div id="outline-container-orga706f00" class="outline-2">
+<h2 id="orga706f00">Bloom Filter</h2>
+<div class="outline-text-2" id="text-orga706f00">
 <p>
 那么如何实现高效的去重呢？ 笔者查阅资料之后得知：使用布隆过滤器 (Bloom
 Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集合中。布隆过滤器实际上
@@ -66,9 +66,9 @@ Filter). 布隆过滤器可以用于快速检索一个元素是否在一个集�
 时间不随元素增长而增加).那么布隆过滤器又是怎样实现的呢
 </p>
 </div>
-<div id="outline-container-org4338063" class="outline-3">
-<h3 id="org4338063">布隆过滤器实现原理</h3>
-<div class="outline-text-3" id="text-org4338063">
+<div id="outline-container-orgca58f9c" class="outline-3">
+<h3 id="orgca58f9c">布隆过滤器实现原理</h3>
+<div class="outline-text-3" id="text-orgca58f9c">
 <p>
 一个Bloom Filter是基于一个m位的位向量（Bit Vector），这些位向量的初始值为0,并
 且有一系列的 hash 函数，hash 函数值域为1-m.在下面例子中，是15位的位向量，初始
@@ -120,9 +120,9 @@ hash 函数对 <b>whatever</b> 进行散列值计算，然后与位向量做 "�
 </div>
 </div>
 </div>
-<div id="outline-container-org1ad62fd" class="outline-2">
-<h2 id="org1ad62fd">Python BloomFilter</h2>
-<div class="outline-text-2" id="text-org1ad62fd">
+<div id="outline-container-orgae8ab96" class="outline-2">
+<h2 id="orgae8ab96">Python BloomFilter</h2>
+<div class="outline-text-2" id="text-orgae8ab96">
 <p>
 算法都是为了实际问题服务的，又回到爬虫这个话题上。在了解布隆过滤器原理之后，可
 以很容易地实现自己的布隆过滤器，但是想要实现一个高效健壮的布隆过滤器就需要比较
@@ -147,18 +147,18 @@ print 'apple' in bf
 </p>
 </div>
 </div>
-<div id="outline-container-orgaacf9e0" class="outline-2">
-<h2 id="orgaacf9e0">结果</h2>
-<div class="outline-text-2" id="text-orgaacf9e0">
+<div id="outline-container-orge317143" class="outline-2">
+<h2 id="orge317143">结果</h2>
+<div class="outline-text-2" id="text-orge317143">
 <p>
 原理就说得差不多了，要想对布隆过滤器有更深的认识，还需要更多的实战。多写，多思
 考。 Enjoy Python,Enjoy Crawler :)
 </p>
 </div>
 </div>
-<div id="outline-container-org825d064" class="outline-2">
-<h2 id="org825d064">参考</h2>
-<div class="outline-text-2" id="text-org825d064">
+<div id="outline-container-org4c47617" class="outline-2">
+<h2 id="org4c47617">参考</h2>
+<div class="outline-text-2" id="text-org4c47617">
 <ul class="org-ul">
 <li><a href="https://llimllib.github.io/bloomfilter-tutorial/">https://llimllib.github.io/bloomfilter-tutorial/</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Bloom_filter">https://en.wikipedia.org/wiki/Bloom_filter</a></li>
