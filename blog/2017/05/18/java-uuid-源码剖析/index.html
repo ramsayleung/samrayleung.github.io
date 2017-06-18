@@ -35,35 +35,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgeaeb616">UUID variant</a></li>
-<li><a href="#orgdf35c92">Layout of variant2(Leach-Salz) UUID</a></li>
-<li><a href="#orgacfc74d">UUID constructor</a>
+<li><a href="#org263da03">UUID variant</a></li>
+<li><a href="#org979e6d7">Layout of variant2(Leach-Salz) UUID</a></li>
+<li><a href="#org41bc5dc">UUID constructor</a>
 <ul>
-<li><a href="#orgfb590f1">private UUID</a></li>
-<li><a href="#org1f9fbfc">public UUID</a></li>
+<li><a href="#orga14104a">private UUID</a></li>
+<li><a href="#org8878da9">public UUID</a></li>
 </ul>
 </li>
-<li><a href="#org4893b4e">UUID type</a>
+<li><a href="#orgdf07e37">UUID type</a>
 <ul>
-<li><a href="#org323884b">type 4 -- randomly generated UUID</a></li>
-<li><a href="#org9f49ba5">type 3 -- name-based UUID</a></li>
-<li><a href="#org00adced">type 2 -- DEC security</a></li>
-<li><a href="#org63c8500">type 1 -- time-based UUID</a>
+<li><a href="#orgfe43311">type 4 -- randomly generated UUID</a></li>
+<li><a href="#orgbfb0f67">type 3 -- name-based UUID</a></li>
+<li><a href="#orgd2512de">type 2 -- DEC security</a></li>
+<li><a href="#org68651fe">type 1 -- time-based UUID</a>
 <ul>
-<li><a href="#org8f7c8c9">timestamp</a></li>
-<li><a href="#orgf831152">clockSequence()</a></li>
-<li><a href="#orgc248bed">node()</a></li>
+<li><a href="#orgc7f4156">timestamp</a></li>
+<li><a href="#org4f5d06e">clockSequence()</a></li>
+<li><a href="#orgbe1ef24">node()</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3280bcb">FromString()/ToString()</a>
+<li><a href="#org0c711bf">FromString()/ToString()</a>
 <ul>
-<li><a href="#org49dbf2d">toString()</a></li>
-<li><a href="#orgf80a958">fromString()</a></li>
+<li><a href="#orgc74b165">toString()</a></li>
+<li><a href="#orgfa1279e">fromString()</a></li>
 </ul>
 </li>
-<li><a href="#orga16ae48">使用场景</a></li>
+<li><a href="#org93f9fed">使用场景</a></li>
 </ul>
 </div>
 </div>
@@ -71,18 +71,18 @@
 笔者近来闲来无事，又因为有需要构造全局唯一 ID 的需求，所以就去看了 UUID 这个提供
 稳定的系统唯一标识符的类的源码
 </p>
-<div id="outline-container-orgeaeb616" class="outline-2">
-<h2 id="orgeaeb616">UUID variant</h2>
-<div class="outline-text-2" id="text-orgeaeb616">
+<div id="outline-container-org263da03" class="outline-2">
+<h2 id="org263da03">UUID variant</h2>
+<div class="outline-text-2" id="text-org263da03">
 <p>
 事实上是存在很多中 UID 的不同实现的的，但是 UUID 里面默认是使用 "加盐"
 (Leach-Salz)实现，但是也可以使用其他的实现。
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf35c92" class="outline-2">
-<h2 id="orgdf35c92">Layout of variant2(Leach-Salz) UUID</h2>
-<div class="outline-text-2" id="text-orgdf35c92">
+<div id="outline-container-org979e6d7" class="outline-2">
+<h2 id="org979e6d7">Layout of variant2(Leach-Salz) UUID</h2>
+<div class="outline-text-2" id="text-org979e6d7">
 <p>
 加盐的 UUID 的结构布局如下：
 最高位 (most significant) 的64 位长整型值由下面的的无符号位组成：
@@ -107,16 +107,16 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgacfc74d" class="outline-2">
-<h2 id="orgacfc74d">UUID constructor</h2>
-<div class="outline-text-2" id="text-orgacfc74d">
+<div id="outline-container-org41bc5dc" class="outline-2">
+<h2 id="org41bc5dc">UUID constructor</h2>
+<div class="outline-text-2" id="text-org41bc5dc">
 <p>
 UUID 类有两个构造函数，分别是 public 和 private 修饰的构造函数
 </p>
 </div>
-<div id="outline-container-orgfb590f1" class="outline-3">
-<h3 id="orgfb590f1">private UUID</h3>
-<div class="outline-text-3" id="text-orgfb590f1">
+<div id="outline-container-orga14104a" class="outline-3">
+<h3 id="orga14104a">private UUID</h3>
+<div class="outline-text-3" id="text-orga14104a">
 <p>
 private 类型的构造函数以一个 byte 数组为构造参数：
 </p>
@@ -145,9 +145,9 @@ leastSigBit 赋值。 private 的构造函数只能在类本身被调用, 该构
 </p>
 </div>
 </div>
-<div id="outline-container-org1f9fbfc" class="outline-3">
-<h3 id="org1f9fbfc">public UUID</h3>
-<div class="outline-text-3" id="text-org1f9fbfc">
+<div id="outline-container-org8878da9" class="outline-3">
+<h3 id="org8878da9">public UUID</h3>
+<div class="outline-text-3" id="text-org8878da9">
 <p>
 public 类型的构造器接受两个 <i>long</i> 类型的参数，即上面提到的最高位和最低位：
 </p>
@@ -177,12 +177,12 @@ public UUID(long mostSigBits, long leastSigBits) {
 </div>
 </div>
 </div>
-<div id="outline-container-org4893b4e" class="outline-2">
-<h2 id="org4893b4e">UUID type</h2>
-<div class="outline-text-2" id="text-org4893b4e">
-</div><div id="outline-container-org323884b" class="outline-3">
-<h3 id="org323884b">type 4 -- randomly generated UUID</h3>
-<div class="outline-text-3" id="text-org323884b">
+<div id="outline-container-orgdf07e37" class="outline-2">
+<h2 id="orgdf07e37">UUID type</h2>
+<div class="outline-text-2" id="text-orgdf07e37">
+</div><div id="outline-container-orgfe43311" class="outline-3">
+<h3 id="orgfe43311">type 4 -- randomly generated UUID</h3>
+<div class="outline-text-3" id="text-orgfe43311">
 <p>
 现在就看看使用频率最高的 UUID 类型 -- 随机的 UUID 以及随机生成 UUID 的函数：
 <i>randomUUID()</i>
@@ -232,9 +232,9 @@ private static class Holder {
 </p>
 </div>
 </div>
-<div id="outline-container-org9f49ba5" class="outline-3">
-<h3 id="org9f49ba5">type 3 -- name-based UUID</h3>
-<div class="outline-text-3" id="text-org9f49ba5">
+<div id="outline-container-orgbfb0f67" class="outline-3">
+<h3 id="orgbfb0f67">type 3 -- name-based UUID</h3>
+<div class="outline-text-3" id="text-orgbfb0f67">
 <p>
 在上面关于 UUID 结构布局的时候提到，UUID 有四种类型的实现，而类型3 就是基于
 命名的实现：
@@ -275,25 +275,25 @@ Sha-1,Sha-256 或者是 MD5 等等。 <i>nameUUIDFromBytes</i> 使用 MD5 算法
 </p>
 </div>
 </div>
-<div id="outline-container-org00adced" class="outline-3">
-<h3 id="org00adced">type 2 -- DEC security</h3>
-<div class="outline-text-3" id="text-org00adced">
+<div id="outline-container-orgd2512de" class="outline-3">
+<h3 id="orgd2512de">type 2 -- DEC security</h3>
+<div class="outline-text-3" id="text-orgd2512de">
 <p>
 在 JDK 的 UUID 类中并未提供 基于 DEC 类型的 UUID 的实现。 
 </p>
 </div>
 </div>
-<div id="outline-container-org63c8500" class="outline-3">
-<h3 id="org63c8500">type 1 -- time-based UUID</h3>
-<div class="outline-text-3" id="text-org63c8500">
+<div id="outline-container-org68651fe" class="outline-3">
+<h3 id="org68651fe">type 1 -- time-based UUID</h3>
+<div class="outline-text-3" id="text-org68651fe">
 <p>
 与基于命名和随机生成的 UUID 都有一个静态工厂方法不一样， 基于时间的 UUID 并
 不存在静态工厂方法，time-based UUID 是基于一系列相关的方法的：
 </p>
 </div>
-<div id="outline-container-org8f7c8c9" class="outline-4">
-<h4 id="org8f7c8c9">timestamp</h4>
-<div class="outline-text-4" id="text-org8f7c8c9">
+<div id="outline-container-orgc7f4156" class="outline-4">
+<h4 id="orgc7f4156">timestamp</h4>
+<div class="outline-text-4" id="text-orgc7f4156">
 <div class="org-src-container">
 <pre class="src src-java">public long timestamp() {
     if (version() != 1) {
@@ -315,9 +315,9 @@ Sha-1,Sha-256 或者是 MD5 等等。 <i>nameUUIDFromBytes</i> 使用 MD5 算法
 </p>
 </div>
 </div>
-<div id="outline-container-orgf831152" class="outline-4">
-<h4 id="orgf831152">clockSequence()</h4>
-<div class="outline-text-4" id="text-orgf831152">
+<div id="outline-container-org4f5d06e" class="outline-4">
+<h4 id="org4f5d06e">clockSequence()</h4>
+<div class="outline-text-4" id="text-org4f5d06e">
 <div class="org-src-container">
 <pre class="src src-java">public int clockSequence() {
     if (version() != 1) {
@@ -336,9 +336,9 @@ filed). 而时钟序列域通常是用来保证基于时间的 UUID 的唯一性
 </p>
 </div>
 </div>
-<div id="outline-container-orgc248bed" class="outline-4">
-<h4 id="orgc248bed">node()</h4>
-<div class="outline-text-4" id="text-orgc248bed">
+<div id="outline-container-orgbe1ef24" class="outline-4">
+<h4 id="orgbe1ef24">node()</h4>
+<div class="outline-text-4" id="text-orgbe1ef24">
 <p>
 48 个 bit 长的节点值是从该 UUID 的节点域 (node filed) 构造出来的。节点域通
 过保存运行 JVM 机器的局域网地址 (IEEE 802) 来保证该机器生成 UUID 的空间唯
@@ -366,12 +366,12 @@ filed). 而时钟序列域通常是用来保证基于时间的 UUID 的唯一性
 </div>
 </div>
 </div>
-<div id="outline-container-org3280bcb" class="outline-2">
-<h2 id="org3280bcb">FromString()/ToString()</h2>
-<div class="outline-text-2" id="text-org3280bcb">
-</div><div id="outline-container-org49dbf2d" class="outline-3">
-<h3 id="org49dbf2d">toString()</h3>
-<div class="outline-text-3" id="text-org49dbf2d">
+<div id="outline-container-org0c711bf" class="outline-2">
+<h2 id="org0c711bf">FromString()/ToString()</h2>
+<div class="outline-text-2" id="text-org0c711bf">
+</div><div id="outline-container-orgc74b165" class="outline-3">
+<h3 id="orgc74b165">toString()</h3>
+<div class="outline-text-3" id="text-orgc74b165">
 <p>
 以字符串的形式表示 UUID, 格式说明：
 </p>
@@ -410,9 +410,9 @@ public String toString() {
 </div>
 </div>
 </div>
-<div id="outline-container-orgf80a958" class="outline-3">
-<h3 id="orgf80a958">fromString()</h3>
-<div class="outline-text-3" id="text-orgf80a958">
+<div id="outline-container-orgfa1279e" class="outline-3">
+<h3 id="orgfa1279e">fromString()</h3>
+<div class="outline-text-3" id="text-orgfa1279e">
 <p>
 与 <i>toString()</i> 函数功能相反， <i>fromString()</i> 函数的作用就是将字符串形式的对象解码成 UUID 对象：
 </p>
@@ -441,9 +441,9 @@ public String toString() {
 </div>
 </div>
 </div>
-<div id="outline-container-orga16ae48" class="outline-2">
-<h2 id="orga16ae48">使用场景</h2>
-<div class="outline-text-2" id="text-orga16ae48">
+<div id="outline-container-org93f9fed" class="outline-2">
+<h2 id="org93f9fed">使用场景</h2>
+<div class="outline-text-2" id="text-org93f9fed">
 <p>
 UUID 一般用来生成全局唯一标识符，那么 UUID 是否能保证唯一呢？以
 <i>UUID.randomUUID()</i> 生成的 UUID 为例，从上面的源码，除了 version 和 variant
