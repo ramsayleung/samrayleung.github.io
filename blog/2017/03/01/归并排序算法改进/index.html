@@ -35,33 +35,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge24877c">优化</a>
+<li><a href="#orgd193460">优化</a>
 <ul>
-<li><a href="#org3efd534">对小规模子数组使用插入排序</a>
+<li><a href="#org2917d2e">对小规模子数组使用插入排序</a>
 <ul>
-<li><a href="#org512a9b0">未改进归并排序</a></li>
-<li><a href="#orgbd3c574">改进后归并排序</a></li>
-<li><a href="#org673d948">测试1</a></li>
-<li><a href="#org108d827">测试2</a></li>
-<li><a href="#org9bddf76">测试3</a></li>
-<li><a href="#org7bf736b">测试4</a></li>
-<li><a href="#org9014022">测试5</a></li>
-<li><a href="#org2ec4750">小结</a></li>
+<li><a href="#org9aec8ef">未改进归并排序</a></li>
+<li><a href="#orgca4d3fb">改进后归并排序</a></li>
+<li><a href="#org5f8d343">测试1</a></li>
+<li><a href="#orgb57e5ad">测试2</a></li>
+<li><a href="#org5fdcd19">测试3</a></li>
+<li><a href="#orgf5066dd">测试4</a></li>
+<li><a href="#orgc2c8015">测试5</a></li>
+<li><a href="#org4a6db0f">小结</a></li>
 </ul>
 </li>
-<li><a href="#orga0511f6">测试数组是否已经有序</a>
+<li><a href="#org04c90ff">测试数组是否已经有序</a>
 <ul>
-<li><a href="#org7ab7a42">未改进归并排序</a></li>
-<li><a href="#orgd0b4156">改进后归并排序</a></li>
-<li><a href="#orgebdb117">测试1</a></li>
-<li><a href="#orgf011cf2">测试2</a></li>
-<li><a href="#orgcf916ff">测试3</a></li>
-<li><a href="#org928f64e">测试4</a></li>
-<li><a href="#org91520a8">测试5</a></li>
-<li><a href="#org2d47f5b">小结</a></li>
+<li><a href="#org37b8095">未改进归并排序</a></li>
+<li><a href="#orgc2ff9e2">改进后归并排序</a></li>
+<li><a href="#orgaa8f0b5">测试1</a></li>
+<li><a href="#org8998dd4">测试2</a></li>
+<li><a href="#org72e689d">测试3</a></li>
+<li><a href="#org6ea6cc4">测试4</a></li>
+<li><a href="#org3dd9749">测试5</a></li>
+<li><a href="#org89eac58">小结</a></li>
 </ul>
 </li>
-<li><a href="#org64c290f">参考</a></li>
+<li><a href="#orgefe2b22">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -73,24 +73,24 @@
 的数据，但是归并算法也是存在不足之处的，需要额外的空间来完成排序，而且空间和N的
 大小也是成正比的
 </p>
-<div id="outline-container-orge24877c" class="outline-2">
-<h2 id="orge24877c">优化</h2>
-<div class="outline-text-2" id="text-orge24877c">
+<div id="outline-container-orgd193460" class="outline-2">
+<h2 id="orgd193460">优化</h2>
+<div class="outline-text-2" id="text-orgd193460">
 <p>
 <b>算法</b> 中有提到可以通过一些细致的修改实现大幅度缩短归并排序的运行时间
 </p>
 </div>
-<div id="outline-container-org3efd534" class="outline-3">
-<h3 id="org3efd534">对小规模子数组使用插入排序</h3>
-<div class="outline-text-3" id="text-org3efd534">
+<div id="outline-container-org2917d2e" class="outline-3">
+<h3 id="org2917d2e">对小规模子数组使用插入排序</h3>
+<div class="outline-text-3" id="text-org2917d2e">
 <p>
 因为递归会使小规模问题中的方法被频繁调用，所以改进对它们的处理方法就能改进
 整个算法。对于小数组可以使用插入排序或者选择排序来避免递归调用。<a href="https://github.com/samrayleung/AlgorithmsCode">完整代码</a>
 </p>
 </div>
-<div id="outline-container-org512a9b0" class="outline-4">
-<h4 id="org512a9b0">未改进归并排序</h4>
-<div class="outline-text-4" id="text-org512a9b0">
+<div id="outline-container-org9aec8ef" class="outline-4">
+<h4 id="org9aec8ef">未改进归并排序</h4>
+<div class="outline-text-4" id="text-org9aec8ef">
 <div class="org-src-container">
 <pre class="src src-java">public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -105,9 +105,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd3c574" class="outline-4">
-<h4 id="orgbd3c574">改进后归并排序</h4>
-<div class="outline-text-4" id="text-orgbd3c574">
+<div id="outline-container-orgca4d3fb" class="outline-4">
+<h4 id="orgca4d3fb">改进后归并排序</h4>
+<div class="outline-text-4" id="text-orgca4d3fb">
 <div class="org-src-container">
 <pre class="src src-java">public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -133,54 +133,54 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org673d948" class="outline-4">
-<h4 id="org673d948">测试1</h4>
-<div class="outline-text-4" id="text-org673d948">
+<div id="outline-container-org5f8d343" class="outline-4">
+<h4 id="org5f8d343">测试1</h4>
+<div class="outline-text-4" id="text-org5f8d343">
 <p>
 对100*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100*1000-1.png" alt="100*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org108d827" class="outline-4">
-<h4 id="org108d827">测试2</h4>
-<div class="outline-text-4" id="text-org108d827">
+<div id="outline-container-orgb57e5ad" class="outline-4">
+<h4 id="orgb57e5ad">测试2</h4>
+<div class="outline-text-4" id="text-orgb57e5ad">
 <p>
 对1000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/1000*1000-1.png" alt="1000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org9bddf76" class="outline-4">
-<h4 id="org9bddf76">测试3</h4>
-<div class="outline-text-4" id="text-org9bddf76">
+<div id="outline-container-org5fdcd19" class="outline-4">
+<h4 id="org5fdcd19">测试3</h4>
+<div class="outline-text-4" id="text-org5fdcd19">
 <p>
 对10000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/10000*1000-1.png" alt="10000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org7bf736b" class="outline-4">
-<h4 id="org7bf736b">测试4</h4>
-<div class="outline-text-4" id="text-org7bf736b">
+<div id="outline-container-orgf5066dd" class="outline-4">
+<h4 id="orgf5066dd">测试4</h4>
+<div class="outline-text-4" id="text-orgf5066dd">
 <p>
 对100000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100000*1000-1.png" alt="100000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org9014022" class="outline-4">
-<h4 id="org9014022">测试5</h4>
-<div class="outline-text-4" id="text-org9014022">
+<div id="outline-container-orgc2c8015" class="outline-4">
+<h4 id="orgc2c8015">测试5</h4>
+<div class="outline-text-4" id="text-orgc2c8015">
 <p>
 对500000*1000 个字符进行排序，结果如下
 <img src="/assets/blog/2017/03/01/归并排序算法改进/500000*1000-1.png" alt="500000*1000-1.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org2ec4750" class="outline-4">
-<h4 id="org2ec4750">小结</h4>
-<div class="outline-text-4" id="text-org2ec4750">
+<div id="outline-container-org4a6db0f" class="outline-4">
+<h4 id="org4a6db0f">小结</h4>
+<div class="outline-text-4" id="text-org4a6db0f">
 <p>
 由于篇幅问题，笔者无法将所有的测试结果都展示出来，但是从上面的结果，可以看出
 对于小数组，使用插入排序的确对性能有一定幅度提高(最开始的测试可能因为数据量
@@ -190,18 +190,18 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orga0511f6" class="outline-3">
-<h3 id="orga0511f6">测试数组是否已经有序</h3>
-<div class="outline-text-3" id="text-orga0511f6">
+<div id="outline-container-org04c90ff" class="outline-3">
+<h3 id="org04c90ff">测试数组是否已经有序</h3>
+<div class="outline-text-3" id="text-org04c90ff">
 <p>
 可以添加一个判断条件，如果 a[mid]小于等于 a[mid+1],便可认为数组已经有序并跳过
 <i>merge</i> 方法。这个改动不影响排序的递归调用，但是任意有序的子数组算法的运行时
 间都变成线性的了
 </p>
 </div>
-<div id="outline-container-org7ab7a42" class="outline-4">
-<h4 id="org7ab7a42">未改进归并排序</h4>
-<div class="outline-text-4" id="text-org7ab7a42">
+<div id="outline-container-org37b8095" class="outline-4">
+<h4 id="org37b8095">未改进归并排序</h4>
+<div class="outline-text-4" id="text-org37b8095">
 <div class="org-src-container">
 <pre class="src src-java">public static  void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -216,9 +216,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0b4156" class="outline-4">
-<h4 id="orgd0b4156">改进后归并排序</h4>
-<div class="outline-text-4" id="text-orgd0b4156">
+<div id="outline-container-orgc2ff9e2" class="outline-4">
+<h4 id="orgc2ff9e2">改进后归并排序</h4>
+<div class="outline-text-4" id="text-orgc2ff9e2">
 <div class="org-src-container">
 <pre class="src src-java">public static void sort(Comparable[] a,Comparable[] aux,int lo,int hi){
     if(hi&lt;=lo){
@@ -240,54 +240,54 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgebdb117" class="outline-4">
-<h4 id="orgebdb117">测试1</h4>
-<div class="outline-text-4" id="text-orgebdb117">
+<div id="outline-container-orgaa8f0b5" class="outline-4">
+<h4 id="orgaa8f0b5">测试1</h4>
+<div class="outline-text-4" id="text-orgaa8f0b5">
 <p>
 对100*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100*1000-2.png" alt="100*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf011cf2" class="outline-4">
-<h4 id="orgf011cf2">测试2</h4>
-<div class="outline-text-4" id="text-orgf011cf2">
+<div id="outline-container-org8998dd4" class="outline-4">
+<h4 id="org8998dd4">测试2</h4>
+<div class="outline-text-4" id="text-org8998dd4">
 <p>
 对1000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/1000*1000-2.png" alt="1000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-orgcf916ff" class="outline-4">
-<h4 id="orgcf916ff">测试3</h4>
-<div class="outline-text-4" id="text-orgcf916ff">
+<div id="outline-container-org72e689d" class="outline-4">
+<h4 id="org72e689d">测试3</h4>
+<div class="outline-text-4" id="text-org72e689d">
 <p>
 对10000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/10000*1000-2.png" alt="10000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org928f64e" class="outline-4">
-<h4 id="org928f64e">测试4</h4>
-<div class="outline-text-4" id="text-org928f64e">
+<div id="outline-container-org6ea6cc4" class="outline-4">
+<h4 id="org6ea6cc4">测试4</h4>
+<div class="outline-text-4" id="text-org6ea6cc4">
 <p>
 对100000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/100000*1000-2.png" alt="100000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org91520a8" class="outline-4">
-<h4 id="org91520a8">测试5</h4>
-<div class="outline-text-4" id="text-org91520a8">
+<div id="outline-container-org3dd9749" class="outline-4">
+<h4 id="org3dd9749">测试5</h4>
+<div class="outline-text-4" id="text-org3dd9749">
 <p>
 对500000*1000 个字符进行排序，结果如下：
 <img src="/assets/blog/2017/03/01/归并排序算法改进/500000*1000-2.png" alt="500000*1000-2.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org2d47f5b" class="outline-4">
-<h4 id="org2d47f5b">小结</h4>
-<div class="outline-text-4" id="text-org2d47f5b">
+<div id="outline-container-org89eac58" class="outline-4">
+<h4 id="org89eac58">小结</h4>
+<div class="outline-text-4" id="text-org89eac58">
 <p>
 从上面的结果可以看出，只是添加了一个判断数组是否已经有序的条件，算法性能就优化了
 大概20%左右(未经过精确数据验证),不得不说真的令人惊讶。
@@ -300,9 +300,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org64c290f" class="outline-3">
-<h3 id="org64c290f">参考</h3>
-<div class="outline-text-3" id="text-org64c290f">
+<div id="outline-container-orgefe2b22" class="outline-3">
+<h3 id="orgefe2b22">参考</h3>
+<div class="outline-text-3" id="text-orgefe2b22">
 <p>
 <a href="http://algs4.cs.princeton.edu/home/h">http://algs4.cs.princeton.edu/home/h</a>
 </p>
