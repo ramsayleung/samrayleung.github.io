@@ -4,10 +4,17 @@
     <title>公子世无双，陌上人如玉</title>
     <link>http://https//samrayleung.github.io/</link>
     <description>凡走过,必留下痕迹</description>
-    <pubDate>Wed, 21 Jun 2017 21:39:12 HKT</pubDate>
-    <lastBuildDate>Wed, 21 Jun 2017 21:39:12 HKT</lastBuildDate>
+    <pubDate>Thu, 22 Jun 2017 15:38:29 HKT</pubDate>
+    <lastBuildDate>Thu, 22 Jun 2017 15:38:29 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>浅谈Linux开发环境无缝迁移</title>
+      <link>http://https//samrayleung.github.io/blog/2017/06/22/浅谈linux开发环境无缝迁移</link>
+      <description><![CDATA[An description about portion on unix]]></description>
+      <pubDate>2017-06-22</pubDate>
+      <guid>http://https//samrayleung.github.io/blog/2017/06/22/浅谈linux开发环境无缝迁移</guid>
+    </item>
     <item>
       <title>从京东&quot;窃取&quot;150+万条数据</title>
       <link>http://https//samrayleung.github.io/blog/2017/06/21/从京东窃取150+万条数据</link>
@@ -70,13 +77,6 @@
       <description><![CDATA[an dscription about bloom filter]]></description>
       <pubDate>2017-05-24</pubDate>
       <guid>http://https//samrayleung.github.io/blog/2017/04/09/爬虫高效去重之布隆过滤器</guid>
-    </item>
-    <item>
-      <title>Linux/Unix Shell 二三事之过滤器diff</title>
-      <link>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</link>
-      <description><![CDATA[An introduction about diff]]></description>
-      <pubDate>2017-05-24</pubDate>
-      <guid>http://https//samrayleung.github.io/blog/2017/02/28/linux-unix-shell-二三事之过滤器diff</guid>
     </item>
   </channel>
 </rss>

@@ -35,33 +35,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org66564cc">重要性</a></li>
-<li><a href="#orge1a9152">关于日志</a>
+<li><a href="#orgd29ca4f">重要性</a></li>
+<li><a href="#orga63669d">关于日志</a>
 <ul>
-<li><a href="#orgd4b5626">使用 print 函数输出？</a></li>
-<li><a href="#orga7d41e0">日志需要记录的是什么</a></li>
+<li><a href="#org0f1b824">使用 print 函数输出？</a></li>
+<li><a href="#orgb71aed8">日志需要记录的是什么</a></li>
 </ul>
 </li>
-<li><a href="#org860bb80">Logging 的正确姿势</a>
+<li><a href="#org93b7585">Logging 的正确姿势</a>
 <ul>
-<li><a href="#org69298de">使用 Python 的 logging 模块</a></li>
-<li><a href="#org0d1a8c0">记录异常信息</a></li>
-<li><a href="#orgbba4f40">使用日志文件轮转控制器 (rotating file handler)</a></li>
-<li><a href="#org7463c85">使用日志服务器</a></li>
-<li><a href="#orgba7a378">使用配置文件</a></li>
-<li><a href="#orga1045f0">对于不同的代码，使用不同的日志等级</a></li>
-<li><a href="#orgc1d551a">使用结构化日志</a></li>
-<li><a href="#org760d6eb">参考</a></li>
-<li><a href="#org6fe0034">小结</a></li>
+<li><a href="#org63e7043">使用 Python 的 logging 模块</a></li>
+<li><a href="#org17630af">记录异常信息</a></li>
+<li><a href="#org5a4f879">使用日志文件轮转控制器 (rotating file handler)</a></li>
+<li><a href="#org22691ac">使用日志服务器</a></li>
+<li><a href="#orgd9d6472">使用配置文件</a></li>
+<li><a href="#org7bf2e08">对于不同的代码，使用不同的日志等级</a></li>
+<li><a href="#org12f19d3">使用结构化日志</a></li>
+<li><a href="#org830baf6">参考</a></li>
+<li><a href="#org05669d1">小结</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org66564cc" class="outline-2">
-<h2 id="org66564cc">重要性</h2>
-<div class="outline-text-2" id="text-org66564cc">
+<div id="outline-container-orgd29ca4f" class="outline-2">
+<h2 id="orgd29ca4f">重要性</h2>
+<div class="outline-text-2" id="text-orgd29ca4f">
 <p>
 笔者最近都在负责项目中关于日志的部分，因为跟日志打交道比较多，所以有一些关于日
 志感受和技巧想要分享一下。笔者认为对于各种程序和应用，日志都是非常重要的，因为
@@ -72,12 +72,12 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orge1a9152" class="outline-2">
-<h2 id="orge1a9152">关于日志</h2>
-<div class="outline-text-2" id="text-orge1a9152">
-</div><div id="outline-container-orgd4b5626" class="outline-3">
-<h3 id="orgd4b5626">使用 print 函数输出？</h3>
-<div class="outline-text-3" id="text-orgd4b5626">
+<div id="outline-container-orga63669d" class="outline-2">
+<h2 id="orga63669d">关于日志</h2>
+<div class="outline-text-2" id="text-orga63669d">
+</div><div id="outline-container-org0f1b824" class="outline-3">
+<h3 id="org0f1b824">使用 print 函数输出？</h3>
+<div class="outline-text-3" id="text-org0f1b824">
 <p>
 日志是为了输出程序的运行状态，那么可否使用 <b>print</b> 函数进行 logging 的工作呢？
 笔者并不建议把 <b>print()</b> 函数当作日志使用 (当然，如果你一定要这么用，我也拦不
@@ -99,9 +99,9 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-orga7d41e0" class="outline-3">
-<h3 id="orga7d41e0">日志需要记录的是什么</h3>
-<div class="outline-text-3" id="text-orga7d41e0">
+<div id="outline-container-orgb71aed8" class="outline-3">
+<h3 id="orgb71aed8">日志需要记录的是什么</h3>
+<div class="outline-text-3" id="text-orgb71aed8">
 <p>
 Python 的日志类库 <b>logging</b> 可以让开发者根据不同场景使用不同的日志等级以输出
 不同的日志信息。而日志需要记录的最基本的信息又是什么呢？要想回答这个问题，先
@@ -124,12 +124,12 @@ Python 的日志类库 <b>logging</b> 可以让开发者根据不同场景使用
 </div>
 </div>
 
-<div id="outline-container-org860bb80" class="outline-2">
-<h2 id="org860bb80">Logging 的正确姿势</h2>
-<div class="outline-text-2" id="text-org860bb80">
-</div><div id="outline-container-org69298de" class="outline-3">
-<h3 id="org69298de">使用 Python 的 logging 模块</h3>
-<div class="outline-text-3" id="text-org69298de">
+<div id="outline-container-org93b7585" class="outline-2">
+<h2 id="org93b7585">Logging 的正确姿势</h2>
+<div class="outline-text-2" id="text-org93b7585">
+</div><div id="outline-container-org63e7043" class="outline-3">
+<h3 id="org63e7043">使用 Python 的 logging 模块</h3>
+<div class="outline-text-3" id="text-org63e7043">
 <p>
 笔者认为，使用 Python 的标准日志库是比较好的实践，因为标准库已经提供了开箱即
 用的特性，无需重复造轮子。Python 的 logging 模块也很容易上手，举个小例子：
@@ -159,9 +159,9 @@ WARN:__main__: Warning level message
 </pre>
 </div>
 </div>
-<div id="outline-container-org0d1a8c0" class="outline-3">
-<h3 id="org0d1a8c0">记录异常信息</h3>
-<div class="outline-text-3" id="text-org0d1a8c0">
+<div id="outline-container-org17630af" class="outline-3">
+<h3 id="org17630af">记录异常信息</h3>
+<div class="outline-text-3" id="text-org17630af">
 <p>
 日志一个非常重要的作用就是调试，所以记录出现异常的地方是有必要，并且需要记录
 栈的调用信息。例如：
@@ -180,9 +180,9 @@ except Exception, e:
 </p>
 </div>
 </div>
-<div id="outline-container-orgbba4f40" class="outline-3">
-<h3 id="orgbba4f40">使用日志文件轮转控制器 (rotating file handler)</h3>
-<div class="outline-text-3" id="text-orgbba4f40">
+<div id="outline-container-org5a4f879" class="outline-3">
+<h3 id="org5a4f879">使用日志文件轮转控制器 (rotating file handler)</h3>
+<div class="outline-text-3" id="text-org5a4f879">
 <p>
 如果使用日志文件控制器 (FileHandler), 不断地运行程序，就会产生越来越多的日志
 信息或者是日志文件。为了控制日志文件的数量，可以使用 <b>RotatingFileHandler</b> 自
@@ -206,9 +206,9 @@ my_logger.addHandler(handler)
 </p>
 </div>
 </div>
-<div id="outline-container-org7463c85" class="outline-3">
-<h3 id="org7463c85">使用日志服务器</h3>
-<div class="outline-text-3" id="text-org7463c85">
+<div id="outline-container-org22691ac" class="outline-3">
+<h3 id="org22691ac">使用日志服务器</h3>
+<div class="outline-text-3" id="text-org22691ac">
 <p>
 对于那些分布式的应用，或者部署多台服务器上有不同日志的程序而言，逐个服务器或
 者节点查看日志实在太可怕了. 这个时候，就可以设置一个日志服务器，把重要的日志
@@ -345,9 +345,9 @@ if __name__ == '__main__':
 </p>
 </div>
 </div>
-<div id="outline-container-orgba7a378" class="outline-3">
-<h3 id="orgba7a378">使用配置文件</h3>
-<div class="outline-text-3" id="text-orgba7a378">
+<div id="outline-container-orgd9d6472" class="outline-3">
+<h3 id="orgd9d6472">使用配置文件</h3>
+<div class="outline-text-3" id="text-orgd9d6472">
 <p>
 虽然开发者可以使用 Python 代码来配置日志系统，但是这样是很不灵活的，每次修改
 日志等级还需要去改动代码。而使用配置文件无疑是一个更好的选择，例如 json 或者
@@ -431,9 +431,9 @@ def setup_logging():
 </p>
 </div>
 </div>
-<div id="outline-container-orga1045f0" class="outline-3">
-<h3 id="orga1045f0">对于不同的代码，使用不同的日志等级</h3>
-<div class="outline-text-3" id="text-orga1045f0">
+<div id="outline-container-org7bf2e08" class="outline-3">
+<h3 id="org7bf2e08">对于不同的代码，使用不同的日志等级</h3>
+<div class="outline-text-3" id="text-org7bf2e08">
 <p>
 因为一个项目不同代码要求不一样，也无需把每一个实现细节都记录在日志，只需要根
 据不同的实现，使用不同的日志等级，例如使用 <b>Debug</b> 记录系统启动，处理业务逻辑
@@ -460,9 +460,9 @@ formatter, 以更好地控制日志信息
 </p>
 </div>
 </div>
-<div id="outline-container-orgc1d551a" class="outline-3">
-<h3 id="orgc1d551a">使用结构化日志</h3>
-<div class="outline-text-3" id="text-orgc1d551a">
+<div id="outline-container-org12f19d3" class="outline-3">
+<h3 id="org12f19d3">使用结构化日志</h3>
+<div class="outline-text-3" id="text-org12f19d3">
 <p>
 虽然大部份的日志信息对于人类都是可读的，但是对于程序而言，就很难进行解析了。
 这个时候，为了方便程序进行解析，笔者建议使用结构化格式的日志，这样就不再需要
@@ -499,9 +499,9 @@ logging.info(_('message 1', foo='bar', bar='baz', num=123, fnum=123.456))
 </div>
 </div>
 </div>
-<div id="outline-container-org760d6eb" class="outline-3">
-<h3 id="org760d6eb">参考</h3>
-<div class="outline-text-3" id="text-org760d6eb">
+<div id="outline-container-org830baf6" class="outline-3">
+<h3 id="org830baf6">参考</h3>
+<div class="outline-text-3" id="text-org830baf6">
 <ul class="org-ul">
 <li><a href="https://logmatic.io/blog/python-logging-with-json-steroids/">https://logmatic.io/blog/python-logging-with-json-steroids/</a></li>
 <li><a href="https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/">https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/</a></li>
@@ -510,9 +510,9 @@ logging.info(_('message 1', foo='bar', bar='baz', num=123, fnum=123.456))
 </ul>
 </div>
 </div>
-<div id="outline-container-org6fe0034" class="outline-3">
-<h3 id="org6fe0034">小结</h3>
-<div class="outline-text-3" id="text-org6fe0034">
+<div id="outline-container-org05669d1" class="outline-3">
+<h3 id="org05669d1">小结</h3>
+<div class="outline-text-3" id="text-org05669d1">
 <p>
 虽然这次的日志阐述是以 Python 的日志模块举例，但是绝大部分的语言都内置或者是
 有第三方的日志支持，所以笔者分享的技巧还是可以应用到其他的语言的。这些都是笔

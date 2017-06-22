@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>浅谈Linux开发环境无缝迁移 - 公子世无双，陌上人如玉</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="An description about portion on unix" />
+    <meta name="keywords" content="linux,shell" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">公子世无双，陌上人如玉</a></h1>
+        <p>凡走过,必留下痕迹</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/samrayleung">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="https//samrayleung.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>浅谈Linux开发环境无缝迁移</h1>
+<p>
+相信使用过 Unix系的同学都会有感，Unix 系大部分工具都是可以通过文本进行自定义配置，
+典型的例子就是 Vim/Emacs 的自定义配置了。但是像笔者这种工作时使用 Os X, 笔记本是
+Fedora, 台式机是 Arch Linux, 甚至家里给父母使用的老电脑也换上了 Deepin, 各种工具
+的重新安装和配置就真的很麻烦，更不要说可能需要 ssh 登录管理 vps. 对于这些基于文
+本的配置，其实做的工作无非是下载工具，然后复制指定的配置文件到指定的路径，或者是
+home 目录或者是 <code>.config</code>, 这些真的都是体力活，不如交给脚本来自动解决。
+</p>
+
+<div id="outline-container-orga8c7b7c" class="outline-2">
+<h2 id="orga8c7b7c">安装工具</h2>
+<div class="outline-text-2" id="text-orga8c7b7c">
+<p>
+对于 Linux 种类繁多的发行版本，也对应着各种不同的包管理工具，但是包管理器的数
+量是远远不及发行版本数量的，主要是 Debian 系的 <b>apt-get</b>, RHEL 系的 <b>yum</b> 以及
+衍生的 <b>dnf</b>, 还有最好用的 Arch 系的 <b>pacman</b> 等，当然，还包括 OS X 上的
+<b>brew</b>. 现在的工作就是判断发行版本，然后选择包管理器安装工具。判断发行版本可以
+使用我之前<a href="https://samrayleung.github.io/blog/2017/04/22/%E8%84%9A%E6%9C%AC%E5%88%86%E4%BA%AB/">分享的脚本</a> 进行判断，只是笔者就偷个懒，直接通过是否存在对应的管理器
+来安装工具了：
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">function install_awesome_tools() {
+    if [ "$(uname)" == "Darwin" ]; then
+	# Do something under Mac OS X platform        
+	echo "This is mac os"
+	# check if brew exists
+	brew_install
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+	# Do something under GNU/Linux platform
+	GetDistro
+	if type apt-get &gt;/dev/null 2&gt;&amp;1; then
+	    apt_get_install
+	elif type yum &gt;/dev/null 2&gt;&amp;1; then
+	    yum_dnf_install
+	elif type pacman &gt;/dev/null 2&gt;&amp;1; then
+	    pacman_install
+	fi
+    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+	# Do something under 32 bits Windows NT platform
+	echo "This is 32-bit windows"
+    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+	# Do something under 64 bits Windows NT platform
+	echo "this is 64-bit windows" 
+    fi
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org154196e" class="outline-2">
+<h2 id="org154196e">复制配置到指定路径</h2>
+<div class="outline-text-2" id="text-org154196e">
+</div><div id="outline-container-org4c1a267" class="outline-3">
+<h3 id="org4c1a267">寄存配置</h3>
+<div class="outline-text-3" id="text-org4c1a267">
+<p>
+当安装完工具之后，就可以把配置复制到指定的路径。而笔者倾向于使用 Github 来保存
+配置，然后只需 clone 到本地即可。但是为了方便管理，可以 clone 到指定目录, 然后
+创建指向该目录的软链接
+</p>
+</div>
+</div>
+<div id="outline-container-org6daaa54" class="outline-3">
+<h3 id="org6daaa54">备份</h3>
+<div class="outline-text-3" id="text-org6daaa54">
+<p>
+在创建软链接的时候，可能目标文件已存在，比如说之前已经在安装 Emacs 的时候，附
+带创建了 .emacs 文件，比较好的习惯就是对文件根据时间戳进行备份，然后再创建链接
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org681a381" class="outline-2">
+<h2 id="org681a381">Oh-my-unix</h2>
+<div class="outline-text-2" id="text-org681a381">
+<p>
+Oh-my-unix 就是笔者创建的一个实现笔者上述自动化操作的项目，可以保存笔者 <b>zsh</b>,
+<b>i3</b> <b>oh-my-zsh</b> 别名，环境变量等的配置文件，以及对应的各式工具，然后只需要
+clone 到本地，执行初始化脚本，就可以把环境配好。
+</p>
+</div>
+</div>
+<div id="outline-container-org939e823" class="outline-2">
+<h2 id="org939e823">小结</h2>
+<div class="outline-text-2" id="text-org939e823">
+</div><div id="outline-container-orgc553add" class="outline-3">
+<h3 id="orgc553add">项目地址</h3>
+<div class="outline-text-3" id="text-orgc553add">
+<p>
+<a href="https://github.com/samrayleung/Oh-my-unix">https://github.com/samrayleung/Oh-my-unix</a>
+</p>
+
+<p>
+Enjoy Linux, Enjoy Tweaking :)
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-06-22</span>
+        <span title="last modification date" class="post-info">2017-06-22</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info"></span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/06/22/浅谈linux开发环境无缝迁移";
+          var disqus_url = "http://https//samrayleung.github.io/blog/2017/06/22/浅谈linux开发环境无缝迁移";
+          var disqus_shortname = 'Samray';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:samray &lt;at&gt; workstation"></a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
